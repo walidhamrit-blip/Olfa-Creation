@@ -6,15 +6,19 @@ media_folder: "images"
 public_folder: "/images"
 
 collections:
-  - name: "produits"
-    label: "Produits & Articles"
-    folder: "content/produits"
-    create: true
-    slug: "{{slug}}"
-    extension: "json"
-    format: "json"
-    fields:
-      - { label: "Titre du produit", name: "titre", widget: "string" }
-      - { label: "Prix (LYD)", name: "prix", widget: "string" }
-      - { label: "Photo du produit", name: "image", widget: "image" }
-      - { label: "Description", name: "description", widget: "text" }
+  - name: "catalogue"
+    label: "Catalogue Produits"
+    files:
+      - file: "content/produits.json"
+        label: "Liste des Produits"
+        name: "produits"
+        fields:
+          - label: "Liste de vos produits"
+            name: "items"
+            widget: "list"
+            summary: '{{fields.titre}} - {{fields.prix}} LYD'
+            fields:
+              - { label: "Titre du produit", name: "titre", widget: "string" }
+              - { label: "Prix (LYD)", name: "prix", widget: "string" }
+              - { label: "Photo du produit", name: "image", widget: "image" }
+              - { label: "Description", name: "description", widget: "text" }
