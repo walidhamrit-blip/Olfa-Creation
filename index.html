@@ -283,7 +283,18 @@ select option{color:#111}
 </div>
 </div>
 </section>
-<div id="products-container" class="products-grid"></div>
+<!-- SECTION CATALOGUE PRODUITS -->
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nos Créations</h2>
+      <p class="text-gray-600">Découvrez nos produits artisanaux</p>
+    </div>
+    
+    <!-- C'est ici que tes produits vont s'injecter -->
+    <div id="products-container" class="flex flex-wrap justify-center gap-6"></div>
+  </div>
+</section>
 <!-- SAVOIR FAIRE -->
 <section id="savoir-faire" class="dark-section text-white py-20 border-y scroll-mt-24 relative overflow-hidden" :style="`border-color:color-mix(in srgb, ${themeVars.accent} 25%, transparent)`">
 <div class="absolute inset-0 leather-pattern"></div>
