@@ -850,27 +850,29 @@ importDatabaseJSON(ev){const f=ev.target.files[0]; if(!f) return; const r=new Fi
 copyText(t){try{navigator.clipboard.writeText(t); this.showToast("Lien copié !");}catch(e){this.showToast(t);}}
 };}
 </script>
-  <script>
+<script>
   document.addEventListener("DOMContentLoaded", function () {
     const container = document.getElementById("products-container");
     if (!container) return;
 
-    fetch("/content/produits/index.json")
+    fetch("/content/produits.json")
       .then(response => response.json())
-      .then(products => {
+      .then(data => {
+        const products = data.items || [];
         container.innerHTML = "";
         products.forEach(product => {
           container.innerHTML += `
             <div style="border:1px solid #ddd; padding:15px; margin:10px; border-radius:8px; text-align:center;">
-              <img src="${product.image}" style="max-width:100%; height:200px; object-fit:cover; border-radius:5px;">
+              <img src="${product.image || 'images/default.jpg'}" style="max-width:100%; height:200px; object-fit:cover; border-radius:5px;">
               <h3>${product.titre}</h3>
               <p style="font-weight:bold; color:#e67e22;">${product.prix} LYD</p>
-              <p>${product.description}</p>
+              <p>${product.description || ''}</p>
             </div>
           `;
         });
       })
       .catch(err => console.log("Attente de produits..."));
   });
+</script>
 </body>  
 </html>
