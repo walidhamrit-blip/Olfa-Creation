@@ -1,3 +1,10 @@
 {
-  "items": []
+  "items": [
+    {
+      "titre": "sdajlkjfksadj",
+      "prix": "112",
+      "image": "/images/nova2.png",
+      "description": "ADASDASDAD"
+    }
+  ]
 }
