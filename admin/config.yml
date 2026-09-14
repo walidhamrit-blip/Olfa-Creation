@@ -1,0 +1,23 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "produits"
+    label: "Produits & Articles"
+    folder: "content/produits"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nom de l'article", name: "title", widget: "string" }
+      - { label: "Catégorie", name: "category", widget: "select", options: ["Sacs", "Portefeuilles", "Ceintures", "Accessoires"] }
+      - { label: "Prix", name: "price", widget: "number" }
+      - { label: "Ancien Prix (barré)", name: "oldPrice", widget: "number", required: false }
+      - { label: "Badge (ex: Bestseller, Nouveau)", name: "badge", widget: "string", required: false }
+      - { label: "Type de Cuir", name: "leatherType", widget: "string", default: "Cuir Pleine Fleur" }
+      - { label: "Couleur / Teinte", name: "color", widget: "string", default: "Cognac" }
+      - { label: "Photo du produit", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "text" }
