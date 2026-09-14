@@ -283,7 +283,7 @@ select option{color:#111}
 </div>
 </div>
 </section>
-
+<div id="products-container" class="products-grid"></div>
 <!-- SAVOIR FAIRE -->
 <section id="savoir-faire" class="dark-section text-white py-20 border-y scroll-mt-24 relative overflow-hidden" :style="`border-color:color-mix(in srgb, ${themeVars.accent} 25%, transparent)`">
 <div class="absolute inset-0 leather-pattern"></div>
@@ -850,5 +850,27 @@ importDatabaseJSON(ev){const f=ev.target.files[0]; if(!f) return; const r=new Fi
 copyText(t){try{navigator.clipboard.writeText(t); this.showToast("Lien copié !");}catch(e){this.showToast(t);}}
 };}
 </script>
-</body>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const container = document.getElementById("products-container");
+    if (!container) return;
+
+    fetch("/content/produits/index.json")
+      .then(response => response.json())
+      .then(products => {
+        container.innerHTML = "";
+        products.forEach(product => {
+          container.innerHTML += `
+            <div style="border:1px solid #ddd; padding:15px; margin:10px; border-radius:8px; text-align:center;">
+              <img src="${product.image}" style="max-width:100%; height:200px; object-fit:cover; border-radius:5px;">
+              <h3>${product.titre}</h3>
+              <p style="font-weight:bold; color:#e67e22;">${product.prix} LYD</p>
+              <p>${product.description}</p>
+            </div>
+          `;
+        });
+      })
+      .catch(err => console.log("Attente de produits..."));
+  });
+</body>  
 </html>
