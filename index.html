@@ -1,545 +1,4634 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>L'Art Infiny — Maroquinerie Artisanale</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --c-bg:#f7f3ee;
-    --c-surface:#ffffff;
-    --c-text:#2b2420;
-    --c-muted:#7a6f66;
-    --c-accent:#8b5e34;
-    --c-accent2:#c9a06a;
-    --c-border:#e6ddd2;
-    --c-header:rgba(247,243,238,.85);
-  }
-  *{scroll-behavior:smooth;}
-  body{
-    font-family:'Jost',sans-serif;
-    background:var(--c-bg);
-    color:var(--c-text);
-    transition:background .5s ease,color .5s ease;
-  }
-  h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;}
-  .surface{background:var(--c-surface);border-color:var(--c-border);}
-  .accent{color:var(--c-accent);}
-  .bg-accent{background:var(--c-accent);}
-  .bg-accent2{background:var(--c-accent2);}
-  .border-c{border-color:var(--c-border);}
-  .text-muted{color:var(--c-muted);}
-  .header-blur{background:var(--c-header);backdrop-filter:blur(12px);}
-  .btn-accent{background:var(--c-accent);color:#fff;transition:.3s;}
-  .btn-accent:hover{filter:brightness(1.1);transform:translateY(-2px);box-shadow:0 10px 25px -8px var(--c-accent);}
-  .card{transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s;}
-  .card:hover{transform:translateY(-8px);box-shadow:0 25px 50px -15px rgba(0,0,0,.25);}
-  .card:hover .card-img{transform:scale(1.08);}
-  .card-img{transition:transform .8s cubic-bezier(.2,.8,.2,1);}
-  .fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s;}
-  .fade-up.in{opacity:1;transform:none;}
-  ::-webkit-scrollbar{width:9px;}
-  ::-webkit-scrollbar-track{background:var(--c-bg);}
-  ::-webkit-scrollbar-thumb{background:var(--c-accent2);border-radius:10px;}
-  .theme-swatch{width:34px;height:34px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:.2s;position:relative;}
-  .theme-swatch:hover{transform:scale(1.15);}
-  .theme-swatch.active{border-color:var(--c-text);box-shadow:0 0 0 2px var(--c-surface),0 0 0 4px var(--c-text);}
-  .wa-float{animation:pulse 2.5s infinite;}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5);}70%{box-shadow:0 0 0 18px rgba(37,211,102,0);}100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}
-  .hero-grad{background:linear-gradient(120deg,var(--c-accent) 0%,var(--c-accent2) 100%);}
-  .marquee{white-space:nowrap;animation:scroll 22s linear infinite;}
-  @keyframes scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-  input,textarea,select{font-family:'Jost',sans-serif;}
-  .modal-in{animation:mIn .3s ease;}
-  @keyframes mIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:none}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#241d17">
+  <meta name="description" content="L'Art Infiny — maroquinerie artisanale et créations en cuir façonnées à la main.">
+  <meta property="og:title" content="L'Art Infiny — Maroquinerie artisanale">
+  <meta property="og:description" content="Des objets en cuir façonnés lentement, pensés pour durer.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1200&q=85">
+  <title>L'Art Infiny — Maroquinerie artisanale</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+
+    :root {
+      --bg: #f5f1e9;
+      --paper: #fffdfa;
+      --ink: #241d17;
+      --muted: #776d63;
+      --accent: #9a6845;
+      --accent-text: #ffffff;
+      --line: #ded6cb;
+      --dark: #1d1814;
+      --dark-text: #ffffff;
+      --dark-muted: rgba(255, 255, 255, .66);
+      --radius: 3px;
+      --radius-lg: 18px;
+      --shadow-sm: 0 10px 30px rgba(35, 25, 17, .07);
+      --shadow-lg: 0 25px 75px rgba(35, 25, 17, .16);
+      --header-height: 78px;
+      --container: 1320px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Manrope", sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background .35s ease, color .35s ease;
+    }
+
+    body.no-scroll {
+      overflow: hidden;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--accent-text);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .container {
+      width: min(calc(100% - 48px), var(--container));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--accent);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+
+    .display-title {
+      margin: 0;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2.75rem, 5.4vw, 5.9rem);
+      font-weight: 600;
+      letter-spacing: -.045em;
+      line-height: .95;
+    }
+
+    .section-title {
+      margin: 0;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2.3rem, 4vw, 4.4rem);
+      font-weight: 600;
+      letter-spacing: -.035em;
+      line-height: 1;
+    }
+
+    .button {
+      min-height: 50px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 21px;
+      cursor: pointer;
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      line-height: 1.2;
+      text-transform: uppercase;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease, opacity .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: var(--accent-text);
+    }
+
+    .button-primary:hover {
+      opacity: .9;
+    }
+
+    .button-outline {
+      border-color: var(--line);
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .button-outline:hover {
+      border-color: var(--ink);
+    }
+
+    .button-light {
+      border-color: rgba(255, 255, 255, .38);
+      background: transparent;
+      color: var(--dark-text);
+    }
+
+    .button-light:hover {
+      border-color: var(--dark-text);
+      background: var(--dark-text);
+      color: var(--dark);
+    }
+
+    .icon-button {
+      width: 43px;
+      height: 43px;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      display: inline-grid;
+      place-items: center;
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .icon-button:hover {
+      background: color-mix(in srgb, var(--ink) 7%, transparent);
+      transform: translateY(-1px);
+    }
+
+    .icon-button svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .announcement {
+      min-height: 36px;
+      padding: 8px 22px;
+      background: var(--dark);
+      color: var(--dark-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
+      z-index: 70;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .announcement a {
+      color: var(--dark-text);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .site-header {
+      height: var(--header-height);
+      border-bottom: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
+      background: color-mix(in srgb, var(--bg) 90%, transparent);
+      backdrop-filter: blur(18px);
+      position: sticky;
+      top: 0;
+      z-index: 60;
+    }
+
+    .header-inner {
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .desktop-nav,
+    .header-actions {
+      display: flex;
+      align-items: center;
+    }
+
+    .desktop-nav {
+      gap: 27px;
+    }
+
+    .header-actions {
+      justify-content: flex-end;
+      gap: 4px;
+    }
+
+    .nav-link {
+      border: 0;
+      background: transparent;
+      padding: 8px 0;
+      position: relative;
+      cursor: pointer;
+      font-size: .73rem;
+      font-weight: 650;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .nav-link::after {
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      content: "";
+      transition: width .25s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--accent);
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      color: var(--accent);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -.06em;
+      transform: rotate(45deg);
+    }
+
+    .brand-mark span {
+      transform: rotate(-45deg);
+    }
+
+    .brand-copy strong,
+    .brand-copy small {
+      display: block;
+      line-height: 1.1;
+    }
+
+    .brand-copy strong {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.42rem;
+      font-weight: 700;
+      letter-spacing: .01em;
+      white-space: nowrap;
+    }
+
+    .brand-copy small {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: .53rem;
+      font-weight: 700;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .cart-button {
+      position: relative;
+    }
+
+    .cart-count {
+      min-width: 18px;
+      height: 18px;
+      border: 2px solid var(--bg);
+      border-radius: 20px;
+      background: var(--accent);
+      color: var(--accent-text);
+      display: grid;
+      place-items: center;
+      padding: 0 4px;
+      position: absolute;
+      top: 2px;
+      right: 0;
+      font-size: .58rem;
+      font-weight: 800;
+    }
+
+    .mobile-menu-button {
+      display: none;
+    }
+
+    .search-panel {
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+      box-shadow: var(--shadow-sm);
+      position: fixed;
+      top: calc(36px + var(--header-height));
+      right: 0;
+      left: 0;
+      z-index: 58;
+      transform: translateY(-115%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform .28s ease, opacity .28s ease;
+    }
+
+    .search-panel.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .search-inner {
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .search-inner svg {
+      width: 23px;
+      color: var(--muted);
+    }
+
+    .search-inner input {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      outline: 0;
+    }
+
+    .search-inner input::placeholder {
+      color: color-mix(in srgb, var(--muted) 72%, transparent);
+    }
+
+    .hero {
+      padding: 42px 0 64px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      min-height: 650px;
+      display: grid;
+      grid-template-columns: minmax(0, .91fr) minmax(440px, 1.09fr);
+      align-items: stretch;
+      gap: clamp(35px, 6vw, 88px);
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 64px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content::before {
+      width: 210px;
+      height: 210px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      position: absolute;
+      top: 45px;
+      left: -110px;
+      z-index: -1;
+      content: "";
+    }
+
+    .hero-description {
+      max-width: 590px;
+      margin: 27px 0 31px;
+      color: var(--muted);
+      font-size: .98rem;
+      line-height: 1.9;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-note {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 650;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .hero-note .line {
+      width: 45px;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .hero-visual {
+      min-height: 600px;
+      position: relative;
+    }
+
+    .hero-image-wrap {
+      height: 100%;
+      min-height: 600px;
+      overflow: hidden;
+      background: var(--line);
+      position: relative;
+    }
+
+    .hero-image-wrap::after {
+      background: linear-gradient(180deg, transparent 55%, rgba(18, 12, 8, .25));
+      position: absolute;
+      inset: 0;
+      content: "";
+      pointer-events: none;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s cubic-bezier(.2, .65, .25, 1);
+    }
+
+    .hero-image-wrap:hover .hero-image {
+      transform: scale(1.025);
+    }
+
+    .hero-card {
+      width: min(265px, 48%);
+      border: 1px solid color-mix(in srgb, var(--line) 82%, transparent);
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow-lg);
+      padding: 22px;
+      position: absolute;
+      bottom: 28px;
+      left: -34px;
+      z-index: 2;
+    }
+
+    .hero-card small,
+    .hero-card strong,
+    .hero-card span {
+      display: block;
+    }
+
+    .hero-card small {
+      margin-bottom: 7px;
+      color: var(--accent);
+      font-size: .62rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .hero-card strong {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.55rem;
+      line-height: 1.1;
+    }
+
+    .hero-card span {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: .72rem;
+    }
+
+    .hero-index {
+      color: rgba(255, 255, 255, .9);
+      position: absolute;
+      right: 24px;
+      bottom: 21px;
+      z-index: 2;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.2rem;
+      letter-spacing: .08em;
+    }
+
+    .trust-strip {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 48%, transparent);
+    }
+
+    .trust-grid {
+      min-height: 117px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 17px;
+      padding: 22px 30px;
+      text-align: left;
+    }
+
+    .trust-item + .trust-item {
+      border-left: 1px solid var(--line);
+    }
+
+    .trust-number {
+      color: var(--accent);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .trust-copy strong,
+    .trust-copy span {
+      display: block;
+    }
+
+    .trust-copy strong {
+      font-size: .75rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .trust-copy span {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: .7rem;
+    }
+
+    .shop-section {
+      padding: 112px 0 120px;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(320px, .5fr);
+      align-items: end;
+      gap: 50px;
+      margin-bottom: 49px;
+    }
+
+    .section-heading-copy {
+      max-width: 500px;
+      justify-self: end;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.85;
+    }
+
+    .shop-toolbar {
+      min-height: 65px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .category-filters {
+      display: flex;
+      align-items: center;
+      gap: 23px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .category-filters::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-button {
+      min-height: 63px;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      padding: 0;
+      cursor: pointer;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: color .2s ease, border-color .2s ease;
+    }
+
+    .filter-button:hover,
+    .filter-button.active {
+      border-bottom-color: var(--accent);
+      color: var(--ink);
+    }
+
+    .shop-tools {
+      display: flex;
+      align-items: center;
+      flex: 0 0 auto;
+      gap: 15px;
+      color: var(--muted);
+      font-size: .69rem;
+      font-weight: 650;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .shop-tools select {
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      outline: 0;
+      font-size: .69rem;
+      font-weight: 700;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 39px 24px;
+    }
+
+    .product-card {
+      min-width: 0;
+      position: relative;
+    }
+
+    .product-media {
+      aspect-ratio: .84;
+      overflow: hidden;
+      background: color-mix(in srgb, var(--line) 60%, var(--paper));
+      position: relative;
+      cursor: pointer;
+    }
+
+    .product-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .65s cubic-bezier(.2, .65, .25, 1);
+    }
+
+    .product-card:hover .product-media img {
+      transform: scale(1.035);
+    }
+
+    .product-badge {
+      background: var(--paper);
+      color: var(--ink);
+      padding: 7px 10px;
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      font-size: .58rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .product-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: absolute;
+      top: 13px;
+      right: 13px;
+      opacity: 0;
+      transform: translateX(8px);
+      transition: opacity .25s ease, transform .25s ease;
+    }
+
+    .product-card:hover .product-actions {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .product-action {
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--paper);
+      box-shadow: 0 8px 24px rgba(20, 15, 10, .13);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .product-action:hover {
+      background: var(--accent);
+      color: var(--accent-text);
+    }
+
+    .product-action svg {
+      width: 17px;
+      height: 17px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .product-soldout {
+      background: rgba(20, 16, 13, .74);
+      color: #fff;
+      padding: 8px 11px;
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      font-size: .59rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .product-info {
+      padding-top: 18px;
+    }
+
+    .product-category {
+      margin: 0 0 6px;
+      color: var(--muted);
+      font-size: .62rem;
+      font-weight: 750;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .product-line {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .product-name {
+      margin: 0;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.42rem;
+      font-weight: 600;
+      line-height: 1.16;
+    }
+
+    .product-price {
+      flex: 0 0 auto;
+      font-size: .77rem;
+      font-weight: 700;
+      line-height: 1.7;
+      white-space: nowrap;
+    }
+
+    .product-price del {
+      margin-right: 6px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .product-material {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: .7rem;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 52%, transparent);
+      padding: 70px 24px;
+      text-align: center;
+    }
+
+    .empty-state h3 {
+      margin: 0 0 8px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 2rem;
+    }
+
+    .empty-state p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    .story-section {
+      padding: 28px 0 120px;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: clamp(55px, 8vw, 125px);
+    }
+
+    .story-visual {
+      min-height: 650px;
+      position: relative;
+    }
+
+    .story-main-image {
+      width: 86%;
+      height: 610px;
+      object-fit: cover;
+    }
+
+    .story-detail {
+      width: 46%;
+      aspect-ratio: 1;
+      border: 10px solid var(--bg);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      position: absolute;
+      right: 0;
+      bottom: -18px;
+    }
+
+    .story-detail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .story-content {
+      max-width: 540px;
+    }
+
+    .story-content .section-title {
+      margin-bottom: 26px;
+    }
+
+    .story-content p {
+      margin: 0 0 19px;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.9;
+    }
+
+    .signature {
+      margin: 29px 0 35px;
+      color: var(--ink);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.7rem;
+      font-style: italic;
+    }
+
+    .commission-section {
+      padding: 0 0 120px;
+    }
+
+    .commission {
+      min-height: 465px;
+      background: var(--dark);
+      color: var(--dark-text);
+      display: grid;
+      grid-template-columns: 1fr .78fr;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .commission::before {
+      width: 410px;
+      height: 410px;
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 50%;
+      position: absolute;
+      top: -185px;
+      left: -100px;
+      content: "";
+    }
+
+    .commission-copy {
+      max-width: 680px;
+      padding: clamp(48px, 7vw, 92px);
+      position: relative;
+      z-index: 2;
+    }
+
+    .commission .eyebrow {
+      color: color-mix(in srgb, var(--dark-text) 62%, transparent);
+    }
+
+    .commission h2 {
+      margin: 0;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2.5rem, 4vw, 4.6rem);
+      font-weight: 600;
+      letter-spacing: -.03em;
+      line-height: 1;
+    }
+
+    .commission p {
+      max-width: 560px;
+      margin: 23px 0 30px;
+      color: var(--dark-muted);
+      font-size: .91rem;
+      line-height: 1.85;
+    }
+
+    .commission-art {
+      height: 100%;
+      min-height: 465px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .commission-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .76;
+      filter: saturate(.7);
+    }
+
+    .commission-art::after {
+      background: linear-gradient(90deg, var(--dark), transparent 45%);
+      position: absolute;
+      inset: 0;
+      content: "";
+    }
+
+    .newsletter {
+      border-top: 1px solid var(--line);
+      padding: 66px 0;
+    }
+
+    .newsletter-inner {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      align-items: center;
+      gap: 80px;
+    }
+
+    .newsletter-copy h2 {
+      margin: 0 0 7px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 2rem;
+      line-height: 1.1;
+    }
+
+    .newsletter-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    .newsletter-form {
+      border-bottom: 1px solid var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .newsletter-form input {
+      width: 100%;
+      min-height: 54px;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      outline: 0;
+      font-size: .82rem;
+    }
+
+    .newsletter-form button {
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .site-footer {
+      background: var(--dark);
+      color: var(--dark-text);
+      padding: 72px 0 24px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr .7fr .7fr .9fr;
+      gap: 65px;
+      padding-bottom: 62px;
+    }
+
+    .footer-brand .brand {
+      justify-content: flex-start;
+    }
+
+    .footer-brand .brand-mark {
+      border-color: rgba(255, 255, 255, .65);
+      color: var(--dark-text);
+    }
+
+    .footer-brand .brand-copy small {
+      color: var(--dark-muted);
+    }
+
+    .footer-description {
+      max-width: 340px;
+      margin: 24px 0;
+      color: var(--dark-muted);
+      font-size: .77rem;
+      line-height: 1.8;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 9px;
+    }
+
+    .social-link {
+      width: 39px;
+      height: 39px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      transition: border-color .2s ease, background .2s ease;
+    }
+
+    .social-link:hover {
+      border-color: var(--dark-text);
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .social-link svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .footer-column h3 {
+      margin: 4px 0 22px;
+      color: var(--dark-text);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 12px;
+      color: var(--dark-muted);
+      font-size: .73rem;
+    }
+
+    .footer-links a,
+    .footer-links button {
+      width: fit-content;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      padding: 0;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .footer-links a:hover,
+    .footer-links button:hover {
+      color: var(--dark-text);
+    }
+
+    .footer-contact {
+      color: var(--dark-muted);
+      font-size: .73rem;
+      line-height: 1.8;
+    }
+
+    .footer-contact a {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .footer-bottom {
+      min-height: 48px;
+      border-top: 1px solid rgba(255, 255, 255, .13);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 25px;
+      padding-top: 24px;
+      color: color-mix(in srgb, var(--dark-text) 48%, transparent);
+      font-size: .63rem;
+      letter-spacing: .04em;
+    }
+
+    .admin-footer-button {
+      border: 0;
+      background: transparent;
+      color: inherit;
+      padding: 0;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .whatsapp-float {
+      min-height: 52px;
+      border: 0;
+      border-radius: 50px;
+      background: #1f9d55;
+      box-shadow: 0 14px 35px rgba(15, 95, 49, .28);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 18px;
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 50;
+      cursor: pointer;
+      font-size: .69rem;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(15, 95, 49, .36);
+    }
+
+    .whatsapp-float svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    .drawer-backdrop,
+    .modal-backdrop {
+      background: rgba(15, 12, 10, .5);
+      backdrop-filter: blur(5px);
+      position: fixed;
+      inset: 0;
+      z-index: 89;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s ease;
+    }
+
+    .drawer-backdrop.open,
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .side-drawer {
+      width: min(455px, 100%);
+      background: var(--paper);
+      box-shadow: -20px 0 60px rgba(18, 13, 10, .18);
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 90;
+      transform: translateX(105%);
+      transition: transform .32s cubic-bezier(.2, .65, .25, 1);
+    }
+
+    .side-drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-head {
+      height: 84px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+    }
+
+    .drawer-head h2 {
+      margin: 0;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.8rem;
+    }
+
+    .cart-body {
+      height: calc(100% - 245px);
+      overflow-y: auto;
+      padding: 22px 28px;
+    }
+
+    .cart-empty {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .cart-empty svg {
+      width: 42px;
+      height: 42px;
+      margin: 0 auto 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.3;
+    }
+
+    .cart-empty p {
+      margin: 0;
+      font-size: .82rem;
+    }
+
+    .cart-item {
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 82px 1fr auto;
+      gap: 15px;
+      padding: 0 0 20px;
+      margin-bottom: 20px;
+    }
+
+    .cart-item img {
+      width: 82px;
+      height: 99px;
+      object-fit: cover;
+      background: var(--line);
+    }
+
+    .cart-item h3 {
+      margin: 2px 0 4px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.15rem;
+      line-height: 1.2;
+    }
+
+    .cart-item-price {
+      color: var(--muted);
+      font-size: .69rem;
+    }
+
+    .quantity {
+      width: fit-content;
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      margin-top: 12px;
+    }
+
+    .quantity button,
+    .quantity span {
+      width: 29px;
+      height: 29px;
+      border: 0;
+      background: transparent;
+      display: grid;
+      place-items: center;
+      font-size: .68rem;
+    }
+
+    .quantity button {
+      cursor: pointer;
+    }
+
+    .cart-remove {
+      width: 30px;
+      height: 30px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .cart-footer {
+      height: 161px;
+      border-top: 1px solid var(--line);
+      background: var(--paper);
+      padding: 19px 28px 24px;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      font-size: .79rem;
+      font-weight: 750;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .cart-footer .button {
+      width: 100%;
+    }
+
+    .cart-hint {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: .59rem;
+      text-align: center;
+    }
+
+    .mobile-drawer {
+      width: min(360px, 88%);
+      right: auto;
+      left: 0;
+      transform: translateX(-105%);
+      box-shadow: 20px 0 60px rgba(18, 13, 10, .18);
+    }
+
+    .mobile-drawer.open {
+      transform: translateX(0);
+    }
+
+    .mobile-nav {
+      display: grid;
+      padding: 23px 28px;
+    }
+
+    .mobile-nav .nav-link {
+      border-bottom: 1px solid var(--line);
+      padding: 17px 0;
+      text-align: left;
+    }
+
+    .mobile-nav .nav-link::after {
+      display: none;
+    }
+
+    .mobile-contact {
+      padding: 10px 28px 28px;
+    }
+
+    .mobile-contact .button {
+      width: 100%;
+    }
+
+    .modal {
+      width: min(940px, calc(100% - 32px));
+      max-height: calc(100vh - 40px);
+      border: 1px solid var(--line);
+      background: var(--paper);
+      box-shadow: var(--shadow-lg);
+      overflow: auto;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      z-index: 92;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, -47%) scale(.98);
+      transition: opacity .25s ease, transform .25s ease;
+    }
+
+    .modal.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .quick-view-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .quick-view-image {
+      min-height: 590px;
+      background: var(--line);
+    }
+
+    .quick-view-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 590px;
+      object-fit: cover;
+    }
+
+    .quick-view-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(35px, 6vw, 70px);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 2;
+    }
+
+    .quick-view-content .product-category {
+      margin-bottom: 12px;
+    }
+
+    .quick-view-content h2 {
+      margin: 0;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2.3rem, 4vw, 3.8rem);
+      line-height: .98;
+    }
+
+    .quick-price {
+      margin: 18px 0 24px;
+      font-size: .94rem;
+      font-weight: 750;
+    }
+
+    .quick-price del {
+      margin-right: 9px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .quick-description {
+      margin: 0 0 23px;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.85;
+    }
+
+    .quick-details {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      gap: 11px;
+      margin-bottom: 25px;
+      padding: 18px 0;
+      color: var(--muted);
+      font-size: .68rem;
+    }
+
+    .quick-details strong {
+      color: var(--ink);
+    }
+
+    .quick-buttons {
+      display: grid;
+      gap: 10px;
+    }
+
+    .login-modal {
+      width: min(450px, calc(100% - 32px));
+      padding: 41px;
+    }
+
+    .login-modal .brand {
+      justify-content: flex-start;
+      margin-bottom: 35px;
+    }
+
+    .login-modal h2 {
+      margin: 0 0 10px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 2.25rem;
+      line-height: 1;
+    }
+
+    .login-modal > p {
+      margin: 0 0 25px;
+      color: var(--muted);
+      font-size: .78rem;
+      line-height: 1.7;
+    }
+
+    .login-hint {
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--bg) 70%, transparent);
+      margin-top: 16px;
+      padding: 11px 13px;
+      color: var(--muted);
+      font-size: .65rem;
+    }
+
+    .form-field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .form-field label {
+      color: var(--muted);
+      font-size: .65rem;
+      font-weight: 750;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      background: var(--paper);
+      color: var(--ink);
+      padding: 10px 12px;
+      outline: 0;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .form-field textarea {
+      min-height: 105px;
+      resize: vertical;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus,
+    .form-field select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent);
+    }
+
+    .login-form {
+      display: grid;
+      gap: 15px;
+    }
+
+    .login-form .button {
+      width: 100%;
+    }
+
+    .admin-shell {
+      background: #f3f3f0;
+      color: #1e1e1b;
+      position: fixed;
+      inset: 0;
+      z-index: 110;
+    }
+
+    .admin-layout {
+      height: 100%;
+      display: grid;
+      grid-template-columns: 245px minmax(0, 1fr);
+      grid-template-rows: 76px minmax(0, 1fr);
+    }
+
+    .admin-topbar {
+      border-bottom: 1px solid #deded9;
+      background: rgba(255, 255, 255, .9);
+      backdrop-filter: blur(16px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      padding: 0 28px;
+      grid-column: 1 / -1;
+      position: relative;
+      z-index: 2;
+    }
+
+    .admin-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .admin-mini-logo {
+      width: 37px;
+      height: 37px;
+      border-radius: 50%;
+      background: #201b17;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .admin-title-wrap strong,
+    .admin-title-wrap span {
+      display: block;
+    }
+
+    .admin-title-wrap strong {
+      font-size: .8rem;
+    }
+
+    .admin-title-wrap span {
+      color: #797973;
+      font-size: .62rem;
+    }
+
+    .admin-top-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .save-status {
+      color: #667267;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: .65rem;
+    }
+
+    .save-status::before {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #41925c;
+      content: "";
+    }
+
+    .admin-close {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #deded9;
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .admin-sidebar {
+      border-right: 1px solid #deded9;
+      background: #ebebe7;
+      overflow-y: auto;
+      padding: 24px 16px;
+    }
+
+    .admin-sidebar-label {
+      margin: 2px 12px 10px;
+      color: #898981;
+      font-size: .57rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .admin-tab {
+      width: 100%;
+      min-height: 45px;
+      border: 0;
+      border-radius: 7px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 4px;
+      padding: 10px 13px;
+      cursor: pointer;
+      color: #5f5f5a;
+      font-size: .71rem;
+      font-weight: 650;
+      text-align: left;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .admin-tab:hover,
+    .admin-tab.active {
+      background: #fff;
+      color: #1d1d1a;
+      box-shadow: 0 6px 18px rgba(20, 20, 17, .05);
+    }
+
+    .admin-tab svg {
+      width: 17px;
+      height: 17px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .admin-main {
+      overflow-y: auto;
+      padding: 38px clamp(22px, 4.2vw, 68px) 70px;
+    }
+
+    .admin-page {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .admin-page-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .admin-page-head h1 {
+      margin: 0 0 5px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 2.4rem;
+      line-height: 1;
+    }
+
+    .admin-page-head p {
+      margin: 0;
+      color: #74746e;
+      font-size: .7rem;
+    }
+
+    .admin-button {
+      min-height: 41px;
+      border: 1px solid #d7d7d1;
+      border-radius: 5px;
+      background: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 14px;
+      cursor: pointer;
+      color: #242420;
+      font-size: .66rem;
+      font-weight: 750;
+      letter-spacing: .03em;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .admin-button:hover {
+      background: #f6f6f3;
+      transform: translateY(-1px);
+    }
+
+    .admin-button.primary {
+      border-color: #231e1a;
+      background: #231e1a;
+      color: #fff;
+    }
+
+    .admin-button.danger {
+      border-color: #e5c8c8;
+      color: #a14343;
+    }
+
+    .admin-card {
+      border: 1px solid #deded9;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 10px 28px rgba(25, 25, 20, .035);
+      margin-bottom: 20px;
+      padding: 25px;
+    }
+
+    .admin-card-head {
+      margin-bottom: 22px;
+    }
+
+    .admin-card-head h2 {
+      margin: 0 0 4px;
+      font-size: .82rem;
+    }
+
+    .admin-card-head p {
+      margin: 0;
+      color: #81817a;
+      font-size: .64rem;
+    }
+
+    .admin-form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .admin-form-grid .full {
+      grid-column: 1 / -1;
+    }
+
+    .admin-card .form-field label {
+      color: #73736d;
+    }
+
+    .admin-card .form-field input,
+    .admin-card .form-field textarea,
+    .admin-card .form-field select {
+      border-color: #dcdcd6;
+      background: #fbfbf9;
+      color: #20201c;
+      font-size: .72rem;
+    }
+
+    .admin-card .form-field input:focus,
+    .admin-card .form-field textarea:focus,
+    .admin-card .form-field select:focus {
+      border-color: #8a6c54;
+      box-shadow: 0 0 0 3px rgba(138, 108, 84, .1);
+    }
+
+    .admin-submit {
+      border-top: 1px solid #ecece7;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 25px;
+      padding-top: 20px;
+    }
+
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .theme-card {
+      border: 1px solid #deded9;
+      border-radius: 8px;
+      background: #fff;
+      padding: 12px;
+      cursor: pointer;
+      text-align: left;
+      transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+
+    .theme-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(20, 20, 17, .08);
+    }
+
+    .theme-card.active {
+      border-color: #2c2722;
+      box-shadow: 0 0 0 2px #2c2722;
+    }
+
+    .theme-preview {
+      height: 72px;
+      border-radius: 5px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr .4fr;
+      margin-bottom: 10px;
+    }
+
+    .theme-preview-main {
+      padding: 11px;
+    }
+
+    .preview-line {
+      width: 70%;
+      height: 4px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      opacity: .86;
+    }
+
+    .preview-line.short {
+      width: 42%;
+      opacity: .45;
+    }
+
+    .preview-button {
+      width: 29px;
+      height: 10px;
+      margin-top: 13px;
+    }
+
+    .theme-card strong,
+    .theme-card small {
+      display: block;
+    }
+
+    .theme-card strong {
+      font-size: .67rem;
+    }
+
+    .theme-card small {
+      margin-top: 2px;
+      color: #84847d;
+      font-size: .56rem;
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .color-control {
+      border: 1px solid #e2e2dd;
+      border-radius: 7px;
+      padding: 10px;
+    }
+
+    .color-control label {
+      display: block;
+      margin-bottom: 6px;
+      color: #73736d;
+      font-size: .59rem;
+      font-weight: 750;
+      text-transform: uppercase;
+    }
+
+    .color-control input {
+      width: 100%;
+      height: 37px;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .category-add {
+      display: flex;
+      gap: 10px;
+    }
+
+    .category-add input {
+      flex: 1;
+      min-height: 42px;
+      border: 1px solid #dcdcd6;
+      border-radius: 5px;
+      background: #fbfbf9;
+      padding: 9px 12px;
+      outline: 0;
+      font-size: .72rem;
+    }
+
+    .admin-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .category-row,
+    .admin-product-row {
+      border: 1px solid #e1e1dc;
+      border-radius: 7px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px;
+    }
+
+    .category-row input {
+      min-width: 0;
+      min-height: 39px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      background: #f7f7f4;
+      flex: 1;
+      padding: 8px 10px;
+      font-size: .72rem;
+      outline: 0;
+    }
+
+    .category-row input:focus {
+      border-color: #b8b8b1;
+      background: #fff;
+    }
+
+    .category-count {
+      color: #898983;
+      flex: 0 0 auto;
+      font-size: .61rem;
+    }
+
+    .mini-actions {
+      display: flex;
+      gap: 5px;
+    }
+
+    .mini-button {
+      width: 35px;
+      height: 35px;
+      border: 1px solid #deded9;
+      border-radius: 5px;
+      background: #fff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: .7rem;
+    }
+
+    .mini-button:hover {
+      background: #f2f2ee;
+    }
+
+    .mini-button.danger {
+      color: #a34747;
+    }
+
+    .admin-product-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .admin-product-row img {
+      width: 56px;
+      height: 62px;
+      border-radius: 4px;
+      background: #e7e7e2;
+      object-fit: cover;
+    }
+
+    .admin-product-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .admin-product-info strong,
+    .admin-product-info span {
+      display: block;
+    }
+
+    .admin-product-info strong {
+      overflow: hidden;
+      font-size: .7rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .admin-product-info span {
+      margin-top: 3px;
+      color: #85857f;
+      font-size: .59rem;
+    }
+
+    .status-pill {
+      border-radius: 30px;
+      background: #e8f3ea;
+      color: #37714a;
+      padding: 5px 9px;
+      font-size: .55rem;
+      font-weight: 750;
+    }
+
+    .status-pill.off {
+      background: #f2e9e7;
+      color: #9a4f45;
+    }
+
+    .check-field {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 46px;
+    }
+
+    .check-field input {
+      width: 17px;
+      height: 17px;
+      accent-color: #2b2520;
+    }
+
+    .check-field label {
+      font-size: .68rem;
+    }
+
+    .backup-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .admin-note {
+      border-left: 3px solid #a88160;
+      background: #f7f2ec;
+      margin-bottom: 20px;
+      padding: 15px 17px;
+      color: #726355;
+      font-size: .65rem;
+      line-height: 1.65;
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .toast-stack {
+      display: grid;
+      gap: 9px;
+      position: fixed;
+      right: 22px;
+      bottom: 86px;
+      z-index: 200;
+      pointer-events: none;
+    }
+
+    .toast {
+      max-width: 330px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      box-shadow: var(--shadow-lg);
+      color: var(--ink);
+      padding: 13px 16px;
+      font-size: .7rem;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: toastIn .25s ease forwards;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @keyframes toastIn {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 1120px) {
+      .desktop-nav {
+        gap: 16px;
+      }
+
+      .desktop-nav .nav-link:nth-child(n+4) {
+        display: none;
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, .9fr) minmax(400px, 1.1fr);
+        gap: 45px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.25fr repeat(3, .75fr);
+        gap: 35px;
+      }
+
+      .theme-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 860px) {
+      :root {
+        --header-height: 69px;
+      }
+
+      .container {
+        width: min(calc(100% - 32px), var(--container));
+      }
+
+      .desktop-nav,
+      .admin-shortcut {
+        display: none;
+      }
+
+      .header-inner {
+        grid-template-columns: 1fr auto 1fr;
+      }
+
+      .mobile-menu-button {
+        display: inline-grid;
+        justify-self: start;
+      }
+
+      .header-actions .search-button {
+        display: none;
+      }
+
+      .brand-copy small {
+        display: none;
+      }
+
+      .brand-copy strong {
+        font-size: 1.25rem;
+      }
+
+      .brand-mark {
+        width: 35px;
+        height: 35px;
+      }
+
+      .hero {
+        padding-top: 24px;
+      }
+
+      .hero-grid {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .hero-content {
+        padding: 44px 0 25px;
+      }
+
+      .hero-content::before {
+        display: none;
+      }
+
+      .hero-visual,
+      .hero-image-wrap {
+        min-height: 560px;
+      }
+
+      .hero-card {
+        left: 18px;
+      }
+
+      .trust-grid {
+        grid-template-columns: 1fr;
+        padding: 9px 0;
+      }
+
+      .trust-item {
+        justify-content: flex-start;
+        padding: 18px 10px;
+      }
+
+      .trust-item + .trust-item {
+        border-top: 1px solid var(--line);
+        border-left: 0;
+      }
+
+      .section-heading {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .section-heading-copy {
+        justify-self: start;
+      }
+
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .story-content {
+        max-width: none;
+      }
+
+      .commission {
+        grid-template-columns: 1fr;
+      }
+
+      .commission-art {
+        min-height: 300px;
+      }
+
+      .commission-art::after {
+        background: linear-gradient(180deg, var(--dark), transparent 60%);
+      }
+
+      .newsletter-inner {
+        grid-template-columns: 1fr;
+        gap: 26px;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+
+      .admin-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: 70px auto minmax(0, 1fr);
+      }
+
+      .admin-sidebar {
+        border-right: 0;
+        border-bottom: 1px solid #deded9;
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+        padding: 10px 14px;
+        scrollbar-width: none;
+      }
+
+      .admin-sidebar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .admin-sidebar-label {
+        display: none;
+      }
+
+      .admin-tab {
+        width: auto;
+        min-width: max-content;
+        min-height: 41px;
+        margin: 0;
+      }
+
+      .admin-main {
+        padding-top: 28px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .announcement {
+        min-height: 34px;
+        padding-inline: 12px;
+        font-size: .58rem;
+      }
+
+      .announcement .announcement-whatsapp {
+        display: none;
+      }
+
+      .display-title {
+        font-size: clamp(3rem, 14vw, 4.3rem);
+      }
+
+      .section-title {
+        font-size: clamp(2.5rem, 12vw, 3.6rem);
+      }
+
+      .hero-description {
+        margin: 22px 0 27px;
+        font-size: .87rem;
+      }
+
+      .hero-buttons {
+        display: grid;
+      }
+
+      .hero-buttons .button {
+        width: 100%;
+      }
+
+      .hero-visual,
+      .hero-image-wrap {
+        min-height: 480px;
+      }
+
+      .hero-card {
+        width: calc(100% - 36px);
+        max-width: 255px;
+        bottom: 18px;
+      }
+
+      .hero-index {
+        display: none;
+      }
+
+      .shop-section {
+        padding: 85px 0;
+      }
+
+      .shop-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0;
+        padding-bottom: 15px;
+      }
+
+      .category-filters {
+        width: 100%;
+      }
+
+      .shop-tools {
+        width: 100%;
+        justify-content: space-between;
+        padding-top: 13px;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+        gap-bottom: 32px;
+      }
+
+      .product-media {
+        aspect-ratio: .9;
+      }
+
+      .product-actions {
+        opacity: 1;
+        transform: none;
+      }
+
+      .story-section {
+        padding-bottom: 85px;
+      }
+
+      .story-visual {
+        min-height: 480px;
+      }
+
+      .story-main-image {
+        width: 92%;
+        height: 455px;
+      }
+
+      .story-detail {
+        width: 43%;
+        border-width: 7px;
+      }
+
+      .commission-section {
+        padding-bottom: 85px;
+      }
+
+      .commission-copy {
+        padding: 52px 25px;
+      }
+
+      .commission-art {
+        min-height: 240px;
+      }
+
+      .newsletter {
+        padding: 54px 0;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+
+      .footer-brand {
+        grid-column: auto;
+      }
+
+      .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .whatsapp-float {
+        width: 52px;
+        padding: 0;
+        justify-content: center;
+        right: 14px;
+        bottom: 14px;
+      }
+
+      .whatsapp-float span {
+        display: none;
+      }
+
+      .toast-stack {
+        right: 14px;
+        bottom: 78px;
+        left: 14px;
+      }
+
+      .toast {
+        max-width: none;
+      }
+
+      .quick-view-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-view-image,
+      .quick-view-image img {
+        min-height: 330px;
+        height: 330px;
+      }
+
+      .quick-view-content {
+        padding: 34px 25px;
+      }
+
+      .quick-view-content .modal-close {
+        top: -318px;
+        background: var(--paper);
+      }
+
+      .login-modal {
+        padding: 32px 24px;
+      }
+
+      .admin-topbar {
+        padding: 0 14px;
+      }
+
+      .save-status {
+        display: none;
+      }
+
+      .admin-main {
+        padding: 24px 14px 55px;
+      }
+
+      .admin-page-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .admin-page-head .admin-button {
+        width: 100%;
+      }
+
+      .admin-card {
+        padding: 18px;
+      }
+
+      .admin-form-grid,
+      .color-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .admin-form-grid .full {
+        grid-column: auto;
+      }
+
+      .theme-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .category-row {
+        flex-wrap: wrap;
+      }
+
+      .category-row input {
+        width: calc(100% - 70px);
+      }
+
+      .category-row .mini-actions {
+        width: 100%;
+        justify-content: flex-end;
+      }
+
+      .admin-product-row {
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .admin-product-row .mini-actions {
+        width: 100%;
+        justify-content: flex-end;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="announcement">
+    <span data-setting="announcement">Livraison offerte dès 180 € — Fabrication artisanale</span>
+    <a class="announcement-whatsapp" href="#" data-whatsapp-link>Commander sur WhatsApp</a>
+  </div>
 
-<!-- ================= HEADER ================= -->
-<header class="header-blur fixed top-0 inset-x-0 z-40 border-b border-c">
-  <div class="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between">
-    <a href="#accueil" class="flex items-center gap-3">
-      <div class="w-11 h-11 rounded-full bg-accent flex items-center justify-center text-white serif text-2xl font-bold">L</div>
-      <div class="leading-tight">
-        <div class="serif text-2xl font-semibold" id="brandName">L'Art Infiny</div>
-        <div class="text-[11px] tracking-[.3em] uppercase text-muted" id="brandTag">Maroquinerie Artisanale</div>
-      </div>
-    </a>
-    <nav class="hidden lg:flex items-center gap-9 text-sm font-medium">
-      <a href="#accueil" class="hover:accent transition">Accueil</a>
-      <a href="#collections" class="hover:accent transition">Collections</a>
-      <a href="#savoir" class="hover:accent transition">Savoir-faire</a>
-      <a href="#apropos" class="hover:accent transition">À propos</a>
-      <a href="#contact" class="hover:accent transition">Contact</a>
-    </nav>
-    <div class="flex items-center gap-3">
-      <!-- Theme picker -->
-      <div class="relative">
-        <button id="themeBtn" class="w-10 h-10 rounded-full surface border border-c flex items-center justify-center hover:accent transition" title="Thèmes">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M9 5.5a.5.5 0 11-1 0 .5.5 0 011 0z"/></svg>
-        </button>
-        <div id="themePanel" class="hidden absolute right-0 mt-3 w-64 surface border border-c rounded-2xl shadow-2xl p-4 modal-in">
-          <div class="text-xs font-semibold uppercase tracking-widest text-muted mb-3">Thèmes minimalistes</div>
-          <div id="themeGrid" class="grid grid-cols-4 gap-3"></div>
-        </div>
-      </div>
-      <a id="waHeader" href="#" target="_blank" class="hidden sm:inline-flex btn-accent px-5 py-2.5 rounded-full text-sm font-medium">Commander</a>
-      <button id="adminToggle" class="w-10 h-10 rounded-full surface border border-c flex items-center justify-center hover:accent transition" title="Espace admin">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+  <header class="site-header">
+    <div class="container header-inner">
+      <button class="icon-button mobile-menu-button" type="button" aria-label="Ouvrir le menu" id="mobileMenuButton">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
-      <button id="menuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
-    </div>
-  </div>
-  <!-- mobile nav -->
-  <div id="mobileNav" class="hidden lg:hidden surface border-t border-c px-5 py-4 flex flex-col gap-4 text-sm font-medium">
-    <a href="#accueil" class="mnav">Accueil</a>
-    <a href="#collections" class="mnav">Collections</a>
-    <a href="#savoir" class="mnav">Savoir-faire</a>
-    <a href="#apropos" class="mnav">À propos</a>
-    <a href="#contact" class="mnav">Contact</a>
-    <a id="waMobile" href="#" target="_blank" class="btn-accent text-center px-5 py-2.5 rounded-full">Commander sur WhatsApp</a>
-  </div>
-</header>
 
-<!-- ================= HERO ================= -->
-<section id="accueil" class="pt-20">
-  <div class="max-w-7xl mx-auto px-5 grid lg:grid-cols-2 gap-12 items-center py-16 lg:py-24">
-    <div class="fade-up">
-      <div class="inline-flex items-center gap-2 text-xs uppercase tracking-[.25em] text-muted mb-6">
-        <span class="w-8 h-px bg-accent"></span> Fait main au Maroc
-      </div>
-      <h1 class="serif text-5xl md:text-7xl font-semibold leading-[1.05] mb-6" id="heroTitle">Le cuir, sculpté par des mains passionnées</h1>
-      <p class="text-muted text-lg leading-relaxed mb-8 max-w-md" id="heroSub">Découvrez des pièces uniques en cuir véritable, façonnées avec un savoir-faire ancestral et une élégance intemporelle.</p>
-      <div class="flex flex-wrap gap-4">
-        <a href="#collections" class="btn-accent px-8 py-3.5 rounded-full font-medium">Voir les collections</a>
-        <a id="waHero" href="#" target="_blank" class="px-8 py-3.5 rounded-full font-medium border border-c surface hover:accent transition flex items-center gap-2">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
-          Commander
-        </a>
-      </div>
-      <div class="flex gap-8 mt-12">
-        <div><div class="serif text-3xl font-semibold accent">15+</div><div class="text-xs text-muted uppercase tracking-wider">Ans d'expérience</div></div>
-        <div><div class="serif text-3xl font-semibold accent">100%</div><div class="text-xs text-muted uppercase tracking-wider">Cuir véritable</div></div>
-        <div><div class="serif text-3xl font-semibold accent">2500+</div><div class="text-xs text-muted uppercase tracking-wider">Clients ravis</div></div>
-      </div>
-    </div>
-    <div class="fade-up relative">
-      <div class="aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
-        <img src="https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt="Maroquinerie">
-      </div>
-      <div class="absolute -bottom-6 -left-6 surface border border-c rounded-2xl p-5 shadow-xl hidden md:block">
-        <div class="flex items-center gap-3">
-          <div class="w-12 h-12 rounded-full hero-grad flex items-center justify-center text-white text-xl">✦</div>
-          <div><div class="serif text-lg font-semibold">Édition limitée</div><div class="text-xs text-muted">Chaque pièce est unique</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      <nav class="desktop-nav" id="desktopNav" aria-label="Navigation principale"></nav>
 
-<!-- ================= MARQUEE ================= -->
-<div class="hero-grad text-white py-4 overflow-hidden">
-  <div class="marquee inline-block">
-    <span class="serif text-xl mx-6">✦ Sacs en cuir</span><span class="serif text-xl mx-6">✦ Ceintures artisanales</span><span class="serif text-xl mx-6">✦ Portefeuilles</span><span class="serif text-xl mx-6">✦ Poufs marocains</span><span class="serif text-xl mx-6">✦ Accessoires</span>
-    <span class="serif text-xl mx-6">✦ Sacs en cuir</span><span class="serif text-xl mx-6">✦ Ceintures artisanales</span><span class="serif text-xl mx-6">✦ Portefeuilles</span><span class="serif text-xl mx-6">✦ Poufs marocains</span><span class="serif text-xl mx-6">✦ Accessoires</span>
-  </div>
-</div>
-
-<!-- ================= COLLECTIONS ================= -->
-<section id="collections" class="py-20 lg:py-28">
-  <div class="max-w-7xl mx-auto px-5">
-    <div class="text-center mb-14 fade-up">
-      <div class="text-xs uppercase tracking-[.3em] text-muted mb-3">Nos créations</div>
-      <h2 class="serif text-4xl md:text-5xl font-semibold">Collections & Catégories</h2>
-    </div>
-    <div id="categoryGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-  </div>
-</section>
-
-<!-- ================= SAVOIR-FAIRE ================= -->
-<section id="savoir" class="py-20 lg:py-28 relative overflow-hidden">
-  <div class="max-w-7xl mx-auto px-5 grid lg:grid-cols-2 gap-14 items-center">
-    <div class="fade-up order-2 lg:order-1 grid grid-cols-2 gap-4">
-      <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80&w=600&auto=format&fit=crop" class="rounded-2xl object-cover h-full w-full aspect-square shadow-lg" alt="">
-      <img src="https://images.unsplash.com/photo-1560243563-062bfc001d68?q=80&w=600&auto=format&fit=crop" class="rounded-2xl object-cover h-full w-full aspect-square shadow-lg mt-8" alt="">
-    </div>
-    <div class="fade-up order-1 lg:order-2">
-      <div class="text-xs uppercase tracking-[.3em] text-muted mb-3">Notre métier</div>
-      <h2 class="serif text-4xl md:text-5xl font-semibold mb-6">Un savoir-faire transmis de génération en génération</h2>
-      <p class="text-muted leading-relaxed mb-8">Chaque article L'Art Infiny naît de la sélection rigoureuse des plus beaux cuirs, tannés selon des méthodes traditionnelles. Nos artisans consacrent des heures de travail minutieux à chaque pièce pour vous offrir des créations durables et authentiques.</p>
-      <div class="space-y-5">
-        <div class="flex gap-4"><div class="w-11 h-11 shrink-0 rounded-full bg-accent2 text-white flex items-center justify-center serif font-bold">1</div><div><div class="font-semibold mb-1">Sélection du cuir</div><p class="text-sm text-muted">Cuirs pleine fleur choisis pour leur qualité exceptionnelle.</p></div></div>
-        <div class="flex gap-4"><div class="w-11 h-11 shrink-0 rounded-full bg-accent2 text-white flex items-center justify-center serif font-bold">2</div><div><div class="font-semibold mb-1">Découpe & couture main</div><p class="text-sm text-muted">Assemblage traditionnel au point sellier, garant de solidité.</p></div></div>
-        <div class="flex gap-4"><div class="w-11 h-11 shrink-0 rounded-full bg-accent2 text-white flex items-center justify-center serif font-bold">3</div><div><div class="font-semibold mb-1">Finitions soignées</div><p class="text-sm text-muted">Chaque détail est vérifié pour un rendu impeccable.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= APROPOS ================= -->
-<section id="apropos" class="py-20 lg:py-28">
-  <div class="max-w-4xl mx-auto px-5 text-center fade-up">
-    <div class="text-xs uppercase tracking-[.3em] text-muted mb-3">À propos</div>
-    <h2 class="serif text-4xl md:text-5xl font-semibold mb-6">L'Art Infiny</h2>
-    <p class="text-muted text-lg leading-relaxed">Née de la passion du cuir et de l'artisanat marocain, L'Art Infiny célèbre l'élégance intemporelle et le travail bien fait. Notre atelier perpétue des techniques ancestrales tout en cultivant un design contemporain. Nous croyons qu'un bel objet en cuir se bonifie avec le temps et raconte une histoire — la vôtre.</p>
-    <div class="grid sm:grid-cols-3 gap-6 mt-12">
-      <div class="surface border border-c rounded-2xl p-6"><div class="serif text-2xl mb-2 accent">Authenticité</div><p class="text-sm text-muted">Des matières nobles et honnêtes.</p></div>
-      <div class="surface border border-c rounded-2xl p-6"><div class="serif text-2xl mb-2 accent">Durabilité</div><p class="text-sm text-muted">Des pièces conçues pour durer.</p></div>
-      <div class="surface border border-c rounded-2xl p-6"><div class="serif text-2xl mb-2 accent">Élégance</div><p class="text-sm text-muted">Un style intemporel et raffiné.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= CONTACT / CTA ================= -->
-<section id="contact" class="py-20 lg:py-28">
-  <div class="max-w-5xl mx-auto px-5">
-    <div class="hero-grad rounded-[2.5rem] p-10 md:p-16 text-center text-white fade-up relative overflow-hidden">
-      <h2 class="serif text-4xl md:text-5xl font-semibold mb-5">Passez commande dès aujourd'hui</h2>
-      <p class="text-white/90 max-w-xl mx-auto mb-8 text-lg">Une question, une commande sur-mesure ? Contactez-nous directement sur WhatsApp, notre équipe vous répond avec plaisir.</p>
-      <a id="waContact" href="#" target="_blank" class="inline-flex items-center gap-3 bg-white text-gray-900 px-9 py-4 rounded-full font-semibold text-lg hover:scale-105 transition">
-        <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
-        Discuter sur WhatsApp
+      <a class="brand" href="#" aria-label="Accueil L'Art Infiny">
+        <span class="brand-mark"><span data-logo-mark>AI</span></span>
+        <span class="brand-copy">
+          <strong data-setting="brand">L'Art Infiny</strong>
+          <small data-setting="tagline">Maroquinerie artisanale</small>
+        </span>
       </a>
-      <p class="mt-6 text-white/80 text-sm" id="phoneDisplay"></p>
+
+      <div class="header-actions">
+        <button class="icon-button admin-shortcut" type="button" aria-label="Administration" title="Administration" data-open-admin>
+          <svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        </button>
+        <button class="icon-button search-button" type="button" aria-label="Rechercher" id="searchButton">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+        </button>
+        <button class="icon-button cart-button" type="button" aria-label="Ouvrir le panier" id="cartButton">
+          <svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="search-panel" id="searchPanel">
+    <div class="container search-inner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+      <input id="globalSearch" type="search" autocomplete="off" placeholder="Rechercher une pièce, une matière…">
+      <button class="icon-button" type="button" aria-label="Fermer la recherche" id="closeSearch">✕</button>
     </div>
   </div>
-</section>
 
-<!-- ================= FOOTER ================= -->
-<footer class="surface border-t border-c pt-14 pb-8">
-  <div class="max-w-7xl mx-auto px-5 grid md:grid-cols-4 gap-10">
-    <div>
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-white serif text-xl font-bold">L</div>
-        <span class="serif text-xl font-semibold">L'Art Infiny</span>
-      </div>
-      <p class="text-sm text-muted leading-relaxed">Maroquinerie artisanale en cuir véritable. L'élégance qui traverse le temps.</p>
-    </div>
-    <div>
-      <h4 class="font-semibold mb-4">Navigation</h4>
-      <ul class="space-y-2 text-sm text-muted">
-        <li><a href="#collections" class="hover:accent transition">Collections</a></li>
-        <li><a href="#savoir" class="hover:accent transition">Savoir-faire</a></li>
-        <li><a href="#apropos" class="hover:accent transition">À propos</a></li>
-        <li><a href="#contact" class="hover:accent transition">Contact</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 class="font-semibold mb-4">Contact</h4>
-      <ul class="space-y-2 text-sm text-muted" id="footerContact"></ul>
-    </div>
-    <div>
-      <h4 class="font-semibold mb-4">Suivez-nous</h4>
-      <div class="flex gap-3">
-        <a href="#" class="w-10 h-10 rounded-full surface border border-c flex items-center justify-center hover:accent transition">f</a>
-        <a href="#" class="w-10 h-10 rounded-full surface border border-c flex items-center justify-center hover:accent transition">◎</a>
-        <a href="#" class="w-10 h-10 rounded-full surface border border-c flex items-center justify-center hover:accent transition">in</a>
-      </div>
-    </div>
-  </div>
-  <div class="max-w-7xl mx-auto px-5 mt-10 pt-6 border-t border-c text-center text-xs text-muted">
-    © <span id="year"></span> L'Art Infiny — Tous droits réservés. Conçu avec passion.
-  </div>
-</footer>
-
-<!-- ================= WHATSAPP FLOAT ================= -->
-<a id="waFloat" href="#" target="_blank" class="wa-float fixed bottom-6 right-6 z-40 w-16 h-16 rounded-full bg-[#25D366] flex items-center justify-center shadow-2xl">
-  <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
-</a>
-
-<!-- ================= ADMIN PANEL ================= -->
-<div id="adminOverlay" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm">
-  <div class="absolute right-0 top-0 h-full w-full max-w-md surface border-l border-c shadow-2xl overflow-y-auto modal-in">
-    <div class="sticky top-0 header-blur border-b border-c px-6 py-4 flex items-center justify-between z-10">
-      <div>
-        <h3 class="serif text-2xl font-semibold">Espace Administrateur</h3>
-        <p class="text-xs text-muted">Gérez votre site en direct</p>
-      </div>
-      <button id="closeAdmin" class="w-9 h-9 rounded-full surface border border-c flex items-center justify-center hover:accent transition">✕</button>
-    </div>
-
-    <div class="p-6 space-y-8">
-      <!-- Login gate -->
-      <div id="loginBox">
-        <label class="text-sm font-medium block mb-2">Mot de passe admin</label>
-        <input id="adminPass" type="password" placeholder="admin (par défaut)" class="w-full px-4 py-3 rounded-xl border border-c bg-transparent outline-none focus:border-[var(--c-accent)]">
-        <button id="loginBtn" class="btn-accent w-full mt-3 py-3 rounded-xl font-medium">Se connecter</button>
-        <p class="text-xs text-muted mt-2">Astuce : le mot de passe par défaut est « admin ».</p>
-      </div>
-
-      <div id="adminContent" class="hidden space-y-8">
-        <!-- Interface settings -->
-        <div>
-          <h4 class="font-semibold uppercase text-xs tracking-widest text-muted mb-4">Détails de l'interface</h4>
-          <div class="space-y-4">
-            <div><label class="text-sm block mb-1">Nom de la marque</label><input id="setBrand" class="adm-in"></div>
-            <div><label class="text-sm block mb-1">Slogan (sous le logo)</label><input id="setTag" class="adm-in"></div>
-            <div><label class="text-sm block mb-1">Titre principal (Hero)</label><textarea id="setHeroTitle" rows="2" class="adm-in"></textarea></div>
-            <div><label class="text-sm block mb-1">Sous-titre (Hero)</label><textarea id="setHeroSub" rows="3" class="adm-in"></textarea></div>
-            <div><label class="text-sm block mb-1">Numéro WhatsApp (format international)</label><input id="setPhone" placeholder="212600000000" class="adm-in"></div>
-            <div><label class="text-sm block mb-1">Message WhatsApp par défaut</label><textarea id="setWaMsg" rows="2" class="adm-in"></textarea></div>
-            <div><label class="text-sm block mb-1">Email</label><input id="setEmail" class="adm-in"></div>
-            <div><label class="text-sm block mb-1">Adresse</label><input id="setAddress" class="adm-in"></div>
-            <button id="saveSettings" class="btn-accent w-full py-3 rounded-xl font-medium">Enregistrer les détails</button>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <p class="eyebrow" data-setting="heroEyebrow">Collection permanente · Pièces façonnées à la main</p>
+          <h1 class="display-title" data-setting="heroTitle">Le cuir, dans sa forme la plus personnelle.</h1>
+          <p class="hero-description" data-setting="heroText">Des lignes essentielles, des peaux choisies avec exigence et le temps nécessaire pour créer des objets qui vous accompagnent vraiment.</p>
+          <div class="hero-buttons">
+            <button class="button button-primary" type="button" data-scroll-shop>
+              <span data-setting="heroCta">Découvrir la collection</span>
+              <span aria-hidden="true">→</span>
+            </button>
+            <button class="button button-outline" type="button" data-scroll-story>
+              <span data-setting="heroSecondary">Notre savoir-faire</span>
+            </button>
+          </div>
+          <div class="hero-note">
+            <span class="line"></span>
+            <span data-setting="heroNote">Chaque pièce porte la trace de la main</span>
           </div>
         </div>
 
-        <!-- Categories manager -->
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <h4 class="font-semibold uppercase text-xs tracking-widest text-muted">Catégories d'articles</h4>
-            <button id="addCat" class="text-sm btn-accent px-3 py-1.5 rounded-lg">+ Ajouter</button>
+        <div class="hero-visual reveal">
+          <div class="hero-image-wrap">
+            <img class="hero-image" id="heroImage" src="" alt="Sac artisanal en cuir L'Art Infiny">
           </div>
-          <div id="adminCatList" class="space-y-3"></div>
+          <div class="hero-card">
+            <small data-setting="heroCardLabel">Signature de l'atelier</small>
+            <strong data-setting="heroCardTitle">Cousu main</strong>
+            <span data-setting="heroCardText">Cuir pleine fleur · Finitions à la main</span>
+          </div>
+          <span class="hero-index">01 / 08</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Nos engagements">
+      <div class="container trust-grid">
+        <article class="trust-item">
+          <span class="trust-number" data-setting="trust1Number">100%</span>
+          <span class="trust-copy">
+            <strong data-setting="trust1Title">Cuir sélectionné</strong>
+            <span data-setting="trust1Text">Peaux choisies une à une</span>
+          </span>
+        </article>
+        <article class="trust-item">
+          <span class="trust-number" data-setting="trust2Number">01</span>
+          <span class="trust-copy">
+            <strong data-setting="trust2Title">Fabrication artisanale</strong>
+            <span data-setting="trust2Text">Du patron jusqu'aux finitions</span>
+          </span>
+        </article>
+        <article class="trust-item">
+          <span class="trust-number" data-setting="trust3Number">∞</span>
+          <span class="trust-copy">
+            <strong data-setting="trust3Title">Pensé pour durer</strong>
+            <span data-setting="trust3Text">Réparable et fait pour se patiner</span>
+          </span>
+        </article>
+      </div>
+    </section>
+
+    <section class="shop-section" id="collection">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow" data-setting="shopEyebrow">La boutique</p>
+            <h2 class="section-title" data-setting="shopTitle">Objets du quotidien, faits pour durer.</h2>
+          </div>
+          <p class="section-heading-copy" data-setting="shopText">Chaque création est produite en petite série dans notre atelier. Les irrégularités naturelles du cuir rendent votre pièce unique.</p>
         </div>
 
-        <button id="resetAll" class="w-full py-3 rounded-xl border border-red-300 text-red-500 text-sm hover:bg-red-50 transition">Réinitialiser tout le site</button>
+        <div class="shop-toolbar reveal">
+          <div class="category-filters" id="categoryFilters" aria-label="Filtres par catégorie"></div>
+          <div class="shop-tools">
+            <span id="productCount">0 pièces</span>
+            <select id="sortSelect" aria-label="Trier les produits">
+              <option value="featured">Sélection</option>
+              <option value="price-asc">Prix croissant</option>
+              <option value="price-desc">Prix décroissant</option>
+              <option value="name">Nom</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
       </div>
-    </div>
-  </div>
-</div>
+    </section>
 
-<!-- ================= CATEGORY EDIT MODAL ================= -->
-<div id="catModal" class="hidden fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-  <div class="surface border border-c rounded-2xl w-full max-w-md p-6 modal-in max-h-[90vh] overflow-y-auto">
-    <h3 class="serif text-2xl font-semibold mb-5" id="catModalTitle">Ajouter une catégorie</h3>
-    <div class="space-y-4">
-      <div><label class="text-sm block mb-1">Nom de la catégorie</label><input id="catName" class="adm-in"></div>
-      <div><label class="text-sm block mb-1">Description</label><textarea id="catDesc" rows="2" class="adm-in"></textarea></div>
-      <div><label class="text-sm block mb-1">Prix (ex: à partir de 350 DH)</label><input id="catPrice" class="adm-in"></div>
-      <div><label class="text-sm block mb-1">URL de l'image</label><input id="catImg" class="adm-in"></div>
-    </div>
-    <div class="flex gap-3 mt-6">
-      <button id="saveCat" class="btn-accent flex-1 py-3 rounded-xl font-medium">Enregistrer</button>
-      <button id="cancelCat" class="flex-1 py-3 rounded-xl border border-c hover:accent transition">Annuler</button>
-    </div>
-  </div>
-</div>
+    <section class="story-section" id="savoir-faire">
+      <div class="container story-grid">
+        <div class="story-visual reveal">
+          <img class="story-main-image" id="storyImage" src="" alt="Travail artisanal du cuir">
+          <div class="story-detail">
+            <img id="storyDetailImage" src="" alt="Détail d'une couture en cuir">
+          </div>
+        </div>
+        <div class="story-content reveal">
+          <p class="eyebrow" data-setting="storyEyebrow">Le geste juste</p>
+          <h2 class="section-title" data-setting="storyTitle">Donner du temps à ce qui vous accompagne.</h2>
+          <p data-setting="storyText">À l'atelier, chaque création commence par le choix de la peau et le dessin du patron. La découpe, la teinture des tranches, l'assemblage et les finitions sont réalisés avec précision, sans précipitation.</p>
+          <p data-setting="storyText2">Nous privilégions les formes intemporelles et les détails utiles. Le cuir se transforme ensuite avec vous, développant une patine qui raconte votre propre histoire.</p>
+          <div class="signature" data-setting="signature">L'Art Infiny, l'élégance du geste.</div>
+          <button class="button button-outline" type="button" data-whatsapp-custom>
+            Parler de votre projet
+            <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+      </div>
+    </section>
 
-<style>.adm-in{width:100%;padding:.7rem 1rem;border-radius:.75rem;border:1px solid var(--c-border);background:transparent;outline:none;color:var(--c-text);}.adm-in:focus{border-color:var(--c-accent);}</style>
+    <section class="commission-section">
+      <div class="container commission reveal">
+        <div class="commission-copy">
+          <p class="eyebrow" data-setting="customEyebrow">Création sur mesure</p>
+          <h2 data-setting="customTitle">Une pièce imaginée seulement pour vous.</h2>
+          <p data-setting="customText">Choisissez le format, la teinte, les finitions et la personnalisation. Échangeons directement sur WhatsApp pour donner forme à votre projet.</p>
+          <button class="button button-light" type="button" data-whatsapp-custom>
+            Commander sur WhatsApp
+            <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+        <div class="commission-art">
+          <img id="commissionImage" src="" alt="Personnalisation d'une création en cuir">
+        </div>
+      </div>
+    </section>
 
-<script>
-/* ============ THEMES ============ */
-const THEMES = {
-  sable:   {name:'Sable',      bg:'#f7f3ee',surface:'#ffffff',text:'#2b2420',muted:'#7a6f66',accent:'#8b5e34',accent2:'#c9a06a',border:'#e6ddd2',header:'rgba(247,243,238,.85)'},
-  cognac:  {name:'Cognac',     bg:'#fbf6f0',surface:'#ffffff',text:'#3a2416',muted:'#8a6f5c',accent:'#a0522d',accent2:'#d38b5d',border:'#ecdccb',header:'rgba(251,246,240,.85)'},
-  noir:    {name:'Onyx',       bg:'#161311',surface:'#211d1a',text:'#f2ece4',muted:'#a89e93',accent:'#c9a06a',accent2:'#e0be8e',border:'#332d28',header:'rgba(22,19,17,.85)'},
-  olive:   {name:'Olive',      bg:'#f4f4ee',surface:'#ffffff',text:'#2e2f25',muted:'#77786a',accent:'#6b6a3a',accent2:'#9a9764',border:'#e2e2d5',header:'rgba(244,244,238,.85)'},
-  terracotta:{name:'Terracotta',bg:'#faf3ef',surface:'#ffffff',text:'#3d221a',muted:'#8b6a5f',accent:'#b5533a',accent2:'#d98b6f',border:'#eddcd3',header:'rgba(250,243,239,.85)'},
-  ardoise: {name:'Ardoise',    bg:'#f2f4f5',surface:'#ffffff',text:'#22292e',muted:'#6b767d',accent:'#3f5661',accent2:'#7d949f',border:'#dde3e6',header:'rgba(242,244,245,.85)'},
-  vin:     {name:'Bordeaux',   bg:'#f9f2f2',surface:'#ffffff',text:'#33161a',muted:'#8a5f64',accent:'#7a2233',accent2:'#b5566a',border:'#ecd7da',header:'rgba(249,242,242,.85)'},
-  creme:   {name:'Crème pur',  bg:'#fafafa',surface:'#ffffff',text:'#1c1c1c',muted:'#767676',accent:'#111111',accent2:'#888888',border:'#e8e8e8',header:'rgba(250,250,250,.9)'}
-};
+    <section class="newsletter">
+      <div class="container newsletter-inner">
+        <div class="newsletter-copy">
+          <h2 data-setting="newsletterTitle">Les nouvelles de l'atelier</h2>
+          <p data-setting="newsletterText">Collections confidentielles, coulisses et conseils d'entretien.</p>
+        </div>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" required placeholder="Votre adresse e-mail" aria-label="Votre adresse e-mail">
+          <button type="submit">S'inscrire →</button>
+        </form>
+      </div>
+    </section>
+  </main>
 
-/* ============ DEFAULT DATA ============ */
-const DEFAULT = {
-  brand:"L'Art Infiny",
-  tag:"Maroquinerie Artisanale",
-  heroTitle:"Le cuir, sculpté par des mains passionnées",
-  heroSub:"Découvrez des pièces uniques en cuir véritable, façonnées avec un savoir-faire ancestral et une élégance intemporelle.",
-  phone:"212600000000",
-  waMsg:"Bonjour L'Art Infiny, je souhaite passer commande.",
-  email:"contact@lartinfiny.com",
-  address:"Médina, Marrakech, Maroc",
-  theme:"sable",
-  categories:[
-    {name:"Sacs en cuir",desc:"Sacs à main et cabas façonnés main, alliant style et robustesse.",price:"à partir de 650 DH",img:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=800&auto=format&fit=crop"},
-    {name:"Portefeuilles",desc:"Portefeuilles et porte-cartes en cuir pleine fleur.",price:"à partir de 180 DH",img:"https://images.unsplash.com/photo-1627123424574-724758594e93?q=80&w=800&auto=format&fit=crop"},
-    {name:"Ceintures",desc:"Ceintures artisanales cousues au point sellier.",price:"à partir de 150 DH",img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=800&auto=format&fit=crop"},
-    {name:"Poufs marocains",desc:"Poufs traditionnels brodés à la main, pièces d'exception.",price:"à partir de 450 DH",img:"https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=800&auto=format&fit=crop"},
-    {name:"Sacs à dos",desc:"Sacs à dos en cuir robuste pour le quotidien et le voyage.",price:"à partir de 890 DH",img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=800&auto=format&fit=crop"},
-    {name:"Accessoires",desc:"Porte-clés, étuis et petits objets en cuir raffinés.",price:"à partir de 90 DH",img:"https://images.unsplash.com/photo-1601924994987-69e26d50dc26?q=80&w=800&auto=format&fit=crop"}
-  ]
-};
-
-/* ============ STATE ============ */
-let state = load();
-function load(){ try{const s=JSON.parse(localStorage.getItem('lartinfiny'));return s?{...DEFAULT,...s}:{...DEFAULT};}catch(e){return{...DEFAULT};} }
-function save(){ localStorage.setItem('lartinfiny',JSON.stringify(state)); }
-
-/* ============ APPLY THEME ============ */
-function applyTheme(key){
-  const t=THEMES[key]||THEMES.sable;
-  const r=document.documentElement.style;
-  r.setProperty('--c-bg',t.bg);r.setProperty('--c-surface',t.surface);r.setProperty('--c-text',t.text);
-  r.setProperty('--c-muted',t.muted);r.setProperty('--c-accent',t.accent);r.setProperty('--c-accent2',t.accent2);
-  r.setProperty('--c-border',t.border);r.setProperty('--c-header',t.header);
-  state.theme=key;
-  document.querySelectorAll('.theme-swatch').forEach(s=>s.classList.toggle('active',s.dataset.key===key));
-}
-
-/* ============ RENDER THEME GRID ============ */
-function renderThemes(){
-  const g=document.getElementById('themeGrid');g.innerHTML='';
-  Object.entries(THEMES).forEach(([k,t])=>{
-    const b=document.createElement('button');
-    b.className='theme-swatch';b.dataset.key=k;b.title=t.name;
-    b.style.background=`linear-gradient(135deg,${t.accent} 50%,${t.bg} 50%)`;
-    b.onclick=()=>{applyTheme(k);save();};
-    g.appendChild(b);
-  });
-}
-
-/* ============ WHATSAPP LINKS ============ */
-function waLink(){ return `https://wa.me/${state.phone}?text=${encodeURIComponent(state.waMsg)}`; }
-function updateWA(){
-  const l=waLink();
-  ['waHeader','waMobile','waHero','waContact','waFloat'].forEach(id=>{const e=document.getElementById(id);if(e)e.href=l;});
-}
-
-/* ============ RENDER SITE ============ */
-function renderSite(){
-  document.getElementById('brandName').textContent=state.brand;
-  document.getElementById('brandTag').textContent=state.tag;
-  document.getElementById('heroTitle').textContent=state.heroTitle;
-  document.getElementById('heroSub').textContent=state.heroSub;
-  document.getElementById('phoneDisplay').textContent='☎ +'+state.phone;
-  document.getElementById('footerContact').innerHTML=`
-    <li>📞 +${state.phone}</li>
-    <li>✉ ${state.email}</li>
-    <li>📍 ${state.address}</li>`;
-  updateWA();
-  renderCategories();
-}
-
-function renderCategories(){
-  const g=document.getElementById('categoryGrid');g.innerHTML='';
-  state.categories.forEach((c,i)=>{
-    const el=document.createElement('div');
-    el.className='card surface border border-c rounded-2xl overflow-hidden fade-up';
-    el.innerHTML=`
-      <div class="h-60 overflow-hidden"><img src="${c.img}" class="card-img w-full h-full object-cover" alt="${c.name}"></div>
-      <div class="p-6">
-        <h3 class="serif text-2xl font-semibold mb-2">${c.name}</h3>
-        <p class="text-sm text-muted leading-relaxed mb-4">${c.desc}</p>
-        <div class="flex items-center justify-between">
-          <span class="text-sm font-medium accent">${c.price}</span>
-          <a href="https://wa.me/${state.phone}?text=${encodeURIComponent("Bonjour, je suis intéressé(e) par : "+c.name)}" target="_blank" class="btn-accent px-4 py-2 rounded-full text-sm flex items-center gap-1.5">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
-            Commander
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#">
+            <span class="brand-mark"><span data-logo-mark>AI</span></span>
+            <span class="brand-copy">
+              <strong data-setting="brand">L'Art Infiny</strong>
+              <small data-setting="tagline">Maroquinerie artisanale</small>
+            </span>
           </a>
+          <p class="footer-description" data-setting="footerText">Maroquinerie artisanale contemporaine. Des objets essentiels façonnés pour traverser le temps avec élégance.</p>
+          <div class="social-links">
+            <a class="social-link" id="instagramLink" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
+            </a>
+            <a class="social-link" href="#" data-whatsapp-link target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.4-4.1A8 8 0 1 1 20 11.5Z"/><path d="M9 8.5c.7 2.4 2.1 3.8 4.6 4.7"/></svg>
+            </a>
+          </div>
         </div>
-      </div>`;
-    g.appendChild(el);
-  });
-  observeFade();
-}
 
-/* ============ ADMIN ============ */
-const overlay=document.getElementById('adminOverlay');
-document.getElementById('adminToggle').onclick=()=>overlay.classList.remove('hidden');
-document.getElementById('closeAdmin').onclick=()=>overlay.classList.add('hidden');
-overlay.onclick=e=>{if(e.target===overlay)overlay.classList.add('hidden');};
+        <div class="footer-column">
+          <h3>Collection</h3>
+          <div class="footer-links" id="footerCategories"></div>
+        </div>
 
-let isAuth=false;
-document.getElementById('loginBtn').onclick=()=>{
-  const p=document.getElementById('adminPass').value;
-  const stored=localStorage.getItem('lartinfiny_pass')||'admin';
-  if(p===stored){isAuth=true;document.getElementById('loginBox').classList.add('hidden');document.getElementById('adminContent').classList.remove('hidden');fillSettings();renderAdminCats();}
-  else alert('Mot de passe incorrect.');
-};
+        <div class="footer-column">
+          <h3>La maison</h3>
+          <div class="footer-links">
+            <button type="button" data-scroll-story>Notre savoir-faire</button>
+            <button type="button" data-whatsapp-custom>Sur-mesure</button>
+            <a href="mailto:bonjour@artinfiny.com" id="footerEmailLink">Nous écrire</a>
+            <button type="button" data-open-admin>Administration</button>
+          </div>
+        </div>
 
-function fillSettings(){
-  setBrand.value=state.brand;setTag.value=state.tag;setHeroTitle.value=state.heroTitle;
-  setHeroSub.value=state.heroSub;setPhone.value=state.phone;setWaMsg.value=state.waMsg;
-  setEmail.value=state.email;setAddress.value=state.address;
-}
-const ids=['setBrand','setTag','setHeroTitle','setHeroSub','setPhone','setWaMsg','setEmail','setAddress'];
-const el=Object.fromEntries(ids.map(i=>[i,document.getElementById(i)]));
-window.setBrand=el.setBrand;window.setTag=el.setTag;window.setHeroTitle=el.setHeroTitle;window.setHeroSub=el.setHeroSub;window.setPhone=el.setPhone;window.setWaMsg=el.setWaMsg;window.setEmail=el.setEmail;window.setAddress=el.setAddress;
+        <div class="footer-column">
+          <h3>Nous contacter</h3>
+          <div class="footer-contact">
+            <a href="#" id="footerPhoneLink"></a>
+            <a href="#" id="footerEmail"></a>
+            <p data-setting="address">Atelier sur rendez-vous</p>
+            <p data-setting="deliveryNote">Expédition soignée sous 2 à 5 jours ouvrés.</p>
+          </div>
+        </div>
+      </div>
 
-document.getElementById('saveSettings').onclick=()=>{
-  state.brand=setBrand.value;state.tag=setTag.value;state.heroTitle=setHeroTitle.value;
-  state.heroSub=setHeroSub.value;state.phone=setPhone.value.replace(/\D/g,'');state.waMsg=setWaMsg.value;
-  state.email=setEmail.value;state.address=setAddress.value;
-  save();renderSite();
-  toast('Détails enregistrés ✓');
-};
+      <div class="footer-bottom">
+        <span>© <span id="currentYear"></span> <span data-setting="brand">L'Art Infiny</span>. Tous droits réservés.</span>
+        <span>Site prêt à publier · <button class="admin-footer-button" type="button" data-open-admin>Gérer le contenu</button></span>
+      </div>
+    </div>
+  </footer>
 
-function renderAdminCats(){
-  const list=document.getElementById('adminCatList');list.innerHTML='';
-  state.categories.forEach((c,i)=>{
-    const d=document.createElement('div');
-    d.className='flex items-center gap-3 surface border border-c rounded-xl p-3';
-    d.innerHTML=`
-      <img src="${c.img}" class="w-12 h-12 rounded-lg object-cover">
-      <div class="flex-1 min-w-0"><div class="font-medium truncate">${c.name}</div><div class="text-xs text-muted truncate">${c.price}</div></div>
-      <button class="editC w-8 h-8 rounded-lg border border-c hover:accent transition" data-i="${i}">✎</button>
-      <button class="delC w-8 h-8 rounded-lg border border-red-300 text-red-500 hover:bg-red-50 transition" data-i="${i}">🗑</button>`;
-    list.appendChild(d);
-  });
-  document.querySelectorAll('.editC').forEach(b=>b.onclick=()=>openCatModal(+b.dataset.i));
-  document.querySelectorAll('.delC').forEach(b=>b.onclick=()=>{
-    if(confirm('Supprimer cette catégorie ?')){state.categories.splice(+b.dataset.i,1);save();renderAdminCats();renderCategories();}
-  });
-}
+  <button class="whatsapp-float" type="button" data-whatsapp-custom aria-label="Commander sur WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.1 3.2A12.6 12.6 0 0 0 5.3 22.4L3.4 29l6.8-1.8a12.6 12.6 0 1 0 5.9-24Zm0 22.9c-2 0-3.9-.6-5.5-1.6l-.4-.2-4 .9 1.1-3.9-.3-.4a10.2 10.2 0 1 1 9.1 5.2Zm5.6-7.7c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.8-.9-3-1.7-4.2-3.8-.3-.5.3-.5.9-1.7.1-.2.1-.4 0-.6l-1-2.4c-.3-.6-.6-.5-.8-.5h-.7c-.3 0-.7.1-1 .5-.3.3-1.3 1.3-1.3 3.2s1.4 3.7 1.6 4c.2.3 2.7 4.2 6.7 5.7 2.5 1.1 3.5 1.2 4.8 1 .8-.1 1.8-.8 2.1-1.5.3-.7.3-1.3.2-1.5-.2-.2-.4-.3-.7-.5Z"/></svg>
+    <span>Commander</span>
+  </button>
 
-/* ============ CATEGORY MODAL ============ */
-const catModal=document.getElementById('catModal');
-let editIndex=-1;
-function openCatModal(i){
-  editIndex=i;
-  const t=document.getElementById('catModalTitle');
-  if(i>=0){t.textContent='Modifier la catégorie';const c=state.categories[i];catName.value=c.name;catDesc.value=c.desc;catPrice.value=c.price;catImg.value=c.img;}
-  else{t.textContent='Ajouter une catégorie';catName.value='';catDesc.value='';catPrice.value='';catImg.value='https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop';}
-  catModal.classList.remove('hidden');catModal.classList.add('flex');
-}
-window.catName=document.getElementById('catName');window.catDesc=document.getElementById('catDesc');window.catPrice=document.getElementById('catPrice');window.catImg=document.getElementById('catImg');
-document.getElementById('addCat').onclick=()=>openCatModal(-1);
-document.getElementById('cancelCat').onclick=()=>{catModal.classList.add('hidden');catModal.classList.remove('flex');};
-document.getElementById('saveCat').onclick=()=>{
-  if(!catName.value.trim()){alert('Le nom est requis.');return;}
-  const obj={name:catName.value,desc:catDesc.value,price:catPrice.value,img:catImg.value||DEFAULT.categories[0].img};
-  if(editIndex>=0)state.categories[editIndex]=obj;else state.categories.push(obj);
-  save();renderAdminCats();renderCategories();
-  catModal.classList.add('hidden');catModal.classList.remove('flex');
-  toast('Catégorie enregistrée ✓');
-};
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
 
-document.getElementById('resetAll').onclick=()=>{
-  if(confirm('Réinitialiser tout le site aux valeurs par défaut ?')){
-    localStorage.removeItem('lartinfiny');state={...DEFAULT,categories:JSON.parse(JSON.stringify(DEFAULT.categories))};
-    save();applyTheme(state.theme);renderSite();fillSettings();renderAdminCats();toast('Site réinitialisé ✓');
-  }
-};
+  <aside class="side-drawer" id="cartDrawer" aria-label="Panier">
+    <div class="drawer-head">
+      <h2>Votre sélection</h2>
+      <button class="icon-button" type="button" aria-label="Fermer le panier" data-close-drawers>✕</button>
+    </div>
+    <div class="cart-body" id="cartBody"></div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total estimé</span>
+        <strong id="cartTotal">0 €</strong>
+      </div>
+      <button class="button button-primary" type="button" id="cartWhatsApp">Commander via WhatsApp</button>
+      <p class="cart-hint">Vous confirmerez les disponibilités directement avec l'atelier.</p>
+    </div>
+  </aside>
 
-/* ============ THEME PANEL ============ */
-const tp=document.getElementById('themePanel');
-document.getElementById('themeBtn').onclick=e=>{e.stopPropagation();tp.classList.toggle('hidden');};
-document.addEventListener('click',e=>{if(!tp.contains(e.target)&&e.target.id!=='themeBtn')tp.classList.add('hidden');});
+  <aside class="side-drawer mobile-drawer" id="mobileDrawer" aria-label="Menu mobile">
+    <div class="drawer-head">
+      <a class="brand" href="#">
+        <span class="brand-mark"><span data-logo-mark>AI</span></span>
+        <span class="brand-copy"><strong data-setting="brand">L'Art Infiny</strong></span>
+      </a>
+      <button class="icon-button" type="button" aria-label="Fermer le menu" data-close-drawers>✕</button>
+    </div>
+    <nav class="mobile-nav" id="mobileNav"></nav>
+    <div class="mobile-contact">
+      <button class="button button-primary" type="button" data-whatsapp-custom>Commander sur WhatsApp</button>
+    </div>
+  </aside>
 
-/* ============ MOBILE NAV ============ */
-const mn=document.getElementById('mobileNav');
-document.getElementById('menuBtn').onclick=()=>mn.classList.toggle('hidden');
-document.querySelectorAll('.mnav').forEach(a=>a.onclick=()=>mn.classList.add('hidden'));
+  <div class="modal-backdrop" id="modalBackdrop"></div>
 
-/* ============ TOAST ============ */
-function toast(msg){
-  const t=document.createElement('div');
-  t.textContent=msg;
-  t.className='fixed bottom-24 left-1/2 -translate-x-1/2 z-[70] bg-accent text-white px-6 py-3 rounded-full shadow-xl text-sm font-medium';
-  t.style.animation='mIn .3s ease';
-  document.body.appendChild(t);
-  setTimeout(()=>{t.style.opacity='0';t.style.transition='opacity .4s';setTimeout(()=>t.remove(),400);},2000);
-}
+  <div class="modal" id="quickViewModal" role="dialog" aria-modal="true" aria-label="Détail du produit">
+    <div id="quickViewContent"></div>
+  </div>
 
-/* ============ FADE OBSERVER ============ */
-function observeFade(){
-  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}}),{threshold:.12});
-  document.querySelectorAll('.fade-up:not(.in)').forEach(el=>obs.observe(el));
-}
+  <div class="modal login-modal" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+    <button class="icon-button modal-close" type="button" aria-label="Fermer" data-close-modal>✕</button>
+    <div class="brand">
+      <span class="brand-mark"><span data-logo-mark>AI</span></span>
+      <span class="brand-copy">
+        <strong data-setting="brand">L'Art Infiny</strong>
+        <small>Administration</small>
+      </span>
+    </div>
+    <h2 id="loginTitle">Accès administrateur</h2>
+    <p>Modifiez les produits, catégories, textes, coordonnées et l'apparence complète du site.</p>
+    <form class="login-form" id="loginForm">
+      <div class="form-field">
+        <label for="adminCode">Code d'accès</label>
+        <input id="adminCode" type="password" autocomplete="current-password" required placeholder="Saisissez votre code">
+      </div>
+      <button class="button button-primary" type="submit">Ouvrir l'administration</button>
+    </form>
+    <div class="login-hint" id="defaultCodeHint">Première connexion : code initial <strong>INFINY2025</strong>. Vous pourrez le changer dans « Sauvegarde ».</div>
+  </div>
 
-/* ============ INIT ============ */
-document.getElementById('year').textContent=new Date().getFullYear();
-renderThemes();
-applyTheme(state.theme);
-renderSite();
-observeFade();
-</script>
+  <section class="admin-shell" id="adminShell" hidden aria-label="Administration du site">
+    <div class="admin-layout">
+      <header class="admin-topbar">
+        <div class="admin-title-wrap">
+          <span class="admin-mini-logo" data-logo-mark>AI</span>
+          <span>
+            <strong>Administration · <span data-setting="brand">L'Art Infiny</span></strong>
+            <span>Gestion du catalogue et de l'interface</span>
+          </span>
+        </div>
+        <div class="admin-top-actions">
+          <span class="save-status" id="saveStatus">Toutes les modifications sont enregistrées</span>
+          <button class="admin-close" type="button" aria-label="Fermer l'administration" id="closeAdmin">✕</button>
+        </div>
+      </header>
+
+      <aside class="admin-sidebar">
+        <div class="admin-sidebar-label">Édition du site</div>
+        <button class="admin-tab active" type="button" data-admin-tab="content">
+          <svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h6"/></svg>
+          Contenu
+        </button>
+        <button class="admin-tab" type="button" data-admin-tab="appearance">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16c-2-2-2-5 0-7s2-6 0-9Z"/></svg>
+          Apparence
+        </button>
+        <button class="admin-tab" type="button" data-admin-tab="categories">
+          <svg viewBox="0 0 24 24"><path d="M4 5h6v6H4zM14 5h6v6h-6zM4 15h6v4H4zM14 15h6v4h-6z"/></svg>
+          Catégories
+        </button>
+        <button class="admin-tab" type="button" data-admin-tab="products">
+          <svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
+          Produits
+        </button>
+        <button class="admin-tab" type="button" data-admin-tab="contact">
+          <svg viewBox="0 0 24 24"><path d="M4 5h16v12H8l-4 3V5Z"/><path d="m5 6 7 6 7-6"/></svg>
+          Contact
+        </button>
+        <button class="admin-tab" type="button" data-admin-tab="backup">
+          <svg viewBox="0 0 24 24"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M5 14v6h14v-6"/></svg>
+          Sauvegarde
+        </button>
+      </aside>
+
+      <main class="admin-main">
+        <section class="admin-page" data-admin-page="content">
+          <div class="admin-page-head">
+            <div>
+              <h1>Contenu de l'interface</h1>
+              <p>Modifiez les textes, images et messages visibles sur le site.</p>
+            </div>
+          </div>
+
+          <form id="contentForm">
+            <div class="admin-card">
+              <div class="admin-card-head">
+                <h2>Identité et annonce</h2>
+                <p>Nom commercial, signature et bandeau supérieur.</p>
+              </div>
+              <div class="admin-form-grid">
+                <div class="form-field">
+                  <label>Nom de la marque</label>
+                  <input name="brand" required>
+                </div>
+                <div class="form-field">
+                  <label>Sous-titre de la marque</label>
+                  <input name="tagline">
+                </div>
+                <div class="form-field full">
+                  <label>Annonce supérieure</label>
+                  <input name="announcement">
+                </div>
+              </div>
+            </div>
+
+            <div class="admin-card">
+              <div class="admin-card-head">
+                <h2>Section principale</h2>
+                <p>Premier message et photographie d'accueil.</p>
+              </div>
+              <div class="admin-form-grid">
+                <div class="form-field full">
+                  <label>Surtitre</label>
+                  <input name="heroEyebrow">
+                </div>
+                <div class="form-field full">
+                  <label>Titre principal</label>
+                  <textarea name="heroTitle"></textarea>
+                </div>
+                <div class="form-field full">
+                  <label>Texte d'introduction</label>
+                  <textarea name="heroText"></textarea>
+                </div>
+                <div class="form-field">
+                  <label>Bouton principal</label>
+                  <input name="heroCta">
+                </div>
+                <div class="form-field">
+                  <label>Bouton secondaire</label>
+                  <input name="heroSecondary">
+                </div>
+                <div class="form-field full">
+                  <label>URL de l'image principale</label>
+                  <input name="heroImage" type="url">
+                </div>
+                <div class="form-field">
+                  <label>Petit message</label>
+                  <input name="heroNote">
+                </div>
+                <div class="form-field">
+                  <label>Libellé de la carte</label>
+                  <input name="heroCardLabel">
+                </div>
+                <div class="form-field">
+                  <label>Titre de la carte</label>
+                  <input name="heroCardTitle">
+                </div>
+                <div class="form-field">
+                  <label>Détail de la carte</label>
+                  <input name="heroCardText">
+                </div>
+              </div>
+            </div>
+
+            <div class="admin-card">
+              <div class="admin-card-head">
+                <h2>Engagements</h2>
+                <p>Les trois informations affichées sous la couverture.</p>
+              </div>
+              <div class="admin-form-grid">
+                <div class="form-field"><label>Valeur 1</label><input name="trust1Number"></div>
+                <div class="form-field"><label>Titre 1</label><input name="trust1Title"></div>
+                <div class="form-field full"><label>Texte 1</label><input name="trust1Text"></div>
+                <div class="form-field"><label>Valeur 2</label><input name="trust2Number"></div>
+                <div class="form-field"><label>Titre 2</label><input name="trust2Title"></div>
+                <div class="form-field full"><label>Texte 2</label><input name="trust2Text"></div>
+                <div class="form-field"><label>Valeur 3</label><input name="trust3Number"></div>
+                <div class="form-field"><label>Titre 3</label><input name="trust3Title"></div>
+                <div class="form-field full"><label>Texte 3</label><input name="trust3Text"></div>
+              </div>
+            </div>
+
+            <div class="admin-card">
+              <div class="admin-card-head">
+                <h2>Boutique</h2>
+                <p>En-tête de la liste des articles.</p>
+              </div>
+              <div class="admin-form-grid">
+                <div class="form-field"><label>Surtitre</label><input name="shopEyebrow"></div>
+                <div class="form-field"><label>Titre</label><input name="shopTitle"></div>
+                <div class="form-field full"><label>Description</label><textarea name="shopText"></textarea></div>
+              </div>
+            </div>
+
+            <div class="admin-card">
+              <div class="admin-card-head">
+                <h2>Histoire et savoir-faire</h2>
+                <p>Présentation de l'atelier et visuels éditoriaux.</p>
+              </div>
+              <div class="admin-form-grid">
+                <div class="form-field"><label>Surtitre</label><input name="storyEyebrow"></div>
+                <div class="form-field"><label>Titre</label><input name="storyTitle"></div>
+                <div class="form-field full"><label>Premier paragraphe</label><textarea name="storyText"></textarea></div>
+                <div class="form-field full"><label>Second paragraphe</label><textarea name="storyText2"></textarea></div>
+                <div class="form-field full"><label>Signature</label><input name="signature"></div>
+                <div class="form-field"><label>Image principale</label><input name="storyImage" type="url"></div>
+                <div class="form-field"><label>Image de détail</label><input name="storyDetailImage" type="url"></div>
+              </div>
+            </div>
+
+            <div class="admin-card">
+              <div class="admin-card-head">
+                <h2>Sur-mesure et pied de page</h2>
+              </div>
+              <div class="admin-form-grid">
+                <div class="form-field"><label>Surtitre sur-mesure</label><input name="customEyebrow"></div>
+                <div class="form-field"><label>Titre sur-mesure</label><input name="customTitle"></div>
+                <div class="form-field full"><label>Texte sur-mesure</label><textarea name="customText"></textarea></div>
+                <div class="form-field full"><label>Image sur-mesure</label><input name="commissionImage" type="url"></div>
+                <div class="form-field"><label>Titre newsletter</label><input name="newsletterTitle"></div>
+                <div class="form-field"><label>Texte newsletter</label><input name="newsletterText"></div>
+                <div class="form-field full"><label>Texte du pied de page</label><textarea name="footerText"></textarea></div>
+              </div>
+              <div class="admin-submit">
+                <button class="admin-button primary" type="submit">Enregistrer les textes</button>
+              </div>
+            </div>
+          </form>
+        </section>
+
+        <section class="admin-page" data-admin-page="appearance" hidden>
+          <div class="admin-page-head">
+            <div>
+              <h1>Thème du site</h1>
+              <p>8 univers minimalistes inspirés des codes appréciés de la maroquinerie haut de gamme.</p>
+            </div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card-head">
+              <h2>Collections de couleurs</h2>
+              <p>Cliquez sur un thème pour l'appliquer instantanément.</p>
+            </div>
+            <div class="theme-grid" id="themeGrid"></div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card-head">
+              <h2>Ajustements personnalisés</h2>
+              <p>Ces couleurs créent une variante personnalisée à partir du thème sélectionné.</p>
+            </div>
+            <div class="color-grid">
+              <div class="color-control"><label>Arrière-plan</label><input type="color" data-color-key="bg"></div>
+              <div class="color-control"><label>Surface</label><input type="color" data-color-key="paper"></div>
+              <div class="color-control"><label>Texte</label><input type="color" data-color-key="ink"></div>
+              <div class="color-control"><label>Accent</label><input type="color" data-color-key="accent"></div>
+            </div>
+            <div class="admin-submit">
+              <button class="admin-button" type="button" id="resetThemeColors">Annuler les ajustements</button>
+              <button class="admin-button primary" type="button" id="saveThemeColors">Enregistrer le thème</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="admin-page" data-admin-page="categories" hidden>
+          <div class="admin-page-head">
+            <div>
+              <h1>Catégories</h1>
+              <p>Ajoutez, renommez, ordonnez ou supprimez les familles d'articles.</p>
+            </div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card-head">
+              <h2>Ajouter une catégorie</h2>
+            </div>
+            <form class="category-add" id="categoryAddForm">
+              <input id="newCategoryName" required placeholder="Ex. Sacs de voyage">
+              <button class="admin-button primary" type="submit">Ajouter</button>
+            </form>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card-head">
+              <h2>Catégories existantes</h2>
+              <p>L'ordre défini ici est repris dans les menus du site.</p>
+            </div>
+            <div class="admin-list" id="adminCategoryList"></div>
+          </div>
+        </section>
+
+        <section class="admin-page" data-admin-page="products" hidden>
+          <div class="admin-page-head">
+            <div>
+              <h1>Produits</h1>
+              <p>Gérez les détails, prix, images, disponibilités et catégories.</p>
+            </div>
+            <button class="admin-button primary" type="button" id="addProductButton">＋ Ajouter un produit</button>
+          </div>
+
+          <div class="admin-card" id="productEditor" hidden>
+            <div class="admin-card-head">
+              <h2 id="productEditorTitle">Nouveau produit</h2>
+              <p>Les champs marqués comme requis doivent être renseignés.</p>
+            </div>
+            <form id="productForm">
+              <input type="hidden" name="id">
+              <div class="admin-form-grid">
+                <div class="form-field"><label>Nom *</label><input name="name" required></div>
+                <div class="form-field"><label>Catégorie *</label><select name="category" required></select></div>
+                <div class="form-field"><label>Prix *</label><input name="price" type="number" min="0" step="0.01" required></div>
+                <div class="form-field"><label>Ancien prix</label><input name="comparePrice" type="number" min="0" step="0.01"></div>
+                <div class="form-field"><label>Badge</label><input name="badge" placeholder="Nouveau, Signature…"></div>
+                <div class="form-field"><label>Matière / finition</label><input name="material"></div>
+                <div class="form-field full"><label>URL de l'image *</label><input name="image" type="url" required></div>
+                <div class="form-field full"><label>Description</label><textarea name="description"></textarea></div>
+                <div class="check-field"><input id="productAvailable" name="available" type="checkbox"><label for="productAvailable">Article disponible</label></div>
+                <div class="check-field"><input id="productFeatured" name="featured" type="checkbox"><label for="productFeatured">Mettre en avant</label></div>
+              </div>
+              <div class="admin-submit">
+                <button class="admin-button" type="button" id="cancelProductEdit">Annuler</button>
+                <button class="admin-button primary" type="submit">Enregistrer le produit</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card-head">
+              <h2>Catalogue</h2>
+              <p id="adminProductCount"></p>
+            </div>
+            <div class="admin-product-list" id="adminProductList"></div>
+          </div>
+        </section>
+
+        <section class="admin-page" data-admin-page="contact" hidden>
+          <div class="admin-page-head">
+            <div>
+              <h1>Contact et commandes</h1>
+              <p>Configurez WhatsApp, les réseaux, la devise et les informations pratiques.</p>
+            </div>
+          </div>
+
+          <form id="contactForm">
+            <div class="admin-card">
+              <div class="admin-card-head">
+                <h2>Coordonnées</h2>
+              </div>
+              <div class="admin-form-grid">
+                <div class="form-field">
+                  <label>Numéro WhatsApp international *</label>
+                  <input name="whatsapp" required placeholder="Ex. 33612345678">
+                </div>
+                <div class="form-field">
+                  <label>Téléphone affiché</label>
+                  <input name="phone">
+                </div>
+                <div class="form-field">
+                  <label>Adresse e-mail</label>
+                  <input name="email" type="email">
+                </div>
+                <div class="form-field">
+                  <label>Lien Instagram</label>
+                  <input name="instagram" type="url">
+                </div>
+                <div class="form-field full">
+                  <label>Adresse / modalité de visite</label>
+                  <input name="address">
+                </div>
+                <div class="form-field full">
+                  <label>Information de livraison</label>
+                  <input name="deliveryNote">
+                </div>
+                <div class="form-field">
+                  <label>Devise ISO</label>
+                  <input name="currency" maxlength="3" placeholder="EUR">
+                </div>
+                <div class="form-field">
+                  <label>Message WhatsApp par défaut</label>
+                  <input name="whatsappMessage">
+                </div>
+              </div>
+              <div class="admin-submit">
+                <button class="admin-button primary" type="submit">Enregistrer les coordonnées</button>
+              </div>
+            </div>
+          </form>
+        </section>
+
+        <section class="admin-page" data-admin-page="backup" hidden>
+          <div class="admin-page-head">
+            <div>
+              <h1>Sauvegarde et sécurité</h1>
+              <p>Exportez vos données, restaurez une copie ou modifiez le code d'accès.</p>
+            </div>
+          </div>
+
+          <div class="admin-note">
+            Cette version autonome enregistre les changements dans le navigateur. Avant une migration ou un changement d'appareil, exportez le fichier JSON. Pour une administration multi-utilisateur en ligne, connectez ces données à votre CMS ou à votre base de données sécurisée.
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card-head">
+              <h2>Exporter ou importer</h2>
+              <p>Le fichier contient les textes, le catalogue, les catégories et le thème.</p>
+            </div>
+            <div class="backup-actions">
+              <button class="admin-button primary" type="button" id="exportData">Télécharger la sauvegarde JSON</button>
+              <button class="admin-button" type="button" id="importDataButton">Importer une sauvegarde</button>
+              <input class="file-input" id="importDataInput" type="file" accept="application/json">
+              <button class="admin-button danger" type="button" id="resetData">Restaurer le site initial</button>
+            </div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card-head">
+              <h2>Modifier le code administrateur</h2>
+              <p>Choisissez un code difficile à deviner et conservez-le en lieu sûr.</p>
+            </div>
+            <form id="passwordForm">
+              <div class="admin-form-grid">
+                <div class="form-field"><label>Nouveau code</label><input name="newCode" type="password" minlength="6" required></div>
+                <div class="form-field"><label>Confirmer le code</label><input name="confirmCode" type="password" minlength="6" required></div>
+              </div>
+              <div class="admin-submit">
+                <button class="admin-button primary" type="submit">Changer le code</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+  </section>
+
+  <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+  <script>
+    const STORAGE_KEY = "artInfinyCMS_v1";
+    const CART_KEY = "artInfinyCart_v1";
+    const CODE_KEY = "artInfinyAdminCode_v1";
+    const DEFAULT_CODE = "INFINY2025";
+
+    const icons = {
+      eye: '<svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6Z"/><circle cx="12" cy="12" r="2.5"/></svg>',
+      bag: '<svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>'
+    };
+
+    const themes = {
+      sable: {
+        name: "Sable Atelier",
+        subtitle: "Chaleureux & organique",
+        bg: "#f5f1e9",
+        paper: "#fffdfa",
+        ink: "#241d17",
+        muted: "#776d63",
+        accent: "#9a6845",
+        accentText: "#ffffff",
+        line: "#ded6cb",
+        dark: "#1d1814",
+        darkText: "#ffffff"
+      },
+      noir: {
+        name: "Noir Galerie",
+        subtitle: "Contraste éditorial",
+        bg: "#f1f1ef",
+        paper: "#ffffff",
+        ink: "#111111",
+        muted: "#696966",
+        accent: "#191919",
+        accentText: "#ffffff",
+        line: "#d9d9d5",
+        dark: "#090909",
+        darkText: "#ffffff"
+      },
+      ivoire: {
+        name: "Ivoire Studio",
+        subtitle: "Clair & intemporel",
+        bg: "#faf8f2",
+        paper: "#ffffff",
+        ink: "#2b2924",
+        muted: "#7b786f",
+        accent: "#b09268",
+        accentText: "#ffffff",
+        line: "#e6e0d4",
+        dark: "#28251f",
+        darkText: "#ffffff"
+      },
+      terracotta: {
+        name: "Terre Cuite",
+        subtitle: "Artisanal contemporain",
+        bg: "#f4eae3",
+        paper: "#fffaf6",
+        ink: "#37221d",
+        muted: "#806b63",
+        accent: "#a84f36",
+        accentText: "#ffffff",
+        line: "#decac0",
+        dark: "#351c17",
+        darkText: "#ffffff"
+      },
+      olive: {
+        name: "Olive Héritage",
+        subtitle: "Naturel & authentique",
+        bg: "#eff0e7",
+        paper: "#fafbf5",
+        ink: "#262a1e",
+        muted: "#707363",
+        accent: "#667044",
+        accentText: "#ffffff",
+        line: "#d3d7c5",
+        dark: "#23271d",
+        darkText: "#ffffff"
+      },
+      bordeaux: {
+        name: "Maison Bordeaux",
+        subtitle: "Profond & précieux",
+        bg: "#f4eeed",
+        paper: "#fffafa",
+        ink: "#2f2021",
+        muted: "#7c696a",
+        accent: "#74353d",
+        accentText: "#ffffff",
+        line: "#dfcecf",
+        dark: "#2b171b",
+        darkText: "#ffffff"
+      },
+      mineral: {
+        name: "Bleu Minéral",
+        subtitle: "Calme & architectural",
+        bg: "#edf1f2",
+        paper: "#fafeff",
+        ink: "#1f2b2e",
+        muted: "#667579",
+        accent: "#456d77",
+        accentText: "#ffffff",
+        line: "#cedadd",
+        dark: "#19282c",
+        darkText: "#ffffff"
+      },
+      graphite: {
+        name: "Graphite",
+        subtitle: "Sombre & minimaliste",
+        bg: "#141516",
+        paper: "#1d1e20",
+        ink: "#f2f0eb",
+        muted: "#aaa7a0",
+        accent: "#c69b6d",
+        accentText: "#171513",
+        line: "#343639",
+        dark: "#08090a",
+        darkText: "#ffffff"
+      }
+    };
+
+    const defaultData = {
+      settings: {
+        brand: "L'Art Infiny",
+        tagline: "Maroquinerie artisanale",
+        announcement: "Livraison offerte dès 180 € — Fabrication artisanale",
+        heroEyebrow: "Collection permanente · Pièces façonnées à la main",
+        heroTitle: "Le cuir, dans sa forme la plus personnelle.",
+        heroText: "Des lignes essentielles, des peaux choisies avec exigence et le temps nécessaire pour créer des objets qui vous accompagnent vraiment.",
+        heroCta: "Découvrir la collection",
+        heroSecondary: "Notre savoir-faire",
+        heroNote: "Chaque pièce porte la trace de la main",
+        heroImage: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1400&q=88",
+        heroCardLabel: "Signature de l'atelier",
+        heroCardTitle: "Cousu main",
+        heroCardText: "Cuir pleine fleur · Finitions à la main",
+        trust1Number: "100%",
+        trust1Title: "Cuir sélectionné",
+        trust1Text: "Peaux choisies une à une",
+        trust2Number: "01",
+        trust2Title: "Fabrication artisanale",
+        trust2Text: "Du patron jusqu'aux finitions",
+        trust3Number: "∞",
+        trust3Title: "Pensé pour durer",
+        trust3Text: "Réparable et fait pour se patiner",
+        shopEyebrow: "La boutique",
+        shopTitle: "Objets du quotidien, faits pour durer.",
+        shopText: "Chaque création est produite en petite série dans notre atelier. Les irrégularités naturelles du cuir rendent votre pièce unique.",
+        storyEyebrow: "Le geste juste",
+        storyTitle: "Donner du temps à ce qui vous accompagne.",
+        storyText: "À l'atelier, chaque création commence par le choix de la peau et le dessin du patron. La découpe, la teinture des tranches, l'assemblage et les finitions sont réalisés avec précision, sans précipitation.",
+        storyText2: "Nous privilégions les formes intemporelles et les détails utiles. Le cuir se transforme ensuite avec vous, développant une patine qui raconte votre propre histoire.",
+        signature: "L'Art Infiny, l'élégance du geste.",
+        storyImage: "https://images.unsplash.com/photo-1601058268499-e52658b8bb88?auto=format&fit=crop&w=1100&q=86",
+        storyDetailImage: "https://images.unsplash.com/photo-1622560480654-d96214fdc887?auto=format&fit=crop&w=700&q=86",
+        customEyebrow: "Création sur mesure",
+        customTitle: "Une pièce imaginée seulement pour vous.",
+        customText: "Choisissez le format, la teinte, les finitions et la personnalisation. Échangeons directement sur WhatsApp pour donner forme à votre projet.",
+        commissionImage: "https://images.unsplash.com/photo-1515041219749-89347f83291a?auto=format&fit=crop&w=1000&q=84",
+        newsletterTitle: "Les nouvelles de l'atelier",
+        newsletterText: "Collections confidentielles, coulisses et conseils d'entretien.",
+        footerText: "Maroquinerie artisanale contemporaine. Des objets essentiels façonnés pour traverser le temps avec élégance.",
+        whatsapp: "33600000000",
+        phone: "+33 6 00 00 00 00",
+        email: "bonjour@artinfiny.com",
+        instagram: "https://instagram.com/",
+        address: "Atelier sur rendez-vous",
+        deliveryNote: "Expédition soignée sous 2 à 5 jours ouvrés.",
+        currency: "EUR",
+        whatsappMessage: "Bonjour L'Art Infiny, je souhaite obtenir des informations sur vos créations.",
+        themeId: "sable",
+        baseTheme: "sable",
+        customColors: {}
+      },
+      categories: [
+        { id: "sacs", name: "Sacs" },
+        { id: "petite-maroquinerie", name: "Petite maroquinerie" },
+        { id: "ceintures", name: "Ceintures" },
+        { id: "accessoires", name: "Accessoires" }
+      ],
+      products: [
+        {
+          id: "sac-alma",
+          name: "Sac Alma",
+          category: "sacs",
+          price: 249,
+          comparePrice: null,
+          badge: "Signature",
+          material: "Cuir grainé · Cognac",
+          image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=86",
+          description: "Un sac structuré aux lignes souples, doté d'une fermeture sécurisée et d'une poche intérieure. Une pièce quotidienne qui gagne en caractère au fil du temps.",
+          available: true,
+          featured: true
+        },
+        {
+          id: "portefeuille-sillage",
+          name: "Portefeuille Sillage",
+          category: "petite-maroquinerie",
+          price: 89,
+          comparePrice: null,
+          badge: "Bestseller",
+          material: "Cuir lisse · Brun profond",
+          image: "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=900&q=86",
+          description: "Un portefeuille compact à l'organisation précise, avec compartiments cartes, billets et monnaie. Ses tranches sont teintées et polies à la main.",
+          available: true,
+          featured: true
+        },
+        {
+          id: "sac-nomade",
+          name: "Sac Nomade",
+          category: "sacs",
+          price: 219,
+          comparePrice: 245,
+          badge: "Édition limitée",
+          material: "Cuir souple · Sable",
+          image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=86",
+          description: "Un volume généreux et léger pensé pour suivre tous vos mouvements. Porté épaule ou croisé grâce à sa bandoulière réglable.",
+          available: true,
+          featured: true
+        },
+        {
+          id: "ceinture-heritage",
+          name: "Ceinture Héritage",
+          category: "ceintures",
+          price: 74,
+          comparePrice: null,
+          badge: "",
+          material: "Cuir pleine fleur · Noir",
+          image: "https://images.unsplash.com/photo-1624222247344-550fb60583dc?auto=format&fit=crop&w=900&q=86",
+          description: "Découpée dans une bande de cuir pleine fleur, cette ceinture est montée avec une boucle intemporelle et des finitions manuelles.",
+          available: true,
+          featured: false
+        },
+        {
+          id: "porte-cartes-lien",
+          name: "Porte-cartes Lien",
+          category: "petite-maroquinerie",
+          price: 49,
+          comparePrice: null,
+          badge: "Nouveau",
+          material: "Cuir végétal · Terracotta",
+          image: "https://images.unsplash.com/photo-1606503825008-909a67e63c3d?auto=format&fit=crop&w=900&q=86",
+          description: "L'essentiel dans un format fin. Trois logements accueillent vos cartes et la poche centrale conserve vos billets pliés.",
+          available: true,
+          featured: false
+        },
+        {
+          id: "pochette-aube",
+          name: "Pochette Aube",
+          category: "accessoires",
+          price: 115,
+          comparePrice: null,
+          badge: "",
+          material: "Cuir grainé · Olive",
+          image: "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=900&q=86",
+          description: "Une pochette minimaliste pouvant être portée à la main ou glissée dans un grand sac. Intérieur doublé et fermeture métallique.",
+          available: true,
+          featured: false
+        },
+        {
+          id: "sac-orbite",
+          name: "Sac Orbite",
+          category: "sacs",
+          price: 279,
+          comparePrice: null,
+          badge: "Sur commande",
+          material: "Cuir pleine fleur · Bordeaux",
+          image: "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=900&q=86",
+          description: "Une silhouette arrondie et graphique, entièrement façonnée à l'atelier. Réalisée à la demande dans la teinte de votre choix.",
+          available: false,
+          featured: true
+        },
+        {
+          id: "etui-lunettes",
+          name: "Étui Perspective",
+          category: "accessoires",
+          price: 58,
+          comparePrice: null,
+          badge: "",
+          material: "Cuir souple · Fauve",
+          image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=900&q=86",
+          description: "Un étui léger qui protège vos lunettes tout en conservant une ligne fine. Fermeture discrète et intérieur doux.",
+          available: true,
+          featured: false
+        }
+      ]
+    };
+
+    function clone(value) {
+      return JSON.parse(JSON.stringify(value));
+    }
+
+    function loadData() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        if (!saved || !saved.settings || !Array.isArray(saved.categories) || !Array.isArray(saved.products)) {
+          return clone(defaultData);
+        }
+        return {
+          settings: { ...clone(defaultData.settings), ...saved.settings },
+          categories: saved.categories,
+          products: saved.products
+        };
+      } catch {
+        return clone(defaultData);
+      }
+    }
+
+    let siteData = loadData();
+    let cart = loadCart();
+    let currentCategory = "all";
+    let currentSearch = "";
+    let editingProductId = null;
+
+    const $ = (selector, context = document) => context.querySelector(selector);
+    const $$ = (selector, context = document) => [...context.querySelectorAll(selector)];
+
+    function esc(value = "") {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function safeUrl(url, fallback = "#") {
+      try {
+        const parsed = new URL(url, window.location.href);
+        if (["http:", "https:", "mailto:", "tel:", "data:"].includes(parsed.protocol)) return parsed.href;
+      } catch {}
+      return fallback;
+    }
+
+    function slugify(value) {
+      return String(value)
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "") || "element";
+    }
+
+    function uniqueId(prefix, value) {
+      const base = `${prefix}-${slugify(value)}`;
+      let id = base;
+      let index = 2;
+      const exists = candidate =>
+        siteData.categories.some(c => c.id === candidate) ||
+        siteData.products.some(p => p.id === candidate);
+      while (exists(id)) id = `${base}-${index++}`;
+      return id;
+    }
+
+    function saveData(message = "Modifications enregistrées") {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
+      const status = $("#saveStatus");
+      if (status) {
+        status.textContent = message;
+        setTimeout(() => status.textContent = "Toutes les modifications sont enregistrées", 1600);
+      }
+    }
+
+    function loadCart() {
+      try {
+        const value = JSON.parse(localStorage.getItem(CART_KEY));
+        return Array.isArray(value) ? value : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function saveCart() {
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+      renderCart();
+    }
+
+    function getThemeColors() {
+      const settings = siteData.settings;
+      const baseId = settings.baseTheme && themes[settings.baseTheme] ? settings.baseTheme : "sable";
+      const themeId = settings.themeId && themes[settings.themeId] ? settings.themeId : baseId;
+      const base = themes[themeId] || themes[baseId];
+      return settings.themeId === "custom"
+        ? { ...themes[baseId], ...(settings.customColors || {}) }
+        : base;
+    }
+
+    function applyTheme() {
+      const colors = getThemeColors();
+      const root = document.documentElement;
+      root.style.setProperty("--bg", colors.bg);
+      root.style.setProperty("--paper", colors.paper);
+      root.style.setProperty("--ink", colors.ink);
+      root.style.setProperty("--muted", colors.muted);
+      root.style.setProperty("--accent", colors.accent);
+      root.style.setProperty("--accent-text", colors.accentText);
+      root.style.setProperty("--line", colors.line);
+      root.style.setProperty("--dark", colors.dark);
+      root.style.setProperty("--dark-text", colors.darkText);
+      root.style.setProperty("--dark-muted", "color-mix(in srgb, " + colors.darkText + " 66%, transparent)");
+      const meta = $('meta[name="theme-color"]');
+      if (meta) meta.setAttribute("content", colors.dark);
+    }
+
+    function brandInitials() {
+      const words = siteData.settings.brand.replace(/['’]/g, " ").split(/\s+/).filter(Boolean);
+      return words.slice(0, 2).map(word => word[0]).join("").toUpperCase() || "AI";
+    }
+
+    function formatPrice(value) {
+      const number = Number(value || 0);
+      const currency = String(siteData.settings.currency || "EUR").toUpperCase();
+      try {
+        return new Intl.NumberFormat("fr-FR", {
+          style: "currency",
+          currency,
+          minimumFractionDigits: Number.isInteger(number) ? 0 : 2,
+          maximumFractionDigits: 2
+        }).format(number);
+      } catch {
+        return `${number.toFixed(Number.isInteger(number) ? 0 : 2)} ${currency}`;
+      }
+    }
+
+    function getCategoryName(id) {
+      return siteData.categories.find(category => category.id === id)?.name || "Sans catégorie";
+    }
+
+    function fallbackImage(img, label = "L'Art Infiny") {
+      img.addEventListener("error", () => {
+        if (img.dataset.fallbackApplied) return;
+        img.dataset.fallbackApplied = "true";
+        const colors = getThemeColors();
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1100"><rect width="100%" height="100%" fill="${colors.paper}"/><rect x="24" y="24" width="852" height="1052" fill="none" stroke="${colors.line}" stroke-width="2"/><text x="50%" y="49%" text-anchor="middle" font-family="Georgia,serif" font-size="52" fill="${colors.ink}">${esc(label)}</text><text x="50%" y="55%" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" letter-spacing="5" fill="${colors.muted}">MAROQUINERIE ARTISANALE</text></svg>`;
+        img.src = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+      });
+    }
+
+    function bindImageFallbacks(context = document) {
+      $$("img", context).forEach(img => fallbackImage(img, img.alt || siteData.settings.brand));
+    }
+
+    function renderSettings() {
+      Object.entries(siteData.settings).forEach(([key, value]) => {
+        if (typeof value !== "string" && typeof value !== "number") return;
+        $$(`[data-setting="${key}"]`).forEach(element => {
+          element.textContent = value;
+        });
+      });
+
+      $$("[data-logo-mark]").forEach(element => element.textContent = brandInitials());
+
+      document.title = `${siteData.settings.brand} — ${siteData.settings.tagline}`;
+      const description = $('meta[name="description"]');
+      if (description) description.setAttribute("content", siteData.settings.heroText);
+
+      $("#heroImage").src = safeUrl(siteData.settings.heroImage, "");
+      $("#storyImage").src = safeUrl(siteData.settings.storyImage, "");
+      $("#storyDetailImage").src = safeUrl(siteData.settings.storyDetailImage, "");
+      $("#commissionImage").src = safeUrl(siteData.settings.commissionImage, "");
+
+      const whatsappUrl = getWhatsAppUrl(siteData.settings.whatsappMessage);
+      $$("[data-whatsapp-link]").forEach(link => {
+        link.href = whatsappUrl;
+        link.target = "_blank";
+        link.rel = "noopener";
+      });
+
+      const instagram = $("#instagramLink");
+      instagram.href = safeUrl(siteData.settings.instagram);
+
+      const email = siteData.settings.email || "";
+      const phone = siteData.settings.phone || "";
+      $("#footerEmail").textContent = email;
+      $("#footerEmail").href = `mailto:${email}`;
+      $("#footerEmailLink").href = `mailto:${email}`;
+      $("#footerPhoneLink").textContent = phone;
+      $("#footerPhoneLink").href = `tel:${phone.replace(/[^\d+]/g, "")}`;
+
+      bindImageFallbacks();
+    }
+
+    function renderNavigation() {
+      const categoryButtons = siteData.categories.slice(0, 4).map(category =>
+        `<button class="nav-link" type="button" data-category-link="${esc(category.id)}">${esc(category.name)}</button>`
+      ).join("");
+
+      $("#desktopNav").innerHTML = categoryButtons +
+        `<button class="nav-link" type="button" data-scroll-story>Savoir-faire</button>`;
+
+      $("#mobileNav").innerHTML =
+        `<button class="nav-link" type="button" data-category-link="all">Toute la collection</button>` +
+        siteData.categories.map(category =>
+          `<button class="nav-link" type="button" data-category-link="${esc(category.id)}">${esc(category.name)}</button>`
+        ).join("") +
+        `<button class="nav-link" type="button" data-scroll-story>Notre savoir-faire</button>
+         <button class="nav-link" type="button" data-open-admin>Administration</button>`;
+
+      $("#footerCategories").innerHTML =
+        `<button type="button" data-category-link="all">Toute la collection</button>` +
+        siteData.categories.map(category =>
+          `<button type="button" data-category-link="${esc(category.id)}">${esc(category.name)}</button>`
+        ).join("");
+    }
+
+    function renderFilters() {
+      if (currentCategory !== "all" && !siteData.categories.some(category => category.id === currentCategory)) {
+        currentCategory = "all";
+      }
+      const allButton = `<button class="filter-button ${currentCategory === "all" ? "active" : ""}" type="button" data-filter="all">Tout</button>`;
+      const buttons = siteData.categories.map(category =>
+        `<button class="filter-button ${currentCategory === category.id ? "active" : ""}" type="button" data-filter="${esc(category.id)}">${esc(category.name)}</button>`
+      ).join("");
+      $("#categoryFilters").innerHTML = allButton + buttons;
+    }
+
+    function renderProducts() {
+      const sort = $("#sortSelect")?.value || "featured";
+      let products = siteData.products.filter(product => {
+        const matchesCategory = currentCategory === "all" || product.category === currentCategory;
+        const query = currentSearch.trim().toLowerCase();
+        const haystack = `${product.name} ${product.description || ""} ${product.material || ""} ${getCategoryName(product.category)}`.toLowerCase();
+        return matchesCategory && (!query || haystack.includes(query));
+      });
+
+      products.sort((a, b) => {
+        if (sort === "price-asc") return Number(a.price) - Number(b.price);
+        if (sort === "price-desc") return Number(b.price) - Number(a.price);
+        if (sort === "name") return a.name.localeCompare(b.name, "fr");
+        return Number(Boolean(b.featured)) - Number(Boolean(a.featured));
+      });
+
+      $("#productCount").textContent = `${products.length} ${products.length > 1 ? "pièces" : "pièce"}`;
+
+      if (!products.length) {
+        $("#productGrid").innerHTML = `
+          <div class="empty-state">
+            <h3>Aucune pièce trouvée</h3>
+            <p>Essayez une autre catégorie ou un autre terme de recherche.</p>
+          </div>`;
+        return;
+      }
+
+      $("#productGrid").innerHTML = products.map((product, index) => `
+        <article class="product-card reveal" style="transition-delay:${Math.min(index * 45, 180)}ms">
+          <div class="product-media" data-quick-view="${esc(product.id)}" role="button" tabindex="0" aria-label="Voir ${esc(product.name)}">
+            <img src="${esc(safeUrl(product.image, ""))}" alt="${esc(product.name)}" loading="lazy">
+            ${product.badge ? `<span class="product-badge">${esc(product.badge)}</span>` : ""}
+            <div class="product-actions">
+              <button class="product-action" type="button" data-quick-view="${esc(product.id)}" aria-label="Voir le produit">${icons.eye}</button>
+              ${product.available ? `<button class="product-action" type="button" data-add-cart="${esc(product.id)}" aria-label="Ajouter au panier">${icons.bag}</button>` : ""}
+            </div>
+            ${!product.available ? `<span class="product-soldout">Sur commande</span>` : ""}
+          </div>
+          <div class="product-info">
+            <p class="product-category">${esc(getCategoryName(product.category))}</p>
+            <div class="product-line">
+              <h3 class="product-name">${esc(product.name)}</h3>
+              <div class="product-price">
+                ${product.comparePrice ? `<del>${esc(formatPrice(product.comparePrice))}</del>` : ""}
+                ${esc(formatPrice(product.price))}
+              </div>
+            </div>
+            <div class="product-material">${esc(product.material || "")}</div>
+          </div>
+        </article>
+      `).join("");
+
+      bindImageFallbacks($("#productGrid"));
+      initReveals();
+    }
+
+    function renderCart() {
+      cart = cart.filter(item => siteData.products.some(product => product.id === item.id) && item.quantity > 0);
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+
+      const quantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+      $("#cartCount").textContent = quantity;
+
+      let total = 0;
+      const items = cart.map(item => {
+        const product = siteData.products.find(entry => entry.id === item.id);
+        if (!product) return "";
+        total += Number(product.price) * item.quantity;
+        return `
+          <article class="cart-item">
+            <img src="${esc(safeUrl(product.image, ""))}" alt="${esc(product.name)}">
+            <div>
+              <h3>${esc(product.name)}</h3>
+              <div class="cart-item-price">${esc(formatPrice(product.price))}</div>
+              <div class="quantity">
+                <button type="button" data-cart-minus="${esc(product.id)}" aria-label="Diminuer">−</button>
+                <span>${item.quantity}</span>
+                <button type="button" data-cart-plus="${esc(product.id)}" aria-label="Augmenter">+</button>
+              </div>
+            </div>
+            <button class="cart-remove" type="button" data-cart-remove="${esc(product.id)}" aria-label="Supprimer">✕</button>
+          </article>`;
+      }).join("");
+
+      $("#cartBody").innerHTML = items || `
+        <div class="cart-empty">
+          <div>
+            <svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
+            <p>Votre sélection est encore vide.</p>
+          </div>
+        </div>`;
+      $("#cartTotal").textContent = formatPrice(total);
+      bindImageFallbacks($("#cartBody"));
+    }
+
+    function renderAll() {
+      applyTheme();
+      renderSettings();
+      renderNavigation();
+      renderFilters();
+      renderProducts();
+      renderCart();
+      renderAdminCategories();
+      renderAdminProducts();
+      renderThemes();
+      populateAdminForms();
+    }
+
+    function addToCart(id) {
+      const product = siteData.products.find(entry => entry.id === id);
+      if (!product || !product.available) {
+        toast("Cette pièce est disponible uniquement sur commande.");
+        return;
+      }
+      const existing = cart.find(item => item.id === id);
+      if (existing) existing.quantity += 1;
+      else cart.push({ id, quantity: 1 });
+      saveCart();
+      toast(`${product.name} ajouté à votre sélection.`);
+    }
+
+    function updateCart(id, delta) {
+      const item = cart.find(entry => entry.id === id);
+      if (!item) return;
+      item.quantity += delta;
+      if (item.quantity <= 0) cart = cart.filter(entry => entry.id !== id);
+      saveCart();
+    }
+
+    function getWhatsAppUrl(message) {
+      const number = String(siteData.settings.whatsapp || "").replace(/\D/g, "");
+      return `https://wa.me/${number}?text=${encodeURIComponent(message || siteData.settings.whatsappMessage || "")}`;
+    }
+
+    function openWhatsApp(message) {
+      const number = String(siteData.settings.whatsapp || "").replace(/\D/g, "");
+      if (number.length < 8) {
+        toast("Veuillez configurer un numéro WhatsApp valide.");
+        return;
+      }
+      window.open(getWhatsAppUrl(message), "_blank", "noopener");
+    }
+
+    function orderCart() {
+      if (!cart.length) {
+        toast("Ajoutez au moins une création à votre sélection.");
+        return;
+      }
+      let total = 0;
+      const lines = cart.map(item => {
+        const product = siteData.products.find(entry => entry.id === item.id);
+        if (!product) return "";
+        total += Number(product.price) * item.quantity;
+        return `• ${item.quantity} × ${product.name} — ${formatPrice(product.price * item.quantity)}`;
+      }).filter(Boolean);
+
+      const message = `Bonjour ${siteData.settings.brand},\n\nJe souhaite commander :\n${lines.join("\n")}\n\nTotal estimé : ${formatPrice(total)}\n\nPouvez-vous me confirmer la disponibilité et la livraison ?`;
+      openWhatsApp(message);
+    }
+
+    function openQuickView(id) {
+      const product = siteData.products.find(entry => entry.id === id);
+      if (!product) return;
+
+      $("#quickViewContent").innerHTML = `
+        <div class="quick-view-grid">
+          <div class="quick-view-image">
+            <img src="${esc(safeUrl(product.image, ""))}" alt="${esc(product.name)}">
+          </div>
+          <div class="quick-view-content">
+            <button class="icon-button modal-close" type="button" aria-label="Fermer" data-close-modal>✕</button>
+            <p class="product-category">${esc(getCategoryName(product.category))}</p>
+            <h2>${esc(product.name)}</h2>
+            <div class="quick-price">
+              ${product.comparePrice ? `<del>${esc(formatPrice(product.comparePrice))}</del>` : ""}
+              ${esc(formatPrice(product.price))}
+            </div>
+            <p class="quick-description">${esc(product.description || "")}</p>
+            <div class="quick-details">
+              <span><strong>Matière :</strong> ${esc(product.material || "Cuir sélectionné")}</span>
+              <span><strong>Fabrication :</strong> Façonné et fini à la main</span>
+              <span><strong>Disponibilité :</strong> ${product.available ? "Disponible" : "Sur commande"}</span>
+            </div>
+            <div class="quick-buttons">
+              ${product.available ? `<button class="button button-primary" type="button" data-add-cart="${esc(product.id)}">Ajouter à la sélection</button>` : ""}
+              <button class="button button-outline" type="button" data-order-product="${esc(product.id)}">Commander sur WhatsApp</button>
+            </div>
+          </div>
+        </div>`;
+      bindImageFallbacks($("#quickViewContent"));
+      openModal($("#quickViewModal"));
+    }
+
+    function orderProduct(id) {
+      const product = siteData.products.find(entry => entry.id === id);
+      if (!product) return;
+      const message = `Bonjour ${siteData.settings.brand},\n\nJe souhaite commander ou obtenir des informations sur « ${product.name} » (${formatPrice(product.price)}).\n\nPouvez-vous me confirmer sa disponibilité et les modalités de livraison ?`;
+      openWhatsApp(message);
+    }
+
+    function openDrawer(drawer) {
+      closeSearch();
+      $("#drawerBackdrop").classList.add("open");
+      drawer.classList.add("open");
+      document.body.classList.add("no-scroll");
+    }
+
+    function closeDrawers() {
+      $("#drawerBackdrop").classList.remove("open");
+      $$(".side-drawer").forEach(drawer => drawer.classList.remove("open"));
+      document.body.classList.remove("no-scroll");
+    }
+
+    function openModal(modal) {
+      $("#modalBackdrop").classList.add("open");
+      modal.classList.add("open");
+      document.body.classList.add("no-scroll");
+    }
+
+    function closeModals() {
+      $("#modalBackdrop").classList.remove("open");
+      $$(".modal").forEach(modal => modal.classList.remove("open"));
+      document.body.classList.remove("no-scroll");
+    }
+
+    function openSearch() {
+      $("#searchPanel").classList.add("open");
+      setTimeout(() => $("#globalSearch").focus(), 180);
+    }
+
+    function closeSearch() {
+      $("#searchPanel").classList.remove("open");
+    }
+
+    function scrollToShop(category = currentCategory) {
+      currentCategory = category;
+      renderFilters();
+      renderProducts();
+      closeDrawers();
+      closeSearch();
+      $("#collection").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function toast(message) {
+      const element = document.createElement("div");
+      element.className = "toast";
+      element.textContent = message;
+      $("#toastStack").appendChild(element);
+      setTimeout(() => {
+        element.style.opacity = "0";
+        element.style.transform = "translateY(8px)";
+        setTimeout(() => element.remove(), 250);
+      }, 2800);
+    }
+
+    let observer;
+    function initReveals() {
+      if (!("IntersectionObserver" in window)) {
+        $$(".reveal").forEach(element => element.classList.add("visible"));
+        return;
+      }
+      if (!observer) {
+        observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: .1 });
+      }
+      $$(".reveal:not(.visible)").forEach(element => observer.observe(element));
+    }
+
+    function openAdmin() {
+      if (sessionStorage.getItem("artInfinyAdminSession") === "true") {
+        showAdmin();
+      } else {
+        $("#adminCode").value = "";
+        $("#defaultCodeHint").hidden = Boolean(localStorage.getItem(CODE_KEY));
+        openModal($("#loginModal"));
+        setTimeout(() => $("#adminCode").focus(), 200);
+      }
+    }
+
+    function showAdmin() {
+      closeModals();
+      closeDrawers();
+      $("#adminShell").hidden = false;
+      document.body.classList.add("no-scroll");
+      renderAdminCategories();
+      renderAdminProducts();
+      renderThemes();
+      populateAdminForms();
+    }
+
+    function closeAdmin() {
+      $("#adminShell").hidden = true;
+      document.body.classList.remove("no-scroll");
+    }
+
+    function switchAdminPage(page) {
+      $$("[data-admin-tab]").forEach(button => button.classList.toggle("active", button.dataset.adminTab === page));
+      $$("[data-admin-page]").forEach(section => section.hidden = section.dataset.adminPage !== page);
+      $(".admin-main").scrollTop = 0;
+      if (page === "categories") renderAdminCategories();
+      if (page === "products") renderAdminProducts();
+      if (page === "appearance") renderThemes();
+    }
+
+    function populateForm(form, settings) {
+      if (!form) return;
+      $$("[name]", form).forEach(field => {
+        if (!(field.name in settings)) return;
+        if (field.type === "checkbox") field.checked = Boolean(settings[field.name]);
+        else field.value = settings[field.name] ?? "";
+      });
+    }
+
+    function populateAdminForms() {
+      populateForm($("#contentForm"), siteData.settings);
+      populateForm($("#contactForm"), siteData.settings);
+    }
+
+    function saveSettingsForm(form) {
+      $$("[name]", form).forEach(field => {
+        if (field.type === "checkbox") siteData.settings[field.name] = field.checked;
+        else siteData.settings[field.name] = field.value.trim();
+      });
+      saveData();
+      renderAll();
+      toast("Le contenu du site a été mis à jour.");
+    }
+
+    function renderThemes() {
+      const selected = siteData.settings.themeId === "custom"
+        ? siteData.settings.baseTheme
+        : siteData.settings.themeId;
+
+      $("#themeGrid").innerHTML = Object.entries(themes).map(([id, theme]) => `
+        <button class="theme-card ${selected === id ? "active" : ""}" type="button" data-theme-id="${id}">
+          <span class="theme-preview" style="background:${theme.bg}">
+            <span class="theme-preview-main">
+              <span class="preview-line" style="background:${theme.ink}"></span>
+              <span class="preview-line short" style="background:${theme.muted}"></span>
+              <span class="preview-button" style="display:block;background:${theme.accent}"></span>
+            </span>
+            <span style="background:${theme.dark}"></span>
+          </span>
+          <strong>${esc(theme.name)}</strong>
+          <small>${esc(theme.subtitle)}${siteData.settings.themeId === "custom" && selected === id ? " · Ajusté" : ""}</small>
+        </button>
+      `).join("");
+
+      const colors = getThemeColors();
+      $$("[data-color-key]").forEach(input => {
+        input.value = colors[input.dataset.colorKey];
+      });
+    }
+
+    function selectTheme(id) {
+      if (!themes[id]) return;
+      siteData.settings.themeId = id;
+      siteData.settings.baseTheme = id;
+      siteData.settings.customColors = {};
+      applyTheme();
+      saveData(`Thème « ${themes[id].name} » appliqué`);
+      renderThemes();
+      toast(`Thème « ${themes[id].name} » appliqué.`);
+    }
+
+    function renderAdminCategories() {
+      const container = $("#adminCategoryList");
+      if (!container) return;
+      container.innerHTML = siteData.categories.map((category, index) => {
+        const count = siteData.products.filter(product => product.category === category.id).length;
+        return `
+          <div class="category-row">
+            <input value="${esc(category.name)}" data-category-name="${esc(category.id)}" aria-label="Nom de la catégorie">
+            <span class="category-count">${count} article${count > 1 ? "s" : ""}</span>
+            <div class="mini-actions">
+              <button class="mini-button" type="button" data-category-up="${esc(category.id)}" title="Monter" ${index === 0 ? "disabled" : ""}>↑</button>
+              <button class="mini-button" type="button" data-category-down="${esc(category.id)}" title="Descendre" ${index === siteData.categories.length - 1 ? "disabled" : ""}>↓</button>
+              <button class="mini-button" type="button" data-category-save="${esc(category.id)}" title="Enregistrer">✓</button>
+              <button class="mini-button danger" type="button" data-category-delete="${esc(category.id)}" title="Supprimer">✕</button>
+            </div>
+          </div>`;
+      }).join("");
+    }
+
+    function saveCategory(id) {
+      const category = siteData.categories.find(entry => entry.id === id);
+      const input = $(`[data-category-name="${CSS.escape(id)}"]`);
+      if (!category || !input || !input.value.trim()) return;
+      category.name = input.value.trim();
+      saveData();
+      renderNavigation();
+      renderFilters();
+      renderProducts();
+      renderAdminCategories();
+      renderAdminProducts();
+      toast("Catégorie renommée.");
+    }
+
+    function moveCategory(id, direction) {
+      const index = siteData.categories.findIndex(category => category.id === id);
+      const target = index + direction;
+      if (index < 0 || target < 0 || target >= siteData.categories.length) return;
+      [siteData.categories[index], siteData.categories[target]] = [siteData.categories[target], siteData.categories[index]];
+      saveData();
+      renderNavigation();
+      renderFilters();
+      renderAdminCategories();
+    }
+
+    function deleteCategory(id) {
+      if (siteData.categories.length <= 1) {
+        toast("Vous devez conserver au moins une catégorie.");
+        return;
+      }
+      const category = siteData.categories.find(entry => entry.id === id);
+      const affected = siteData.products.filter(product => product.category === id).length;
+      const message = affected
+        ? `Supprimer « ${category.name} » ? ${affected} article(s) seront déplacés vers la première catégorie restante.`
+        : `Supprimer la catégorie « ${category.name} » ?`;
+      if (!confirm(message)) return;
+
+      siteData.categories = siteData.categories.filter(entry => entry.id !== id);
+      const fallback = siteData.categories[0].id;
+      siteData.products.forEach(product => {
+        if (product.category === id) product.category = fallback;
+      });
+      if (currentCategory === id) currentCategory = "all";
+      saveData();
+      renderAll();
+      toast("Catégorie supprimée.");
+    }
+
+    function renderProductCategorySelect(selected = "") {
+      const select = $('#productForm select[name="category"]');
+      if (!select) return;
+      select.innerHTML = siteData.categories.map(category =>
+        `<option value="${esc(category.id)}" ${selected === category.id ? "selected" : ""}>${esc(category.name)}</option>`
+      ).join("");
+    }
+
+    function renderAdminProducts() {
+      const list = $("#adminProductList");
+      if (!list) return;
+      $("#adminProductCount").textContent = `${siteData.products.length} produit${siteData.products.length > 1 ? "s" : ""} dans le catalogue.`;
+      list.innerHTML = siteData.products.map(product => `
+        <div class="admin-product-row">
+          <img src="${esc(safeUrl(product.image, ""))}" alt="${esc(product.name)}">
+          <div class="admin-product-info">
+            <strong>${esc(product.name)}</strong>
+            <span>${esc(getCategoryName(product.category))} · ${esc(formatPrice(product.price))}</span>
+          </div>
+          <span class="status-pill ${product.available ? "" : "off"}">${product.available ? "Disponible" : "Sur commande"}</span>
+          <div class="mini-actions">
+            <button class="mini-button" type="button" data-product-edit="${esc(product.id)}" title="Modifier">✎</button>
+            <button class="mini-button danger" type="button" data-product-delete="${esc(product.id)}" title="Supprimer">✕</button>
+          </div>
+        </div>
+      `).join("") || `<p style="color:#777;font-size:.7rem">Aucun produit. Utilisez « Ajouter un produit ».</p>`;
+      bindImageFallbacks(list);
+      renderProductCategorySelect();
+    }
+
+    function openProductEditor(product = null) {
+      editingProductId = product?.id || null;
+      $("#productEditor").hidden = false;
+      $("#productEditorTitle").textContent = product ? `Modifier « ${product.name} »` : "Nouveau produit";
+      const form = $("#productForm");
+      form.reset();
+      renderProductCategorySelect(product?.category || siteData.categories[0]?.id || "");
+      form.elements.id.value = product?.id || "";
+      form.elements.name.value = product?.name || "";
+      form.elements.price.value = product?.price ?? "";
+      form.elements.comparePrice.value = product?.comparePrice ?? "";
+      form.elements.badge.value = product?.badge || "";
+      form.elements.material.value = product?.material || "";
+      form.elements.image.value = product?.image || "";
+      form.elements.description.value = product?.description || "";
+      form.elements.available.checked = product ? Boolean(product.available) : true;
+      form.elements.featured.checked = product ? Boolean(product.featured) : false;
+      $("#productEditor").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function closeProductEditor() {
+      editingProductId = null;
+      $("#productEditor").hidden = true;
+      $("#productForm").reset();
+    }
+
+    function saveProduct(event) {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const values = Object.fromEntries(new FormData(form).entries());
+      const existing = editingProductId
+        ? siteData.products.find(product => product.id === editingProductId)
+        : null;
+
+      const product = {
+        id: existing?.id || uniqueId("produit", values.name),
+        name: values.name.trim(),
+        category: values.category,
+        price: Number(values.price),
+        comparePrice: values.comparePrice ? Number(values.comparePrice) : null,
+        badge: values.badge.trim(),
+        material: values.material.trim(),
+        image: values.image.trim(),
+        description: values.description.trim(),
+        available: form.elements.available.checked,
+        featured: form.elements.featured.checked
+      };
+
+      if (existing) Object.assign(existing, product);
+      else siteData.products.unshift(product);
+
+      saveData();
+      closeProductEditor();
+      renderAll();
+      switchAdminPage("products");
+      toast(existing ? "Produit mis à jour." : "Produit ajouté au catalogue.");
+    }
+
+    function deleteProduct(id) {
+      const product = siteData.products.find(entry => entry.id === id);
+      if (!product || !confirm(`Supprimer définitivement « ${product.name} » ?`)) return;
+      siteData.products = siteData.products.filter(entry => entry.id !== id);
+      cart = cart.filter(item => item.id !== id);
+      saveData();
+      saveCart();
+      renderAll();
+      toast("Produit supprimé.");
+    }
+
+    function exportData() {
+      const content = JSON.stringify(siteData, null, 2);
+      const blob = new Blob([content], { type: "application/json" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `art-infiny-sauvegarde-${new Date().toISOString().slice(0, 10)}.json`;
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+      toast("Sauvegarde téléchargée.");
+    }
+
+    async function importData(file) {
+      try {
+        const text = await file.text();
+        const imported = JSON.parse(text);
+        if (!imported.settings || !Array.isArray(imported.categories) || !Array.isArray(imported.products)) {
+          throw new Error("Format invalide");
+        }
+        siteData = {
+          settings: { ...clone(defaultData.settings), ...imported.settings },
+          categories: imported.categories,
+          products: imported.products
+        };
+        saveData();
+        renderAll();
+        toast("Sauvegarde importée avec succès.");
+      } catch {
+        toast("Impossible d'importer ce fichier.");
+      }
+    }
+
+    document.addEventListener("click", event => {
+      const target = event.target.closest("button, a, [data-quick-view]");
+      if (!target) return;
+
+      if (target.matches("[data-scroll-shop]")) scrollToShop("all");
+      if (target.matches("[data-scroll-story]")) {
+        closeDrawers();
+        $("#savoir-faire").scrollIntoView({ behavior: "smooth" });
+      }
+      if (target.matches("[data-category-link]")) scrollToShop(target.dataset.categoryLink);
+      if (target.matches("[data-filter]")) {
+        currentCategory = target.dataset.filter;
+        renderFilters();
+        renderProducts();
+      }
+      if (target.matches("[data-add-cart]")) {
+        event.stopPropagation();
+        addToCart(target.dataset.addCart);
+      }
+      if (target.matches("[data-quick-view]")) {
+        event.stopPropagation();
+        openQuickView(target.dataset.quickView);
+      }
+      if (target.matches("[data-order-product]")) orderProduct(target.dataset.orderProduct);
+      if (target.matches("[data-whatsapp-custom]")) openWhatsApp(siteData.settings.whatsappMessage);
+      if (target.matches("[data-open-admin]")) openAdmin();
+      if (target.matches("[data-close-drawers]")) closeDrawers();
+      if (target.matches("[data-close-modal]")) closeModals();
+      if (target.matches("[data-cart-minus]")) updateCart(target.dataset.cartMinus, -1);
+      if (target.matches("[data-cart-plus]")) updateCart(target.dataset.cartPlus, 1);
+      if (target.matches("[data-cart-remove]")) {
+        cart = cart.filter(item => item.id !== target.dataset.cartRemove);
+        saveCart();
+      }
+      if (target.matches("[data-admin-tab]")) switchAdminPage(target.dataset.adminTab);
+      if (target.matches("[data-theme-id]")) selectTheme(target.dataset.themeId);
+      if (target.matches("[data-category-save]")) saveCategory(target.dataset.categorySave);
+      if (target.matches("[data-category-up]")) moveCategory(target.dataset.categoryUp, -1);
+      if (target.matches("[data-category-down]")) moveCategory(target.dataset.categoryDown, 1);
+      if (target.matches("[data-category-delete]")) deleteCategory(target.dataset.categoryDelete);
+      if (target.matches("[data-product-edit]")) {
+        const product = siteData.products.find(entry => entry.id === target.dataset.productEdit);
+        if (product) openProductEditor(product);
+      }
+      if (target.matches("[data-product-delete]")) deleteProduct(target.dataset.productDelete);
+    });
+
+    $("#mobileMenuButton").addEventListener("click", () => openDrawer($("#mobileDrawer")));
+    $("#cartButton").addEventListener("click", () => openDrawer($("#cartDrawer")));
+    $("#drawerBackdrop").addEventListener("click", closeDrawers);
+    $("#modalBackdrop").addEventListener("click", closeModals);
+    $("#cartWhatsApp").addEventListener("click", orderCart);
+    $("#searchButton").addEventListener("click", openSearch);
+    $("#closeSearch").addEventListener("click", closeSearch);
+
+    $("#globalSearch").addEventListener("input", event => {
+      currentSearch = event.target.value;
+      renderProducts();
+      if (currentSearch) $("#collection").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    $("#sortSelect").addEventListener("change", renderProducts);
+
+    $("#newsletterForm").addEventListener("submit", event => {
+      event.preventDefault();
+      event.currentTarget.reset();
+      toast("Merci. Votre inscription a bien été prise en compte.");
+    });
+
+    $("#loginForm").addEventListener("submit", event => {
+      event.preventDefault();
+      const code = $("#adminCode").value;
+      const expected = localStorage.getItem(CODE_KEY) || DEFAULT_CODE;
+      if (code === expected) {
+        sessionStorage.setItem("artInfinyAdminSession", "true");
+        showAdmin();
+      } else {
+        toast("Code d'accès incorrect.");
+        $("#adminCode").select();
+      }
+    });
+
+    $("#closeAdmin").addEventListener("click", closeAdmin);
+
+    $("#contentForm").addEventListener("submit", event => {
+      event.preventDefault();
+      saveSettingsForm(event.currentTarget);
+    });
+
+    $("#contactForm").addEventListener("submit", event => {
+      event.preventDefault();
+      saveSettingsForm(event.currentTarget);
+    });
+
+    $("#categoryAddForm").addEventListener("submit", event => {
+      event.preventDefault();
+      const input = $("#newCategoryName");
+      const name = input.value.trim();
+      if (!name) return;
+      siteData.categories.push({ id: uniqueId("categorie", name), name });
+      input.value = "";
+      saveData();
+      renderAll();
+      switchAdminPage("categories");
+      toast("Catégorie ajoutée.");
+    });
+
+    $("#addProductButton").addEventListener("click", () => openProductEditor());
+    $("#cancelProductEdit").addEventListener("click", closeProductEditor);
+    $("#productForm").addEventListener("submit", saveProduct);
+
+    $$("[data-color-key]").forEach(input => {
+      input.addEventListener("input", event => {
+        const key = event.target.dataset.colorKey;
+        siteData.settings.baseTheme = siteData.settings.baseTheme || "sable";
+        siteData.settings.themeId = "custom";
+        siteData.settings.customColors = {
+          ...(siteData.settings.customColors || {}),
+          [key]: event.target.value
+        };
+        applyTheme();
+      });
+    });
+
+    $("#saveThemeColors").addEventListener("click", () => {
+      saveData("Thème personnalisé enregistré");
+      renderThemes();
+      toast("Vos couleurs personnalisées ont été enregistrées.");
+    });
+
+    $("#resetThemeColors").addEventListener("click", () => {
+      const base = siteData.settings.baseTheme || "sable";
+      siteData.settings.themeId = base;
+      siteData.settings.customColors = {};
+      applyTheme();
+      saveData();
+      renderThemes();
+      toast("Les ajustements de couleurs ont été annulés.");
+    });
+
+    $("#exportData").addEventListener("click", exportData);
+    $("#importDataButton").addEventListener("click", () => $("#importDataInput").click());
+    $("#importDataInput").addEventListener("change", event => {
+      const file = event.target.files[0];
+      if (file) importData(file);
+      event.target.value = "";
+    });
+
+    $("#resetData").addEventListener("click", () => {
+      if (!confirm("Restaurer tout le site initial ? Les modifications actuelles seront supprimées.")) return;
+      siteData = clone(defaultData);
+      cart = [];
+      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(CART_KEY);
+      saveData();
+      renderAll();
+      toast("Le site initial a été restauré.");
+    });
+
+    $("#passwordForm").addEventListener("submit", event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const newCode = form.elements.newCode.value;
+      const confirmCode = form.elements.confirmCode.value;
+      if (newCode !== confirmCode) {
+        toast("Les deux codes ne correspondent pas.");
+        return;
+      }
+      localStorage.setItem(CODE_KEY, newCode);
+      form.reset();
+      toast("Le code administrateur a été modifié.");
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        closeSearch();
+        closeDrawers();
+        closeModals();
+      }
+      if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.key.toLowerCase() === "a") {
+        event.preventDefault();
+        openAdmin();
+      }
+      if (event.key === "Enter" && event.target.matches("[data-quick-view]")) {
+        openQuickView(event.target.dataset.quickView);
+      }
+    });
+
+    $("#currentYear").textContent = new Date().getFullYear();
+    renderAll();
+    initReveals();
+  </script>
 </body>
 </html>
