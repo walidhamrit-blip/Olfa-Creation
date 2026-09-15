@@ -20,77 +20,55 @@
 tailwind.config={theme:{extend:{colors:{leather:{50:'#fbf7f4',100:'#f5ede6',200:'#eddcd0',300:'#dec2b0',400:'#cba08a',500:'#b88267',600:'#a36b51',700:'#875340',800:'#6d4335',900:'#57382d',950:'#301c16'}},fontFamily:{serif:['Playfair Display','serif'],cinzel:['Cinzel','serif'],sans:['Plus Jakarta Sans','sans-serif']}}}}
 </script>
 <style>
-:root{
---page:#FAF7F2; --card:#ffffff; --ink:#1c1917; --muted:#78716c;
---dark:#1a120e; --dark2:#301c16; --header:#FAF7F2F2;
---accent:#c47a1a; --accent-hover:#9a5e12; --on-accent:#FFFBEB;
---gold:#f59e0b; --line:#e9ddd0; --hero-text:#f5ede6; --soft:#fdf6ec;
-}
-*{ -webkit-tap-highlight-color:transparent; }
+:root{--page:#FAF7F2; --card:#ffffff; --ink:#1c1917; --muted:#78716c;--dark:#1a120e; --dark2:#301c16; --header:#FAF7F2F2;--accent:#c47a1a; --accent-hover:#9a5e12; --on-accent:#FFFBEB;--gold:#f59e0b; --line:#e9ddd0; --hero-text:#f5ede6; --soft:#fdf6ec;}
+*{-webkit-tap-highlight-color:transparent}
 [x-cloak]{display:none!important}
 html{scroll-behavior:smooth}
-body{background:var(--page); transition:background .5s ease;}
-.header-themed{background:var(--header); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);}
-.hero-themed{background:radial-gradient(900px 500px at 85% 10%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 60%),radial-gradient(700px 500px at 10% 90%, color-mix(in srgb, var(--gold) 18%, transparent), transparent 60%),linear-gradient(135deg,var(--dark) 0%,var(--dark2) 100%); transition:background .5s ease;}
-.dark-section{background:linear-gradient(180deg,var(--dark) 0%,var(--dark2) 100%); transition:background .5s ease;}
-.leather-pattern{background-color:transparent;background-image:radial-gradient(rgba(255,255,255,.08) .8px, transparent .8px),radial-gradient(rgba(255,255,255,.06) .8px, transparent .8px);background-size:28px 28px;background-position:0 0,14px 14px;}
-.card-themed{background:var(--card); border-color:var(--line)!important; transition:background .4s,border-color .4s,transform .3s,box-shadow .3s;}
-.btn-primary{background:var(--accent); color:var(--on-accent); transition:all .25s ease; box-shadow:0 8px 20px -8px var(--accent);}
-.btn-primary:hover{background:var(--accent-hover); transform:translateY(-1px); box-shadow:0 14px 26px -10px var(--accent);}
-.btn-dark{background:var(--dark); color:#fff;}
-.text-accent{color:var(--accent)!important}
-.bg-accent{background:var(--accent)!important; color:var(--on-accent)!important;}
-.bg-accent-soft{background:color-mix(in srgb, var(--accent) 10%, white);}
-.border-accent{border-color:var(--accent)!important}
-.stitched{position:relative}
-.stitched:after{content:''; position:absolute; inset:8px; border:1.5px dashed color-mix(in srgb, var(--accent) 55%, white); border-radius:14px; pointer-events:none;}
-.gold-shimmer{background:linear-gradient(90deg,var(--accent) 0%,#fef3c7 50%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:shine 4s linear infinite;}
-@keyframes shine{to{background-position:200% center}}
-.product-card{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;}
-.product-card:hover{transform:translateY(-6px); box-shadow:0 24px 48px -18px rgba(0,0,0,.25);}
-.img-zoom img{transition:transform .7s ease}
-.img-zoom:hover img{transform:scale(1.07)}
-.reveal{opacity:0; transform:translateY(26px); transition:all .8s cubic-bezier(.2,.8,.2,1);}
-.reveal.visible{opacity:1; transform:none;}
-.float-slow{animation:floaty 6s ease-in-out infinite}
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.wa-pulse{position:relative}
-.wa-pulse:before{content:''; position:absolute; inset:-4px; border-radius:9999px; border:2px solid #22c55e; opacity:.6; animation:pulseRing 2s ease-out infinite;}
-@keyframes pulseRing{0%{transform:scale(.9); opacity:.7}100%{transform:scale(1.25); opacity:0}}
-.tab-active{background:var(--dark)!important; color:#fff!important; border-color:var(--dark)!important;}
-.theme-card{transition:all .25s ease}
-.theme-card.active{outline:2px solid var(--accent); outline-offset:2px; box-shadow:0 12px 30px -12px rgba(0,0,0,.25);}
-.theme-card:hover{transform:translateY(-3px)}
-::-webkit-scrollbar{width:10px;height:10px}
-::-webkit-scrollbar-track{background:var(--page)}
-::-webkit-scrollbar-thumb{background:color-mix(in srgb, var(--accent) 60%, #000); border-radius:99px; border:2px solid var(--page)}
+body{background:var(--page);transition:background .5s ease}
+.header-themed{background:var(--header);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.hero-themed{background:radial-gradient(900px 500px at 85% 10%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 60%),radial-gradient(700px 500px at 10% 90%, color-mix(in srgb, var(--gold) 18%, transparent), transparent 60%),linear-gradient(135deg,var(--dark) 0%,var(--dark2) 100%);transition:background .5s ease}
+.dark-section{background:linear-gradient(180deg,var(--dark) 0%,var(--dark2) 100%);transition:background .5s ease}
+.leather-pattern{background-color:transparent;background-image:radial-gradient(rgba(255,255,255,.08) .8px, transparent .8px),radial-gradient(rgba(255,255,255,.06) .8px, transparent .8px);background-size:28px 28px;background-position:0 0,14px 14px}
+.card-themed{background:var(--card);border-color:var(--line)!important;transition:background .4s,border-color .4s,transform .3s,box-shadow .3s}
+.btn-primary{background:var(--accent);color:var(--on-accent);transition:all .25s ease;box-shadow:0 8px 20px -8px var(--accent)}
+.btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:0 14px 26px -10px var(--accent)}
+.text-accent{color:var(--accent)!important}.bg-accent{background:var(--accent)!important;color:var(--on-accent)!important}
+.stitched{position:relative}.stitched:after{content:'';position:absolute;inset:8px;border:1.5px dashed color-mix(in srgb, var(--accent) 55%, white);border-radius:14px;pointer-events:none}
+.product-card{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px -18px rgba(0,0,0,.25)}
+.img-zoom img{transition:transform .7s ease}.img-zoom:hover img{transform:scale(1.07)}
+[data-reveal]{opacity:0;transform:translateY(26px);transition:all .8s cubic-bezier(.2,.8,.2,1)}
+[data-reveal].visible{opacity:1;transform:none}
+.reveal.visible{opacity:1;transform:none}.reveal{opacity:0;transform:translateY(26px);transition:all .8s cubic-bezier(.2,.8,.2,1)}
+.float-slow{animation:floaty 6s ease-in-out infinite}@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.wa-pulse{position:relative}.wa-pulse:before{content:'';position:absolute;inset:-4px;border-radius:9999px;border:2px solid #22c55e;opacity:.6;animation:pulseRing 2s ease-out infinite}
+@keyframes pulseRing{0%{transform:scale(.9);opacity:.7}100%{transform:scale(1.25);opacity:0}}
+.tab-active{background:var(--dark)!important;color:#fff!important;border-color:var(--dark)!important}
+.theme-card{transition:all .25s ease}.theme-card.active{outline:2px solid var(--accent);outline-offset:2px;box-shadow:0 12px 30px -12px rgba(0,0,0,.25)}.theme-card:hover{transform:translateY(-3px)}
+::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-track{background:var(--page)}::-webkit-scrollbar-thumb{background:color-mix(in srgb, var(--accent) 60%, #000);border-radius:99px;border:2px solid var(--page)}
 .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-input,select,textarea{outline:none}
-input:focus,select:focus,textarea:focus{border-color:var(--accent)!important; box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);}
-.badge-new{background:var(--accent); color:var(--on-accent);}
-.divider-gold{height:2px; width:64px; background:linear-gradient(90deg,var(--accent),var(--gold)); border-radius:99px;}
+input,select,textarea{outline:none}input:focus,select:focus,textarea:focus{border-color:var(--accent)!important;box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent)}
+.badge-new{background:var(--accent);color:var(--on-accent)}
+.divider-gold{height:2px;width:64px;background:linear-gradient(90deg,var(--accent),var(--gold));border-radius:99px}
 .check-dot{width:26px;height:26px;border-radius:99px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
 select option{color:#111}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.marquee-track{animation:marquee 22s linear infinite}
 @media(max-width:640px){.stitched:after{inset:6px}}
 </style>
 </head>
-<body x-data="artisanApp()" x-init="initApp()" @keydown.escape.window="quickViewModal=false; productEditModalOpen=false; deleteCat.open=false" class="text-stone-800 font-sans antialiased selection:bg-amber-700 selection:text-white" x-cloak>
+<body x-data="artisanApp()" x-init="initApp()" @keydown.escape.window="quickViewModal=false; productEditModalOpen=false; deleteCat.open=false; adminModalOpen=false" class="text-stone-800 font-sans antialiased selection:bg-amber-700 selection:text-white" x-cloak>
 
 <!-- TOP BAR -->
 <div class="text-[11px] sm:text-xs py-2 px-4 border-b" :style="`background:${themeVars.dark}; color:${themeVars.heroText}; border-color: color-mix(in srgb, ${themeVars.accent} 20%, transparent)`">
 <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-<div class="flex items-center gap-2">
-<span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-<span x-text="store.settings.topBarText"></span>
-</div>
+<div class="flex items-center gap-2"><span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span><span x-text="store.settings.topBarText"></span></div>
 <div class="flex items-center gap-3">
 <span class="hidden md:inline-flex items-center gap-1 opacity-80"><i class="fa-solid fa-palette text-[10px]"></i><span x-text="currentThemeName()"></span></span>
 <a :href="'tel:'+store.settings.phone" class="hover:opacity-80 transition flex items-center gap-1.5 font-medium"><i class="fa-solid fa-phone text-[10px]"></i><span x-text="store.settings.phoneDisplay"></span></a>
 <span class="opacity-30">•</span>
 <button @click="openAdminModal()" class="font-semibold flex items-center gap-1 transition hover:opacity-80" :style="`color:${themeVars.gold}`"><i class="fa-solid fa-sliders text-[11px]"></i><span>Mode Gestionnaire</span></button>
-</div>
-</div>
-</div>
+</div></div></div>
 
 <!-- HEADER -->
 <header class="sticky top-0 z-40 header-themed border-b shadow-sm" :style="`border-color:${themeVars.line}`">
@@ -113,10 +91,8 @@ select option{color:#111}
 <button @click="openAdminModal(); adminTab='themes'" title="Changer de thème" class="hidden sm:flex w-10 h-10 rounded-full border items-center justify-center hover:scale-105 transition bg-white" :style="`border-color:${themeVars.line}; color:${themeVars.accent}`"><i class="fa-solid fa-palette"></i></button>
 <a :href="getWhatsAppGeneralLink()" target="_blank" class="hidden sm:inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2.5 rounded-full text-xs font-semibold shadow-sm transition"><i class="fa-brands fa-whatsapp text-base"></i><span>Commander direct</span></a>
 <button @click="mobileMenuOpen=!mobileMenuOpen" class="md:hidden p-2 focus:outline-none" :style="`color:${themeVars.dark}`"><i :class="mobileMenuOpen?'fa-solid fa-xmark':'fa-solid fa-bars'" class="text-xl"></i></button>
-</div>
-</div>
-</div>
-<div x-show="mobileMenuOpen" @click.away="mobileMenuOpen=false" class="md:hidden bg-white border-t px-4 pt-3 pb-6 space-y-1" :style="`border-color:${themeVars.line}`">
+</div></div></div>
+<div x-show="mobileMenuOpen" class="md:hidden bg-white border-t px-4 pt-3 pb-6 space-y-1" :style="`border-color:${themeVars.line}`">
 <a href="#catalogue" @click="mobileMenuOpen=false" class="block py-3 font-medium border-b border-stone-100">Collection</a>
 <a href="#sur-mesure" @click="mobileMenuOpen=false" class="block py-3 font-medium border-b border-stone-100">Sur-Mesure</a>
 <a href="#savoir-faire" @click="mobileMenuOpen=false" class="block py-3 font-medium border-b border-stone-100">Savoir-Faire</a>
@@ -125,8 +101,7 @@ select option{color:#111}
 <div class="pt-3 flex flex-col gap-2">
 <a :href="getWhatsAppGeneralLink()" target="_blank" class="w-full flex justify-center items-center gap-2 bg-emerald-700 text-white py-3 rounded-xl font-semibold text-sm"><i class="fa-brands fa-whatsapp text-lg"></i><span>Discuter sur WhatsApp</span></a>
 <button @click="openAdminModal(); mobileMenuOpen=false;" class="w-full text-center py-2.5 text-xs font-medium rounded-lg border" :style="`color:${themeVars.accent}; background:color-mix(in srgb, ${themeVars.accent} 8%, white); border-color:color-mix(in srgb, ${themeVars.accent} 25%, white)`"><i class="fa-solid fa-pen-to-square mr-1"></i> Modifier le site (Admin)</button>
-</div>
-</div>
+</div></div>
 </header>
 
 <!-- HERO -->
@@ -146,12 +121,9 @@ select option{color:#111}
 <template x-for="(tp,idx) in store.trustPoints" :key="idx"><div class="flex items-center gap-2"><i :class="tp.icon" class="text-base" :style="`color:${themeVars.gold}`"></i><span x-text="tp.text"></span></div></template>
 </div>
 <div class="flex items-center gap-3 pt-2 text-[11px] opacity-80">
-<div class="flex -space-x-2">
-<img src="https://i.pravatar.cc/64?img=12" class="w-7 h-7 rounded-full border-2 border-white/30 object-cover"><img src="https://i.pravatar.cc/64?img=32" class="w-7 h-7 rounded-full border-2 border-white/30 object-cover"><img src="https://i.pravatar.cc/64?img=56" class="w-7 h-7 rounded-full border-2 border-white/30 object-cover">
-</div>
+<div class="flex -space-x-2"><img src="https://i.pravatar.cc/64?img=12" class="w-7 h-7 rounded-full border-2 border-white/30 object-cover" alt="client"><img src="https://i.pravatar.cc/64?img=32" class="w-7 h-7 rounded-full border-2 border-white/30 object-cover" alt="client"><img src="https://i.pravatar.cc/64?img=56" class="w-7 h-7 rounded-full border-2 border-white/30 object-cover" alt="client"></div>
 <span><strong class="text-white">+480 clients satisfaits</strong> • Note 4.9/5 vérifiée</span>
-</div>
-</div>
+</div></div>
 <div class="lg:col-span-5 relative reveal visible">
 <div class="float-slow absolute -top-4 -left-4 z-20 text-white text-xs font-bold px-3 py-2 rounded-full shadow-lg flex items-center gap-2" :style="`background:${themeVars.accent}`"><i class="fa-solid fa-fire"></i> Fait main • <span x-text="store.settings.currency"></span></div>
 <div class="relative mx-auto max-w-md backdrop-blur-md p-4 rounded-2xl border shadow-2xl stitched" :style="`background:color-mix(in srgb, ${themeVars.dark} 75%, transparent); border-color:color-mix(in srgb, ${themeVars.accent} 30%, transparent)`">
@@ -163,22 +135,12 @@ select option{color:#111}
 <span class="text-[11px] font-semibold uppercase tracking-wider" :style="`color:${themeVars.gold}`">Pièce Maîtresse</span>
 <h3 class="font-serif text-xl font-bold leading-tight" x-text="store.settings.heroProductTitle"></h3>
 <p class="text-xs opacity-80 mt-0.5" x-text="store.settings.heroProductSubtitle"></p>
-<div class="flex gap-2 mt-3">
-<a href="#catalogue" class="text-[11px] font-bold px-3 py-2 rounded-lg btn-primary">Voir la collection</a>
-<a :href="getWhatsAppGeneralLink()" target="_blank" class="text-[11px] font-bold px-3 py-2 rounded-lg bg-white/15 border border-white/25 backdrop-blur hover:bg-white/25 transition"><i class="fa-brands fa-whatsapp mr-1"></i>Commander</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- marquee -->
+<div class="flex gap-2 mt-3"><a href="#catalogue" class="text-[11px] font-bold px-3 py-2 rounded-lg btn-primary">Voir la collection</a><a :href="getWhatsAppGeneralLink()" target="_blank" class="text-[11px] font-bold px-3 py-2 rounded-lg bg-white/15 border border-white/25 backdrop-blur hover:bg-white/25 transition"><i class="fa-brands fa-whatsapp mr-1"></i>Commander</a></div>
+</div></div></div></div></div>
 <div class="relative z-10 border-t border-white/10 bg-black/25 backdrop-blur py-3 overflow-hidden">
-<div class="flex whitespace-nowrap gap-8 text-[11px] tracking-[0.2em] uppercase opacity-70 animate-[marquee_22s_linear_infinite]" style="animation:marquee 22s linear infinite">
-<template x-for="i in 2" :key="i"><div class="flex gap-8 shrink-0"><span>Cuir pleine fleur</span><span>•</span><span>Cousu main point sellier</span><span>•</span><span>Tannage végétal</span><span>•</span><span>Gravure personnalisée</span><span>•</span><span>Expédition soignée</span><span>•</span></div></template>
-</div>
-<style>@keyframes marquee{to{transform:translateX(-50%)}}</style>
-</div>
+<div class="flex whitespace-nowrap gap-8 text-[11px] tracking-[0.2em] uppercase opacity-70 marquee-track" style="width:max-content">
+<template x-for="i in 2" :key="i"><div class="flex gap-8 shrink-0 pr-8"><span>Cuir pleine fleur</span><span>•</span><span>Cousu main point sellier</span><span>•</span><span>Tannage végétal</span><span>•</span><span>Gravure personnalisée</span><span>•</span><span>Expédition soignée</span><span>•</span></div></template>
+</div></div>
 </section>
 
 <!-- ADMIN HINT -->
@@ -188,37 +150,22 @@ select option{color:#111}
 <div class="flex gap-2 shrink-0">
 <button @click="openAdminModal(); adminTab='themes'" class="font-bold px-3 py-1.5 rounded-lg text-white text-[11px]" :style="`background:${themeVars.dark}`"><i class="fa-solid fa-palette mr-1"></i> 8 Thèmes</button>
 <button @click="openAdminModal()" class="underline font-bold whitespace-nowrap" :style="`color:${themeVars.accent}`">Ouvrir la modification</button>
-</div>
-</div>
-</div>
+</div></div></div>
 
 <!-- CATALOGUE -->
 <section id="catalogue" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 scroll-mt-24">
 <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8" data-reveal>
-<div>
-<span class="text-xs font-bold tracking-widest uppercase" :style="`color:${themeVars.accent}`" x-text="store.settings.catalogueBadge"></span>
+<div><span class="text-xs font-bold tracking-widest uppercase" :style="`color:${themeVars.accent}`" x-text="store.settings.catalogueBadge"></span>
 <h2 class="text-3xl sm:text-4xl font-serif font-bold mt-1" :style="`color:${themeVars.dark}`" x-text="store.settings.catalogueTitle"></h2>
-<p class="text-stone-600 text-sm mt-1" x-text="store.settings.catalogueSubtitle"></p>
-</div>
+<p class="text-stone-600 text-sm mt-1" x-text="store.settings.catalogueSubtitle"></p></div>
 <div class="flex flex-col sm:flex-row gap-2 sm:items-center">
-<div class="relative">
-<i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-xs"></i>
-<input x-model="searchQuery" placeholder="Rechercher un article..." class="pl-9 pr-4 py-2.5 rounded-xl text-xs border bg-white w-full sm:w-56" :style="`border-color:${themeVars.line}`">
-</div>
-<select x-model="sortBy" class="px-3 py-2.5 rounded-xl text-xs border bg-white font-semibold" :style="`border-color:${themeVars.line}`">
-<option value="featured">Tri : Vedettes</option>
-<option value="price-asc">Prix croissant</option>
-<option value="price-desc">Prix décroissant</option>
-<option value="name">Alphabétique</option>
-</select>
-</div>
-</div>
+<div class="relative"><i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-xs"></i><input x-model="searchQuery" placeholder="Rechercher un article..." class="pl-9 pr-4 py-2.5 rounded-xl text-xs border bg-white w-full sm:w-56" :style="`border-color:${themeVars.line}`"></div>
+<select x-model="sortBy" class="px-3 py-2.5 rounded-xl text-xs border bg-white font-semibold" :style="`border-color:${themeVars.line}`"><option value="featured">Tri : Vedettes</option><option value="price-asc">Prix croissant</option><option value="price-desc">Prix décroissant</option><option value="name">Alphabétique</option></select>
+</div></div>
 
 <div class="flex flex-wrap gap-2 mb-8" data-reveal>
 <button @click="selectedCategory='all'" :class="selectedCategory==='all' ? 'tab-active' : 'bg-white text-stone-700 hover:bg-stone-100'" class="px-4 py-2 rounded-xl text-xs font-semibold transition border shadow-sm" :style="selectedCategory!=='all' ? `border-color:${themeVars.line}` : ''">Tous (<span x-text="store.products.length"></span>)</button>
-<template x-for="cat in visibleCategories" :key="cat">
-<button @click="selectedCategory=cat" :class="selectedCategory===cat ? 'tab-active' : 'bg-white text-stone-700 hover:bg-stone-100'" class="px-4 py-2 rounded-xl text-xs font-semibold transition border shadow-sm capitalize flex items-center gap-1.5" :style="selectedCategory!==cat ? `border-color:${themeVars.line}` : ''"><span x-text="cat"></span><span class="text-[10px] opacity-60" x-text="'('+countProductsInCategory(cat)+')'"></span></button>
-</template>
+<template x-for="cat in visibleCategories" :key="cat"><button @click="selectedCategory=cat" :class="selectedCategory===cat ? 'tab-active' : 'bg-white text-stone-700 hover:bg-stone-100'" class="px-4 py-2 rounded-xl text-xs font-semibold transition border shadow-sm capitalize flex items-center gap-1.5" :style="selectedCategory!==cat ? `border-color:${themeVars.line}` : ''"><span x-text="cat"></span><span class="text-[10px] opacity-60" x-text="'('+countProductsInCategory(cat)+')'"></span></button></template>
 <button @click="openAdminModal(); adminTab='categories'" title="Gérer les catégories" class="px-3 py-2 rounded-xl text-xs font-bold border border-dashed hover:opacity-80 transition" :style="`color:${themeVars.accent}; border-color:${themeVars.accent}`"><i class="fa-solid fa-plus mr-1"></i>Catégorie</button>
 </div>
 
@@ -229,98 +176,54 @@ select option{color:#111}
 <span x-show="product.badge" x-text="product.badge" class="text-[11px] font-bold px-2.5 py-1 rounded-md shadow uppercase tracking-wide badge-new"></span>
 <span x-show="product.oldPrice" class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-md shadow">- <span x-text="discountPct(product)"></span>%</span>
 </div>
-<button @click="editSingleProduct(product)" title="Modifier ce produit" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/90 backdrop-blur text-stone-700 hover:text-white shadow flex items-center justify-center transition" :style="'--h:'+themeVars.accent" onmouseover="this.style.background=this.style.getPropertyValue('--h')" onmouseout="this.style.background='rgba(255,255,255,.9)'"><i class="fa-solid fa-pen text-xs"></i></button>
+<button @click="editSingleProduct(product)" title="Modifier ce produit" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/90 backdrop-blur text-stone-700 shadow flex items-center justify-center transition hover:text-white hover:scale-110" @mouseover="$el.style.background=themeVars.accent" @mouseout="$el.style.background='rgba(255,255,255,.9)'"><i class="fa-solid fa-pen text-xs"></i></button>
 <div class="aspect-square bg-stone-100 overflow-hidden relative img-zoom cursor-pointer" @click="openQuickView(product)">
 <img :src="product.image" :alt="product.name" loading="lazy" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80'">
 <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition"></div>
-<div class="absolute bottom-3 left-3 right-3 flex justify-between items-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition duration-300">
-<span class="bg-white/95 backdrop-blur text-[11px] font-bold px-3 py-1.5 rounded-full"><i class="fa-solid fa-eye mr-1"></i>Aperçu rapide</span>
-<span class="bg-emerald-600 text-white text-[11px] font-bold px-3 py-1.5 rounded-full"><i class="fa-brands fa-whatsapp"></i></span>
-</div>
+<div class="absolute bottom-3 left-3 right-3 flex justify-between items-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition duration-300"><span class="bg-white/95 backdrop-blur text-[11px] font-bold px-3 py-1.5 rounded-full"><i class="fa-solid fa-eye mr-1"></i>Aperçu rapide</span><span class="bg-emerald-600 text-white text-[11px] font-bold px-3 py-1.5 rounded-full"><i class="fa-brands fa-whatsapp"></i></span></div>
 </div>
 <div class="p-5">
-<div class="flex justify-between items-start gap-2">
-<div><span class="text-[11px] font-semibold uppercase tracking-wider" :style="`color:${themeVars.accent}`" x-text="product.category"></span><h3 class="font-serif text-[17px] font-bold text-stone-900 mt-0.5 leading-snug" x-text="product.name"></h3></div>
-<div class="text-right shrink-0"><div class="font-bold text-[17px]" :style="`color:${themeVars.dark}`"><span x-text="product.price"></span> <span x-text="store.settings.currency" class="text-[13px]"></span></div><div x-show="product.oldPrice" class="text-[11px] text-stone-400 line-through"><span x-text="product.oldPrice"></span> <span x-text="store.settings.currency"></span></div></div>
-</div>
+<div class="flex justify-between items-start gap-2"><div><span class="text-[11px] font-semibold uppercase tracking-wider" :style="`color:${themeVars.accent}`" x-text="product.category"></span><h3 class="font-serif text-[17px] font-bold text-stone-900 mt-0.5 leading-snug" x-text="product.name"></h3></div>
+<div class="text-right shrink-0"><div class="font-bold text-[17px]" :style="`color:${themeVars.dark}`"><span x-text="product.price"></span> <span x-text="store.settings.currency" class="text-[13px]"></span></div><div x-show="product.oldPrice" class="text-[11px] text-stone-400 line-through"><span x-text="product.oldPrice"></span> <span x-text="store.settings.currency"></span></div></div></div>
 <p class="text-xs text-stone-600 mt-2.5 line-clamp-2 leading-relaxed" x-text="product.description"></p>
-<div class="mt-3 flex flex-wrap gap-1.5">
-<span class="text-[10px] font-medium px-2 py-1 rounded-md border" :style="`background:color-mix(in srgb, ${themeVars.accent} 8%, white); color:${themeVars.dark}; border-color:color-mix(in srgb, ${themeVars.accent} 20%, white)`" x-text="product.leatherType || 'Cuir Vachette'"></span>
-<span class="text-[10px] bg-stone-100 text-stone-700 font-medium px-2 py-1 rounded-md" x-text="product.color || 'Brun Havane'"></span>
+<div class="mt-3 flex flex-wrap gap-1.5"><span class="text-[10px] font-medium px-2 py-1 rounded-md border" :style="`background:color-mix(in srgb, ${themeVars.accent} 8%, white); color:${themeVars.dark}; border-color:color-mix(in srgb, ${themeVars.accent} 20%, white)`" x-text="product.leatherType || 'Cuir Vachette'"></span><span class="text-[10px] bg-stone-100 text-stone-700 font-medium px-2 py-1 rounded-md" x-text="product.color || 'Brun Havane'"></span></div>
 </div>
-</div>
-<div class="px-5 pb-5 pt-0 mt-1 border-t border-stone-100">
-<div class="grid grid-cols-2 gap-2 mt-4">
+<div class="px-5 pb-5 pt-0 mt-1 border-t border-stone-100"><div class="grid grid-cols-2 gap-2 mt-4">
 <button @click="openQuickView(product)" class="w-full py-2.5 px-3 bg-stone-100 hover:bg-stone-200 text-stone-800 rounded-xl text-xs font-semibold transition"><i class="fa-solid fa-eye mr-1"></i>Détails</button>
 <a :href="getWhatsAppProductLink(product)" target="_blank" class="w-full py-2.5 px-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm"><i class="fa-brands fa-whatsapp text-sm"></i><span>Commander</span></a>
-</div>
-</div>
-</div>
-</template>
-</div>
+</div></div></div>
+</template></div>
 
-<div x-show="filteredProducts.length===0" class="text-center py-14 bg-white rounded-2xl border border-dashed border-stone-300 mt-6">
-<i class="fa-solid fa-box-open text-4xl text-stone-300 mb-3"></i>
-<h4 class="font-serif text-lg font-bold text-stone-700">Aucun produit dans cette catégorie</h4>
-<p class="text-xs text-stone-500 mt-1">Ajoutez des articles ou gérez vos catégories via le panneau de gestion.</p>
-<div class="mt-4 flex justify-center gap-2 flex-wrap">
-<button @click="addNewProductModal()" class="text-white text-xs font-semibold px-4 py-2.5 rounded-lg" :style="`background:${themeVars.dark}`">+ Ajouter un produit</button>
-<button @click="openAdminModal(); adminTab='categories'" class="text-xs font-semibold px-4 py-2.5 rounded-lg border" :style="`color:${themeVars.accent}; border-color:${themeVars.accent}`"><i class="fa-solid fa-tags mr-1"></i>Gérer les catégories</button>
-</div>
-</div>
+<div x-show="filteredProducts.length===0" class="text-center py-14 bg-white rounded-2xl border border-dashed border-stone-300 mt-6"><i class="fa-solid fa-box-open text-4xl text-stone-300 mb-3"></i><h4 class="font-serif text-lg font-bold text-stone-700">Aucun produit dans cette catégorie</h4><p class="text-xs text-stone-500 mt-1">Ajoutez des articles ou gérez vos catégories via le panneau de gestion.</p>
+<div class="mt-4 flex justify-center gap-2 flex-wrap"><button @click="addNewProductModal()" class="text-white text-xs font-semibold px-4 py-2.5 rounded-lg" :style="`background:${themeVars.dark}`">+ Ajouter un produit</button><button @click="openAdminModal(); adminTab='categories'" class="text-xs font-semibold px-4 py-2.5 rounded-lg border" :style="`color:${themeVars.accent}; border-color:${themeVars.accent}`"><i class="fa-solid fa-tags mr-1"></i>Gérer les catégories</button></div></div>
 
 <div class="mt-10 rounded-2xl p-6 sm:p-8 text-white flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xl border dark-section relative overflow-hidden">
 <div class="absolute inset-0 leather-pattern opacity-50"></div>
-<div class="relative z-10 text-center lg:text-left">
-<h4 class="font-serif text-xl font-bold" :style="`color:${themeVars.gold}`">Besoin d'ajouter ou modifier produits, catégories & thèmes ?</h4>
-<p class="text-xs sm:text-sm mt-1 max-w-xl opacity-80">Aucun code requis. Photos, tarifs, descriptions, catégories, textes, WhatsApp et 8 thèmes minimalistes depuis l'espace de gestion.</p>
-<div class="flex items-center gap-2 mt-3 justify-center lg:justify-start text-[11px] opacity-70"><i class="fa-solid fa-check text-emerald-400"></i> Sauvegarde auto <span>•</span><i class="fa-solid fa-check text-emerald-400"></i> Prêt à publier <span>•</span><i class="fa-solid fa-check text-emerald-400"></i> WhatsApp intégré</div>
-</div>
+<div class="relative z-10 text-center lg:text-left"><h4 class="font-serif text-xl font-bold" :style="`color:${themeVars.gold}`">Besoin d'ajouter ou modifier produits, catégories & thèmes ?</h4><p class="text-xs sm:text-sm mt-1 max-w-xl opacity-80">Aucun code requis. Photos, tarifs, descriptions, catégories, textes, WhatsApp et 8 thèmes minimalistes depuis l'espace de gestion.</p>
+<div class="flex items-center gap-2 mt-3 justify-center lg:justify-start text-[11px] opacity-70"><i class="fa-solid fa-check text-emerald-400"></i> Sauvegarde auto <span>•</span><i class="fa-solid fa-check text-emerald-400"></i> Prêt à publier <span>•</span><i class="fa-solid fa-check text-emerald-400"></i> WhatsApp intégré</div></div>
 <div class="relative z-10 flex flex-wrap gap-2.5 justify-center">
 <button @click="addNewProductModal()" class="btn-primary font-bold text-xs sm:text-sm px-5 py-3 rounded-xl whitespace-nowrap">+ Ajouter un article</button>
 <button @click="openAdminModal(); adminTab='categories'" class="bg-white/10 hover:bg-white/15 text-white border border-white/20 font-semibold text-xs sm:text-sm px-4 py-3 rounded-xl whitespace-nowrap"><i class="fa-solid fa-tags mr-1"></i>Catégories</button>
 <button @click="openAdminModal(); adminTab='themes'" class="bg-white/10 hover:bg-white/15 text-white border border-white/20 font-semibold text-xs sm:text-sm px-4 py-3 rounded-xl whitespace-nowrap"><i class="fa-solid fa-palette mr-1"></i>8 Thèmes</button>
-</div>
-</div>
+</div></div>
 </section>
-<!-- SECTION CATALOGUE PRODUITS -->
-<section class="py-16 bg-gray-50">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nos Créations</h2>
-      <p class="text-gray-600">Découvrez nos produits artisanaux</p>
-    </div>
-    
-    <!-- C'est ici que tes produits vont s'injecter -->
-    <div id="products-container" class="flex flex-wrap justify-center gap-6"></div>
-  </div>
-</section>
+
 <!-- SAVOIR FAIRE -->
 <section id="savoir-faire" class="dark-section text-white py-20 border-y scroll-mt-24 relative overflow-hidden" :style="`border-color:color-mix(in srgb, ${themeVars.accent} 25%, transparent)`">
 <div class="absolute inset-0 leather-pattern"></div>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-<div class="text-center max-w-2xl mx-auto mb-14" data-reveal>
-<span class="text-xs font-bold uppercase tracking-widest" :style="`color:${themeVars.gold}`" x-text="store.settings.savoirBadge"></span>
-<h2 class="text-3xl sm:text-4xl font-serif font-bold mt-2" x-text="store.settings.savoirTitle"></h2>
-<div class="divider-gold mx-auto mt-4"></div>
-<p class="text-sm mt-4 opacity-80" x-text="store.settings.savoirSubtitle"></p>
-</div>
+<div class="text-center max-w-2xl mx-auto mb-14" data-reveal><span class="text-xs font-bold uppercase tracking-widest" :style="`color:${themeVars.gold}`" x-text="store.settings.savoirBadge"></span><h2 class="text-3xl sm:text-4xl font-serif font-bold mt-2" x-text="store.settings.savoirTitle"></h2><div class="divider-gold mx-auto mt-4"></div><p class="text-sm mt-4 opacity-80" x-text="store.settings.savoirSubtitle"></p></div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<template x-for="(f,idx) in store.features" :key="idx">
-<div class="p-8 rounded-2xl border hover:-translate-y-1 transition duration-300 bg-white/[0.04] backdrop-blur" :style="`border-color:color-mix(in srgb, ${themeVars.accent} 20%, transparent)`" data-reveal>
+<template x-for="(f,idx) in store.features" :key="idx"><div class="p-8 rounded-2xl border hover:-translate-y-1 transition duration-300 bg-white/[0.04] backdrop-blur" :style="`border-color:color-mix(in srgb, ${themeVars.accent} 20%, transparent)`" data-reveal>
 <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto text-2xl mb-6 border" :style="`background:color-mix(in srgb, ${themeVars.accent} 12%, transparent); color:${themeVars.gold}; border-color:color-mix(in srgb, ${themeVars.accent} 25%, transparent)`"><i :class="f.icon"></i></div>
-<h3 class="font-serif text-lg font-bold mb-2 text-center" x-text="f.title"></h3>
-<p class="text-xs leading-relaxed text-center opacity-75" x-text="f.text"></p>
-</div>
-</template>
+<h3 class="font-serif text-lg font-bold mb-2 text-center" x-text="f.title"></h3><p class="text-xs leading-relaxed text-center opacity-75" x-text="f.text"></p></div></template>
 </div>
 <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
 <div class="rounded-xl border border-white/10 bg-white/5 py-5"><div class="font-cinzel text-2xl font-bold" :style="`color:${themeVars.gold}`">100%</div><div class="text-[11px] opacity-70 mt-1">Cuir véritable</div></div>
 <div class="rounded-xl border border-white/10 bg-white/5 py-5"><div class="font-cinzel text-2xl font-bold" :style="`color:${themeVars.gold}`">480+</div><div class="text-[11px] opacity-70 mt-1">Clients conquis</div></div>
 <div class="rounded-xl border border-white/10 bg-white/5 py-5"><div class="font-cinzel text-2xl font-bold" :style="`color:${themeVars.gold}`">12h</div><div class="text-[11px] opacity-70 mt-1">De travail / pièce</div></div>
 <div class="rounded-xl border border-white/10 bg-white/5 py-5"><div class="font-cinzel text-2xl font-bold" :style="`color:${themeVars.gold}`">7j/7</div><div class="text-[11px] opacity-70 mt-1">Support WhatsApp</div></div>
-</div>
-</div>
+</div></div>
 </section>
 
 <!-- SUR MESURE -->
@@ -328,19 +231,13 @@ select option{color:#111}
 <div class="bg-white rounded-3xl border shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12" :style="`border-color:${themeVars.line}`" data-reveal>
 <div class="lg:col-span-5 text-white p-8 sm:p-10 dark-section relative flex flex-col justify-between overflow-hidden">
 <div class="absolute inset-0 leather-pattern"></div>
-<div class="relative z-10">
-<span class="text-xs font-bold tracking-wider uppercase" :style="`color:${themeVars.gold}`" x-text="store.settings.surmesureBadge"></span>
+<div class="relative z-10"><span class="text-xs font-bold tracking-wider uppercase" :style="`color:${themeVars.gold}`" x-text="store.settings.surmesureBadge"></span>
 <h3 class="text-3xl font-serif font-bold mt-2" x-text="store.settings.surmesureTitle"></h3>
 <p class="text-sm mt-4 leading-relaxed opacity-80" x-text="store.settings.surmesureDescription"></p>
-<div class="space-y-3 mt-7 text-[13px]">
-<template x-for="(item,idx) in store.settings.surmesureChecklist" :key="idx"><div class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-300 flex items-center justify-center text-[11px] shrink-0"><i class="fa-solid fa-check"></i></span><span x-text="item" class="opacity-90"></span></div></template>
-</div>
-</div>
+<div class="space-y-3 mt-7 text-[13px]"><template x-for="(item,idx) in store.settings.surmesureChecklist" :key="idx"><div class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-300 flex items-center justify-center text-[11px] shrink-0"><i class="fa-solid fa-check"></i></span><span x-text="item" class="opacity-90"></span></div></template></div></div>
 <div class="relative z-10 pt-8 mt-8 border-t border-white/15 flex items-center gap-4">
 <div class="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-300 shrink-0 wa-pulse"><i class="fa-brands fa-whatsapp text-2xl"></i></div>
-<div><div class="text-[11px] opacity-60">Réponse rapide sur WhatsApp</div><div class="font-bold text-[15px]" x-text="store.settings.phoneDisplay"></div><div class="text-[11px] text-emerald-300 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>En ligne — répond en ~5 min</div></div>
-</div>
-</div>
+<div><div class="text-[11px] opacity-60">Réponse rapide sur WhatsApp</div><div class="font-bold text-[15px]" x-text="store.settings.phoneDisplay"></div><div class="text-[11px] text-emerald-300 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>En ligne — répond en ~5 min</div></div></div></div>
 <div class="lg:col-span-7 p-8 sm:p-10">
 <h4 class="font-serif text-2xl font-bold" :style="`color:${themeVars.dark}`">Configurez votre demande rapide</h4>
 <p class="text-stone-500 text-xs mt-1">Le formulaire compose un message WhatsApp clair et prêt à envoyer.</p>
@@ -355,102 +252,49 @@ select option{color:#111}
 <div><label class="block text-xs font-bold text-stone-700 mb-1.5">Ville de livraison</label><input type="text" x-model="customNotes" placeholder="Ex : Casablanca, Paris..." class="w-full bg-stone-50 border rounded-xl px-4 py-3" :style="`border-color:${themeVars.line}`"></div>
 </div>
 <div class="rounded-xl border p-3 text-xs bg-stone-50 flex gap-2" :style="`border-color:${themeVars.line}`"><i class="fa-solid fa-eye mt-0.5" :style="`color:${themeVars.accent}`"></i><div><strong>Aperçu du message :</strong> <span class="text-stone-600" x-text="previewCustomMessage()"></span></div></div>
-<div class="pt-1">
-<a :href="buildCustomWhatsAppUrl(customType,customColor,customName,customEngraving,customNotes)" target="_blank" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-xl"></i><span>Envoyer la demande sur WhatsApp</span></a>
-<p class="text-center text-[11px] text-stone-400 mt-2">Ouvre instantanément WhatsApp avec le message pré-rempli.</p>
-</div>
-</div>
-</div>
-</div>
+<div class="pt-1"><a :href="buildCustomWhatsAppUrl(customType,customColor,customName,customEngraving,customNotes)" target="_blank" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp text-xl"></i><span>Envoyer la demande sur WhatsApp</span></a><p class="text-center text-[11px] text-stone-400 mt-2">Ouvre instantanément WhatsApp avec le message pré-rempli.</p></div>
+</div></div></div>
 </section>
 
 <!-- AVIS -->
 <section id="avis" class="py-16 border-t scroll-mt-24" :style="`background:color-mix(in srgb, ${themeVars.accent} 6%, #f3ece4); border-color:${themeVars.line}`">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center max-w-xl mx-auto mb-10" data-reveal>
-<span class="text-xs font-bold uppercase tracking-widest" :style="`color:${themeVars.accent}`" x-text="store.settings.avisBadge"></span>
-<h2 class="text-3xl font-serif font-bold mt-1" :style="`color:${themeVars.dark}`" x-text="store.settings.avisTitle"></h2>
-<div class="flex justify-center gap-1 mt-3 text-sm" :style="`color:${themeVars.accent}`"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-stone-500 ml-1 font-semibold">4.9/5 — <span x-text="store.testimonials.length*127"></span> avis</span></div>
-</div>
+<div class="text-center max-w-xl mx-auto mb-10" data-reveal><span class="text-xs font-bold uppercase tracking-widest" :style="`color:${themeVars.accent}`" x-text="store.settings.avisBadge"></span><h2 class="text-3xl font-serif font-bold mt-1" :style="`color:${themeVars.dark}`" x-text="store.settings.avisTitle"></h2>
+<div class="flex justify-center gap-1 mt-3 text-sm items-center" :style="`color:${themeVars.accent}`"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span class="text-stone-500 ml-1 font-semibold">4.9/5 — <span x-text="store.testimonials.length*127"></span> avis</span></div></div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-<template x-for="t in store.testimonials" :key="t.id">
-<div class="bg-white p-6 rounded-2xl border shadow-sm hover:shadow-lg hover:-translate-y-1 transition" :style="`border-color:${themeVars.line}`" data-reveal>
-<div class="flex gap-0.5 mb-3"><template x-for="i in 5" :key="i"><i :class="i<=t.rating ? 'fa-solid fa-star' : 'fa-regular fa-star'" :style="i<=t.rating ? `color:${themeVars.accent}` : 'color:#d6d3d1' " class="text-xs"></i></template></div>
+<template x-for="t in store.testimonials" :key="t.id"><div class="bg-white p-6 rounded-2xl border shadow-sm hover:shadow-lg hover:-translate-y-1 transition" :style="`border-color:${themeVars.line}`" data-reveal>
+<div class="flex gap-0.5 mb-3"><template x-for="i in 5" :key="i"><i :class="i<=t.rating ? 'fa-solid fa-star' : 'fa-regular fa-star'" :style="i<=t.rating ? `color:${themeVars.accent}` : 'color:#d6d3d1'" class="text-xs"></i></template></div>
 <p class="text-stone-700 text-[13px] italic leading-relaxed" x-text="'« '+t.text+' »'"></p>
-<div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between">
-<div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" :style="`background:${themeVars.dark}`" x-text="t.name.charAt(0)"></div><div><div class="text-xs font-bold" x-text="t.name"></div><div class="text-[10px] text-stone-400" x-text="t.role"></div></div></div>
-<i class="fa-solid fa-badge-check text-emerald-500"></i>
+<div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between"><div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" :style="`background:${themeVars.dark}`" x-text="t.name.charAt(0)"></div><div><div class="text-xs font-bold" x-text="t.name"></div><div class="text-[10px] text-stone-400" x-text="t.role"></div></div></div><i class="fa-solid fa-badge-check text-emerald-500"></i></div></div></template>
 </div>
-</div>
-</template>
-</div>
-<div class="text-center mt-8">
-<a :href="getWhatsAppGeneralLink()" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold px-5 py-3 rounded-xl border bg-white hover:shadow transition" :style="`border-color:${themeVars.line}; color:${themeVars.dark}`"><i class="fa-brands fa-whatsapp text-emerald-600 text-base"></i> Laissez votre avis sur WhatsApp</a>
-</div>
-</div>
-</section>
+<div class="text-center mt-8"><a :href="getWhatsAppGeneralLink()" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold px-5 py-3 rounded-xl border bg-white hover:shadow transition" :style="`border-color:${themeVars.line}; color:${themeVars.dark}`"><i class="fa-brands fa-whatsapp text-emerald-600 text-base"></i> Laissez votre avis sur WhatsApp</a></div>
+</div></section>
 
 <!-- FOOTER -->
 <footer id="contact" class="text-stone-300 pt-14 pb-8 border-t-2 scroll-mt-24 dark-section" :style="`border-color:color-mix(in srgb, ${themeVars.accent} 35%, transparent)`">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-white/10">
-<div class="space-y-4">
-<div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg p-1.5 border flex items-center justify-center" :style="`background:color-mix(in srgb, ${themeVars.accent} 12%, transparent); border-color:color-mix(in srgb, ${themeVars.accent} 30%, transparent)`"><svg class="w-full h-full" viewBox="0 0 100 100" fill="none"><path d="M30 35 C15 35 15 65 30 65 C45 65 55 35 70 35 C85 35 85 65 70 65 C55 65 45 35 30 35 Z" :stroke="themeVars.gold" stroke-width="8"/><path d="M22 75 L78 25" :stroke="themeVars.gold" stroke-width="5"/></svg></div><span class="font-cinzel text-xl font-bold tracking-wider text-white" x-text="store.settings.brandName"></span></div>
+<div class="space-y-4"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg p-1.5 border flex items-center justify-center" :style="`background:color-mix(in srgb, ${themeVars.accent} 12%, transparent); border-color:color-mix(in srgb, ${themeVars.accent} 30%, transparent)`"><svg class="w-full h-full" viewBox="0 0 100 100" fill="none"><path d="M30 35 C15 35 15 65 30 65 C45 65 55 35 70 35 C85 35 85 65 70 65 C55 65 45 35 30 35 Z" :stroke="themeVars.gold" stroke-width="8"/><path d="M22 75 L78 25" :stroke="themeVars.gold" stroke-width="5"/></svg></div><span class="font-cinzel text-xl font-bold tracking-wider text-white" x-text="store.settings.brandName"></span></div>
 <p class="text-xs leading-relaxed opacity-75" x-text="store.settings.brandDescription"></p>
 <div class="flex gap-2.5 pt-1">
-<a :href="store.settings.instagram" target="_blank" class="w-9 h-9 rounded-full bg-white/10 hover:text-white flex items-center justify-center transition hover:scale-110" :style="'--a:'+themeVars.accent" onmouseover="this.style.background=this.style.getPropertyValue('--a')" onmouseout="this.style.background='rgba(255,255,255,.1)'"><i class="fa-brands fa-instagram text-sm"></i></a>
-<a :href="store.settings.facebook" target="_blank" class="w-9 h-9 rounded-full bg-white/10 hover:text-white flex items-center justify-center transition hover:scale-110" :style="'--a:'+themeVars.accent" onmouseover="this.style.background=this.style.getPropertyValue('--a')" onmouseout="this.style.background='rgba(255,255,255,.1)'"><i class="fa-brands fa-facebook-f text-sm"></i></a>
-<a :href="store.settings.tiktok" target="_blank" class="w-9 h-9 rounded-full bg-white/10 hover:text-white flex items-center justify-center transition hover:scale-110" :style="'--a:'+themeVars.accent" onmouseover="this.style.background=this.style.getPropertyValue('--a')" onmouseout="this.style.background='rgba(255,255,255,.1)'"><i class="fa-brands fa-tiktok text-sm"></i></a>
+<a :href="store.settings.instagram" target="_blank" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center transition hover:scale-110 hover:text-white" @mouseover="$el.style.background=themeVars.accent" @mouseout="$el.style.background='rgba(255,255,255,.1)'"><i class="fa-brands fa-instagram text-sm"></i></a>
+<a :href="store.settings.facebook" target="_blank" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center transition hover:scale-110 hover:text-white" @mouseover="$el.style.background=themeVars.accent" @mouseout="$el.style.background='rgba(255,255,255,.1)'"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+<a :href="store.settings.tiktok" target="_blank" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center transition hover:scale-110 hover:text-white" @mouseover="$el.style.background=themeVars.accent" @mouseout="$el.style.background='rgba(255,255,255,.1)'"><i class="fa-brands fa-tiktok text-sm"></i></a>
 <a :href="getWhatsAppGeneralLink()" target="_blank" class="w-9 h-9 rounded-full bg-emerald-600 text-white flex items-center justify-center transition hover:scale-110"><i class="fa-brands fa-whatsapp text-sm"></i></a>
+</div><div class="inline-flex items-center gap-2 text-[11px] px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Site prêt à publier • v3.0</div></div>
+<div><h5 class="text-white font-serif font-bold text-sm mb-4 uppercase tracking-wider">Navigation</h5><ul class="space-y-2.5 text-[13px]"><li><a href="#catalogue" class="hover:text-white transition">Tous nos produits</a></li><li><a href="#sur-mesure" class="hover:text-white transition">Commande personnalisée</a></li><li><a href="#savoir-faire" class="hover:text-white transition">Notre Savoir-faire</a></li><li><a href="#avis" class="hover:text-white transition">Avis clients</a></li><li><button @click="openAdminModal()" class="font-semibold" :style="`color:${themeVars.gold}`">Panneau de configuration</button></li><li><button @click="openAdminModal(); adminTab='themes'" class="opacity-80 hover:opacity-100"><i class="fa-solid fa-palette mr-1"></i> Changer de thème (<span x-text="currentThemeName()"></span>)</button></li></ul></div>
+<div><h5 class="text-white font-serif font-bold text-sm mb-4 uppercase tracking-wider">Contact & Atelier</h5><ul class="space-y-3 text-[13px]"><li class="flex items-start gap-2.5"><i class="fa-solid fa-location-dot mt-0.5" :style="`color:${themeVars.gold}`"></i><span x-text="store.settings.address"></span></li><li class="flex items-center gap-2.5"><i class="fa-solid fa-phone" :style="`color:${themeVars.gold}`"></i><a :href="'tel:'+store.settings.phone" class="hover:text-white" x-text="store.settings.phoneDisplay"></a></li><li class="flex items-center gap-2.5"><i class="fa-solid fa-envelope" :style="`color:${themeVars.gold}`"></i><a :href="'mailto:'+store.settings.email" class="hover:text-white break-all" x-text="store.settings.email"></a></li><li class="flex items-center gap-2.5"><i class="fa-brands fa-whatsapp text-emerald-400"></i><a :href="getWhatsAppGeneralLink()" target="_blank" class="text-emerald-300 font-semibold hover:underline">Assistance WhatsApp 7j/7</a></li></ul></div>
+<div class="bg-white/5 p-5 rounded-2xl border border-white/10 text-xs space-y-3"><div class="font-bold flex items-center gap-1.5" :style="`color:${themeVars.gold}`"><i class="fa-solid fa-truck-ramp-box"></i><span x-text="store.settings.shippingTitle"></span></div><p class="text-[11px] leading-relaxed opacity-75" x-text="store.settings.shippingText"></p><a :href="getWhatsAppGeneralLink()" target="_blank" class="block text-center py-2.5 rounded-lg font-semibold transition border hover:bg-white/10" :style="`color:${themeVars.gold}; border-color:color-mix(in srgb, ${themeVars.accent} 40%, transparent); background:color-mix(in srgb, ${themeVars.accent} 12%, transparent)`">Contacter l'artisan</a>
+<div class="flex gap-1.5 justify-center pt-1 opacity-80"><template x-for="th in getThemeList().slice(0,8)" :key="th.id"><button @click="selectTheme(th.id)" :title="th.name" class="w-5 h-5 rounded-full border-2 border-white/30 hover:scale-125 transition" :class="currentTheme===th.id ? 'ring-2 ring-white' : ''" :style="`background:linear-gradient(135deg, ${th.preview[0]} 50%, ${th.preview[1]} 50%)`"></button></template></div></div>
 </div>
-<div class="inline-flex items-center gap-2 text-[11px] px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Site prêt à publier • v3.0</div>
-</div>
-<div>
-<h5 class="text-white font-serif font-bold text-sm mb-4 uppercase tracking-wider">Navigation</h5>
-<ul class="space-y-2.5 text-[13px]">
-<li><a href="#catalogue" class="hover:text-white transition">Tous nos produits</a></li>
-<li><a href="#sur-mesure" class="hover:text-white transition">Commande personnalisée</a></li>
-<li><a href="#savoir-faire" class="hover:text-white transition">Notre Savoir-faire</a></li>
-<li><a href="#avis" class="hover:text-white transition">Avis clients</a></li>
-<li><button @click="openAdminModal()" class="font-semibold" :style="`color:${themeVars.gold}`">Panneau de configuration</button></li>
-<li><button @click="openAdminModal(); adminTab='themes'" class="opacity-80 hover:opacity-100"><i class="fa-solid fa-palette mr-1"></i> Changer de thème (<span x-text="currentThemeName()"></span>)</button></li>
-</ul>
-</div>
-<div>
-<h5 class="text-white font-serif font-bold text-sm mb-4 uppercase tracking-wider">Contact & Atelier</h5>
-<ul class="space-y-3 text-[13px]">
-<li class="flex items-start gap-2.5"><i class="fa-solid fa-location-dot mt-0.5" :style="`color:${themeVars.gold}`"></i><span x-text="store.settings.address"></span></li>
-<li class="flex items-center gap-2.5"><i class="fa-solid fa-phone" :style="`color:${themeVars.gold}`"></i><a :href="'tel:'+store.settings.phone" class="hover:text-white" x-text="store.settings.phoneDisplay"></a></li>
-<li class="flex items-center gap-2.5"><i class="fa-solid fa-envelope" :style="`color:${themeVars.gold}`"></i><a :href="'mailto:'+store.settings.email" class="hover:text-white break-all" x-text="store.settings.email"></a></li>
-<li class="flex items-center gap-2.5"><i class="fa-brands fa-whatsapp text-emerald-400"></i><a :href="getWhatsAppGeneralLink()" target="_blank" class="text-emerald-300 font-semibold hover:underline">Assistance WhatsApp 7j/7</a></li>
-</ul>
-</div>
-<div class="bg-white/5 p-5 rounded-2xl border border-white/10 text-xs space-y-3">
-<div class="font-bold flex items-center gap-1.5" :style="`color:${themeVars.gold}`"><i class="fa-solid fa-truck-ramp-box"></i><span x-text="store.settings.shippingTitle"></span></div>
-<p class="text-[11px] leading-relaxed opacity-75" x-text="store.settings.shippingText"></p>
-<a :href="getWhatsAppGeneralLink()" target="_blank" class="block text-center py-2.5 rounded-lg font-semibold transition border hover:bg-white/10" :style="`color:${themeVars.gold}; border-color:color-mix(in srgb, ${themeVars.accent} 40%, transparent); background:color-mix(in srgb, ${themeVars.accent} 12%, transparent)`">Contacter l'artisan</a>
-<div class="flex gap-1.5 justify-center pt-1 opacity-80">
-<template x-for="th in getThemeList().slice(0,8)" :key="th.id"><button @click="selectTheme(th.id)" :title="th.name" class="w-5 h-5 rounded-full border-2 border-white/30 hover:scale-125 transition" :class="currentTheme===th.id ? 'ring-2 ring-white' : ''" :style="`background:linear-gradient(135deg, ${th.preview[0]} 50%, ${th.preview[1]} 50%)`"></button></template>
-</div>
-</div>
-</div>
-<div class="pt-7 flex flex-col sm:flex-row justify-between items-center text-xs gap-4 opacity-80">
-<p>© <span x-text="new Date().getFullYear()"></span> <strong class="text-white" x-text="store.settings.brandName"></strong>. Tous droits réservés. Maroquinerie artisanale.</p>
-<div class="flex items-center gap-3">
-<button @click="openAdminModal()" class="hover:text-white flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/15"><i class="fa-solid fa-gear text-xs"></i><span>Espace Modification</span></button>
-<button @click="resetToFactoryDefaults()" class="opacity-60 hover:opacity-100 text-[10px] underline">Réinitialiser démo</button>
-</div>
-</div>
-</div>
-</footer>
+<div class="pt-7 flex flex-col sm:flex-row justify-between items-center text-xs gap-4 opacity-80"><p>© <span x-text="new Date().getFullYear()"></span> <strong class="text-white" x-text="store.settings.brandName"></strong>. Tous droits réservés. Maroquinerie artisanale.</p>
+<div class="flex items-center gap-3"><button @click="openAdminModal()" class="hover:text-white flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/15"><i class="fa-solid fa-gear text-xs"></i><span>Espace Modification</span></button><button @click="resetToFactoryDefaults()" class="opacity-60 hover:opacity-100 text-[10px] underline">Réinitialiser démo</button></div></div>
+</div></footer>
 
-<!-- FLOATING WHATSAPP -->
+<!-- FLOATING -->
+<div class="fixed bottom-5 left-5 z-40"><button @click="openAdminModal()" title="Espace Modification" class="w-12 h-12 rounded-full shadow-2xl flex items-center justify-center text-white hover:scale-110 transition border border-white/20" :style="`background:${themeVars.dark}`"><i class="fa-solid fa-sliders"></i></button></div>
 <div class="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2">
-<div x-data="{closed:false}" x-show="!closed" class="bg-white text-stone-800 text-xs px-3.5 py-2.5 rounded-2xl shadow-xl border flex items-center gap-2 max-w-[230px]" :style="`border-color:${themeVars.line}`">
-<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
-<span>Une question ? Échangez avec l'artisan !</span>
-<button @click="closed=true" class="text-stone-400 hover:text-stone-700 ml-1"><i class="fa-solid fa-xmark text-[10px]"></i></button>
-</div>
+<div x-data="{closed:false}" x-show="!closed" class="bg-white text-stone-800 text-xs px-3.5 py-2.5 rounded-2xl shadow-xl border flex items-center gap-2 max-w-[230px]" :style="`border-color:${themeVars.line}`"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0"></span><span>Une question ? Échangez avec l'artisan !</span><button @click="closed=true" class="text-stone-400 hover:text-stone-700 ml-1"><i class="fa-solid fa-xmark text-[10px]"></i></button></div>
 <a :href="getWhatsAppGeneralLink()" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition wa-pulse"><i class="fa-brands fa-whatsapp text-[28px]"></i></a>
 </div>
 
@@ -460,101 +304,63 @@ select option{color:#111}
 <button @click="quickViewModal=false" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-stone-100 text-stone-600 hover:bg-stone-200 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
 <template x-if="activeProduct"><div class="grid grid-cols-1 md:grid-cols-2">
 <div class="aspect-square bg-stone-100 relative overflow-hidden"><img :src="activeProduct.image" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80'"><span x-show="activeProduct.badge" x-text="activeProduct.badge" class="absolute top-3 left-3 text-[11px] font-bold px-2.5 py-1 rounded-md shadow uppercase badge-new"></span></div>
-<div class="p-6 sm:p-7 flex flex-col justify-between">
-<div>
+<div class="p-6 sm:p-7 flex flex-col justify-between"><div>
 <span class="text-[11px] font-bold uppercase tracking-wider" :style="`color:${themeVars.accent}`" x-text="activeProduct.category"></span>
 <h3 class="font-serif text-2xl font-bold text-stone-900 mt-1" x-text="activeProduct.name"></h3>
 <div class="text-2xl font-bold mt-2" :style="`color:${themeVars.dark}`"><span x-text="activeProduct.price"></span> <span x-text="store.settings.currency"></span><span x-show="activeProduct.oldPrice" class="text-sm font-normal text-stone-400 line-through ml-2" x-text="activeProduct.oldPrice+' '+store.settings.currency"></span></div>
 <p class="text-[13px] text-stone-600 mt-3 leading-relaxed" x-text="activeProduct.description"></p>
-<div class="mt-4 space-y-1.5 text-xs text-stone-600 bg-stone-50 p-3.5 rounded-xl border border-stone-100">
-<div><strong>Matière :</strong> <span x-text="activeProduct.leatherType"></span></div>
-<div><strong>Teinte :</strong> <span x-text="activeProduct.color"></span></div>
-<div><strong>Confection :</strong> 100% fait main • Point sellier • <span x-text="store.settings.currency"></span> TTC</div>
-</div>
-</div>
-<div class="mt-5 pt-4 border-t border-stone-100 flex flex-col gap-2">
-<a :href="getWhatsAppProductLink(activeProduct)" target="_blank" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 shadow-md"><i class="fa-brands fa-whatsapp text-lg"></i><span>Commander cet article sur WhatsApp</span></a>
-<button @click="editSingleProduct(activeProduct); quickViewModal=false;" class="text-xs text-stone-500 hover:opacity-70 py-1" :style="`color:${themeVars.accent}`"><i class="fa-solid fa-pen mr-1"></i>Modifier la fiche de cet article</button>
-</div>
-</div>
-</div></template>
-</div>
-</div>
+<div class="mt-4 space-y-1.5 text-xs text-stone-600 bg-stone-50 p-3.5 rounded-xl border border-stone-100"><div><strong>Matière :</strong> <span x-text="activeProduct.leatherType"></span></div><div><strong>Teinte :</strong> <span x-text="activeProduct.color"></span></div><div><strong>Confection :</strong> 100% fait main • Point sellier • <span x-text="store.settings.currency"></span> TTC</div></div></div>
+<div class="mt-5 pt-4 border-t border-stone-100 flex flex-col gap-2"><a :href="getWhatsAppProductLink(activeProduct)" target="_blank" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 shadow-md"><i class="fa-brands fa-whatsapp text-lg"></i><span>Commander cet article sur WhatsApp</span></a>
+<button @click="editSingleProduct(activeProduct); quickViewModal=false;" class="text-xs py-1" :style="`color:${themeVars.accent}`"><i class="fa-solid fa-pen mr-1"></i>Modifier la fiche de cet article</button></div>
+</div></div></template>
+</div></div>
 
 <!-- ADMIN PANEL -->
 <div x-show="adminModalOpen" class="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md flex items-start sm:items-center justify-center p-2 sm:p-6" x-cloak>
 <div class="bg-white rounded-3xl max-w-5xl w-full max-h-[92vh] flex flex-col overflow-hidden shadow-2xl border my-4" :style="`border-color:${themeVars.line}`">
 <div class="text-white p-5 px-6 flex justify-between items-center shrink-0" :style="`background:${themeVars.dark}`">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-white shrink-0" :style="`background:${themeVars.accent}`"><i class="fa-solid fa-sliders"></i></div>
-<div><h3 class="font-serif text-base sm:text-lg font-bold">Centre de Gestion — <span x-text="store.settings.brandName"></span></h3><p class="text-[11px] opacity-70">Catégories, produits, thèmes, textes, WhatsApp — sans toucher au code.</p></div>
-</div>
-<button @click="closeAdminModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center shrink-0"><i class="fa-solid fa-xmark"></i></button>
-</div>
+<div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-white shrink-0" :style="`background:${themeVars.accent}`"><i class="fa-solid fa-sliders"></i></div>
+<div><h3 class="font-serif text-base sm:text-lg font-bold">Centre de Gestion — <span x-text="store.settings.brandName"></span></h3><p class="text-[11px] opacity-70">Catégories, produits, thèmes, textes, WhatsApp — sans toucher au code.</p></div></div>
+<button @click="closeAdminModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center shrink-0"><i class="fa-solid fa-xmark"></i></button></div>
 <div class="flex border-b border-stone-200 bg-stone-50 text-xs font-semibold px-4 pt-3 gap-1.5 overflow-x-auto shrink-0">
-<template x-for="tb in adminTabs" :key="tb.id"><button @click="adminTab=tb.id" :class="adminTab===tb.id ? 'bg-white border-b-2' : 'text-stone-500 hover:text-stone-900'" class="px-3.5 py-2.5 rounded-t-lg transition whitespace-nowrap flex items-center gap-1.5" :style="adminTab===tb.id ? `color:${themeVars.dark}; border-color:${themeVars.accent}` : ''"><i :class="tb.icon"></i><span x-text="tb.label"></span><span x-show="tb.count" class="text-[10px] px-1.5 py-0.5 rounded-full bg-stone-200" x-text="tb.count()"></span></button></template>
+<template x-for="tb in adminTabs" :key="tb.id"><button @click="adminTab=tb.id" :class="adminTab===tb.id ? 'bg-white border-b-2' : 'text-stone-500 hover:text-stone-900'" class="px-3.5 py-2.5 rounded-t-lg transition whitespace-nowrap flex items-center gap-1.5" :style="adminTab===tb.id ? `color:${themeVars.dark}; border-color:${themeVars.accent}` : ''"><i :class="tb.icon"></i><span x-text="tb.label"></span><span x-show="tb.id==='categories'" class="text-[10px] px-1.5 py-0.5 rounded-full bg-stone-200" x-text="store.categories.length"></span><span x-show="tb.id==='products'" class="text-[10px] px-1.5 py-0.5 rounded-full bg-stone-200" x-text="store.products.length"></span></button></template>
 </div>
 <div class="p-5 sm:p-6 overflow-y-auto flex-1 space-y-5 text-sm bg-[#fcfaf7]">
 
-<!-- GENERAL -->
 <div x-show="adminTab==='general'" class="space-y-4">
 <div class="rounded-xl border p-3.5 text-xs flex items-center gap-2 bg-emerald-50 border-emerald-200 text-emerald-900"><i class="fa-brands fa-whatsapp text-lg text-emerald-600"></i><span>Le numéro WhatsApp reçoit <strong>automatiquement</strong> toutes les commandes du site (boutons + formulaire sur-mesure).</span></div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div><label class="block text-xs font-bold mb-1">Nom de la marque</label><input x-model="tempSettings.brandName" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div>
-<div><label class="block text-xs font-bold mb-1">Slogan</label><input x-model="tempSettings.brandTagline" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-<div><label class="block text-xs font-bold mb-1">WhatsApp (sans +) *</label><input x-model="tempSettings.phone" placeholder="212612345678" class="w-full border rounded-xl p-2.5 text-xs bg-white font-mono"><span class="text-[10px] text-stone-400">Ex : 212612345678 — <a :href="'https://wa.me/'+tempSettings.phone" target="_blank" class="underline font-semibold" :style="`color:${themeVars.accent}`">tester le lien</a></span></div>
-<div><label class="block text-xs font-bold mb-1">Numéro affiché</label><input x-model="tempSettings.phoneDisplay" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div>
-<div><label class="block text-xs font-bold mb-1">Devise</label><input x-model="tempSettings.currency" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div><label class="block text-xs font-bold mb-1">Email</label><input x-model="tempSettings.email" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div>
-<div><label class="block text-xs font-bold mb-1">Adresse atelier</label><input x-model="tempSettings.address" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div>
-</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><label class="block text-xs font-bold mb-1">Nom de la marque</label><input x-model="tempSettings.brandName" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div><div><label class="block text-xs font-bold mb-1">Slogan</label><input x-model="tempSettings.brandTagline" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div></div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4"><div><label class="block text-xs font-bold mb-1">WhatsApp (sans +) *</label><input x-model="tempSettings.phone" placeholder="212612345678" class="w-full border rounded-xl p-2.5 text-xs bg-white font-mono"><span class="text-[10px] text-stone-400">Ex : 212612345678 — <a :href="'https://wa.me/'+tempSettings.phone" target="_blank" class="underline font-semibold" :style="`color:${themeVars.accent}`">tester le lien</a></span></div><div><label class="block text-xs font-bold mb-1">Numéro affiché</label><input x-model="tempSettings.phoneDisplay" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div><div><label class="block text-xs font-bold mb-1">Devise</label><input x-model="tempSettings.currency" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><label class="block text-xs font-bold mb-1">Email</label><input x-model="tempSettings.email" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div><div><label class="block text-xs font-bold mb-1">Adresse atelier</label><input x-model="tempSettings.address" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div></div>
 <div><label class="block text-xs font-bold mb-1">Texte barre supérieure</label><input x-model="tempSettings.topBarText" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div>
 <div><label class="block text-xs font-bold mb-1">Message WhatsApp général pré-rempli</label><textarea x-model="tempSettings.whatsappGeneralMessage" rows="2" class="w-full border rounded-xl p-2.5 text-xs bg-white"></textarea></div>
 <div><label class="block text-xs font-bold mb-1">Description marque (footer)</label><textarea x-model="tempSettings.brandDescription" rows="2" class="w-full border rounded-xl p-2.5 text-xs bg-white"></textarea></div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-<div><label class="block text-xs font-bold mb-1"><i class="fa-brands fa-instagram mr-1"></i>Instagram</label><input x-model="tempSettings.instagram" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div>
-<div><label class="block text-xs font-bold mb-1"><i class="fa-brands fa-facebook mr-1"></i>Facebook</label><input x-model="tempSettings.facebook" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div>
-<div><label class="block text-xs font-bold mb-1"><i class="fa-brands fa-tiktok mr-1"></i>TikTok</label><input x-model="tempSettings.tiktok" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div>
-</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4"><div><label class="block text-xs font-bold mb-1"><i class="fa-brands fa-instagram mr-1"></i>Instagram</label><input x-model="tempSettings.instagram" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div><div><label class="block text-xs font-bold mb-1"><i class="fa-brands fa-facebook mr-1"></i>Facebook</label><input x-model="tempSettings.facebook" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div><div><label class="block text-xs font-bold mb-1"><i class="fa-brands fa-tiktok mr-1"></i>TikTok</label><input x-model="tempSettings.tiktok" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div></div>
 </div>
 
-<!-- HERO -->
 <div x-show="adminTab==='hero'" class="space-y-4">
 <div><label class="block text-xs font-bold mb-1">Badge hero</label><input x-model="tempSettings.heroBadge" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div>
 <div><label class="block text-xs font-bold mb-1">Grand titre</label><input x-model="tempSettings.heroTitle" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div>
 <div><label class="block text-xs font-bold mb-1">Sous-titre</label><textarea x-model="tempSettings.heroSubtitle" rows="3" class="w-full border rounded-xl p-2.5 text-xs bg-white"></textarea></div>
 <div><label class="block text-xs font-bold mb-1">URL image principale</label><input x-model="tempSettings.heroImage" class="w-full border rounded-xl p-2.5 text-xs bg-white font-mono"><div class="flex gap-2 mt-2 items-center"><img :src="tempSettings.heroImage" class="w-16 h-16 rounded-lg object-cover border" onerror="this.style.opacity=.2"><span class="text-[11px] text-stone-500">Collez un lien Unsplash ou hébergeur direct — ou utilisez le chargeur photo dans la fiche produit.</span></div></div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div><label class="block text-xs font-bold mb-1">Titre pièce maîtresse</label><input x-model="tempSettings.heroProductTitle" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div>
-<div><label class="block text-xs font-bold mb-1">Sous-titre pièce</label><input x-model="tempSettings.heroProductSubtitle" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div>
-</div>
-<div class="pt-3 border-t space-y-2">
-<div class="flex justify-between items-center"><label class="text-xs font-bold">Points de confiance (sous hero)</label><button @click="tempTrustPoints.push({icon:'fa-solid fa-circle-check',text:'Nouvel avantage'})" class="text-[11px] font-bold px-2.5 py-1 rounded-lg" :style="`background:color-mix(in srgb, ${themeVars.accent} 12%, white); color:${themeVars.dark}`">+ Ajouter</button></div>
-<template x-for="(tp,idx) in tempTrustPoints" :key="idx"><div class="flex items-center gap-2 bg-white border rounded-xl p-2"><i :class="tp.icon" class="w-8 text-center" :style="`color:${themeVars.accent}`"></i><input x-model="tp.icon" class="w-40 font-mono text-[11px] border rounded-lg px-2 py-1.5" placeholder="fa-solid fa-gem"><input x-model="tp.text" class="flex-1 text-[11px] border rounded-lg px-2 py-1.5"><button @click="tempTrustPoints.splice(idx,1)" class="text-rose-500 px-1"><i class="fa-solid fa-trash text-[11px]"></i></button></div></template>
-</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><label class="block text-xs font-bold mb-1">Titre pièce maîtresse</label><input x-model="tempSettings.heroProductTitle" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div><div><label class="block text-xs font-bold mb-1">Sous-titre pièce</label><input x-model="tempSettings.heroProductSubtitle" class="w-full border rounded-xl p-2.5 text-xs bg-white"></div></div>
+<div class="pt-3 border-t space-y-2"><div class="flex justify-between items-center"><label class="text-xs font-bold">Points de confiance (sous hero)</label><button @click="tempTrustPoints.push({icon:'fa-solid fa-circle-check',text:'Nouvel avantage'})" class="text-[11px] font-bold px-2.5 py-1 rounded-lg" :style="`background:color-mix(in srgb, ${themeVars.accent} 12%, white); color:${themeVars.dark}`">+ Ajouter</button></div>
+<template x-for="(tp,idx) in tempTrustPoints" :key="idx"><div class="flex items-center gap-2 bg-white border rounded-xl p-2"><i :class="tp.icon" class="w-8 text-center" :style="`color:${themeVars.accent}`"></i><input x-model="tp.icon" class="w-40 font-mono text-[11px] border rounded-lg px-2 py-1.5" placeholder="fa-solid fa-gem"><input x-model="tp.text" class="flex-1 text-[11px] border rounded-lg px-2 py-1.5"><button @click="tempTrustPoints.splice(idx,1)" class="text-rose-500 px-1"><i class="fa-solid fa-trash text-[11px]"></i></button></div></template></div>
 </div>
 
-<!-- INTERFACE -->
 <div x-show="adminTab==='interface'" class="space-y-4">
 <div class="border rounded-2xl p-4 space-y-3 bg-white"><h4 class="font-bold text-xs flex items-center gap-2"><i class="fa-solid fa-store" :style="`color:${themeVars.accent}`"></i> Section Catalogue</h4><div class="grid grid-cols-1 sm:grid-cols-2 gap-3"><div><label class="text-[11px] font-bold">Badge</label><input x-model="tempSettings.catalogueBadge" class="w-full border rounded-xl p-2.5 text-xs"></div><div><label class="text-[11px] font-bold">Titre</label><input x-model="tempSettings.catalogueTitle" class="w-full border rounded-xl p-2.5 text-xs"></div></div><div><label class="text-[11px] font-bold">Sous-titre</label><input x-model="tempSettings.catalogueSubtitle" class="w-full border rounded-xl p-2.5 text-xs"></div></div>
 <div class="border rounded-2xl p-4 space-y-3 bg-white"><h4 class="font-bold text-xs flex items-center gap-2"><i class="fa-solid fa-hands" :style="`color:${themeVars.accent}`"></i> Savoir-Faire + cartes</h4><div class="grid grid-cols-1 sm:grid-cols-2 gap-3"><div><label class="text-[11px] font-bold">Badge</label><input x-model="tempSettings.savoirBadge" class="w-full border rounded-xl p-2.5 text-xs"></div><div><label class="text-[11px] font-bold">Titre</label><input x-model="tempSettings.savoirTitle" class="w-full border rounded-xl p-2.5 text-xs"></div></div><div><label class="text-[11px] font-bold">Sous-titre</label><input x-model="tempSettings.savoirSubtitle" class="w-full border rounded-xl p-2.5 text-xs"></div>
 <div class="flex justify-between items-center pt-1"><label class="text-[11px] font-bold">Cartes savoir-faire</label><button @click="tempFeatures.push({icon:'fa-solid fa-star',title:'Nouveau',text:''})" class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-amber-100 text-amber-800">+ Ajouter</button></div>
-<template x-for="(f,idx) in tempFeatures" :key="idx"><div class="bg-stone-50 border rounded-xl p-2.5 space-y-2"><div class="flex gap-2"><input x-model="f.icon" class="w-36 font-mono text-[11px] border rounded-lg px-2 py-1.5"><input x-model="f.title" class="flex-1 text-[11px] border rounded-lg px-2 py-1.5" placeholder="Titre"><button @click="tempFeatures.splice(idx,1)" class="text-rose-500 px-1"><i class="fa-solid fa-trash text-[11px]"></i></button></div><textarea x-model="f.text" rows="2" class="w-full text-[11px] border rounded-lg px-2 py-1.5" placeholder="Description..."></textarea></div></template>
-</div>
+<template x-for="(f,idx) in tempFeatures" :key="idx"><div class="bg-stone-50 border rounded-xl p-2.5 space-y-2"><div class="flex gap-2"><input x-model="f.icon" class="w-36 font-mono text-[11px] border rounded-lg px-2 py-1.5"><input x-model="f.title" class="flex-1 text-[11px] border rounded-lg px-2 py-1.5" placeholder="Titre"><button @click="tempFeatures.splice(idx,1)" class="text-rose-500 px-1"><i class="fa-solid fa-trash text-[11px]"></i></button></div><textarea x-model="f.text" rows="2" class="w-full text-[11px] border rounded-lg px-2 py-1.5" placeholder="Description..."></textarea></div></template></div>
 <div class="border rounded-2xl p-4 space-y-3 bg-white"><h4 class="font-bold text-xs flex items-center gap-2"><i class="fa-solid fa-wand-magic-sparkles" :style="`color:${themeVars.accent}`"></i> Sur-Mesure & formulaire</h4><div class="grid grid-cols-1 sm:grid-cols-2 gap-3"><div><label class="text-[11px] font-bold">Badge</label><input x-model="tempSettings.surmesureBadge" class="w-full border rounded-xl p-2.5 text-xs"></div><div><label class="text-[11px] font-bold">Titre</label><input x-model="tempSettings.surmesureTitle" class="w-full border rounded-xl p-2.5 text-xs"></div></div><div><label class="text-[11px] font-bold">Description</label><textarea x-model="tempSettings.surmesureDescription" rows="2" class="w-full border rounded-xl p-2.5 text-xs"></textarea></div>
 <div class="flex justify-between items-center"><label class="text-[11px] font-bold">Arguments (coche)</label><button @click="tempChecklist.push('Nouvel argument')" class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-amber-100 text-amber-800">+ Ajouter</button></div>
 <template x-for="(item,idx) in tempChecklist" :key="idx"><div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600 text-xs"></i><input x-model="tempChecklist[idx]" class="flex-1 text-[11px] border rounded-lg px-2 py-1.5"><button @click="tempChecklist.splice(idx,1)" class="text-rose-500 px-1"><i class="fa-solid fa-trash text-[11px]"></i></button></div></template>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1"><div><label class="text-[11px] font-bold">Types d'article (1 par ligne)</label><textarea x-model="tempFormTypesText" rows="5" class="w-full text-[11px] border rounded-lg px-2 py-1.5 font-mono"></textarea></div><div><label class="text-[11px] font-bold">Teintes cuir (1 par ligne)</label><textarea x-model="tempFormColorsText" rows="5" class="w-full text-[11px] border rounded-lg px-2 py-1.5 font-mono"></textarea></div></div>
-</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1"><div><label class="text-[11px] font-bold">Types d'article (1 par ligne)</label><textarea x-model="tempFormTypesText" rows="5" class="w-full text-[11px] border rounded-lg px-2 py-1.5 font-mono"></textarea></div><div><label class="text-[11px] font-bold">Teintes cuir (1 par ligne)</label><textarea x-model="tempFormColorsText" rows="5" class="w-full text-[11px] border rounded-lg px-2 py-1.5 font-mono"></textarea></div></div></div>
 <div class="border rounded-2xl p-4 space-y-3 bg-white"><h4 class="font-bold text-xs"><i class="fa-solid fa-quote-left mr-1" :style="`color:${themeVars.accent}`"></i>Témoignages (titres)</h4><div class="grid grid-cols-1 sm:grid-cols-2 gap-3"><div><label class="text-[11px] font-bold">Badge</label><input x-model="tempSettings.avisBadge" class="w-full border rounded-xl p-2.5 text-xs"></div><div><label class="text-[11px] font-bold">Titre</label><input x-model="tempSettings.avisTitle" class="w-full border rounded-xl p-2.5 text-xs"></div></div></div>
 <div class="border rounded-2xl p-4 space-y-3 bg-white"><h4 class="font-bold text-xs"><i class="fa-solid fa-truck-ramp-box mr-1" :style="`color:${themeVars.accent}`"></i>Encart footer expédition</h4><div><label class="text-[11px] font-bold">Titre</label><input x-model="tempSettings.shippingTitle" class="w-full border rounded-xl p-2.5 text-xs"></div><div><label class="text-[11px] font-bold">Texte</label><textarea x-model="tempSettings.shippingText" rows="2" class="w-full border rounded-xl p-2.5 text-xs"></textarea></div></div>
 </div>
 
-<!-- CATEGORIES -->
 <div x-show="adminTab==='categories'" class="space-y-4">
 <div class="rounded-xl border p-3.5 text-xs flex items-start gap-2 bg-amber-50 border-amber-200 text-amber-900"><i class="fa-solid fa-tags mt-0.5"></i><span><strong>Ajoutez, renommez, réordonnez ou supprimez</strong> vos catégories. Le renommage met à jour les produits. Les catégories vides sont masquées dans la boutique.</span></div>
 <div class="flex gap-2"><input x-model="newCategoryName" @keydown.enter="addCategory()" placeholder="Nouvelle catégorie (ex : Sacs de soirée)" class="flex-1 border rounded-xl p-2.5 text-xs bg-white"><button @click="addCategory()" class="btn-primary px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap"><i class="fa-solid fa-plus mr-1"></i>Ajouter</button></div>
@@ -564,87 +370,48 @@ select option{color:#111}
 <template x-if="editingCategory===cat"><input x-model="editingCategoryName" @keydown.enter="saveCategoryRename()" @keydown.escape="editingCategory=null" @blur="saveCategoryRename()" class="border rounded-lg px-2.5 py-1.5 text-xs w-56" style="border-color:var(--accent)"></template>
 <template x-if="editingCategory!==cat"><div class="min-w-0"><div class="font-bold text-xs capitalize truncate" x-text="cat"></div><div class="text-[10px] text-stone-500" x-text="countProductsInCategory(cat)+' produit(s)'"></div></div></template>
 </div>
-<div class="flex items-center gap-1 shrink-0">
-<button @click="moveCategory(idx,-1)" :disabled="idx===0" class="w-7 h-7 rounded-lg bg-stone-100 text-[10px] disabled:opacity-30"><i class="fa-solid fa-arrow-up"></i></button>
-<button @click="moveCategory(idx,1)" :disabled="idx===store.categories.length-1" class="w-7 h-7 rounded-lg bg-stone-100 text-[10px] disabled:opacity-30"><i class="fa-solid fa-arrow-down"></i></button>
-<button @click="startEditCategory(cat)" class="w-7 h-7 rounded-lg bg-stone-100 text-[10px] hover:bg-amber-500 hover:text-white transition"><i class="fa-solid fa-pen"></i></button>
-<button @click="askDeleteCategory(cat)" class="w-7 h-7 rounded-lg bg-rose-50 text-rose-600 text-[10px] hover:bg-rose-600 hover:text-white transition"><i class="fa-solid fa-trash"></i></button>
-</div>
+<div class="flex items-center gap-1 shrink-0"><button @click="moveCategory(idx,-1)" :disabled="idx===0" class="w-7 h-7 rounded-lg bg-stone-100 text-[10px] disabled:opacity-30"><i class="fa-solid fa-arrow-up"></i></button><button @click="moveCategory(idx,1)" :disabled="idx===store.categories.length-1" class="w-7 h-7 rounded-lg bg-stone-100 text-[10px] disabled:opacity-30"><i class="fa-solid fa-arrow-down"></i></button><button @click="startEditCategory(cat)" class="w-7 h-7 rounded-lg bg-stone-100 text-[10px] hover:bg-amber-500 hover:text-white transition"><i class="fa-solid fa-pen"></i></button><button @click="askDeleteCategory(cat)" class="w-7 h-7 rounded-lg bg-rose-50 text-rose-600 text-[10px] hover:bg-rose-600 hover:text-white transition"><i class="fa-solid fa-trash"></i></button></div>
 </div></template>
 <div x-show="store.categories.length===0" class="p-6 text-center text-xs text-stone-400">Aucune catégorie.</div>
-</div>
-<p class="text-[11px] text-stone-400">Changements enregistrés immédiatement (aucun bouton Enregistrer requis).</p>
+</div><p class="text-[11px] text-stone-400">Changements enregistrés immédiatement (aucun bouton Enregistrer requis).</p>
 </div>
 
-<!-- PRODUCTS -->
 <div x-show="adminTab==='products'" class="space-y-4">
 <div class="flex justify-between items-center bg-white p-3 rounded-xl border"><span class="text-xs font-bold">Catalogue actif (<span x-text="store.products.length"></span>)</span><button @click="addNewProductModal()" class="btn-primary px-3.5 py-1.5 rounded-lg text-xs font-bold">+ Nouveau produit</button></div>
 <div class="divide-y border rounded-2xl overflow-hidden bg-white" :style="`border-color:${themeVars.line}`">
 <template x-for="prod in store.products" :key="prod.id"><div class="p-3 hover:bg-stone-50 flex items-center justify-between gap-3">
 <div class="flex items-center gap-3 min-w-0"><img :src="prod.image" class="w-12 h-12 rounded-lg object-cover border shrink-0" onerror="this.src='https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=200&q=60'"><div class="min-w-0"><div class="font-bold text-xs truncate" x-text="prod.name"></div><div class="text-[11px] text-stone-500 truncate"><span class="capitalize" x-text="prod.category"></span> • <strong x-text="prod.price+' '+store.settings.currency"></strong></div></div></div>
 <div class="flex gap-1.5 shrink-0"><button @click="editSingleProduct(prod)" class="px-2.5 py-1.5 bg-stone-100 text-xs rounded-lg font-semibold"><i class="fa-solid fa-pen text-[10px] mr-1"></i>Modifier</button><button @click="deleteProduct(prod.id)" class="px-2.5 py-1.5 bg-rose-50 text-rose-700 text-xs rounded-lg"><i class="fa-solid fa-trash text-[10px]"></i></button></div>
-</div></template>
-</div>
+</div></template></div>
 <p class="text-[11px] text-stone-400">Astuce : saisissez une catégorie inexistante dans la fiche produit — elle sera créée automatiquement.</p>
 </div>
 
-<!-- TESTIMONIALS -->
 <div x-show="adminTab==='testimonials'" class="space-y-4">
 <div class="flex justify-between items-center bg-white p-3 rounded-xl border"><span class="text-xs font-bold">Avis affichés (<span x-text="tempTestimonials.length"></span>)</span><button @click="addTestimonial()" class="btn-primary px-3.5 py-1.5 rounded-lg text-xs font-bold">+ Ajouter un avis</button></div>
 <template x-for="(t,idx) in tempTestimonials" :key="idx"><div class="border rounded-2xl p-3.5 space-y-2.5 bg-white">
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2"><div><label class="text-[10px] font-bold">Nom</label><input x-model="t.name" class="w-full border rounded-lg p-2 text-[11px]"></div><div><label class="text-[10px] font-bold">Mention</label><input x-model="t.role" class="w-full border rounded-lg p-2 text-[11px]"></div><div><label class="text-[10px] font-bold">Note</label><select x-model.number="t.rating" class="w-full border rounded-lg p-2 text-[11px]"><option :value="5">5 étoiles</option><option :value="4">4 étoiles</option><option :value="3">3 étoiles</option><option :value="2">2 étoiles</option><option :value="1">1 étoile</option></select></div></div>
 <div><label class="text-[10px] font-bold">Témoignage</label><textarea x-model="t.text" rows="2" class="w-full border rounded-lg p-2 text-[11px]"></textarea></div>
-<div class="flex justify-end"><button @click="tempTestimonials.splice(idx,1)" class="text-[11px] text-rose-600 px-2.5 py-1 font-semibold"><i class="fa-solid fa-trash mr-1"></i>Supprimer</button></div>
-</div></template>
+<div class="flex justify-end"><button @click="tempTestimonials.splice(idx,1)" class="text-[11px] text-rose-600 px-2.5 py-1 font-semibold"><i class="fa-solid fa-trash mr-1"></i>Supprimer</button></div></div></template>
 <div x-show="tempTestimonials.length===0" class="text-center text-xs text-stone-400 py-8 border border-dashed rounded-2xl bg-white">Aucun témoignage. Cliquez sur Ajouter.</div>
 </div>
 
-<!-- THEMES -->
 <div x-show="adminTab==='themes'" class="space-y-4">
-<div class="rounded-2xl border p-4 bg-white flex flex-col sm:flex-row justify-between gap-3 items-start sm:items-center">
-<div><h4 class="font-bold text-sm flex items-center gap-2"><i class="fa-solid fa-palette" :style="`color:${themeVars.accent}`"></i> 8 thèmes minimalistes — inspirés des plus belles maroquineries</h4><p class="text-[11px] text-stone-500 mt-1">Cliquez sur <strong>Appliquer</strong> pour changer instantanément tout le site. Le choix est sauvegardé et conservé à la publication.</p></div>
-<div class="text-[11px] font-bold px-3 py-1.5 rounded-full shrink-0" :style="`background:color-mix(in srgb, ${themeVars.accent} 10%, white); color:${themeVars.dark}`">Actif : <span x-text="currentThemeName()"></span></div>
-</div>
+<div class="rounded-2xl border p-4 bg-white flex flex-col sm:flex-row justify-between gap-3 items-start sm:items-center"><div><h4 class="font-bold text-sm flex items-center gap-2"><i class="fa-solid fa-palette" :style="`color:${themeVars.accent}`"></i> 8 thèmes minimalistes — inspirés des plus belles maroquineries</h4><p class="text-[11px] text-stone-500 mt-1">Cliquez sur <strong>Appliquer</strong> pour changer instantanément tout le site. Le choix est sauvegardé et conservé à la publication.</p></div><div class="text-[11px] font-bold px-3 py-1.5 rounded-full shrink-0" :style="`background:color-mix(in srgb, ${themeVars.accent} 10%, white); color:${themeVars.dark}`">Actif : <span x-text="currentThemeName()"></span></div></div>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-<template x-for="th in getThemeList()" :key="th.id">
-<div class="theme-card bg-white border rounded-2xl p-4 flex gap-3" :class="currentTheme===th.id ? 'active' : ''" :style="`border-color:${themeVars.line}`">
-<div class="flex flex-col gap-1 shrink-0">
-<div class="w-20 h-14 rounded-xl overflow-hidden border flex" :style="`border-color:${themeVars.line}`"><div class="flex-1" :style="`background:${th.vars.dark}`"></div><div class="flex-1" :style="`background:${th.vars.accent}`"></div><div class="flex-1" :style="`background:${th.vars.page}; border-left:1px solid ${th.vars.line}`"></div></div>
-<div class="flex gap-1 justify-center"><span class="w-4 h-4 rounded-full border" :style="`background:${th.vars.dark}`"></span><span class="w-4 h-4 rounded-full border" :style="`background:${th.vars.accent}`"></span><span class="w-4 h-4 rounded-full border" :style="`background:${th.vars.gold}`"></span></div>
-</div>
-<div class="flex-1 min-w-0">
-<div class="flex items-center gap-2"><h5 class="font-bold text-[13px]" x-text="th.name"></h5><span x-show="currentTheme===th.id" class="text-[10px] font-bold text-white px-2 py-0.5 rounded-full bg-emerald-600">ACTIF</span></div>
-<p class="text-[11px] text-stone-500 mt-0.5 leading-snug" x-text="th.desc"></p>
-<p class="text-[10px] text-stone-400 mt-1 italic" x-text="'Inspiré : '+th.inspired"></p>
-<button @click="selectTheme(th.id)" :disabled="currentTheme===th.id" class="mt-2 text-[11px] font-bold px-3 py-1.5 rounded-lg transition disabled:opacity-40" :style="currentTheme===th.id ? 'background:#ecfdf5; color:#047857; border:1px solid #a7f3d0' : `background:${themeVars.dark}; color:#fff`"><span x-show="currentTheme!==th.id"><i class="fa-solid fa-check mr-1"></i>Appliquer ce thème</span><span x-show="currentTheme===th.id"><i class="fa-solid fa-circle-check mr-1"></i>Thème appliqué</span></button>
-</div>
-</div>
-</template>
-</div>
+<template x-for="th in getThemeList()" :key="th.id"><div class="theme-card bg-white border rounded-2xl p-4 flex gap-3" :class="currentTheme===th.id ? 'active' : ''" :style="`border-color:${themeVars.line}`">
+<div class="flex flex-col gap-1 shrink-0"><div class="w-20 h-14 rounded-xl overflow-hidden border flex" :style="`border-color:${themeVars.line}`"><div class="flex-1" :style="`background:${th.vars.dark}`"></div><div class="flex-1" :style="`background:${th.vars.accent}`"></div><div class="flex-1" :style="`background:${th.vars.page}; border-left:1px solid ${th.vars.line}`"></div></div><div class="flex gap-1 justify-center"><span class="w-4 h-4 rounded-full border" :style="`background:${th.vars.dark}`"></span><span class="w-4 h-4 rounded-full border" :style="`background:${th.vars.accent}`"></span><span class="w-4 h-4 rounded-full border" :style="`background:${th.vars.gold}`"></span></div></div>
+<div class="flex-1 min-w-0"><div class="flex items-center gap-2"><h5 class="font-bold text-[13px]" x-text="th.name"></h5><span x-show="currentTheme===th.id" class="text-[10px] font-bold text-white px-2 py-0.5 rounded-full bg-emerald-600">ACTIF</span></div><p class="text-[11px] text-stone-500 mt-0.5 leading-snug" x-text="th.desc"></p><p class="text-[10px] text-stone-400 mt-1 italic" x-text="'Inspiré : '+th.inspired"></p><button @click="selectTheme(th.id)" :disabled="currentTheme===th.id" class="mt-2 text-[11px] font-bold px-3 py-1.5 rounded-lg transition disabled:opacity-40" :style="currentTheme===th.id ? 'background:#ecfdf5; color:#047857; border:1px solid #a7f3d0' : `background:${themeVars.dark}; color:#fff`"><span x-show="currentTheme!==th.id"><i class="fa-solid fa-check mr-1"></i>Appliquer ce thème</span><span x-show="currentTheme===th.id"><i class="fa-solid fa-circle-check mr-1"></i>Thème appliqué</span></button></div>
+</div></template></div>
 <p class="text-[11px] text-stone-400 text-center">Chaque thème ajuste : fond de page, header, hero, boutons, accents dorés, bordures et sections sombres — tout en gardant le même design élégant.</p>
 </div>
 
-<!-- PUBLISH -->
 <div x-show="adminTab==='publish'" class="space-y-4">
-<div class="bg-white border rounded-2xl p-5">
-<div class="flex flex-col sm:flex-row justify-between gap-3 items-start sm:items-center">
-<div><h4 class="font-bold text-sm">Prêt pour la publication <span class="text-emerald-600">• <span x-text="publishScore()"></span>%</span></h4><p class="text-[11px] text-stone-500">Vérifiez chaque point avant de mettre en ligne.</p></div>
-<button @click="exportDatabaseJSON()" class="text-white text-xs font-bold px-4 py-2 rounded-xl flex items-center gap-2" :style="`background:${themeVars.dark}`"><i class="fa-solid fa-file-export"></i>Télécharger sauvegarde .json</button>
-</div>
+<div class="bg-white border rounded-2xl p-5"><div class="flex flex-col sm:flex-row justify-between gap-3 items-start sm:items-center"><div><h4 class="font-bold text-sm">Prêt pour la publication <span class="text-emerald-600">• <span x-text="publishScore()"></span>%</span></h4><p class="text-[11px] text-stone-500">Vérifiez chaque point avant de mettre en ligne.</p></div><button @click="exportDatabaseJSON()" class="text-white text-xs font-bold px-4 py-2 rounded-xl flex items-center gap-2" :style="`background:${themeVars.dark}`"><i class="fa-solid fa-file-export"></i>Télécharger sauvegarde .json</button></div>
 <div class="h-2.5 bg-stone-100 rounded-full mt-4 overflow-hidden"><div class="h-full rounded-full transition-all duration-700" :style="`width:${publishScore()}%; background:linear-gradient(90deg, ${themeVars.accent}, ${themeVars.gold})`"></div></div>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-4">
-<template x-for="c in publishChecks()" :key="c.label"><div class="flex items-center gap-2.5 text-xs p-2.5 rounded-xl border" :class="c.ok ? 'bg-emerald-50 border-emerald-200' : 'bg-rose-50 border-rose-200'"><span class="check-dot" :class="c.ok ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white'"><i :class="c.ok ? 'fa-solid fa-check' : 'fa-solid fa-xmark'"></i></span><div><div class="font-bold" x-text="c.label"></div><div class="text-[11px] opacity-70" x-text="c.hint"></div></div></div></template>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-<div class="p-4 bg-white rounded-2xl border space-y-2"><h4 class="font-bold text-xs"><i class="fa-solid fa-rocket mr-1" :style="`color:${themeVars.accent}`"></i>Importer / Exporter</h4><p class="text-[11px] text-stone-500">Transférez vos données vers un autre appareil.</p><div class="flex flex-wrap gap-2"><button @click="exportDatabaseJSON()" class="bg-stone-800 text-white px-3 py-2 rounded-xl text-[11px] font-bold">Exporter JSON</button><label class="bg-amber-100 text-amber-800 px-3 py-2 rounded-xl text-[11px] font-bold cursor-pointer">Importer JSON<input type="file" @change="importDatabaseJSON($event)" accept=".json" class="hidden"></label></div></div>
-<div class="p-4 bg-white rounded-2xl border space-y-2"><h4 class="font-bold text-xs"><i class="fa-brands fa-whatsapp mr-1 text-emerald-600"></i>Lien WhatsApp de commande</h4><p class="text-[11px] font-mono break-all bg-stone-50 border rounded-lg p-2" x-text="getWhatsAppGeneralLink()"></p><div class="flex gap-2"><button @click="copyText(getWhatsAppGeneralLink())" class="px-3 py-2 rounded-xl text-[11px] font-bold bg-emerald-600 text-white">Copier le lien</button><a :href="getWhatsAppGeneralLink()" target="_blank" class="px-3 py-2 rounded-xl text-[11px] font-bold border">Tester</a></div></div>
-</div>
-<div class="p-4 rounded-2xl border bg-white space-y-3"><h4 class="font-bold text-xs">Comment publier ce fichier (3 méthodes gratuites)</h4><div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px]">
-<div class="border rounded-xl p-3"><strong><i class="fa-solid fa-cloud-arrow-up mr-1"></i>Netlify Drop</strong><p class="mt-1 opacity-70">Glissez ce fichier .html sur app.netlify.com/drop → lien https instantané.</p></div>
-<div class="border rounded-xl p-3"><strong><i class="fa-solid fa-triangle-exclamation mr-1"></i>Vercel / GitHub</strong><p class="mt-1 opacity-70">Déposez le fichier dans un repo GitHub → Deploy sur Vercel en 1 clic.</p></div>
-<div class="border rounded-xl p-3"><strong><i class="fa-solid fa-server mr-1"></i>cPanel classique</strong><p class="mt-1 opacity-70">Uploadez le fichier en index.html via File Manager → site en ligne.</p></div>
-</div><p class="text-[11px] text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-xl p-2.5">Ce fichier est <strong>autonome</strong> : vos réglages sont dans le navigateur (localStorage). Exportez le JSON pour les transférer, ou gardez ce fichier tel quel — il fonctionne partout.</p></div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-4"><template x-for="c in publishChecks()" :key="c.label"><div class="flex items-center gap-2.5 text-xs p-2.5 rounded-xl border" :class="c.ok ? 'bg-emerald-50 border-emerald-200' : 'bg-rose-50 border-rose-200'"><span class="check-dot" :class="c.ok ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white'"><i :class="c.ok ? 'fa-solid fa-check' : 'fa-solid fa-xmark'"></i></span><div><div class="font-bold" x-text="c.label"></div><div class="text-[11px] opacity-70" x-text="c.hint"></div></div></div></template></div></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3"><div class="p-4 bg-white rounded-2xl border space-y-2"><h4 class="font-bold text-xs"><i class="fa-solid fa-rocket mr-1" :style="`color:${themeVars.accent}`"></i>Importer / Exporter</h4><p class="text-[11px] text-stone-500">Transférez vos données vers un autre appareil.</p><div class="flex flex-wrap gap-2"><button @click="exportDatabaseJSON()" class="bg-stone-800 text-white px-3 py-2 rounded-xl text-[11px] font-bold">Exporter JSON</button><label class="bg-amber-100 text-amber-800 px-3 py-2 rounded-xl text-[11px] font-bold cursor-pointer">Importer JSON<input type="file" @change="importDatabaseJSON($event)" accept=".json" class="hidden"></label></div></div>
+<div class="p-4 bg-white rounded-2xl border space-y-2"><h4 class="font-bold text-xs"><i class="fa-brands fa-whatsapp mr-1 text-emerald-600"></i>Lien WhatsApp de commande</h4><p class="text-[11px] font-mono break-all bg-stone-50 border rounded-lg p-2" x-text="getWhatsAppGeneralLink()"></p><div class="flex gap-2"><button @click="copyText(getWhatsAppGeneralLink())" class="px-3 py-2 rounded-xl text-[11px] font-bold bg-emerald-600 text-white">Copier le lien</button><a :href="getWhatsAppGeneralLink()" target="_blank" class="px-3 py-2 rounded-xl text-[11px] font-bold border">Tester</a></div></div></div>
+<div class="p-4 rounded-2xl border bg-white space-y-3"><h4 class="font-bold text-xs">Comment publier ce fichier (3 méthodes gratuites)</h4><div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px]"><div class="border rounded-xl p-3"><strong><i class="fa-solid fa-cloud-arrow-up mr-1"></i>Netlify Drop</strong><p class="mt-1 opacity-70">Glissez ce fichier .html sur app.netlify.com/drop → lien https instantané.</p></div><div class="border rounded-xl p-3"><strong><i class="fa-solid fa-triangle-exclamation mr-1"></i>Vercel / GitHub</strong><p class="mt-1 opacity-70">Déposez le fichier dans un repo GitHub → Deploy sur Vercel en 1 clic.</p></div><div class="border rounded-xl p-3"><strong><i class="fa-solid fa-server mr-1"></i>cPanel classique</strong><p class="mt-1 opacity-70">Uploadez le fichier en index.html via File Manager → site en ligne.</p></div></div><p class="text-[11px] text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-xl p-2.5">Ce fichier est <strong>autonome</strong> : vos réglages sont dans le navigateur (localStorage). Exportez le JSON pour les transférer, ou gardez ce fichier tel quel — il fonctionne partout.</p></div>
 </div>
 
 </div>
@@ -652,29 +419,24 @@ select option{color:#111}
 <button @click="closeAdminModal()" class="text-xs font-semibold text-stone-500">Fermer</button>
 <div class="flex items-center gap-2 text-[11px] text-stone-500"><i class="fa-solid fa-floppy-disk text-emerald-600"></i> Sauvegarde automatique active</div>
 <button @click="saveAllSettings()" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-6 py-2.5 rounded-xl shadow transition flex items-center gap-2"><i class="fa-solid fa-floppy-disk"></i><span>Enregistrer les modifications</span></button>
-</div>
-</div>
-</div>
+</div></div></div>
 
 <!-- DELETE CAT MODAL -->
 <div x-show="deleteCat.open" class="fixed inset-0 z-[70] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" x-cloak>
 <div class="bg-white rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
 <div class="flex justify-between items-start"><div><h3 class="font-serif font-bold text-base">Supprimer la catégorie</h3><p class="text-xs text-stone-500 mt-0.5">« <span class="font-semibold capitalize" x-text="deleteCat.name"></span> »</p></div><button @click="deleteCat.open=false" class="text-stone-400"><i class="fa-solid fa-xmark"></i></button></div>
-<template x-if="deleteCat.productCount>0"><div class="space-y-2.5 bg-stone-50 border rounded-xl p-3">
-<p class="text-xs font-bold">Contient <span class="text-rose-600" x-text="deleteCat.productCount"></span> produit(s). Que faire ?</p>
+<template x-if="deleteCat.productCount>0"><div class="space-y-2.5 bg-stone-50 border rounded-xl p-3"><p class="text-xs font-bold">Contient <span class="text-rose-600" x-text="deleteCat.productCount"></span> produit(s). Que faire ?</p>
 <template x-if="store.categories.filter(c=>c!==deleteCat.name).length>0"><label class="flex items-start gap-2 text-xs cursor-pointer"><input type="radio" value="move" x-model="deleteCat.mode" class="mt-0.5"><span>Déplacer vers une autre catégorie</span></label></template>
 <template x-if="deleteCat.mode==='move' && store.categories.filter(c=>c!==deleteCat.name).length>0"><select x-model="deleteCat.moveTarget" class="w-full border rounded-lg p-2 text-xs ml-5 w-[calc(100%-1.25rem)]"><template x-for="c in store.categories.filter(c=>c!==deleteCat.name)" :key="c"><option :value="c" x-text="c"></option></template></select></template>
-<label class="flex items-start gap-2 text-xs cursor-pointer"><input type="radio" value="delete" x-model="deleteCat.mode" class="mt-0.5"><span>Supprimer aussi ces produits</span></label>
-</div></template>
+<label class="flex items-start gap-2 text-xs cursor-pointer"><input type="radio" value="delete" x-model="deleteCat.mode" class="mt-0.5"><span>Supprimer aussi ces produits</span></label></div></template>
 <template x-if="deleteCat.productCount===0"><p class="text-xs text-stone-500 bg-stone-50 border rounded-xl p-3">Aucun produit rattaché. Suppression sans risque.</p></template>
 <div class="flex justify-end gap-2"><button @click="deleteCat.open=false" class="px-4 py-2 text-xs font-semibold">Annuler</button><button @click="confirmDeleteCategory()" class="px-4 py-2 text-xs font-bold bg-rose-600 text-white rounded-xl"><i class="fa-solid fa-trash mr-1"></i>Supprimer</button></div>
-</div>
-</div>
+</div></div>
 
 <!-- PRODUCT MODAL -->
 <div x-show="productEditModalOpen" class="fixed inset-0 z-[60] overflow-y-auto bg-black/80 backdrop-blur-md flex items-center justify-center p-3" x-cloak>
 <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border space-y-4 my-8" :style="`border-color:${themeVars.line}`">
-<div class="flex justify-between items-center border-b border-stone-100 pb-3"><h3 class="font-serif font-bold text-base" x-text="editingProduct.id ? 'Modifier le Produit' : 'Ajouter un Produit'"></h3><button @click="productEditModalOpen=false" class="text-stone-400"><i class="fa-solid fa-xmark"></i></button></div>
+<div class="flex justify-between items-center border-b border-stone-100 pb-3"><h3 class="font-serif font-bold text-base" x-text="editingProduct.id && editingProduct._exists ? 'Modifier le Produit' : 'Ajouter un Produit'"></h3><button @click="productEditModalOpen=false" class="text-stone-400"><i class="fa-solid fa-xmark"></i></button></div>
 <div class="space-y-3 text-xs">
 <div><label class="block font-bold mb-1">Nom *</label><input x-model="editingProduct.name" placeholder="Ex : Sacoche Messager" class="w-full border rounded-xl p-2.5"></div>
 <div><label class="block font-bold mb-1">Catégorie *</label><input list="categoryList" x-model="editingProduct.category" placeholder="Choisir ou créer" class="w-full border rounded-xl p-2.5"><datalist id="categoryList"><template x-for="cat in store.categories" :key="cat"><option :value="cat"></option></template></datalist><span class="text-[10px] text-stone-400">Nouvelle saisie = catégorie créée automatiquement.</span></div>
@@ -682,12 +444,11 @@ select option{color:#111}
 <div class="grid grid-cols-2 gap-3"><div><label class="block font-bold mb-1">Ancien prix</label><input type="number" x-model="editingProduct.oldPrice" class="w-full border rounded-xl p-2.5"></div><div><label class="block font-bold mb-1">Couleur</label><input x-model="editingProduct.color" class="w-full border rounded-xl p-2.5"></div></div>
 <div><label class="block font-bold mb-1">Description</label><textarea x-model="editingProduct.description" rows="2" class="w-full border rounded-xl p-2.5"></textarea></div>
 <div><label class="block font-bold mb-1">Type de cuir</label><input x-model="editingProduct.leatherType" class="w-full border rounded-xl p-2.5"></div>
-<div><label class="block font-bold mb-1">Lien image (URL)</label><input x-model="editingProduct.image" placeholder="https://..." class="w-full border rounded-xl p-2.5 font-mono"><img x-show="editingProduct.image" :src="editingProduct.image" class="mt-2 w-full h-36 object-cover rounded-xl border" onerror="this.style.display='none'"></div>
+<div><label class="block font-bold mb-1">Lien image (URL)</label><input x-model="editingProduct.image" placeholder="https://..." class="w-full border rounded-xl p-2.5 font-mono"><img x-show="editingProduct.image" :src="editingProduct.image" class="mt-2 w-full h-36 object-cover rounded-xl border" onerror="this.style.display='none'" onload="this.style.display='block'"></div>
 <div class="bg-stone-50 p-2.5 rounded-xl border"><label class="block font-bold mb-1">Ou photo depuis l'appareil :</label><input type="file" @change="handleImageUpload($event)" accept="image/*" class="w-full text-xs file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:bg-stone-800 file:text-white file:font-semibold"></div>
 </div>
 <div class="pt-3 border-t flex justify-end gap-2"><button @click="productEditModalOpen=false" class="px-4 py-2 text-xs font-semibold">Annuler</button><button @click="saveProductItem()" class="px-5 py-2 text-xs font-bold rounded-xl btn-primary">Enregistrer</button></div>
-</div>
-</div>
+</div></div>
 
 <!-- TOAST -->
 <div x-show="toast.show" class="fixed top-5 right-5 z-[80] bg-stone-900 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-amber-500/40 text-xs font-semibold max-w-xs" x-cloak><i class="fa-solid fa-circle-check text-emerald-400 text-base"></i><span x-text="toast.message"></span></div>
@@ -703,200 +464,66 @@ bleu:{name:"Bleu Nuit Marine",desc:"Bleu nuit & tan — élégance voyage contem
 ivoire:{name:"Ivoire Épuré",desc:"Blanc & noir — minimalisme scandinave extrême.",inspired:"Valextra Blanc & Everlane",preview:["#1a1a1a","#e9e9e9"],vars:{page:"#ffffff",card:"#ffffff",dark:"#161616",dark2:"#2e2e2e",header:"#ffffffF2",accent:"#161616",accentHover:"#333333",onAccent:"#ffffff",gold:"#a67c00",line:"#e9e9e9",heroText:"#f5f5f5"}},
 terracotta:{name:"Terracotta Artisan",desc:"Terracotta & argile — chaleur d'atelier méditerranéen.",inspired:"Artisanat marocain & Sezane",preview:["#431407","#c2410c"],vars:{page:"#fff7ed",card:"#ffffff",dark:"#311207",dark2:"#7c2d12",header:"#fff7edF2",accent:"#c2410c",accentHover:"#9a3412",onAccent:"#fff7ed",gold:"#fb923c",line:"#fed7aa",heroText:"#ffedd5"}}
 };
-const DEFAULT_DATA = {
-version:3, theme:"heritage",
-settings:{
-brandName:"L'ART INFINY", brandTagline:"Maroquinerie d'Exception",
-brandDescription:"Atelier artisanal dédié à la maroquinerie d'art. Cuirs d'exception cousus main, conçus pour traverser le temps.",
-phone:"212600000000", phoneDisplay:"+212 6 00 00 00 00", email:"contact@artinfiny.com", address:"Atelier L'Art Infiny, Marrakech — Livraison partout", currency:"DH",
-topBarText:"Fabrication 100% fait main en cuir véritable • Expédition garantie",
-whatsappGeneralMessage:"Bonjour L'Art Infiny, je vous contacte depuis votre boutique en ligne. J'aimerais des renseignements sur vos créations en cuir.",
-instagram:"https://instagram.com", facebook:"https://facebook.com", tiktok:"https://tiktok.com",
-heroBadge:"Atelier d'artisanat d'art & Cuir noble", heroTitle:"L'Excellence du Cuir Façonné à la Main",
-heroSubtitle:"Chaque création de L'Art Infiny raconte une histoire de passion, de découpe précise et de couture au point sellier. Des pièces authentiques pensées pour traverser le temps.",
-heroImage:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1000&q=80",
-heroProductTitle:"Sacoche de Voyage Nomade", heroProductSubtitle:"Tannage végétal, finitions cirées à la main",
-catalogueBadge:"Catalogue Artisan", catalogueTitle:"Nos Créations en Cuir", catalogueSubtitle:"Commandez directement via WhatsApp en 1 clic avec le modèle présélectionné.",
-savoirBadge:"Tradition & Passion", savoirTitle:"Le Savoir-Faire L'Art Infiny", savoirSubtitle:"Techniques ancestrales de maroquinerie d'art et modernité pour une longévité infinie.",
-surmesureBadge:"Création Personnalisée", surmesureTitle:"Un Projet Spécial en Tête ?",
-surmesureDescription:"Sac sur-mesure, cadeau d'entreprise marqué à chaud ou accessoire unique : décrivez votre souhait et recevez votre devis direct par WhatsApp.",
-surmesureChecklist:["Devis gratuit sous 24h","Choix du cuir & des finitions","Gravure initiales offerte","Paiement à la livraison"],
-avisBadge:"Avis de nos clients", avisTitle:"Ce Que Disent Nos Passionnés",
-shippingTitle:"Expédition & Paiement", shippingText:"Paiement à la livraison ou par virement. Expédition soignée avec pochette anti-poussière premium."
-},
-categories:["Sacs","Portefeuilles","Ceintures","Accessoires"],
-products:[
-{id:1,name:"Sacoche Messager Héritage",category:"Sacs",price:"890",oldPrice:"1090",badge:"Best-Seller",color:"Brun Havane",leatherType:"Cuir vachette pleine fleur",description:"Sacoche bandoulière cousue main au point sellier, doublure coton, boucle laiton massif. Parfaite au quotidien comme en voyage.",image:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80"},
-{id:2,name:"Portefeuille Compact Sellier",category:"Portefeuilles",price:"349",oldPrice:"",badge:"Nouveauté",color:"Noir Ébène",leatherType:"Cuir de chèvre",description:"6 cartes, 2 billets, tranche teintée et cirée main. Fin et résistant, il patine magnifiquement.",image:"https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80"},
-{id:3,name:"Sac à Dos Voyageur",category:"Sacs",price:"1250",oldPrice:"1450",badge:"Édition Atelier",color:"Cognac",leatherType:"Cuir gras pull-up",description:"Grand volume 22L, dos matelassé cuir, coutures renforcées. Le compagnon des escapades.",image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80"},
-{id:4,name:"Ceinture Classique Boucle Laiton",category:"Ceintures",price:"290",oldPrice:"",badge:"",color:"Marron Foncé",leatherType:"Cuir de vachette 3.5mm",description:"Largeur 35mm, boucle laiton amovible, bords polis à la cire d'abeille. Sur-mesure à votre taille.",image:"https://images.unsplash.com/photo-1624222247344-550fb60583dc?auto=format&fit=crop&w=800&q=80"},
-{id:5,name:"Porte-Cartes Minimaliste",category:"Accessoires",price:"149",oldPrice:"189",badge:"-21%",color:"Camel",leatherType:"Cuir végétal",description:"Ultra-fin 4 cartes, gravure initiales offerte. Idéal poche avant.",image:"https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=800&q=80"},
-{id:6,name:"Trousse Nomade Zippée",category:"Accessoires",price:"390",oldPrice:"",badge:"Fait main",color:"Bordeaux",leatherType:"Cuir de chèvre velours",description:"Trousse multi-usage, zip YKK laiton, doublure imperméable. Pour essentiels et rituels.",image:"https://images.unsplash.com/photo-1606522754091-a3bbf9ad4cb3?auto=format&fit=crop&w=800&q=80"}
-],
-trustPoints:[{icon:"fa-solid fa-hammer",text:"100% fait main"},{icon:"fa-solid fa-shield-halved",text:"Cuir véritable garanti"},{icon:"fa-solid fa-truck-fast",text:"Expédition soignée"}],
-features:[
-{icon:"fa-solid fa-scissors",title:"Découpe de précision",text:"Chaque peau est sélectionnée puis découpée à la main pour sublimer la fleur du cuir."},
-{icon:"fa-solid fa-hand-holding-heart",title:"Couture point sellier",text:"Deux aiguilles, un fil de lin poissé : la couture la plus solide de la maroquinerie."},
-{icon:"fa-solid fa-gem",title:"Finitions cirées",text:"Tranches teintées, polies à la cire d'abeille pour un toucher doux et durable."}
-],
-testimonials:[
-{id:1,name:"Salma B.",role:"Cliente vérifiée — Casablanca",rating:5,text:"Sacoche d'une qualité incroyable, les coutures sont parfaites. On sent le travail d'artisan. Commande via WhatsApp très simple."},
-{id:2,name:"Yassine E.",role:"Client vérifié — Rabat",rating:5,text:"Portefeuille commandé avec mes initiales gravées. Finition irréprochable, cuir qui sent bon. Je recommande les yeux fermés."},
-{id:3,name:"Claire D.",role:"Cliente vérifiée — Paris",rating:5,text:"Expédition rapide et soignée jusqu'en France. Ma ceinture sur-mesure est parfaite. Un vrai savoir-faire marocain."}
-],
-customForm:{types:["Sac à main","Sacoche / Messager","Sac de voyage","Portefeuille","Ceinture sur-mesure","Porte-cartes","Bracelet / Accessoire","Cadeau entreprise"],colors:["Brun Havane","Noir Ébène","Cognac","Camel","Bordeaux","Bleu Nuit","Vert Forêt","Naturel Végétal"]}
-};
-function artisanApp(){
-return {
+const DEFAULT_DATA = {version:3, theme:"heritage",settings:{brandName:"L'ART INFINY",brandTagline:"Maroquinerie d'Exception",brandDescription:"Atelier artisanal dédié à la maroquinerie d'art. Cuirs d'exception cousus main, conçus pour traverser le temps.",phone:"212600000000",phoneDisplay:"+212 6 00 00 00 00",email:"contact@artinfiny.com",address:"Atelier L'Art Infiny, Marrakech — Livraison partout",currency:"DH",topBarText:"Fabrication 100% fait main en cuir véritable • Expédition garantie",whatsappGeneralMessage:"Bonjour L'Art Infiny, je vous contacte depuis votre boutique en ligne. J'aimerais des renseignements sur vos créations en cuir.",instagram:"https://instagram.com",facebook:"https://facebook.com",tiktok:"https://tiktok.com",heroBadge:"Atelier d'artisanat d'art & Cuir noble",heroTitle:"L'Excellence du Cuir Façonné à la Main",heroSubtitle:"Chaque création de L'Art Infiny raconte une histoire de passion, de découpe précise et de couture au point sellier. Des pièces authentiques pensées pour traverser le temps.",heroImage:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1000&q=80",heroProductTitle:"Sacoche de Voyage Nomade",heroProductSubtitle:"Tannage végétal, finitions cirées à la main",catalogueBadge:"Catalogue Artisan",catalogueTitle:"Nos Créations en Cuir",catalogueSubtitle:"Commandez directement via WhatsApp en 1 clic avec le modèle présélectionné.",savoirBadge:"Tradition & Passion",savoirTitle:"Le Savoir-Faire L'Art Infiny",savoirSubtitle:"Techniques ancestrales de maroquinerie d'art et modernité pour une longévité infinie.",surmesureBadge:"Création Personnalisée",surmesureTitle:"Un Projet Spécial en Tête ?",surmesureDescription:"Sac sur-mesure, cadeau d'entreprise marqué à chaud ou accessoire unique : décrivez votre souhait et recevez votre devis direct par WhatsApp.",surmesureChecklist:["Devis gratuit sous 24h","Choix du cuir & des finitions","Gravure initiales offerte","Paiement à la livraison"],avisBadge:"Avis de nos clients",avisTitle:"Ce Que Disent Nos Passionnés",shippingTitle:"Expédition & Paiement",shippingText:"Paiement à la livraison ou par virement. Expédition soignée avec pochette anti-poussière premium."},categories:["Sacs","Portefeuilles","Ceintures","Accessoires"],products:[{id:1,name:"Sacoche Messager Héritage",category:"Sacs",price:"890",oldPrice:"1090",badge:"Best-Seller",color:"Brun Havane",leatherType:"Cuir vachette pleine fleur",description:"Sacoche bandoulière cousue main au point sellier, doublure coton, boucle laiton massif. Parfaite au quotidien comme en voyage.",image:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80"},{id:2,name:"Portefeuille Compact Sellier",category:"Portefeuilles",price:"349",oldPrice:"",badge:"Nouveauté",color:"Noir Ébène",leatherType:"Cuir de chèvre",description:"6 cartes, 2 billets, tranche teintée et cirée main. Fin et résistant, il patine magnifiquement.",image:"https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80"},{id:3,name:"Sac à Dos Voyageur",category:"Sacs",price:"1250",oldPrice:"1450",badge:"Édition Atelier",color:"Cognac",leatherType:"Cuir gras pull-up",description:"Grand volume 22L, dos matelassé cuir, coutures renforcées. Le compagnon des escapades.",image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80"},{id:4,name:"Ceinture Classique Boucle Laiton",category:"Ceintures",price:"290",oldPrice:"",badge:"",color:"Marron Foncé",leatherType:"Cuir de vachette 3.5mm",description:"Largeur 35mm, boucle laiton amovible, bords polis à la cire d'abeille. Sur-mesure à votre taille.",image:"https://images.unsplash.com/photo-1624222247344-550fb60583dc?auto=format&fit=crop&w=800&q=80"},{id:5,name:"Porte-Cartes Minimaliste",category:"Accessoires",price:"149",oldPrice:"189",badge:"-21%",color:"Camel",leatherType:"Cuir végétal",description:"Ultra-fin 4 cartes, gravure initiales offerte. Idéal poche avant.",image:"https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=800&q=80"},{id:6,name:"Trousse Nomade Zippée",category:"Accessoires",price:"390",oldPrice:"",badge:"Fait main",color:"Bordeaux",leatherType:"Cuir de chèvre velours",description:"Trousse multi-usage, zip YKK laiton, doublure imperméable. Pour essentiels et rituels.",image:"https://images.unsplash.com/photo-1606522754091-a3bbf9ad4cb3?auto=format&fit=crop&w=800&q=80"}],trustPoints:[{icon:"fa-solid fa-hammer",text:"100% fait main"},{icon:"fa-solid fa-shield-halved",text:"Cuir véritable garanti"},{icon:"fa-solid fa-truck-fast",text:"Expédition soignée"}],features:[{icon:"fa-solid fa-scissors",title:"Découpe de précision",text:"Chaque peau est sélectionnée puis découpée à la main pour sublimer la fleur du cuir."},{icon:"fa-solid fa-hand-holding-heart",title:"Couture point sellier",text:"Deux aiguilles, un fil de lin poissé : la couture la plus solide de la maroquinerie."},{icon:"fa-solid fa-gem",title:"Finitions cirées",text:"Tranches teintées, polies à la cire d'abeille pour un toucher doux et durable."}],testimonials:[{id:1,name:"Salma B.",role:"Cliente vérifiée — Casablanca",rating:5,text:"Sacoche d'une qualité incroyable, les coutures sont parfaites. On sent le travail d'artisan. Commande via WhatsApp très simple."},{id:2,name:"Yassine E.",role:"Client vérifié — Rabat",rating:5,text:"Portefeuille commandé avec mes initiales gravées. Finition irréprochable, cuir qui sent bon. Je recommande les yeux fermés."},{id:3,name:"Claire D.",role:"Cliente vérifiée — Paris",rating:5,text:"Expédition rapide et soignée jusqu'en France. Ma ceinture sur-mesure est parfaite. Un vrai savoir-faire marocain."}],customForm:{types:["Sac à main","Sacoche / Messager","Sac de voyage","Portefeuille","Ceinture sur-mesure","Porte-cartes","Bracelet / Accessoire","Cadeau entreprise"],colors:["Brun Havane","Noir Ébène","Cognac","Camel","Bordeaux","Bleu Nuit","Vert Forêt","Naturel Végétal"]}};
+function artisanApp(){return {
 store: JSON.parse(JSON.stringify(DEFAULT_DATA)),
 themeVars: THEMES.heritage.vars, currentTheme:"heritage",
 selectedCategory:"all", searchQuery:"", sortBy:"featured", mobileMenuOpen:false,
 adminModalOpen:false, adminTab:"general",
-adminTabs:[
-{id:"general",label:"Infos & Contacts",icon:"fa-solid fa-building"},
-{id:"hero",label:"Accueil & Bannière",icon:"fa-solid fa-image"},
-{id:"interface",label:"Sections & Textes",icon:"fa-solid fa-pen-ruler"},
-{id:"categories",label:"Catégories",icon:"fa-solid fa-tags",count:function(){return artisanApp._ref?0:0}},
-{id:"products",label:"Produits",icon:"fa-solid fa-boxes-stacked"},
-{id:"testimonials",label:"Témoignages",icon:"fa-solid fa-star"},
-{id:"themes",label:"8 Thèmes",icon:"fa-solid fa-palette"},
-{id:"publish",label:"Publication",icon:"fa-solid fa-rocket"}
-],
-quickViewModal:false, activeProduct:null,
-productEditModalOpen:false, editingProduct:{},
+adminTabs:[{id:"general",label:"Infos & Contacts",icon:"fa-solid fa-building"},{id:"hero",label:"Accueil & Bannière",icon:"fa-solid fa-image"},{id:"interface",label:"Sections & Textes",icon:"fa-solid fa-pen-ruler"},{id:"categories",label:"Catégories",icon:"fa-solid fa-tags"},{id:"products",label:"Produits",icon:"fa-solid fa-boxes-stacked"},{id:"testimonials",label:"Témoignages",icon:"fa-solid fa-star"},{id:"themes",label:"8 Thèmes",icon:"fa-solid fa-palette"},{id:"publish",label:"Publication",icon:"fa-solid fa-rocket"}],
+quickViewModal:false, activeProduct:null, productEditModalOpen:false, editingProduct:{},
 newCategoryName:"", editingCategory:null, editingCategoryName:"",
 deleteCat:{open:false,name:"",productCount:0,mode:"move",moveTarget:""},
 customType:"", customColor:"", customEngraving:"", customName:"", customNotes:"",
 tempSettings:{}, tempTrustPoints:[], tempFeatures:[], tempChecklist:[], tempFormTypesText:"", tempFormColorsText:"", tempTestimonials:[],
 toast:{show:false,message:"",t:null},
-initApp(){
-try{
-const raw=localStorage.getItem("artinfiny_db_v3");
-if(raw){const d=JSON.parse(raw); if(d&&d.settings){this.store=Object.assign(JSON.parse(JSON.stringify(DEFAULT_DATA)),d);}}
-}catch(e){}
+initApp(){try{const raw=localStorage.getItem("artinfiny_db_v3");if(raw){const d=JSON.parse(raw);if(d&&d.settings){this.store=Object.assign(JSON.parse(JSON.stringify(DEFAULT_DATA)),d);}}}catch(e){}
 if(!this.store.theme||!THEMES[this.store.theme]) this.store.theme="heritage";
-this.currentTheme=this.store.theme;
-this.applyTheme(this.currentTheme,true);
-this.customType=this.store.customForm.types[0]||"";
-this.customColor=this.store.customForm.colors[0]||"";
-this.syncTemps();
-this.$nextTick(()=>{this.observeReveals();});
-window.addEventListener("scroll",()=>{this.observeReveals();},{passive:true});
-},
-observeReveals(){
-document.querySelectorAll("[data-reveal]:not(.visible)").forEach(el=>{
-const r=el.getBoundingClientRect();
-if(r.top<window.innerHeight-40) el.classList.add("visible");
-});
-},
-syncTemps(){
-this.tempSettings=JSON.parse(JSON.stringify(this.store.settings));
-this.tempTrustPoints=JSON.parse(JSON.stringify(this.store.trustPoints));
-this.tempFeatures=JSON.parse(JSON.stringify(this.store.features));
-this.tempChecklist=[...(this.store.settings.surmesureChecklist||[])];
-this.tempFormTypesText=(this.store.customForm.types||[]).join("\n");
-this.tempFormColorsText=(this.store.customForm.colors||[]).join("\n");
-this.tempTestimonials=JSON.parse(JSON.stringify(this.store.testimonials));
-const tabs=this.adminTabs;
-const catTab=tabs.find(t=>t.id==="categories"); if(catTab) catTab.count=()=>this.store.categories.length;
-const prodTab=tabs.find(t=>t.id==="products"); if(prodTab) prodTab.count=()=>this.store.products.length;
-},
+this.currentTheme=this.store.theme; this.applyTheme(this.currentTheme,true);
+this.customType=(this.store.customForm.types||[])[0]||""; this.customColor=(this.store.customForm.colors||[])[0]||"";
+this.syncTemps(); this.$nextTick(()=>{this.observeReveals(); setTimeout(()=>this.observeReveals(),400);});
+window.addEventListener("scroll",()=>{this.observeReveals();},{passive:true});},
+observeReveals(){document.querySelectorAll("[data-reveal]:not(.visible)").forEach(el=>{const r=el.getBoundingClientRect(); if(r.top<window.innerHeight-40) el.classList.add("visible");});},
+syncTemps(){this.tempSettings=JSON.parse(JSON.stringify(this.store.settings)); this.tempTrustPoints=JSON.parse(JSON.stringify(this.store.trustPoints)); this.tempFeatures=JSON.parse(JSON.stringify(this.store.features)); this.tempChecklist=[...(this.store.settings.surmesureChecklist||[])]; this.tempFormTypesText=(this.store.customForm.types||[]).join("\n"); this.tempFormColorsText=(this.store.customForm.colors||[]).join("\n"); this.tempTestimonials=JSON.parse(JSON.stringify(this.store.testimonials));},
 persist(){try{localStorage.setItem("artinfiny_db_v3",JSON.stringify(this.store));}catch(e){}},
 showToast(m){clearTimeout(this.toast.t); this.toast.message=m; this.toast.show=true; this.toast.t=setTimeout(()=>this.toast.show=false,2600);},
 get visibleCategories(){return (this.store.categories||[]).filter(c=>this.store.products.some(p=>p.category===c));},
-get filteredProducts(){
-let list=[...this.store.products];
-if(this.selectedCategory!=="all") list=list.filter(p=>p.category===this.selectedCategory);
-if(this.searchQuery.trim()){const q=this.searchQuery.toLowerCase(); list=list.filter(p=>(p.name+" "+p.description+" "+p.category+" "+(p.color||"")).toLowerCase().includes(q));}
-if(this.sortBy==="price-asc") list.sort((a,b)=>parseFloat(a.price)-parseFloat(b.price));
-else if(this.sortBy==="price-desc") list.sort((a,b)=>parseFloat(b.price)-parseFloat(a.price));
-else if(this.sortBy==="name") list.sort((a,b)=>a.name.localeCompare(b.name));
-return list;
-},
+get filteredProducts(){let list=[...this.store.products]; if(this.selectedCategory!=="all") list=list.filter(p=>p.category===this.selectedCategory); if(this.searchQuery.trim()){const q=this.searchQuery.toLowerCase(); list=list.filter(p=>(p.name+" "+p.description+" "+p.category+" "+(p.color||"")).toLowerCase().includes(q));} if(this.sortBy==="price-asc") list.sort((a,b)=>parseFloat(a.price)-parseFloat(b.price)); else if(this.sortBy==="price-desc") list.sort((a,b)=>parseFloat(b.price)-parseFloat(a.price)); else if(this.sortBy==="name") list.sort((a,b)=>a.name.localeCompare(b.name)); return list;},
 countProductsInCategory(c){return this.store.products.filter(p=>p.category===c).length;},
 discountPct(p){if(!p.oldPrice||!p.price) return 0; const o=parseFloat(p.oldPrice),n=parseFloat(p.price); if(!o||!n||o<=n) return 0; return Math.round((o-n)/o*100);},
+getThemeList(){return Object.keys(THEMES).map(id=>({id, ...THEMES[id]}));},
+currentThemeName(){return (THEMES[this.currentTheme]||{}).name||"Thème";},
+applyTheme(id,silent){if(!THEMES[id]) return; this.currentTheme=id; this.themeVars=THEMES[id].vars; this.store.theme=id; const v=this.themeVars; const r=document.documentElement.style; r.setProperty('--page',v.page); r.setProperty('--card',v.card); r.setProperty('--dark',v.dark); r.setProperty('--dark2',v.dark2); r.setProperty('--header',v.header); r.setProperty('--accent',v.accent); r.setProperty('--accent-hover',v.accentHover); r.setProperty('--on-accent',v.onAccent); r.setProperty('--gold',v.gold); r.setProperty('--line',v.line); r.setProperty('--hero-text',v.heroText); document.documentElement.setAttribute('data-theme',id); if(!silent){this.persist();}},
+selectTheme(id){this.applyTheme(id,false); this.showToast("Thème appliqué : "+THEMES[id].name);},
 cleanPhone(){return (this.store.settings.phone||"").replace(/\D/g,"");},
 getWhatsAppGeneralLink(){const ph=this.cleanPhone()||"212600000000"; return `https://wa.me/${ph}?text=${encodeURIComponent(this.store.settings.whatsappGeneralMessage||"Bonjour")}`;},
-getWhatsAppCustomLink(){return this.buildCustomWhatsAppUrl(this.store.customForm.types[0]||"Sur-mesure",this.store.customForm.colors[0]||"", "", "", "");},
+getWhatsAppCustomLink(){return this.buildCustomWhatsAppUrl(this.store.customForm.types[0]||"Sur-mesure",this.store.customForm.colors[0]||"","", "", "");},
 getWhatsAppProductLink(p){if(!p) return this.getWhatsAppGeneralLink(); const ph=this.cleanPhone(); const msg=`Bonjour ${this.store.settings.brandName} !\nJe souhaite commander :\n*${p.name}* (${p.category})\nPrix : ${p.price} ${this.store.settings.currency}\nCouleur : ${p.color||"-"} | Matière : ${p.leatherType||"-"}\nRéf : #${p.id}\nMerci de me confirmer disponibilité et livraison.`; return `https://wa.me/${ph}?text=${encodeURIComponent(msg)}`;},
 previewCustomMessage(){return `Sur-mesure — ${this.customType} | Cuir ${this.customColor}${this.customEngraving?` | Gravure ${this.customEngraving}`:""}${this.customName?` | ${this.customName}`:""}${this.customNotes?` | ${this.customNotes}`:""}`;},
 buildCustomWhatsAppUrl(type,color,name,eng,notes){const ph=this.cleanPhone(); const msg=`Bonjour ${this.store.settings.brandName} !\nDemande SUR-MESURE :\n• Type : ${type}\n• Teinte cuir : ${color}\n• Gravure : ${eng||"Sans"}\n• Nom : ${name||"-"}\n• Ville livraison : ${notes||"-"}\nMerci de me faire un devis.`; return `https://wa.me/${ph}?text=${encodeURIComponent(msg)}`;},
-openAdminModal(){this.syncTemps(); this.adminModalOpen=true; document.body.style.overflow="hidden";},
-closeAdminModal(){this.adminModalOpen=false; document.body.style.overflow="";},
-saveAllSettings(){
-if(!this.tempSettings.phone||this.tempSettings.phone.replace(/\D/g,"").length<9){this.showToast("Vérifiez le numéro WhatsApp"); return;}
-this.store.settings=JSON.parse(JSON.stringify(this.tempSettings));
-this.store.trustPoints=JSON.parse(JSON.stringify(this.tempTrustPoints));
-this.store.features=JSON.parse(JSON.stringify(this.tempFeatures));
-this.store.settings.surmesureChecklist=[...this.tempChecklist].filter(s=>s.trim());
-this.store.customForm.types=this.tempFormTypesText.split("\n").map(s=>s.trim()).filter(Boolean);
-this.store.customForm.colors=this.tempFormColorsText.split("\n").map(s=>s.trim()).filter(Boolean);
-this.store.testimonials=JSON.parse(JSON.stringify(this.tempTestimonials));
-if(!this.customType) this.customType=this.store.customForm.types[0]||"";
-if(!this.customColor) this.customColor=this.store.customForm.colors[0]||"";
-this.persist(); this.syncTemps(); this.showToast("Modifications enregistrées !");
-},
+openQuickView(p){this.activeProduct={...p}; this.quickViewModal=true;},
+openAdminModal(){this.syncTemps(); this.adminModalOpen=true;},
+closeAdminModal(){this.adminModalOpen=false;},
+saveAllSettings(){const ph=(this.tempSettings.phone||"").replace(/\D/g,""); if(!ph||ph.length<9){this.showToast("Vérifiez le numéro WhatsApp"); return;} this.store.settings=JSON.parse(JSON.stringify(this.tempSettings)); this.store.trustPoints=JSON.parse(JSON.stringify(this.tempTrustPoints)); this.store.features=JSON.parse(JSON.stringify(this.tempFeatures)); this.store.settings.surmesureChecklist=[...this.tempChecklist].filter(s=>(s||"").trim()); this.store.customForm.types=this.tempFormTypesText.split("\n").map(s=>s.trim()).filter(Boolean); this.store.customForm.colors=this.tempFormColorsText.split("\n").map(s=>s.trim()).filter(Boolean); if(this.store.customForm.types.length===0) this.store.customForm.types=["Sur-mesure"]; if(this.store.customForm.colors.length===0) this.store.customForm.colors=["Brun Havane"]; this.store.testimonials=JSON.parse(JSON.stringify(this.tempTestimonials)); if(!this.customType) this.customType=this.store.customForm.types[0]||""; if(!this.customColor) this.customColor=this.store.customForm.colors[0]||""; this.persist(); this.syncTemps(); this.showToast("Modifications enregistrées !"); setTimeout(()=>this.observeReveals(),100);},
 resetToFactoryDefaults(){if(!confirm("Réinitialiser toutes les données démo ?")) return; localStorage.removeItem("artinfiny_db_v3"); this.store=JSON.parse(JSON.stringify(DEFAULT_DATA)); this.currentTheme=this.store.theme; this.applyTheme(this.currentTheme,true); this.selectedCategory="all"; this.persist(); this.syncTemps(); this.showToast("Données réinitialisées");},
-addCategory(){const n=(this.newCategoryName||"").trim(); if(!n) return; if(this.store.categories.some(c=>c.toLowerCase()===n.toLowerCase())){this.showToast("Catégorie déjà existante"); return;} this.store.categories.push(n); this.newCategoryName=""; this.persist(); this.syncTemps(); this.showToast("Catégorie ajoutée : "+n);},
+addCategory(){const n=(this.newCategoryName||"").trim(); if(!n) return; if(this.store.categories.some(c=>c.toLowerCase()===n.toLowerCase())){this.showToast("Catégorie déjà existante"); return;} this.store.categories.push(n); this.newCategoryName=""; this.persist(); this.showToast("Catégorie ajoutée : "+n);},
 startEditCategory(c){this.editingCategory=c; this.editingCategoryName=c; this.$nextTick(()=>{const el=document.querySelector('input[x-model="editingCategoryName"]'); if(el) el.focus();});},
-saveCategoryRename(){if(!this.editingCategory) return; const old=this.editingCategory, neu=(this.editingCategoryName||"").trim(); this.editingCategory=null; if(!neu||neu===old) return; if(this.store.categories.some(c=>c.toLowerCase()===neu.toLowerCase())){this.showToast("Nom déjà utilisé"); return;} const i=this.store.categories.indexOf(old); if(i>-1) this.store.categories[i]=neu; this.store.products.forEach(p=>{if(p.category===old) p.category=neu;}); if(this.selectedCategory===old) this.selectedCategory=neu; this.persist(); this.syncTemps(); this.showToast("Catégorie renommée");},
-moveCategory(idx,dir){const j=idx+dir; if(j<0||j>=this.store.categories.length) return; const a=[...this.store.categories]; [a[idx],a[j]]=[a[j],a[idx]]; this.store.categories=a; this.persist();},
+saveCategoryRename(){if(!this.editingCategory) return; const old=this.editingCategory, neu=(this.editingCategoryName||"").trim(); this.editingCategory=null; if(!neu||neu===old) return; if(this.store.categories.some(c=>c.toLowerCase()===neu.toLowerCase())){this.showToast("Nom déjà utilisé"); return;} const i=this.store.categories.indexOf(old); if(i>-1) this.store.categories[i]=neu; this.store.products.forEach(p=>{if(p.category===old) p.category=neu;}); if(this.selectedCategory===old) this.selectedCategory=neu; this.persist(); this.showToast("Catégorie renommée");},
+moveCategory(idx,dir){const j=idx+dir; if(j<0||j>=this.store.categories.length) return; const a=[...this.store.categories]; const tmp=a[idx]; a[idx]=a[j]; a[j]=tmp; this.store.categories=a; this.persist();},
 askDeleteCategory(cat){const cnt=this.countProductsInCategory(cat); const others=this.store.categories.filter(c=>c!==cat); this.deleteCat={open:true,name:cat,productCount:cnt,mode:others.length?"move":"delete",moveTarget:others[0]||""};},
-confirmDeleteCategory(){const {name,mode,moveTarget}=this.deleteCat; if(mode==="move"&&moveTarget){this.store.products.forEach(p=>{if(p.category===name) p.category=moveTarget;});}else if(mode==="delete"){this.store.products=this.store.products.filter(p=>p.category!==name);}else if(this.deleteCat.productCount>0&&mode==="move"&&!moveTarget){this.showToast("Choisissez une catégorie cible"); return;} this.store.categories=this.store.categories.filter(c=>c!==name); if(this.selectedCategory===name) this.selectedCategory="all"; this.deleteCat.open=false; this.persist(); this.syncTemps(); this.showToast("Catégorie supprimée");},
-addNewProductModal(){this.editingProduct={id:Date.now(),name:"",category:this.store.categories[0]||"",badge:"Nouveauté",price:"",oldPrice:"",color:"",leatherType:"Cuir vachette pleine fleur",description:"",image:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80"}; this.productEditModalOpen=true;},
-editSingleProduct(p){this.editingProduct=JSON.parse(JSON.stringify(p)); this.productEditModalOpen=true;},
-saveProductItem(){const e=this.editingProduct; if(!e.name||!e.name.trim()){this.showToast("Nom requis"); return;} if(!e.price){this.showToast("Prix requis"); return;} if(!e.category||!e.category.trim()){this.showToast("Catégorie requise"); return;} e.category=e.category.trim(); if(!this.store.categories.some(c=>c.toLowerCase()===e.category.toLowerCase())){const found=this.store.categories.find(c=>c.toLowerCase()===e.category.toLowerCase()); if(!found){this.store.categories.push(e.category); this.showToast("Catégorie créée : "+e.category);} else e.category=found;} const idx=this.store.products.findIndex(p=>p.id===e.id); if(idx>-1) this.store.products[idx]={...e}; else {e.id=Date.now(); this.store.products.unshift({...e});} this.persist(); this.syncTemps(); this.productEditModalOpen=false; this.showToast("Produit enregistré !");},
-deleteProduct(id){if(!confirm("Supprimer ce produit définitivement ?")) return; this.store.products=this.store.products.filter(p=>p.id!==id); this.persist(); this.showToast("Produit supprimé");},
-handleImageUpload(ev){const f=ev.target.files&&ev.target.files[0]; if(!f) return; if(f.size>2500000){this.showToast("Image lourde — compression conseillée");} const r=new FileReader(); r.onload=()=>{this.editingProduct.image=r.result; this.showToast("Photo chargée !");}; r.readAsDataURL(f);},
-openQuickView(p){this.activeProduct=p; this.quickViewModal=true;},
-addTestimonial(){this.tempTestimonials.unshift({id:Date.now(),name:"Nouveau client",role:"Client vérifié",rating:5,text:"Excellent travail artisanal, je recommande."});},
-getThemeList(){return Object.entries(THEMES).map(([id,t])=>({id,...t}));},
-currentThemeName(){return (THEMES[this.currentTheme]||{}).name||this.currentTheme;},
-applyTheme(id,silent){const th=THEMES[id]; if(!th) return; this.themeVars=th.vars; const r=document.documentElement.style; Object.entries(th.vars).forEach(([k,v])=>{const css="--"+k.replace(/[A-Z]/g,m=>"-"+m.toLowerCase()); const map={"--page":"--page","--card":"--card","--dark":"--dark","--dark2":"--dark2","--header":"--header","--accent":"--accent","--accent-hover":"--accent-hover","--on-accent":"--on-accent","--gold":"--gold","--line":"--line","--hero-text":"--heroText"};}); r.setProperty("--page",th.vars.page); r.setProperty("--card",th.vars.card); r.setProperty("--dark",th.vars.dark); r.setProperty("--dark2",th.vars.dark2); r.setProperty("--header",th.vars.header); r.setProperty("--accent",th.vars.accent); r.setProperty("--accent-hover",th.vars.accentHover); r.setProperty("--on-accent",th.vars.onAccent); r.setProperty("--gold",th.vars.gold); r.setProperty("--line",th.vars.line); r.setProperty("--hero-text",th.vars.heroText); document.documentElement.setAttribute("data-theme",id); const meta=document.querySelector('meta[name="theme-color"]'); if(meta) meta.setAttribute("content",th.vars.dark);},
-selectTheme(id){this.currentTheme=id; this.store.theme=id; this.applyTheme(id); this.persist(); this.showToast("Thème appliqué : "+THEMES[id].name);},
-publishChecks(){const s=this.store.settings; return [{label:"WhatsApp connecté",hint:this.cleanPhone()||"manquant",ok:this.cleanPhone().length>=9},{label:"Catalogue rempli",hint:this.store.products.length+" produits",ok:this.store.products.length>=3},{label:"Catégories organisées",hint:this.store.categories.length+" catégories",ok:this.store.categories.length>=2},{label:"Image hero en ligne",hint:(s.heroImage||"").startsWith("http")?"OK":"manquante",ok:(s.heroImage||"").startsWith("http")},{label:"Email de contact",hint:s.email||"manquant",ok:(s.email||"").includes("@")},{label:"Avis clients",hint:this.store.testimonials.length+" témoignages",ok:this.store.testimonials.length>=2}];},
-publishScore(){const c=this.publishChecks(); return Math.round(c.filter(x=>x.ok).length/c.length*100);},
-exportDatabaseJSON(){const blob=new Blob([JSON.stringify(this.store,null,2)],{type:"application/json"}); const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="artinfiny-sauvegarde.json"; a.click(); this.showToast("Sauvegarde téléchargée");},
-importDatabaseJSON(ev){const f=ev.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{try{const d=JSON.parse(r.result); if(!d.settings||!d.products) throw 0; this.store=Object.assign(JSON.parse(JSON.stringify(DEFAULT_DATA)),d); this.currentTheme=this.store.theme||"heritage"; this.applyTheme(this.currentTheme,true); this.persist(); this.syncTemps(); this.showToast("Sauvegarde restaurée !");}catch(e){this.showToast("Fichier invalide");}}; r.readAsText(f); ev.target.value="";},
-copyText(t){try{navigator.clipboard.writeText(t); this.showToast("Lien copié !");}catch(e){this.showToast(t);}}
+confirmDeleteCategory(){const name=this.deleteCat.name, mode=this.deleteCat.mode, moveTarget=this.deleteCat.moveTarget; if(this.deleteCat.productCount>0&&mode==="move"&&!moveTarget){this.showToast("Choisissez une catégorie cible"); return;} if(mode==="move"&&moveTarget){this.store.products.forEach(p=>{if(p.category===name) p.category=moveTarget;});} else if(mode==="delete"){this.store.products=this.store.products.filter(p=>p.category!==name);} this.store.categories=this.store.categories.filter(c=>c!==name); if(this.selectedCategory===name) this.selectedCategory="all"; this.deleteCat.open=false; this.persist(); this.showToast("Catégorie supprimée");},
+addNewProductModal(){this.editingProduct={id:Date.now(),_exists:false,name:"",category:this.store.categories[0]||"",badge:"Nouveauté",price:"",oldPrice:"",color:"",leatherType:"Cuir vachette pleine fleur",description:"",image:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80"}; this.productEditModalOpen=true;},
+editSingleProduct(p){this.editingProduct={...p,_exists:true}; this.productEditModalOpen=true;},
+saveProductItem(){if(!(this.editingProduct.name||"").trim()){this.showToast("Nom requis"); return;} if(!(this.editingProduct.price||"").toString().trim()){this.showToast("Prix requis"); return;} let cat=(this.editingProduct.category||"").trim(); if(!cat) cat=this.store.categories[0]||"Sacs"; if(!this.store.categories.some(c=>c.toLowerCase()===cat.toLowerCase())){this.store.categories.push(cat);} else {const found=this.store.categories.find(c=>c.toLowerCase()===cat.toLowerCase()); cat=found||cat;} this.editingProduct.category=cat; const data={...this.editingProduct}; delete data._exists; const idx=this.store.products.findIndex(p=>p.id===data.id); if(idx>=0) this.store.products[idx]=data; else {data.id=Date.now(); this.store.products.unshift(data);} this.productEditModalOpen=false; this.persist(); this.showToast("Produit enregistré !"); setTimeout(()=>this.observeReveals(),150);},
+deleteProduct(id){if(!confirm("Supprimer ce produit ?")) return; this.store.products=this.store.products.filter(p=>p.id!==id); this.persist(); this.showToast("Produit supprimé");},
+handleImageUpload(e){const f=(e.target.files||[])[0]; if(!f) return; const r=new FileReader(); r.onload=(ev)=>{this.editingProduct.image=ev.target.result; this.showToast("Photo chargée depuis l'appareil");}; r.readAsDataURL(f);},
+addTestimonial(){this.tempTestimonials.unshift({id:Date.now(),name:"Nouveau client",role:"Client vérifié",rating:5,text:"Excellent travail artisanal, finitions parfaites."});},
+publishChecks(){const s=this.store.settings; return [{label:"Numéro WhatsApp valide",hint:this.cleanPhone()||"manquant",ok:this.cleanPhone().length>=9},{label:"Catalogue suffisant",hint:this.store.products.length+" produits (min 3)",ok:this.store.products.length>=3},{label:"Catégories configurées",hint:this.store.categories.length+" catégories (min 2)",ok:this.store.categories.length>=2},{label:"Image hero définie",hint:s.heroImage?"OK":"manquante",ok:!!(s.heroImage&&s.heroImage.length>10)},{label:"Email de contact",hint:s.email||"manquant",ok:(s.email||"").includes("@")},{label:"Témoignages",hint:this.store.testimonials.length+" avis (min 2)",ok:this.store.testimonials.length>=2},{label:"Thème administrateur",hint:this.currentThemeName(),ok:!!THEMES[this.currentTheme]},{label:"Message WhatsApp",hint:"pré-rempli OK",ok:!!(s.whatsappGeneralMessage&&s.whatsappGeneralMessage.length>5)}];},
+publishScore(){const c=this.publishChecks(); const ok=c.filter(x=>x.ok).length; return Math.round(ok/c.length*100);},
+exportDatabaseJSON(){const blob=new Blob([JSON.stringify(this.store,null,2)],{type:"application/json"}); const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="artinfiny-backup.json"; a.click(); this.showToast("Sauvegarde téléchargée");},
+importDatabaseJSON(e){const f=(e.target.files||[])[0]; if(!f) return; const r=new FileReader(); r.onload=(ev)=>{try{const d=JSON.parse(ev.target.result); if(!d.settings) throw 0; this.store=Object.assign(JSON.parse(JSON.stringify(DEFAULT_DATA)),d); if(!THEMES[this.store.theme]) this.store.theme="heritage"; this.currentTheme=this.store.theme; this.applyTheme(this.currentTheme,true); this.persist(); this.syncTemps(); this.showToast("Données importées !");}catch(err){this.showToast("Fichier invalide");}}; r.readAsText(f); e.target.value="";},
+copyText(t){if(navigator.clipboard){navigator.clipboard.writeText(t).then(()=>this.showToast("Lien copié !"));} else {prompt("Copiez le lien :",t);}}
 };}
 </script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const container = document.getElementById("products-container");
-    if (!container) return;
-
-    fetch("/content/produits.json")
-      .then(response => response.json())
-      .then(data => {
-        const products = data.items || [];
-        container.innerHTML = "";
-        products.forEach(product => {
-          container.innerHTML += `
-            <div style="border:1px solid #ddd; padding:15px; margin:10px; border-radius:8px; text-align:center;">
-              <img src="${product.image || 'images/default.jpg'}" style="max-width:100%; height:200px; object-fit:cover; border-radius:5px;">
-              <h3>${product.titre}</h3>
-              <p style="font-weight:bold; color:#e67e22;">${product.prix} LYD</p>
-              <p>${product.description || ''}</p>
-            </div>
-          `;
-        });
-      })
-      .catch(err => console.log("Attente de produits..."));
-  });
-</script>
-  <!-- Script Netlify Identity pour gérer le mot de passe -->
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-  }
-</script>
-</body>  
+</body>
 </html>
