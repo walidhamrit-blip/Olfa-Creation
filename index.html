@@ -1,1674 +1,545 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L'Art Infiny | Maroquinerie Artisanale d'Exception</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        serif: ['Cinzel', 'serif'],
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    },
-                    colors: {
-                        theme: {
-                            bg: 'var(--bg-main)',
-                            surface: 'var(--bg-surface)',
-                            card: 'var(--bg-card)',
-                            primary: 'var(--primary)',
-                            'primary-hover': 'var(--primary-hover)',
-                            accent: 'var(--accent)',
-                            text: 'var(--text-main)',
-                            muted: 'var(--text-muted)',
-                            border: 'var(--border-color)',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        /* THEMES DEFINITIONS */
-        :root {
-            /* 1. Cognac Atelier (Défaut) */
-            --bg-main: #fcfbf9;
-            --bg-surface: #f7f4ee;
-            --bg-card: #ffffff;
-            --primary: #8b4513;
-            --primary-hover: #6e330c;
-            --accent: #d4a373;
-            --text-main: #231b15;
-            --text-muted: #73675c;
-            --border-color: #e8ded4;
-        }
-
-        body[data-theme="noir"] {
-            /* 2. Noir Minimaliste */
-            --bg-main: #0c0d0e;
-            --bg-surface: #141619;
-            --bg-card: #1c1f24;
-            --primary: #dcd6cd;
-            --primary-hover: #ffffff;
-            --accent: #9e978e;
-            --text-main: #f5f5f7;
-            --text-muted: #9da3af;
-            --border-color: #2b3038;
-        }
-
-        body[data-theme="sable"] {
-            /* 3. Sable & Lin */
-            --bg-main: #f8f6f0;
-            --bg-surface: #efebe2;
-            --bg-card: #ffffff;
-            --primary: #6b5e51;
-            --primary-hover: #4e443a;
-            --accent: #b8a99a;
-            --text-main: #2d2722;
-            --text-muted: #786d63;
-            --border-color: #ded5c7;
-        }
-
-        body[data-theme="hermes"] {
-            /* 4. Orange Terre & Cuir */
-            --bg-main: #fffdfa;
-            --bg-surface: #fff3e8;
-            --bg-card: #ffffff;
-            --primary: #c2410c;
-            --primary-hover: #9a3412;
-            --accent: #fb923c;
-            --text-main: #271d17;
-            --text-muted: #7c685c;
-            --border-color: #fed7aa;
-        }
-
-        body[data-theme="olive"] {
-            /* 5. Olive & Cuir Brut */
-            --bg-main: #f6f7f4;
-            --bg-surface: #ecefe9;
-            --bg-card: #ffffff;
-            --primary: #384b3e;
-            --primary-hover: #26332a;
-            --accent: #9da07a;
-            --text-main: #1f2722;
-            --text-muted: #626c64;
-            --border-color: #d2dbd3;
-        }
-
-        body[data-theme="bordeaux"] {
-            /* 6. Bordeaux Impérial */
-            --bg-main: #faf6f6;
-            --bg-surface: #f4e9eb;
-            --bg-card: #ffffff;
-            --primary: #5c1d28;
-            --primary-hover: #42131b;
-            --accent: #c07a8b;
-            --text-main: #241417;
-            --text-muted: #6e585c;
-            --border-color: #e5cbd1;
-        }
-
-        body[data-theme="moka"] {
-            /* 7. Havane & Moka */
-            --bg-main: #1e1916;
-            --bg-surface: #2b231f;
-            --bg-card: #382e29;
-            --primary: #dfba96;
-            --primary-hover: #edd3b9;
-            --accent: #b08968;
-            --text-main: #faf5ef;
-            --text-muted: #bdafa4;
-            --border-color: #4c3e38;
-        }
-
-        body[data-theme="ardoise"] {
-            /* 8. Ardoise Moderne */
-            --bg-main: #f8fafc;
-            --bg-surface: #edf2f7;
-            --bg-card: #ffffff;
-            --primary: #1e293b;
-            --primary-hover: #0f172a;
-            --accent: #b45309;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border-color: #cbd5e1;
-        }
-
-        .leather-pattern {
-            background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 0);
-            background-size: 20px 20px;
-        }
-        
-        .transition-theme {
-            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg-surface);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent);
-            border-radius: 4px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Art Infiny — Maroquinerie Artisanale</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --c-bg:#f7f3ee;
+    --c-surface:#ffffff;
+    --c-text:#2b2420;
+    --c-muted:#7a6f66;
+    --c-accent:#8b5e34;
+    --c-accent2:#c9a06a;
+    --c-border:#e6ddd2;
+    --c-header:rgba(247,243,238,.85);
+  }
+  *{scroll-behavior:smooth;}
+  body{
+    font-family:'Jost',sans-serif;
+    background:var(--c-bg);
+    color:var(--c-text);
+    transition:background .5s ease,color .5s ease;
+  }
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;}
+  .surface{background:var(--c-surface);border-color:var(--c-border);}
+  .accent{color:var(--c-accent);}
+  .bg-accent{background:var(--c-accent);}
+  .bg-accent2{background:var(--c-accent2);}
+  .border-c{border-color:var(--c-border);}
+  .text-muted{color:var(--c-muted);}
+  .header-blur{background:var(--c-header);backdrop-filter:blur(12px);}
+  .btn-accent{background:var(--c-accent);color:#fff;transition:.3s;}
+  .btn-accent:hover{filter:brightness(1.1);transform:translateY(-2px);box-shadow:0 10px 25px -8px var(--c-accent);}
+  .card{transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s;}
+  .card:hover{transform:translateY(-8px);box-shadow:0 25px 50px -15px rgba(0,0,0,.25);}
+  .card:hover .card-img{transform:scale(1.08);}
+  .card-img{transition:transform .8s cubic-bezier(.2,.8,.2,1);}
+  .fade-up{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s;}
+  .fade-up.in{opacity:1;transform:none;}
+  ::-webkit-scrollbar{width:9px;}
+  ::-webkit-scrollbar-track{background:var(--c-bg);}
+  ::-webkit-scrollbar-thumb{background:var(--c-accent2);border-radius:10px;}
+  .theme-swatch{width:34px;height:34px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:.2s;position:relative;}
+  .theme-swatch:hover{transform:scale(1.15);}
+  .theme-swatch.active{border-color:var(--c-text);box-shadow:0 0 0 2px var(--c-surface),0 0 0 4px var(--c-text);}
+  .wa-float{animation:pulse 2.5s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5);}70%{box-shadow:0 0 0 18px rgba(37,211,102,0);}100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}
+  .hero-grad{background:linear-gradient(120deg,var(--c-accent) 0%,var(--c-accent2) 100%);}
+  .marquee{white-space:nowrap;animation:scroll 22s linear infinite;}
+  @keyframes scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+  input,textarea,select{font-family:'Jost',sans-serif;}
+  .modal-in{animation:mIn .3s ease;}
+  @keyframes mIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:none}}
+</style>
 </head>
-<body data-theme="cognac" class="bg-theme-bg text-theme-text font-sans antialiased transition-theme leather-pattern selection:bg-theme-accent selection:text-white min-h-screen flex flex-col">
+<body>
 
-    <!-- Top Announcement Bar -->
-    <div id="top-announcement" class="bg-theme-primary text-white text-xs tracking-widest uppercase py-2 px-4 text-center font-medium transition-theme flex items-center justify-center gap-3">
-        <span class="inline-block w-1.5 h-1.5 rounded-full bg-theme-accent animate-pulse"></span>
-        <span id="announcement-text">Atelier d'artisanat français • Pièces d'exception cousues main • Personnalisation offerte</span>
-        <span class="inline-block w-1.5 h-1.5 rounded-full bg-theme-accent animate-pulse"></span>
-    </div>
-
-    <!-- Navigation Header -->
-    <header class="sticky top-0 z-40 bg-theme-surface/90 backdrop-blur-md border-b border-theme-border transition-theme">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                
-                <!-- Left: Navigation Links -->
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#catalogue" class="text-sm font-medium hover:text-theme-primary transition tracking-wider uppercase text-theme-muted hover:text-theme-text">Collection</a>
-                    <a href="#savoir-faire" class="text-sm font-medium hover:text-theme-primary transition tracking-wider uppercase text-theme-muted hover:text-theme-text">Savoir-Faire</a>
-                    <a href="#sur-mesure" class="text-sm font-medium hover:text-theme-primary transition tracking-wider uppercase text-theme-muted hover:text-theme-text">Sur-Mesure</a>
-                </nav>
-
-                <!-- Center: Brand Logo -->
-                <div class="flex-shrink-0 text-center">
-                    <a href="#" class="inline-block group">
-                        <span class="font-serif text-2xl sm:text-3xl font-bold tracking-widest uppercase text-theme-primary transition-all group-hover:tracking-wider block" id="site-logo-text">L'Art Infiny</span>
-                        <span class="text-[9px] tracking-[0.35em] uppercase text-theme-muted block -mt-1 font-semibold">Maroquinerie d'Auteur</span>
-                    </a>
-                </div>
-
-                <!-- Right: Actions & Admin -->
-                <div class="flex items-center space-x-3 sm:space-x-4">
-                    <!-- WhatsApp Quick Button -->
-                    <button onclick="openGeneralWhatsApp()" class="hidden sm:inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-2 rounded-full text-xs font-semibold tracking-wider transition shadow-sm hover:shadow">
-                        <i data-lucide="message-circle" class="w-4 h-4"></i>
-                        <span>Conseil & Commande</span>
-                    </button>
-
-                    <!-- Cart / Demande de devis -->
-                    <button onclick="toggleDrawer('cart-drawer')" class="relative p-2 text-theme-text hover:text-theme-primary transition rounded-full hover:bg-theme-border/40">
-                        <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-                        <span id="cart-count-badge" class="absolute -top-1 -right-1 bg-theme-primary text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
-                    </button>
-
-                    <!-- Admin Access Toggle -->
-                    <button onclick="openAdminModal()" class="p-2 text-theme-text hover:text-theme-primary transition rounded-full hover:bg-theme-border/50 relative group" title="Panneau d'administration">
-                        <i data-lucide="sliders-horizontal" class="w-5 h-5"></i>
-                        <span class="absolute right-0 top-11 bg-theme-card text-theme-text text-[11px] font-semibold py-1 px-2.5 rounded shadow-lg border border-theme-border whitespace-nowrap hidden group-hover:block z-50">Gestion & Thèmes</span>
-                    </button>
-
-                    <!-- Mobile Menu Button -->
-                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-theme-text">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-theme-surface border-b border-theme-border px-6 py-4 space-y-3">
-            <a href="#catalogue" onclick="toggleMobileMenu()" class="block text-sm font-medium tracking-wider uppercase py-1">Collection</a>
-            <a href="#savoir-faire" onclick="toggleMobileMenu()" class="block text-sm font-medium tracking-wider uppercase py-1">Savoir-Faire</a>
-            <a href="#sur-mesure" onclick="toggleMobileMenu()" class="block text-sm font-medium tracking-wider uppercase py-1">Sur-Mesure</a>
-            <button onclick="openGeneralWhatsApp()" class="w-full mt-2 flex items-center justify-center gap-2 bg-emerald-600 text-white px-4 py-2.5 rounded-lg text-xs font-bold tracking-wider uppercase">
-                <i data-lucide="message-circle" class="w-4 h-4"></i> Discuter sur WhatsApp
-            </button>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="flex-grow">
-
-        <!-- Hero Section -->
-        <section class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-32">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    
-                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-theme-border/60 border border-theme-border text-xs font-semibold tracking-wider text-theme-muted uppercase">
-                            <i data-lucide="feather" class="w-3.5 h-3.5 text-theme-primary"></i>
-                            <span id="hero-badge-text">100% Fait Main • Cuir Tannage Végétal</span>
-                        </div>
-                        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-theme-text leading-[1.15]" id="hero-title">
-                            L'Élégance Pure du <span class="text-theme-primary italic">Cuir Noble</span> & Façonné.
-                        </h1>
-                        <p class="text-base sm:text-lg text-theme-muted max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed" id="hero-desc">
-                            Chaque pièce signée L'Art Infiny naît de la passion du geste parfait, de cuirs rigoureusement sélectionnés et d'un point sellier traditionnel conçu pour traverser les générations.
-                        </p>
-                        
-                        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                            <a href="#catalogue" class="w-full sm:w-auto px-8 py-4 bg-theme-primary hover:bg-theme-primary-hover text-white text-xs uppercase font-bold tracking-widest rounded-none shadow-lg hover:shadow-xl transition text-center">
-                                Explorer le Catalogue
-                            </a>
-                            <button onclick="openGeneralWhatsApp('Bonjour L\'Art Infiny, j\'aimerais commander une création personnalisée.')" class="w-full sm:w-auto px-7 py-4 bg-theme-card hover:bg-theme-surface border border-theme-border text-theme-text text-xs uppercase font-bold tracking-widest flex items-center justify-center gap-2 transition">
-                                <i data-lucide="message-square" class="w-4 h-4 text-emerald-600"></i>
-                                Commander sur WhatsApp
-                            </button>
-                        </div>
-
-                        <!-- Trust micro-badges -->
-                        <div class="pt-8 border-t border-theme-border/80 grid grid-cols-3 gap-4 text-center lg:text-left">
-                            <div>
-                                <span class="block font-serif font-bold text-xl text-theme-text">Origine</span>
-                                <span class="text-xs text-theme-muted">Cuirs Pleine Fleur</span>
-                            </div>
-                            <div>
-                                <span class="block font-serif font-bold text-xl text-theme-text">Unique</span>
-                                <span class="text-xs text-theme-muted">Gravure personnalisée</span>
-                            </div>
-                            <div>
-                                <span class="block font-serif font-bold text-xl text-theme-text">Garantie</span>
-                                <span class="text-xs text-theme-muted">Coutures à vie</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Hero Visual -->
-                    <div class="lg:col-span-5 relative">
-                        <div class="relative mx-auto max-w-md lg:max-w-none">
-                            <div class="absolute -inset-2 bg-gradient-to-tr from-theme-accent/20 to-theme-primary/20 rounded-2xl blur-xl"></div>
-                            <div class="relative bg-theme-card border border-theme-border p-3 shadow-2xl rounded-sm">
-                                <img id="hero-image" src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=1000&auto=format&fit=crop" alt="Maroquinerie de luxe" class="w-full h-[460px] object-cover rounded-sm">
-                                <div class="absolute bottom-6 left-6 right-6 bg-theme-surface/95 backdrop-blur-md p-4 border border-theme-border shadow-lg">
-                                    <p class="text-[10px] tracking-widest uppercase font-bold text-theme-primary">Édition d'Atelier</p>
-                                    <p class="font-serif font-semibold text-theme-text text-sm" id="hero-featured-tag">Sac Besace « L'Intemporel »</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Dynamic Catalogue Section -->
-        <section id="catalogue" class="py-16 bg-theme-surface/50 border-t border-theme-border transition-theme">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <!-- Section Header -->
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
-                    <div>
-                        <span class="text-xs font-bold tracking-[0.25em] text-theme-primary uppercase block mb-1">Nos Créations Artisanales</span>
-                        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-theme-text">Le Catalogue de l'Atelier</h2>
-                    </div>
-                    
-                    <!-- Search and Actions -->
-                    <div class="flex items-center gap-3">
-                        <div class="relative">
-                            <input type="text" id="search-input" oninput="filterProducts()" placeholder="Rechercher une pièce..." class="bg-theme-card border border-theme-border text-theme-text text-xs rounded-full pl-9 pr-4 py-2.5 focus:outline-none focus:border-theme-primary w-52 sm:w-64 transition">
-                            <i data-lucide="search" class="w-4 h-4 text-theme-muted absolute left-3 top-3"></i>
-                        </div>
-                        <button onclick="openAdminModal('categories')" class="p-2.5 bg-theme-card hover:bg-theme-surface border border-theme-border rounded-full text-theme-muted hover:text-theme-primary transition" title="Gérer les catégories">
-                            <i data-lucide="folder-cog" class="w-4 h-4"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Dynamic Categories Pills -->
-                <div class="flex items-center gap-2 overflow-x-auto pb-4 scrollbar-none no-scrollbar" id="categories-container">
-                    <!-- Injected by JavaScript -->
-                </div>
-
-                <!-- Products Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-8" id="products-grid">
-                    <!-- Injected by JavaScript -->
-                </div>
-
-                <!-- Empty State if no product -->
-                <div id="empty-state" class="hidden text-center py-16 bg-theme-card border border-dashed border-theme-border rounded-xl">
-                    <i data-lucide="package-open" class="w-12 h-12 text-theme-muted mx-auto mb-3"></i>
-                    <p class="font-serif text-lg font-medium text-theme-text">Aucun article trouvé dans cette sélection</p>
-                    <p class="text-xs text-theme-muted mt-1">Modifiez vos filtres ou ajoutez de nouveaux articles dans l'administration.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Savoir-Faire / Craftsmanship Section -->
-        <section id="savoir-faire" class="py-20 border-t border-theme-border bg-theme-bg">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-2xl mx-auto mb-16">
-                    <span class="text-xs font-bold tracking-[0.25em] text-theme-primary uppercase">Tradition & Passion</span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-theme-text mt-1">L'Excellence du Fait Main</h2>
-                    <div class="w-12 h-0.5 bg-theme-primary mx-auto mt-4"></div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Card 1 -->
-                    <div class="bg-theme-card p-8 border border-theme-border hover:border-theme-primary transition duration-300">
-                        <div class="w-12 h-12 bg-theme-surface rounded-full flex items-center justify-center text-theme-primary mb-6">
-                            <i data-lucide="layers" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-serif text-lg font-bold text-theme-text mb-2">Cuir Végétal Certifié</h3>
-                        <p class="text-sm text-theme-muted leading-relaxed">
-                            Nous utilisons exclusivement des cuirs tannés aux extraits d'écorces et de végétaux. Une matière vivante qui s'embellit et se patine noblement avec le temps.
-                        </p>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="bg-theme-card p-8 border border-theme-border hover:border-theme-primary transition duration-300">
-                        <div class="w-12 h-12 bg-theme-surface rounded-full flex items-center justify-center text-theme-primary mb-6">
-                            <i data-lucide="sparkles" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-serif text-lg font-bold text-theme-text mb-2">Couture au Point Sellier</h3>
-                        <p class="text-sm text-theme-muted leading-relaxed">
-                            Chaque trou est percé à l'alêne et cousu à deux aiguilles avec un fil de lin ciré. Une robustesse inaccessible aux machines industrielles.
-                        </p>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="bg-theme-card p-8 border border-theme-border hover:border-theme-primary transition duration-300">
-                        <div class="w-12 h-12 bg-theme-surface rounded-full flex items-center justify-center text-theme-primary mb-6">
-                            <i data-lucide="shield-check" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="font-serif text-lg font-bold text-theme-text mb-2">Pièces Uniques & Durables</h3>
-                        <p class="text-sm text-theme-muted leading-relaxed">
-                            De la découpe manuelle des gabarits à la teinture des tranches à chaud, chaque création est une signature artisanale authentique.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sur-Mesure & Direct WhatsApp Order Banner -->
-        <section id="sur-mesure" class="py-16 bg-theme-surface border-t border-b border-theme-border">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="bg-theme-card border border-theme-border p-8 sm:p-12 lg:p-16 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-xl relative overflow-hidden">
-                    <div class="max-w-xl space-y-4 text-center lg:text-left z-10">
-                        <span class="text-xs font-bold tracking-[0.25em] text-theme-primary uppercase">Atelier Personnalisé</span>
-                        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-theme-text">Un projet sur-mesure en cuir ?</h2>
-                        <p class="text-sm text-theme-muted leading-relaxed">
-                            Choix des cuirs, gravure d'initiales, dimensions spécifiques ou création d'après croquis : échangez en direct avec l'artisan maroquinier sur WhatsApp.
-                        </p>
-                    </div>
-                    <div class="z-10 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                        <button onclick="openGeneralWhatsApp('Bonjour L\'Art Infiny, je souhaite réaliser une pièce sur-mesure personnalisée.')" class="px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition shadow-md">
-                            <i data-lucide="message-circle" class="w-5 h-5"></i>
-                            Discuter du projet sur WhatsApp
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-theme-surface border-t border-theme-border text-theme-muted text-xs transition-theme">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="space-y-3">
-                    <span class="font-serif text-xl font-bold tracking-widest text-theme-text uppercase block" id="footer-logo">L'Art Infiny</span>
-                    <p class="text-xs leading-relaxed">Maison artisanale de maroquinerie d'art. Créations faites main, matières nobles et finitions irréprochables.</p>
-                </div>
-                <div>
-                    <h4 class="font-serif font-bold text-theme-text text-sm uppercase mb-3">Atelier & Contact</h4>
-                    <ul class="space-y-2">
-                        <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-theme-primary"></i> <span id="footer-address">Atelier L'Art Infiny, France</span></li>
-                        <li class="flex items-center gap-2"><i data-lucide="phone" class="w-3.5 h-3.5 text-theme-primary"></i> <span id="footer-phone">+33 6 12 34 56 78</span></li>
-                        <li class="flex items-center gap-2"><i data-lucide="mail" class="w-3.5 h-3.5 text-theme-primary"></i> <span id="footer-email">contact@art-infiny.com</span></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-serif font-bold text-theme-text text-sm uppercase mb-3">Engagements</h4>
-                    <ul class="space-y-1.5">
-                        <li>• Tannage végétal éco-responsable</li>
-                        <li>• Coutures renforcées main</li>
-                        <li>• Réparation & entretien atelier</li>
-                        <li>• Expédition sécurisée suivie</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-serif font-bold text-theme-text text-sm uppercase mb-3">Administration</h4>
-                    <p class="mb-3 text-[11px]">Accédez au sélecteur de 8 thèmes minimalistes et gérez les articles en toute simplicité.</p>
-                    <button onclick="openAdminModal()" class="px-4 py-2 bg-theme-card hover:bg-theme-bg border border-theme-border text-theme-text font-semibold rounded text-xs flex items-center gap-2 transition">
-                        <i data-lucide="lock" class="w-3.5 h-3.5 text-theme-primary"></i>
-                        Panneau de Gestion
-                    </button>
-                </div>
-            </div>
-
-            <div class="border-t border-theme-border/60 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <p>&copy; <span id="year-span"></span> L'Art Infiny. Maroquinerie Artisanale d'Exception. Tous droits réservés.</p>
-                <div class="flex items-center gap-4">
-                    <button onclick="openThemeQuickSelector()" class="hover:text-theme-text underline">Changer de thème</button>
-                    <span>•</span>
-                    <a href="#catalogue" class="hover:text-theme-text">Catalogue</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- ======================================================== -->
-    <!-- FLOATING WHATSAPP BUTTON (ALWAYS ACCESSIBLE) -->
-    <!-- ======================================================== -->
-    <a href="javascript:void(0)" onclick="openGeneralWhatsApp()" class="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-700 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 group" aria-label="Commander sur WhatsApp">
-        <i data-lucide="message-circle" class="w-7 h-7"></i>
-        <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 ease-in-out text-xs font-bold pl-0 group-hover:pl-2">Commander via WhatsApp</span>
+<!-- ================= HEADER ================= -->
+<header class="header-blur fixed top-0 inset-x-0 z-40 border-b border-c">
+  <div class="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between">
+    <a href="#accueil" class="flex items-center gap-3">
+      <div class="w-11 h-11 rounded-full bg-accent flex items-center justify-center text-white serif text-2xl font-bold">L</div>
+      <div class="leading-tight">
+        <div class="serif text-2xl font-semibold" id="brandName">L'Art Infiny</div>
+        <div class="text-[11px] tracking-[.3em] uppercase text-muted" id="brandTag">Maroquinerie Artisanale</div>
+      </div>
     </a>
-
-    <!-- ======================================================== -->
-    <!-- PRODUCT DETAIL / COMMAND MODAL -->
-    <!-- ======================================================== -->
-    <div id="product-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-theme-card border border-theme-border max-w-3xl w-full rounded-none shadow-2xl overflow-hidden relative my-8 animate-fadeIn">
-            <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 p-2 bg-theme-surface/80 rounded-full hover:bg-theme-surface text-theme-text">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-
-            <div class="grid grid-cols-1 md:grid-cols-2">
-                <!-- Image -->
-                <div class="h-72 md:h-full min-h-[320px] bg-theme-surface relative">
-                    <img id="modal-product-img" src="" alt="Produit Cuir" class="w-full h-full object-cover">
-                    <span id="modal-product-category" class="absolute top-4 left-4 bg-theme-card/90 backdrop-blur text-theme-primary px-3 py-1 text-[10px] font-bold tracking-widest uppercase border border-theme-border">Catégorie</span>
-                </div>
-                <!-- Details -->
-                <div class="p-6 md:p-8 flex flex-col justify-between space-y-6">
-                    <div>
-                        <div class="flex items-baseline justify-between mb-2">
-                            <span id="modal-product-ref" class="text-[10px] tracking-widest uppercase text-theme-muted">REF-001</span>
-                            <span id="modal-product-badge" class="text-[10px] text-emerald-600 font-semibold bg-emerald-50 dark:bg-emerald-950/30 px-2 py-0.5 rounded">En stock</span>
-                        </div>
-                        <h3 id="modal-product-title" class="font-serif text-2xl font-bold text-theme-text mb-3">Nom du produit</h3>
-                        <p id="modal-product-price" class="text-xl font-serif font-bold text-theme-primary mb-4">0 €</p>
-                        <p id="modal-product-desc" class="text-xs text-theme-muted leading-relaxed mb-4">Description artisanale complète...</p>
-                        
-                        <div class="border-t border-b border-theme-border py-3 my-4 space-y-1.5 text-xs text-theme-muted">
-                            <div class="flex justify-between"><span>Matière :</span> <span class="font-medium text-theme-text">Cuir pleine fleur</span></div>
-                            <div class="flex justify-between"><span>Assemblage :</span> <span class="font-medium text-theme-text">Couture main au fil de lin</span></div>
-                            <div class="flex justify-between"><span>Finition :</span> <span class="font-medium text-theme-text">Tranches lissées à la cire d'abeille</span></div>
-                        </div>
-                    </div>
-
-                    <div class="space-y-3">
-                        <button id="modal-whatsapp-btn" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition shadow-md">
-                            <i data-lucide="message-circle" class="w-4 h-4"></i>
-                            Commander Directement par WhatsApp
-                        </button>
-                        <button onclick="addToCartFromModal()" class="w-full py-3 bg-theme-surface hover:bg-theme-border/50 border border-theme-border text-theme-text text-xs font-bold uppercase tracking-widest transition">
-                            Ajouter à ma sélection
-                        </button>
-                    </div>
-                </div>
-            </div>
+    <nav class="hidden lg:flex items-center gap-9 text-sm font-medium">
+      <a href="#accueil" class="hover:accent transition">Accueil</a>
+      <a href="#collections" class="hover:accent transition">Collections</a>
+      <a href="#savoir" class="hover:accent transition">Savoir-faire</a>
+      <a href="#apropos" class="hover:accent transition">À propos</a>
+      <a href="#contact" class="hover:accent transition">Contact</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <!-- Theme picker -->
+      <div class="relative">
+        <button id="themeBtn" class="w-10 h-10 rounded-full surface border border-c flex items-center justify-center hover:accent transition" title="Thèmes">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M9 5.5a.5.5 0 11-1 0 .5.5 0 011 0z"/></svg>
+        </button>
+        <div id="themePanel" class="hidden absolute right-0 mt-3 w-64 surface border border-c rounded-2xl shadow-2xl p-4 modal-in">
+          <div class="text-xs font-semibold uppercase tracking-widest text-muted mb-3">Thèmes minimalistes</div>
+          <div id="themeGrid" class="grid grid-cols-4 gap-3"></div>
         </div>
+      </div>
+      <a id="waHeader" href="#" target="_blank" class="hidden sm:inline-flex btn-accent px-5 py-2.5 rounded-full text-sm font-medium">Commander</a>
+      <button id="adminToggle" class="w-10 h-10 rounded-full surface border border-c flex items-center justify-center hover:accent transition" title="Espace admin">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      </button>
+      <button id="menuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
     </div>
+  </div>
+  <!-- mobile nav -->
+  <div id="mobileNav" class="hidden lg:hidden surface border-t border-c px-5 py-4 flex flex-col gap-4 text-sm font-medium">
+    <a href="#accueil" class="mnav">Accueil</a>
+    <a href="#collections" class="mnav">Collections</a>
+    <a href="#savoir" class="mnav">Savoir-faire</a>
+    <a href="#apropos" class="mnav">À propos</a>
+    <a href="#contact" class="mnav">Contact</a>
+    <a id="waMobile" href="#" target="_blank" class="btn-accent text-center px-5 py-2.5 rounded-full">Commander sur WhatsApp</a>
+  </div>
+</header>
 
-    <!-- ======================================================== -->
-    <!-- CART / DEVIS DRAWER -->
-    <!-- ======================================================== -->
-    <div id="cart-drawer" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden transition-opacity">
-        <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-theme-card border-l border-theme-border p-6 shadow-2xl flex flex-col justify-between">
-            <div>
-                <div class="flex items-center justify-between pb-4 border-b border-theme-border">
-                    <div class="flex items-center gap-2">
-                        <i data-lucide="shopping-bag" class="w-5 h-5 text-theme-primary"></i>
-                        <h3 class="font-serif font-bold text-lg text-theme-text">Ma Sélection de Pièces</h3>
-                    </div>
-                    <button onclick="toggleDrawer('cart-drawer')" class="p-1.5 text-theme-muted hover:text-theme-text">
-                        <i data-lucide="x" class="w-5 h-5"></i>
-                    </button>
-                </div>
-
-                <div id="cart-items-container" class="py-4 space-y-4 max-h-[60vh] overflow-y-auto">
-                    <!-- Cart items populated via JS -->
-                </div>
-            </div>
-
-            <div class="pt-4 border-t border-theme-border space-y-3">
-                <div class="flex justify-between items-center text-sm">
-                    <span class="text-theme-muted">Total estimé :</span>
-                    <span id="cart-total-price" class="font-serif font-bold text-xl text-theme-primary">0.00 €</span>
-                </div>
-                <button onclick="checkoutCartWhatsApp()" class="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg transition">
-                    <i data-lucide="message-circle" class="w-4 h-4"></i>
-                    Valider ma commande sur WhatsApp
-                </button>
-                <button onclick="clearCart()" class="w-full py-2 text-[11px] text-theme-muted hover:text-red-500 uppercase tracking-wider transition text-center">
-                    Vider la sélection
-                </button>
-            </div>
+<!-- ================= HERO ================= -->
+<section id="accueil" class="pt-20">
+  <div class="max-w-7xl mx-auto px-5 grid lg:grid-cols-2 gap-12 items-center py-16 lg:py-24">
+    <div class="fade-up">
+      <div class="inline-flex items-center gap-2 text-xs uppercase tracking-[.25em] text-muted mb-6">
+        <span class="w-8 h-px bg-accent"></span> Fait main au Maroc
+      </div>
+      <h1 class="serif text-5xl md:text-7xl font-semibold leading-[1.05] mb-6" id="heroTitle">Le cuir, sculpté par des mains passionnées</h1>
+      <p class="text-muted text-lg leading-relaxed mb-8 max-w-md" id="heroSub">Découvrez des pièces uniques en cuir véritable, façonnées avec un savoir-faire ancestral et une élégance intemporelle.</p>
+      <div class="flex flex-wrap gap-4">
+        <a href="#collections" class="btn-accent px-8 py-3.5 rounded-full font-medium">Voir les collections</a>
+        <a id="waHero" href="#" target="_blank" class="px-8 py-3.5 rounded-full font-medium border border-c surface hover:accent transition flex items-center gap-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+          Commander
+        </a>
+      </div>
+      <div class="flex gap-8 mt-12">
+        <div><div class="serif text-3xl font-semibold accent">15+</div><div class="text-xs text-muted uppercase tracking-wider">Ans d'expérience</div></div>
+        <div><div class="serif text-3xl font-semibold accent">100%</div><div class="text-xs text-muted uppercase tracking-wider">Cuir véritable</div></div>
+        <div><div class="serif text-3xl font-semibold accent">2500+</div><div class="text-xs text-muted uppercase tracking-wider">Clients ravis</div></div>
+      </div>
+    </div>
+    <div class="fade-up relative">
+      <div class="aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
+        <img src="https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt="Maroquinerie">
+      </div>
+      <div class="absolute -bottom-6 -left-6 surface border border-c rounded-2xl p-5 shadow-xl hidden md:block">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-full hero-grad flex items-center justify-center text-white text-xl">✦</div>
+          <div><div class="serif text-lg font-semibold">Édition limitée</div><div class="text-xs text-muted">Chaque pièce est unique</div></div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="hero-grad text-white py-4 overflow-hidden">
+  <div class="marquee inline-block">
+    <span class="serif text-xl mx-6">✦ Sacs en cuir</span><span class="serif text-xl mx-6">✦ Ceintures artisanales</span><span class="serif text-xl mx-6">✦ Portefeuilles</span><span class="serif text-xl mx-6">✦ Poufs marocains</span><span class="serif text-xl mx-6">✦ Accessoires</span>
+    <span class="serif text-xl mx-6">✦ Sacs en cuir</span><span class="serif text-xl mx-6">✦ Ceintures artisanales</span><span class="serif text-xl mx-6">✦ Portefeuilles</span><span class="serif text-xl mx-6">✦ Poufs marocains</span><span class="serif text-xl mx-6">✦ Accessoires</span>
+  </div>
+</div>
+
+<!-- ================= COLLECTIONS ================= -->
+<section id="collections" class="py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="text-center mb-14 fade-up">
+      <div class="text-xs uppercase tracking-[.3em] text-muted mb-3">Nos créations</div>
+      <h2 class="serif text-4xl md:text-5xl font-semibold">Collections & Catégories</h2>
+    </div>
+    <div id="categoryGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+  </div>
+</section>
+
+<!-- ================= SAVOIR-FAIRE ================= -->
+<section id="savoir" class="py-20 lg:py-28 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 grid lg:grid-cols-2 gap-14 items-center">
+    <div class="fade-up order-2 lg:order-1 grid grid-cols-2 gap-4">
+      <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80&w=600&auto=format&fit=crop" class="rounded-2xl object-cover h-full w-full aspect-square shadow-lg" alt="">
+      <img src="https://images.unsplash.com/photo-1560243563-062bfc001d68?q=80&w=600&auto=format&fit=crop" class="rounded-2xl object-cover h-full w-full aspect-square shadow-lg mt-8" alt="">
+    </div>
+    <div class="fade-up order-1 lg:order-2">
+      <div class="text-xs uppercase tracking-[.3em] text-muted mb-3">Notre métier</div>
+      <h2 class="serif text-4xl md:text-5xl font-semibold mb-6">Un savoir-faire transmis de génération en génération</h2>
+      <p class="text-muted leading-relaxed mb-8">Chaque article L'Art Infiny naît de la sélection rigoureuse des plus beaux cuirs, tannés selon des méthodes traditionnelles. Nos artisans consacrent des heures de travail minutieux à chaque pièce pour vous offrir des créations durables et authentiques.</p>
+      <div class="space-y-5">
+        <div class="flex gap-4"><div class="w-11 h-11 shrink-0 rounded-full bg-accent2 text-white flex items-center justify-center serif font-bold">1</div><div><div class="font-semibold mb-1">Sélection du cuir</div><p class="text-sm text-muted">Cuirs pleine fleur choisis pour leur qualité exceptionnelle.</p></div></div>
+        <div class="flex gap-4"><div class="w-11 h-11 shrink-0 rounded-full bg-accent2 text-white flex items-center justify-center serif font-bold">2</div><div><div class="font-semibold mb-1">Découpe & couture main</div><p class="text-sm text-muted">Assemblage traditionnel au point sellier, garant de solidité.</p></div></div>
+        <div class="flex gap-4"><div class="w-11 h-11 shrink-0 rounded-full bg-accent2 text-white flex items-center justify-center serif font-bold">3</div><div><div class="font-semibold mb-1">Finitions soignées</div><p class="text-sm text-muted">Chaque détail est vérifié pour un rendu impeccable.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= APROPOS ================= -->
+<section id="apropos" class="py-20 lg:py-28">
+  <div class="max-w-4xl mx-auto px-5 text-center fade-up">
+    <div class="text-xs uppercase tracking-[.3em] text-muted mb-3">À propos</div>
+    <h2 class="serif text-4xl md:text-5xl font-semibold mb-6">L'Art Infiny</h2>
+    <p class="text-muted text-lg leading-relaxed">Née de la passion du cuir et de l'artisanat marocain, L'Art Infiny célèbre l'élégance intemporelle et le travail bien fait. Notre atelier perpétue des techniques ancestrales tout en cultivant un design contemporain. Nous croyons qu'un bel objet en cuir se bonifie avec le temps et raconte une histoire — la vôtre.</p>
+    <div class="grid sm:grid-cols-3 gap-6 mt-12">
+      <div class="surface border border-c rounded-2xl p-6"><div class="serif text-2xl mb-2 accent">Authenticité</div><p class="text-sm text-muted">Des matières nobles et honnêtes.</p></div>
+      <div class="surface border border-c rounded-2xl p-6"><div class="serif text-2xl mb-2 accent">Durabilité</div><p class="text-sm text-muted">Des pièces conçues pour durer.</p></div>
+      <div class="surface border border-c rounded-2xl p-6"><div class="serif text-2xl mb-2 accent">Élégance</div><p class="text-sm text-muted">Un style intemporel et raffiné.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT / CTA ================= -->
+<section id="contact" class="py-20 lg:py-28">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="hero-grad rounded-[2.5rem] p-10 md:p-16 text-center text-white fade-up relative overflow-hidden">
+      <h2 class="serif text-4xl md:text-5xl font-semibold mb-5">Passez commande dès aujourd'hui</h2>
+      <p class="text-white/90 max-w-xl mx-auto mb-8 text-lg">Une question, une commande sur-mesure ? Contactez-nous directement sur WhatsApp, notre équipe vous répond avec plaisir.</p>
+      <a id="waContact" href="#" target="_blank" class="inline-flex items-center gap-3 bg-white text-gray-900 px-9 py-4 rounded-full font-semibold text-lg hover:scale-105 transition">
+        <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+        Discuter sur WhatsApp
+      </a>
+      <p class="mt-6 text-white/80 text-sm" id="phoneDisplay"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="surface border-t border-c pt-14 pb-8">
+  <div class="max-w-7xl mx-auto px-5 grid md:grid-cols-4 gap-10">
+    <div>
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-white serif text-xl font-bold">L</div>
+        <span class="serif text-xl font-semibold">L'Art Infiny</span>
+      </div>
+      <p class="text-sm text-muted leading-relaxed">Maroquinerie artisanale en cuir véritable. L'élégance qui traverse le temps.</p>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-4">Navigation</h4>
+      <ul class="space-y-2 text-sm text-muted">
+        <li><a href="#collections" class="hover:accent transition">Collections</a></li>
+        <li><a href="#savoir" class="hover:accent transition">Savoir-faire</a></li>
+        <li><a href="#apropos" class="hover:accent transition">À propos</a></li>
+        <li><a href="#contact" class="hover:accent transition">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-4">Contact</h4>
+      <ul class="space-y-2 text-sm text-muted" id="footerContact"></ul>
+    </div>
+    <div>
+      <h4 class="font-semibold mb-4">Suivez-nous</h4>
+      <div class="flex gap-3">
+        <a href="#" class="w-10 h-10 rounded-full surface border border-c flex items-center justify-center hover:accent transition">f</a>
+        <a href="#" class="w-10 h-10 rounded-full surface border border-c flex items-center justify-center hover:accent transition">◎</a>
+        <a href="#" class="w-10 h-10 rounded-full surface border border-c flex items-center justify-center hover:accent transition">in</a>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-5 mt-10 pt-6 border-t border-c text-center text-xs text-muted">
+    © <span id="year"></span> L'Art Infiny — Tous droits réservés. Conçu avec passion.
+  </div>
+</footer>
+
+<!-- ================= WHATSAPP FLOAT ================= -->
+<a id="waFloat" href="#" target="_blank" class="wa-float fixed bottom-6 right-6 z-40 w-16 h-16 rounded-full bg-[#25D366] flex items-center justify-center shadow-2xl">
+  <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+</a>
+
+<!-- ================= ADMIN PANEL ================= -->
+<div id="adminOverlay" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm">
+  <div class="absolute right-0 top-0 h-full w-full max-w-md surface border-l border-c shadow-2xl overflow-y-auto modal-in">
+    <div class="sticky top-0 header-blur border-b border-c px-6 py-4 flex items-center justify-between z-10">
+      <div>
+        <h3 class="serif text-2xl font-semibold">Espace Administrateur</h3>
+        <p class="text-xs text-muted">Gérez votre site en direct</p>
+      </div>
+      <button id="closeAdmin" class="w-9 h-9 rounded-full surface border border-c flex items-center justify-center hover:accent transition">✕</button>
     </div>
 
-    <!-- ======================================================== -->
-    <!-- FULL ADMIN CONTROL & THEME PANEL MODAL -->
-    <!-- ======================================================== -->
-    <div id="admin-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
-        <div class="bg-theme-card border border-theme-border max-w-5xl w-full rounded-lg shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
-            
-            <!-- Admin Top Bar -->
-            <div class="bg-theme-surface px-6 py-4 border-b border-theme-border flex items-center justify-between flex-wrap gap-4">
-                <div class="flex items-center gap-3">
-                    <div class="p-2 bg-theme-primary/10 rounded-md text-theme-primary">
-                        <i data-lucide="sliders" class="w-5 h-5"></i>
-                    </div>
-                    <div>
-                        <h2 class="font-serif text-lg font-bold text-theme-text">Centre d'Administration & Personnalisation</h2>
-                        <p class="text-[11px] text-theme-muted">Gérez les 8 thèmes minimalistes, produits, catégories et options de WhatsApp</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-2">
-                    <button onclick="resetToDefaults()" class="px-3 py-1.5 text-xs bg-red-900/20 text-red-400 hover:bg-red-900/40 border border-red-800/40 rounded transition" title="Restaurer données d'origine">
-                        Réinitialiser
-                    </button>
-                    <button onclick="closeAdminModal()" class="p-2 text-theme-muted hover:text-theme-text rounded-full hover:bg-theme-border/40">
-                        <i data-lucide="x" class="w-5 h-5"></i>
-                    </button>
-                </div>
-            </div>
+    <div class="p-6 space-y-8">
+      <!-- Login gate -->
+      <div id="loginBox">
+        <label class="text-sm font-medium block mb-2">Mot de passe admin</label>
+        <input id="adminPass" type="password" placeholder="admin (par défaut)" class="w-full px-4 py-3 rounded-xl border border-c bg-transparent outline-none focus:border-[var(--c-accent)]">
+        <button id="loginBtn" class="btn-accent w-full mt-3 py-3 rounded-xl font-medium">Se connecter</button>
+        <p class="text-xs text-muted mt-2">Astuce : le mot de passe par défaut est « admin ».</p>
+      </div>
 
-            <!-- Admin Nav Tabs -->
-            <div class="flex border-b border-theme-border bg-theme-surface/50 px-6 overflow-x-auto gap-2">
-                <button onclick="switchAdminTab('tab-themes')" id="btn-tab-themes" class="admin-tab-btn py-3 px-4 text-xs font-bold uppercase tracking-wider border-b-2 border-theme-primary text-theme-primary">
-                    1. Thèmes & Esthétique (8 Thèmes)
-                </button>
-                <button onclick="switchAdminTab('tab-categories')" id="btn-tab-categories" class="admin-tab-btn py-3 px-4 text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-theme-muted hover:text-theme-text">
-                    2. Catégories
-                </button>
-                <button onclick="switchAdminTab('tab-products')" id="btn-tab-products" class="admin-tab-btn py-3 px-4 text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-theme-muted hover:text-theme-text">
-                    3. Articles & Cuirs
-                </button>
-                <button onclick="switchAdminTab('tab-settings')" id="btn-tab-settings" class="admin-tab-btn py-3 px-4 text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-theme-muted hover:text-theme-text">
-                    4. WhatsApp & Textes
-                </button>
-            </div>
-
-            <!-- Admin Body (Scrollable) -->
-            <div class="p-6 overflow-y-auto flex-grow space-y-6">
-
-                <!-- TAB 1: 8 LUXURY THEMES SELECTOR -->
-                <div id="tab-themes" class="admin-tab-pane space-y-6">
-                    <div>
-                        <h3 class="font-serif font-bold text-base text-theme-text">Sélectionnez le Thème Minimaliste de la Marque</h3>
-                        <p class="text-xs text-theme-muted">Inspiré des plus grandes maisons de maroquinerie d'art et du design contemporain.</p>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="theme-cards-container">
-                        <!-- Theme 1 -->
-                        <div onclick="applyTheme('cognac')" class="theme-card cursor-pointer p-4 rounded border-2 border-theme-border hover:border-theme-primary transition relative bg-[#fcfbf9] text-[#231b15]" data-tname="cognac">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="font-serif font-bold text-sm">Cognac Atelier</span>
-                                <span class="text-[10px] font-semibold uppercase px-2 py-0.5 bg-[#8b4513] text-white rounded">Défaut</span>
-                            </div>
-                            <div class="flex gap-1.5 mb-2">
-                                <div class="w-6 h-6 rounded-full bg-[#8b4513]"></div>
-                                <div class="w-6 h-6 rounded-full bg-[#d4a373]"></div>
-                                <div class="w-6 h-6 rounded-full bg-[#f7f4ee] border border-black/10"></div>
-                            </div>
-                            <p class="text-[11px] text-[#73675c]">Teinte naturelle chaude du cuir pleine fleur et de la patine d'artisan.</p>
-                        </div>
-
-                        <!-- Theme 2 -->
-                        <div onclick="applyTheme('noir')" class="theme-card cursor-pointer p-4 rounded border-2 border-theme-border hover:border-theme-primary transition relative bg-[#0c0d0e] text-[#f5f5f7]" data-tname="noir">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="font-serif font-bold text-sm text-white">Noir Minimaliste</span>
-                                <span class="text-[10px] font-semibold uppercase px-2 py-0.5 bg-[#2b3038] text-gray-200 rounded">Dark Luxury</span>
-                            </div>
-                            <div class="flex gap-1.5 mb-2">
-                                <div class="w-6 h-6 rounded-full bg-[#dcd6cd]"></div>
-                                <div class="w-6 h-6 rounded-full bg-[#1c1f24] border border-white/20"></div>
-                                <div class="w-6 h-6 rounded-full bg-[#0c0d0e] border border-white/20"></div>
-                            </div>
-                            <p class="text-[11px] text-[#9da3af]">Monochrome radical et chic haute maroquinerie contemporaine.</p>
-                        </div>
-
-                        <!-- Theme 3 -->
-                        <div onclick="applyTheme('sable')" class="theme-card cursor-pointer p-4 rounded border-2 border-theme-border hover:border-theme-primary transition relative bg-[#f8f6f0] text-[#2d2722]" data-tname="sable">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="font-serif font-bold text-sm">Sable & Lin</span>
-                                <span class="text-[10px] font-semibold uppercase px-2 py-0.5 bg-[#6b5e51] text-white rounded">Nordique</span>
-                            </div>
-                            <div class="flex gap-1.5 mb-2">
-                                <div class="w-6 h-6 rounded-full bg-[#6b5e51]"></div>
-                                <div class="w-6 h-6 rounded-full bg-[#b8a99a]"></div>
-                                <div class="w-6 h-6 rounded-full bg-[#efebe2]"></div>
-                            </div>
-                            <p class="text-[11px] text-[#786d63]">Douceur minérale, tons écrus apaisants et élégance discrète.</p>
-                        </div>
-
-                        <!-- Theme 4 -->
-                        <div onclick="applyTheme('hermes')" class="theme-card cursor-pointer p-4 rounded border-2 border-theme-border hover:border-theme-primary transition relative bg-[#fffdfa] text-[#271d17]" data-tname="hermes">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="font-serif font-bold text-sm">Terre Cuivrée</span>
-                                <span class="text-[10px] font-semibold uppercase px-2 py-0.5 bg-[#c2410c] text-white rounded">Signature</span>
-                            </div>
-                            <div class="flex gap-1.5 mb-2">
-                                <div class="w-6 h-6 rounded-full bg-[#c2410c]"></div>
-                                <div class="w-6 h-6 rounded-full bg-[#fb923c]"></div>
-                                <div class="w-6 h-6 rounded-full bg-[#fff3e8]"></div>
-                            </div>
-                            <p class="text-[11px] text-[#7c685c]">Inspiré de la grande tradition sellier française et de la terre de Sienne.</p>
-                        </div>
-
-                        <!-- Theme 5 -->
-                        <div onclick="applyTheme('olive')" class="theme-card cursor-pointer p-4 rounded border-2 border-theme-border hover:border-theme-primary transition relative bg-[#f6f7f4] text-[#1f2722]" data-tname="olive">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="font-serif font-bold text-sm">Olive & Nature</span>
-                                <span class="text-[10px] font-semibold uppercase px-2 py-0.5 bg-[#384b3e] text-white rounded">Organique</span>
-                            </div>
-                            <div class="flex gap-1.5 mb-2">
-                                <div class="w-6 h-6 rounded-full bg-[#384b3e]"></div>
-                                <div class="w-6 h-6 rounded-full bg-[#9da07a]"></div>
-                                <div class="w-6 h-6 rounded-full bg-[#ecefe9]"></div>
-                            </div>
-                            <p class="text-[11px] text-[#626c64]">Tonalités végétales, vert atelier profond et cuir brut.</p>
-                        </div>
-
-                        <!-- Theme 6 -->
-                        <div onclick="applyTheme('bordeaux')" class="theme-card cursor-pointer p-4 rounded border-2 border-theme-border hover:border-theme-primary transition relative bg-[#faf6f6] text-[#241417]" data-tname="bordeaux">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="font-serif font-bold text-sm">Bordeaux Impérial</span>
-                                <span class="text-[10px] font-semibold uppercase px-2 py-0.5 bg-[#5c1d28] text-white rounded">Prestige</span>
-                            </div>
-                            <div class="flex gap-1.5 mb-2">
-                                <div class="w-6 h-6 rounded-full bg-[#5c1d28]"></div>
-                                <div class="w-6 h-6 rounded-full bg-[#c07a8b]"></div>
-                                <div class="w-6 h-6 rounded-full bg-[#f4e9eb]"></div>
-                            </div>
-                            <p class="text-[11px] text-[#6e585c]">Nuance cordovan / lie-de-vin, raffiné et majestueux.</p>
-                        </div>
-
-                        <!-- Theme 7 -->
-                        <div onclick="applyTheme('moka')" class="theme-card cursor-pointer p-4 rounded border-2 border-theme-border hover:border-theme-primary transition relative bg-[#1e1916] text-[#faf5ef]" data-tname="moka">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="font-serif font-bold text-sm text-white">Havane & Moka</span>
-                                <span class="text-[10px] font-semibold uppercase px-2 py-0.5 bg-[#b08968] text-black rounded">Dark Warm</span>
-                            </div>
-                            <div class="flex gap-1.5 mb-2">
-                                <div class="w-6 h-6 rounded-full bg-[#dfba96]"></div>
-                                <div class="w-6 h-6 rounded-full bg-[#b08968]"></div>
-                                <div class="w-6 h-6 rounded-full bg-[#382e29]"></div>
-                            </div>
-                            <p class="text-[11px] text-[#bdafa4]">Fond chocolat chaud fumé avec contrastes cuivrés.</p>
-                        </div>
-
-                        <!-- Theme 8 -->
-                        <div onclick="applyTheme('ardoise')" class="theme-card cursor-pointer p-4 rounded border-2 border-theme-border hover:border-theme-primary transition relative bg-[#f8fafc] text-[#0f172a]" data-tname="ardoise">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="font-serif font-bold text-sm">Ardoise Moderne</span>
-                                <span class="text-[10px] font-semibold uppercase px-2 py-0.5 bg-[#1e293b] text-white rounded">Architecte</span>
-                            </div>
-                            <div class="flex gap-1.5 mb-2">
-                                <div class="w-6 h-6 rounded-full bg-[#1e293b]"></div>
-                                <div class="w-6 h-6 rounded-full bg-[#b45309]"></div>
-                                <div class="w-6 h-6 rounded-full bg-[#edf2f7]"></div>
-                            </div>
-                            <p class="text-[11px] text-[#64748b]">Gris bleuté épuré, design industriel et touches de tanin.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TAB 2: CATEGORIES MANAGEMENT -->
-                <div id="tab-categories" class="admin-tab-pane hidden space-y-6">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                        <div>
-                            <h3 class="font-serif font-bold text-base text-theme-text">Gestion des Catégories</h3>
-                            <p class="text-xs text-theme-muted">Ajoutez, modifiez ou supprimez les filtres et rayons de la boutique.</p>
-                        </div>
-                        <button onclick="openCategoryFormModal()" class="px-4 py-2 bg-theme-primary text-white text-xs font-bold uppercase tracking-wider rounded flex items-center gap-2">
-                            <i data-lucide="plus" class="w-4 h-4"></i> Nouvelle Catégorie
-                        </button>
-                    </div>
-
-                    <!-- Categories List Table -->
-                    <div class="border border-theme-border rounded overflow-hidden">
-                        <table class="w-full text-left text-xs text-theme-text">
-                            <thead class="bg-theme-surface uppercase font-serif text-[11px] border-b border-theme-border">
-                                <tr>
-                                    <th class="p-3">Identifiant</th>
-                                    <th class="p-3">Nom affiché</th>
-                                    <th class="p-3 text-right">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="admin-categories-table" class="divide-y divide-theme-border">
-                                <!-- Populated dynamically -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- TAB 3: PRODUCTS MANAGEMENT -->
-                <div id="tab-products" class="admin-tab-pane hidden space-y-6">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                        <div>
-                            <h3 class="font-serif font-bold text-base text-theme-text">Gestion des Pièces & Produits</h3>
-                            <p class="text-xs text-theme-muted">Modifiez prix, photos, descriptions, références et catégories.</p>
-                        </div>
-                        <button onclick="openProductFormModal()" class="px-4 py-2 bg-theme-primary text-white text-xs font-bold uppercase tracking-wider rounded flex items-center gap-2">
-                            <i data-lucide="plus" class="w-4 h-4"></i> Ajouter un Article
-                        </button>
-                    </div>
-
-                    <!-- Products List Table -->
-                    <div class="border border-theme-border rounded overflow-x-auto">
-                        <table class="w-full text-left text-xs text-theme-text min-w-[600px]">
-                            <thead class="bg-theme-surface uppercase font-serif text-[11px] border-b border-theme-border">
-                                <tr>
-                                    <th class="p-3">Photo</th>
-                                    <th class="p-3">Réf / Nom</th>
-                                    <th class="p-3">Catégorie</th>
-                                    <th class="p-3">Prix (€)</th>
-                                    <th class="p-3 text-right">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="admin-products-table" class="divide-y divide-theme-border">
-                                <!-- Populated dynamically -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- TAB 4: SITE SETTINGS & WHATSAPP CONFIG -->
-                <div id="tab-settings" class="admin-tab-pane hidden space-y-6">
-                    <div>
-                        <h3 class="font-serif font-bold text-base text-theme-text">Configuration WhatsApp & Textes d'Interface</h3>
-                        <p class="text-xs text-theme-muted">Personnalisez le numéro de réception des commandes et les éléments textuels de la marque.</p>
-                    </div>
-
-                    <form id="settings-form" onsubmit="saveSiteSettings(event)" class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
-                        <div>
-                            <label class="block font-medium text-theme-text mb-1">Numéro WhatsApp (Format international sans +)</label>
-                            <input type="text" id="setting-whatsapp" placeholder="Ex: 33612345678" class="w-full p-2.5 bg-theme-surface border border-theme-border rounded text-theme-text" required>
-                            <span class="text-[10px] text-theme-muted">Ce numéro recevra toutes les commandes avec le panier prérempli.</span>
-                        </div>
-
-                        <div>
-                            <label class="block font-medium text-theme-text mb-1">Nom de la Marque</label>
-                            <input type="text" id="setting-sitename" placeholder="L'Art Infiny" class="w-full p-2.5 bg-theme-surface border border-theme-border rounded text-theme-text" required>
-                        </div>
-
-                        <div class="md:col-span-2">
-                            <label class="block font-medium text-theme-text mb-1">Bandeau d'annonce supérieur</label>
-                            <input type="text" id="setting-announcement" class="w-full p-2.5 bg-theme-surface border border-theme-border rounded text-theme-text">
-                        </div>
-
-                        <div class="md:col-span-2">
-                            <label class="block font-medium text-theme-text mb-1">Titre Principal (Hero)</label>
-                            <input type="text" id="setting-herotitle" class="w-full p-2.5 bg-theme-surface border border-theme-border rounded text-theme-text">
-                        </div>
-
-                        <div class="md:col-span-2">
-                            <label class="block font-medium text-theme-text mb-1">Description Atelier (Hero)</label>
-                            <textarea id="setting-herodesc" rows="2" class="w-full p-2.5 bg-theme-surface border border-theme-border rounded text-theme-text"></textarea>
-                        </div>
-
-                        <div>
-                            <label class="block font-medium text-theme-text mb-1">Email de contact</label>
-                            <input type="email" id="setting-email" class="w-full p-2.5 bg-theme-surface border border-theme-border rounded text-theme-text">
-                        </div>
-
-                        <div>
-                            <label class="block font-medium text-theme-text mb-1">Téléphone affiché</label>
-                            <input type="text" id="setting-phone" class="w-full p-2.5 bg-theme-surface border border-theme-border rounded text-theme-text">
-                        </div>
-
-                        <div class="md:col-span-2 pt-3 flex justify-end">
-                            <button type="submit" class="px-6 py-2.5 bg-theme-primary hover:bg-theme-primary-hover text-white font-bold uppercase tracking-wider rounded transition">
-                                Enregistrer les réglages
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-
-            <!-- Admin Footer -->
-            <div class="bg-theme-surface px-6 py-3 border-t border-theme-border flex items-center justify-between text-xs text-theme-muted">
-                <span>Modifications appliquées instantanément et sauvegardées en local.</span>
-                <button onclick="closeAdminModal()" class="px-4 py-1.5 bg-theme-card border border-theme-border text-theme-text hover:bg-theme-bg rounded">Fermer</button>
-            </div>
+      <div id="adminContent" class="hidden space-y-8">
+        <!-- Interface settings -->
+        <div>
+          <h4 class="font-semibold uppercase text-xs tracking-widest text-muted mb-4">Détails de l'interface</h4>
+          <div class="space-y-4">
+            <div><label class="text-sm block mb-1">Nom de la marque</label><input id="setBrand" class="adm-in"></div>
+            <div><label class="text-sm block mb-1">Slogan (sous le logo)</label><input id="setTag" class="adm-in"></div>
+            <div><label class="text-sm block mb-1">Titre principal (Hero)</label><textarea id="setHeroTitle" rows="2" class="adm-in"></textarea></div>
+            <div><label class="text-sm block mb-1">Sous-titre (Hero)</label><textarea id="setHeroSub" rows="3" class="adm-in"></textarea></div>
+            <div><label class="text-sm block mb-1">Numéro WhatsApp (format international)</label><input id="setPhone" placeholder="212600000000" class="adm-in"></div>
+            <div><label class="text-sm block mb-1">Message WhatsApp par défaut</label><textarea id="setWaMsg" rows="2" class="adm-in"></textarea></div>
+            <div><label class="text-sm block mb-1">Email</label><input id="setEmail" class="adm-in"></div>
+            <div><label class="text-sm block mb-1">Adresse</label><input id="setAddress" class="adm-in"></div>
+            <button id="saveSettings" class="btn-accent w-full py-3 rounded-xl font-medium">Enregistrer les détails</button>
+          </div>
         </div>
-    </div>
 
-    <!-- ======================================================== -->
-    <!-- EDIT/ADD PRODUCT MODAL (SUB-MODAL) -->
-    <!-- ======================================================== -->
-    <div id="product-form-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-theme-card border border-theme-border max-w-lg w-full rounded-lg p-6 shadow-2xl relative my-6">
-            <h3 id="product-form-title" class="font-serif font-bold text-lg text-theme-text mb-4">Ajouter un Article</h3>
-            
-            <form id="product-form" onsubmit="handleProductFormSubmit(event)" class="space-y-4 text-xs">
-                <input type="hidden" id="pf-id">
-                
-                <div>
-                    <label class="block font-medium text-theme-text mb-1">Nom de la création</label>
-                    <input type="text" id="pf-title" required class="w-full p-2 bg-theme-surface border border-theme-border rounded text-theme-text">
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block font-medium text-theme-text mb-1">Référence unique</label>
-                        <input type="text" id="pf-ref" required placeholder="REF-BESACE-01" class="w-full p-2 bg-theme-surface border border-theme-border rounded text-theme-text">
-                    </div>
-                    <div>
-                        <label class="block font-medium text-theme-text mb-1">Prix (€)</label>
-                        <input type="number" step="0.01" id="pf-price" required class="w-full p-2 bg-theme-surface border border-theme-border rounded text-theme-text">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block font-medium text-theme-text mb-1">Catégorie</label>
-                    <select id="pf-category" required class="w-full p-2 bg-theme-surface border border-theme-border rounded text-theme-text">
-                        <!-- Options injected via JS -->
-                    </select>
-                </div>
-
-                <div>
-                    <label class="block font-medium text-theme-text mb-1">URL de l'image (Haute Qualité)</label>
-                    <input type="url" id="pf-image" required placeholder="https://images.unsplash.com/..." class="w-full p-2 bg-theme-surface border border-theme-border rounded text-theme-text">
-                </div>
-
-                <div>
-                    <label class="block font-medium text-theme-text mb-1">Description & Spécificités du cuir</label>
-                    <textarea id="pf-desc" rows="3" required class="w-full p-2 bg-theme-surface border border-theme-border rounded text-theme-text" placeholder="Détails du cuir, tannage, points sellier..."></textarea>
-                </div>
-
-                <div class="flex justify-end gap-3 pt-4 border-t border-theme-border">
-                    <button type="button" onclick="closeProductFormModal()" class="px-4 py-2 border border-theme-border text-theme-muted rounded hover:bg-theme-surface">Annuler</button>
-                    <button type="submit" class="px-5 py-2 bg-theme-primary text-white font-bold rounded hover:bg-theme-primary-hover">Enregistrer</button>
-                </div>
-            </form>
+        <!-- Categories manager -->
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <h4 class="font-semibold uppercase text-xs tracking-widest text-muted">Catégories d'articles</h4>
+            <button id="addCat" class="text-sm btn-accent px-3 py-1.5 rounded-lg">+ Ajouter</button>
+          </div>
+          <div id="adminCatList" class="space-y-3"></div>
         </div>
+
+        <button id="resetAll" class="w-full py-3 rounded-xl border border-red-300 text-red-500 text-sm hover:bg-red-50 transition">Réinitialiser tout le site</button>
+      </div>
     </div>
+  </div>
+</div>
 
-    <!-- ======================================================== -->
-    <!-- EDIT/ADD CATEGORY MODAL (SUB-MODAL) -->
-    <!-- ======================================================== -->
-    <div id="category-form-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-theme-card border border-theme-border max-w-sm w-full rounded-lg p-6 shadow-2xl relative">
-            <h3 id="category-form-title" class="font-serif font-bold text-base text-theme-text mb-4">Catégorie</h3>
-            
-            <form id="category-form" onsubmit="handleCategoryFormSubmit(event)" class="space-y-4 text-xs">
-                <input type="hidden" id="cf-old-id">
-                <div>
-                    <label class="block font-medium text-theme-text mb-1">Identifiant URL (ex: sacs-besaces)</label>
-                    <input type="text" id="cf-id" required pattern="[a-z0-9\-]+" placeholder="sacs-besaces" class="w-full p-2 bg-theme-surface border border-theme-border rounded text-theme-text">
-                    <span class="text-[10px] text-theme-muted">Minuscules et tirets uniquement.</span>
-                </div>
-                <div>
-                    <label class="block font-medium text-theme-text mb-1">Nom Affiché (ex: Sacs & Besaces)</label>
-                    <input type="text" id="cf-name" required class="w-full p-2 bg-theme-surface border border-theme-border rounded text-theme-text">
-                </div>
+<!-- ================= CATEGORY EDIT MODAL ================= -->
+<div id="catModal" class="hidden fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+  <div class="surface border border-c rounded-2xl w-full max-w-md p-6 modal-in max-h-[90vh] overflow-y-auto">
+    <h3 class="serif text-2xl font-semibold mb-5" id="catModalTitle">Ajouter une catégorie</h3>
+    <div class="space-y-4">
+      <div><label class="text-sm block mb-1">Nom de la catégorie</label><input id="catName" class="adm-in"></div>
+      <div><label class="text-sm block mb-1">Description</label><textarea id="catDesc" rows="2" class="adm-in"></textarea></div>
+      <div><label class="text-sm block mb-1">Prix (ex: à partir de 350 DH)</label><input id="catPrice" class="adm-in"></div>
+      <div><label class="text-sm block mb-1">URL de l'image</label><input id="catImg" class="adm-in"></div>
+    </div>
+    <div class="flex gap-3 mt-6">
+      <button id="saveCat" class="btn-accent flex-1 py-3 rounded-xl font-medium">Enregistrer</button>
+      <button id="cancelCat" class="flex-1 py-3 rounded-xl border border-c hover:accent transition">Annuler</button>
+    </div>
+  </div>
+</div>
 
-                <div class="flex justify-end gap-3 pt-3 border-t border-theme-border">
-                    <button type="button" onclick="closeCategoryFormModal()" class="px-4 py-2 border border-theme-border text-theme-muted rounded">Annuler</button>
-                    <button type="submit" class="px-4 py-2 bg-theme-primary text-white font-bold rounded">Sauvegarder</button>
-                </div>
-            </form>
+<style>.adm-in{width:100%;padding:.7rem 1rem;border-radius:.75rem;border:1px solid var(--c-border);background:transparent;outline:none;color:var(--c-text);}.adm-in:focus{border-color:var(--c-accent);}</style>
+
+<script>
+/* ============ THEMES ============ */
+const THEMES = {
+  sable:   {name:'Sable',      bg:'#f7f3ee',surface:'#ffffff',text:'#2b2420',muted:'#7a6f66',accent:'#8b5e34',accent2:'#c9a06a',border:'#e6ddd2',header:'rgba(247,243,238,.85)'},
+  cognac:  {name:'Cognac',     bg:'#fbf6f0',surface:'#ffffff',text:'#3a2416',muted:'#8a6f5c',accent:'#a0522d',accent2:'#d38b5d',border:'#ecdccb',header:'rgba(251,246,240,.85)'},
+  noir:    {name:'Onyx',       bg:'#161311',surface:'#211d1a',text:'#f2ece4',muted:'#a89e93',accent:'#c9a06a',accent2:'#e0be8e',border:'#332d28',header:'rgba(22,19,17,.85)'},
+  olive:   {name:'Olive',      bg:'#f4f4ee',surface:'#ffffff',text:'#2e2f25',muted:'#77786a',accent:'#6b6a3a',accent2:'#9a9764',border:'#e2e2d5',header:'rgba(244,244,238,.85)'},
+  terracotta:{name:'Terracotta',bg:'#faf3ef',surface:'#ffffff',text:'#3d221a',muted:'#8b6a5f',accent:'#b5533a',accent2:'#d98b6f',border:'#eddcd3',header:'rgba(250,243,239,.85)'},
+  ardoise: {name:'Ardoise',    bg:'#f2f4f5',surface:'#ffffff',text:'#22292e',muted:'#6b767d',accent:'#3f5661',accent2:'#7d949f',border:'#dde3e6',header:'rgba(242,244,245,.85)'},
+  vin:     {name:'Bordeaux',   bg:'#f9f2f2',surface:'#ffffff',text:'#33161a',muted:'#8a5f64',accent:'#7a2233',accent2:'#b5566a',border:'#ecd7da',header:'rgba(249,242,242,.85)'},
+  creme:   {name:'Crème pur',  bg:'#fafafa',surface:'#ffffff',text:'#1c1c1c',muted:'#767676',accent:'#111111',accent2:'#888888',border:'#e8e8e8',header:'rgba(250,250,250,.9)'}
+};
+
+/* ============ DEFAULT DATA ============ */
+const DEFAULT = {
+  brand:"L'Art Infiny",
+  tag:"Maroquinerie Artisanale",
+  heroTitle:"Le cuir, sculpté par des mains passionnées",
+  heroSub:"Découvrez des pièces uniques en cuir véritable, façonnées avec un savoir-faire ancestral et une élégance intemporelle.",
+  phone:"212600000000",
+  waMsg:"Bonjour L'Art Infiny, je souhaite passer commande.",
+  email:"contact@lartinfiny.com",
+  address:"Médina, Marrakech, Maroc",
+  theme:"sable",
+  categories:[
+    {name:"Sacs en cuir",desc:"Sacs à main et cabas façonnés main, alliant style et robustesse.",price:"à partir de 650 DH",img:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=800&auto=format&fit=crop"},
+    {name:"Portefeuilles",desc:"Portefeuilles et porte-cartes en cuir pleine fleur.",price:"à partir de 180 DH",img:"https://images.unsplash.com/photo-1627123424574-724758594e93?q=80&w=800&auto=format&fit=crop"},
+    {name:"Ceintures",desc:"Ceintures artisanales cousues au point sellier.",price:"à partir de 150 DH",img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=800&auto=format&fit=crop"},
+    {name:"Poufs marocains",desc:"Poufs traditionnels brodés à la main, pièces d'exception.",price:"à partir de 450 DH",img:"https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=800&auto=format&fit=crop"},
+    {name:"Sacs à dos",desc:"Sacs à dos en cuir robuste pour le quotidien et le voyage.",price:"à partir de 890 DH",img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=800&auto=format&fit=crop"},
+    {name:"Accessoires",desc:"Porte-clés, étuis et petits objets en cuir raffinés.",price:"à partir de 90 DH",img:"https://images.unsplash.com/photo-1601924994987-69e26d50dc26?q=80&w=800&auto=format&fit=crop"}
+  ]
+};
+
+/* ============ STATE ============ */
+let state = load();
+function load(){ try{const s=JSON.parse(localStorage.getItem('lartinfiny'));return s?{...DEFAULT,...s}:{...DEFAULT};}catch(e){return{...DEFAULT};} }
+function save(){ localStorage.setItem('lartinfiny',JSON.stringify(state)); }
+
+/* ============ APPLY THEME ============ */
+function applyTheme(key){
+  const t=THEMES[key]||THEMES.sable;
+  const r=document.documentElement.style;
+  r.setProperty('--c-bg',t.bg);r.setProperty('--c-surface',t.surface);r.setProperty('--c-text',t.text);
+  r.setProperty('--c-muted',t.muted);r.setProperty('--c-accent',t.accent);r.setProperty('--c-accent2',t.accent2);
+  r.setProperty('--c-border',t.border);r.setProperty('--c-header',t.header);
+  state.theme=key;
+  document.querySelectorAll('.theme-swatch').forEach(s=>s.classList.toggle('active',s.dataset.key===key));
+}
+
+/* ============ RENDER THEME GRID ============ */
+function renderThemes(){
+  const g=document.getElementById('themeGrid');g.innerHTML='';
+  Object.entries(THEMES).forEach(([k,t])=>{
+    const b=document.createElement('button');
+    b.className='theme-swatch';b.dataset.key=k;b.title=t.name;
+    b.style.background=`linear-gradient(135deg,${t.accent} 50%,${t.bg} 50%)`;
+    b.onclick=()=>{applyTheme(k);save();};
+    g.appendChild(b);
+  });
+}
+
+/* ============ WHATSAPP LINKS ============ */
+function waLink(){ return `https://wa.me/${state.phone}?text=${encodeURIComponent(state.waMsg)}`; }
+function updateWA(){
+  const l=waLink();
+  ['waHeader','waMobile','waHero','waContact','waFloat'].forEach(id=>{const e=document.getElementById(id);if(e)e.href=l;});
+}
+
+/* ============ RENDER SITE ============ */
+function renderSite(){
+  document.getElementById('brandName').textContent=state.brand;
+  document.getElementById('brandTag').textContent=state.tag;
+  document.getElementById('heroTitle').textContent=state.heroTitle;
+  document.getElementById('heroSub').textContent=state.heroSub;
+  document.getElementById('phoneDisplay').textContent='☎ +'+state.phone;
+  document.getElementById('footerContact').innerHTML=`
+    <li>📞 +${state.phone}</li>
+    <li>✉ ${state.email}</li>
+    <li>📍 ${state.address}</li>`;
+  updateWA();
+  renderCategories();
+}
+
+function renderCategories(){
+  const g=document.getElementById('categoryGrid');g.innerHTML='';
+  state.categories.forEach((c,i)=>{
+    const el=document.createElement('div');
+    el.className='card surface border border-c rounded-2xl overflow-hidden fade-up';
+    el.innerHTML=`
+      <div class="h-60 overflow-hidden"><img src="${c.img}" class="card-img w-full h-full object-cover" alt="${c.name}"></div>
+      <div class="p-6">
+        <h3 class="serif text-2xl font-semibold mb-2">${c.name}</h3>
+        <p class="text-sm text-muted leading-relaxed mb-4">${c.desc}</p>
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-medium accent">${c.price}</span>
+          <a href="https://wa.me/${state.phone}?text=${encodeURIComponent("Bonjour, je suis intéressé(e) par : "+c.name)}" target="_blank" class="btn-accent px-4 py-2 rounded-full text-sm flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+            Commander
+          </a>
         </div>
-    </div>
-
-    <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-6 left-6 z-50 bg-theme-card border border-theme-border text-theme-text px-4 py-3 rounded shadow-2xl flex items-center gap-3 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
-        <i data-lucide="check-circle" class="w-5 h-5 text-emerald-500"></i>
-        <span id="toast-message" class="text-xs font-semibold">Notification</span>
-    </div>
-
-    <!-- ======================================================== -->
-    <!-- JAVASCRIPT APPLICATION CORE -->
-    <!-- ======================================================== -->
-    <script>
-        // --- 1. DEFAULT DATA STORAGE ---
-        const DEFAULT_CATEGORIES = [
-            { id: "all", name: "Toutes les Pièces" },
-            { id: "sacs", name: "Sacs & Besaces" },
-            { id: "petite-maroquinerie", name: "Petite Maroquinerie" },
-            { id: "ceintures", name: "Ceintures d'Atelier" },
-            { id: "bureau-voyage", name: "Bureau & Voyage" }
-        ];
-
-        const DEFAULT_PRODUCTS = [
-            {
-                id: "1",
-                ref: "INF-BES-01",
-                title: "Le Grand Sac Besace « L'Intemporel »",
-                category: "sacs",
-                price: 490.00,
-                image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=1000&auto=format&fit=crop",
-                desc: "Besace taillée dans un collet végétal pleine fleur de 2.2mm. Fermoir en laiton brossé massif, couture entièrement réalisée à la main au point sellier."
-            },
-            {
-                id: "2",
-                ref: "INF-POR-02",
-                title: "Portefeuille Compact 6 Cartes",
-                category: "petite-maroquinerie",
-                price: 140.00,
-                image: "https://images.unsplash.com/photo-1627123424574-724758594e93?q=80&w=1000&auto=format&fit=crop",
-                desc: "Finesse extrême et robustesse. Cuir gras patiné à l'huile de pied de bœuf, tranches brûlées et cirées à la cire d'abeille bio."
-            },
-            {
-                id: "3",
-                ref: "INF-CEI-03",
-                title: "Ceinture Sellier 35mm Boucle Laiton",
-                category: "ceintures",
-                price: 125.00,
-                image: "https://images.unsplash.com/photo-1624222247344-550fb60583dc?q=80&w=1000&auto=format&fit=crop",
-                desc: "Découpée d'une seule pièce dans un croupon végétal lourd. Boucle à rouleau en laiton massif nickelé ou brossé selon choix."
-            },
-            {
-                id: "4",
-                ref: "INF-VOY-04",
-                title: "Trousse de Toilette / Voyageur",
-                category: "bureau-voyage",
-                price: 195.00,
-                image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?q=80&w=1000&auto=format&fit=crop",
-                desc: "Doublure lavable étanche, fermeture zip YKK Excella en laiton vieilli. Poignée latérale renforcée par rivets massifs martelés."
-            },
-            {
-                id: "5",
-                ref: "INF-POR-05",
-                title: "Porte-Cartes Minimaliste Cuir Havane",
-                category: "petite-maroquinerie",
-                price: 65.00,
-                image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=1000&auto=format&fit=crop",
-                desc: "Peut accueillir jusqu'à 8 cartes et billets pliés. Empreinte ultra-compacte, gravure d'initiales sur commande sans supplément."
-            },
-            {
-                id: "6",
-                ref: "INF-BUR-06",
-                title: "Sous-Main d'Artisan en Cuir Brut",
-                category: "bureau-voyage",
-                price: 260.00,
-                image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1000&auto=format&fit=crop",
-                desc: "Dimensions 65x45 cm. Base feutre de laine naturelle anti-dérapante. Idéal pour sublimer un espace de travail intemporel."
-            }
-        ];
-
-        const DEFAULT_SETTINGS = {
-            whatsapp: "33612345678",
-            siteName: "L'Art Infiny",
-            announcement: "Atelier d'artisanat français • Pièces d'exception cousues main • Personnalisation offerte",
-            heroTitle: "L'Élégance Pure du Cuir Noble & Façonné.",
-            heroDesc: "Chaque pièce signée L'Art Infiny naît de la passion du geste parfait, de cuirs rigoureusement sélectionnés et d'un point sellier traditionnel conçu pour traverser les générations.",
-            email: "contact@art-infiny.com",
-            phone: "+33 6 12 34 56 78",
-            theme: "cognac"
-        };
-
-        // --- 2. STATE MANAGEMENT ---
-        let categories = JSON.parse(localStorage.getItem('art_infiny_categories')) || DEFAULT_CATEGORIES;
-        let products = JSON.parse(localStorage.getItem('art_infiny_products')) || DEFAULT_PRODUCTS;
-        let settings = JSON.parse(localStorage.getItem('art_infiny_settings')) || DEFAULT_SETTINGS;
-        let activeCategory = "all";
-        let cart = JSON.parse(localStorage.getItem('art_infiny_cart')) || [];
-        let currentModalProduct = null;
-
-        // --- 3. INITIALIZATION ---
-        document.addEventListener("DOMContentLoaded", () => {
-            document.getElementById('year-span').innerText = new Date().getFullYear();
-            applyTheme(settings.theme || 'cognac', false);
-            updateSettingsUI();
-            renderCategoryPills();
-            renderProducts();
-            updateCartBadge();
-            lucide.createIcons();
-        });
-
-        // --- 4. THEME CONTROLLER (8 THEMES) ---
-        function applyTheme(themeName, save = true) {
-            document.body.setAttribute('data-theme', themeName);
-            if (save) {
-                settings.theme = themeName;
-                saveSettingsToStorage();
-                showToast(`Thème "${getThemeDisplayName(themeName)}" activé avec succès`);
-            }
-            // Update active state in theme selector cards
-            document.querySelectorAll('.theme-card').forEach(card => {
-                if (card.dataset.tname === themeName) {
-                    card.classList.add('ring-2', 'ring-theme-primary', 'border-theme-primary');
-                } else {
-                    card.classList.remove('ring-2', 'ring-theme-primary', 'border-theme-primary');
-                }
-            });
-        }
-
-        function getThemeDisplayName(name) {
-            const map = {
-                cognac: 'Cognac Atelier',
-                noir: 'Noir Minimaliste',
-                sable: 'Sable & Lin',
-                hermes: 'Terre Cuivrée',
-                olive: 'Olive & Nature',
-                bordeaux: 'Bordeaux Impérial',
-                moka: 'Havane & Moka',
-                ardoise: 'Ardoise Moderne'
-            };
-            return map[name] || name;
-        }
-
-        function openThemeQuickSelector() {
-            openAdminModal('themes');
-        }
-
-        // --- 5. RENDER CATEGORIES ---
-        function renderCategoryPills() {
-            const container = document.getElementById('categories-container');
-            container.innerHTML = '';
-
-            categories.forEach(cat => {
-                const isActive = activeCategory === cat.id;
-                const btn = document.createElement('button');
-                btn.className = `px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase transition whitespace-nowrap border ${
-                    isActive 
-                    ? 'bg-theme-primary text-white border-theme-primary shadow-sm' 
-                    : 'bg-theme-card text-theme-text border-theme-border hover:border-theme-primary'
-                }`;
-                btn.innerText = cat.name;
-                btn.onclick = () => {
-                    activeCategory = cat.id;
-                    renderCategoryPills();
-                    renderProducts();
-                };
-                container.appendChild(btn);
-            });
-        }
-
-        // --- 6. RENDER PRODUCTS ---
-        function renderProducts() {
-            const grid = document.getElementById('products-grid');
-            const empty = document.getElementById('empty-state');
-            const searchVal = (document.getElementById('search-input')?.value || '').toLowerCase().trim();
-
-            let filtered = products.filter(p => {
-                const matchCat = (activeCategory === 'all' || p.category === activeCategory);
-                const matchSearch = p.title.toLowerCase().includes(searchVal) || p.ref.toLowerCase().includes(searchVal) || p.desc.toLowerCase().includes(searchVal);
-                return matchCat && matchSearch;
-            });
-
-            grid.innerHTML = '';
-
-            if (filtered.length === 0) {
-                empty.classList.remove('hidden');
-            } else {
-                empty.classList.add('hidden');
-                filtered.forEach(product => {
-                    const card = document.createElement('div');
-                    card.className = "group bg-theme-card border border-theme-border hover:border-theme-primary transition duration-300 flex flex-col justify-between overflow-hidden relative";
-                    
-                    card.innerHTML = `
-                        <div>
-                            <div class="relative overflow-hidden aspect-square bg-theme-surface cursor-pointer" onclick="openProductModal('${product.id}')">
-                                <img src="${product.image}" alt="${product.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                                <span class="absolute top-3 left-3 bg-theme-card/90 backdrop-blur px-2.5 py-1 text-[9px] font-bold tracking-widest uppercase border border-theme-border text-theme-muted">
-                                    ${getCategoryName(product.category)}
-                                </span>
-                            </div>
-                            <div class="p-5">
-                                <div class="text-[10px] tracking-widest text-theme-muted uppercase mb-1">${product.ref}</div>
-                                <h3 class="font-serif font-bold text-base text-theme-text group-hover:text-theme-primary transition line-clamp-1 cursor-pointer" onclick="openProductModal('${product.id}')">${product.title}</h3>
-                                <p class="text-xs text-theme-muted mt-2 line-clamp-2">${product.desc}</p>
-                            </div>
-                        </div>
-                        <div class="p-5 pt-0 flex items-center justify-between border-t border-theme-border/50 mt-4">
-                            <span class="font-serif font-bold text-lg text-theme-primary">${parseFloat(product.price).toFixed(2)} €</span>
-                            <div class="flex items-center gap-1.5">
-                                <button onclick="quickOrderWhatsApp('${product.id}')" class="p-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded transition" title="Commander sur WhatsApp">
-                                    <i data-lucide="message-circle" class="w-4 h-4"></i>
-                                </button>
-                                <button onclick="addToCart('${product.id}')" class="p-2 bg-theme-surface hover:bg-theme-border border border-theme-border text-theme-text rounded transition" title="Ajouter à la sélection">
-                                    <i data-lucide="plus" class="w-4 h-4"></i>
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                    grid.appendChild(card);
-                });
-            }
-            lucide.createIcons();
-        }
-
-        function filterProducts() {
-            renderProducts();
-        }
-
-        function getCategoryName(catId) {
-            const found = categories.find(c => c.id === catId);
-            return found ? found.name : catId;
-        }
-
-        // --- 7. MODALS & PRODUCT QUICKVIEW ---
-        function openProductModal(productId) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
-            currentModalProduct = product;
-
-            document.getElementById('modal-product-img').src = product.image;
-            document.getElementById('modal-product-category').innerText = getCategoryName(product.category);
-            document.getElementById('modal-product-ref').innerText = product.ref;
-            document.getElementById('modal-product-title').innerText = product.title;
-            document.getElementById('modal-product-price').innerText = `${parseFloat(product.price).toFixed(2)} €`;
-            document.getElementById('modal-product-desc').innerText = product.desc;
-
-            document.getElementById('modal-whatsapp-btn').onclick = () => {
-                orderProductWhatsApp(product);
-            };
-
-            document.getElementById('product-modal').classList.remove('hidden');
-            lucide.createIcons();
-        }
-
-        function closeProductModal() {
-            document.getElementById('product-modal').classList.add('hidden');
-        }
-
-        function addToCartFromModal() {
-            if (currentModalProduct) {
-                addToCart(currentModalProduct.id);
-                closeProductModal();
-            }
-        }
-
-        // --- 8. WHATSAPP ENGINE & DIRECT ORDERS ---
-        function getWhatsAppBaseURL() {
-            const cleanNumber = (settings.whatsapp || "33612345678").replace(/[^0-9]/g, '');
-            return `https://wa.me/${cleanNumber}`;
-        }
-
-        function openGeneralWhatsApp(customMessage = null) {
-            const msg = customMessage || `Bonjour L'Art Infiny, je visite votre site web et je souhaite avoir des conseils ou passer une commande.`;
-            const url = `${getWhatsAppBaseURL()}?text=${encodeURIComponent(msg)}`;
-            window.open(url, '_blank');
-        }
-
-        function orderProductWhatsApp(product) {
-            const message = `Bonjour L'Art Infiny, je souhaite commander la pièce suivante :\n\n` +
-                `👜 Article : *${product.title}*\n` +
-                `🏷️ Référence : ${product.ref}\n` +
-                `💶 Prix : ${parseFloat(product.price).toFixed(2)} €\n` +
-                `🔗 Image : ${product.image}\n\n` +
-                `Pourriez-vous m'indiquer la disponibilité et les modalités de livraison ? Merci !`;
-            
-            const url = `${getWhatsAppBaseURL()}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-        }
-
-        function quickOrderWhatsApp(productId) {
-            const product = products.find(p => p.id === productId);
-            if (product) orderProductWhatsApp(product);
-        }
-
-        function checkoutCartWhatsApp() {
-            if (cart.length === 0) {
-                showToast("Votre sélection est vide.");
-                return;
-            }
-
-            let text = `Bonjour L'Art Infiny, je souhaite commander les pièces suivantes :\n\n`;
-            let total = 0;
-            cart.forEach((item, index) => {
-                const subtotal = item.price * item.quantity;
-                total += subtotal;
-                text += `${index + 1}. *${item.title}* (Réf: ${item.ref}) x${item.quantity} = ${subtotal.toFixed(2)} €\n`;
-            });
-            text += `\n💰 *Total : ${total.toFixed(2)} €*\n\nMerci de me confirmer la faisabilité et les délais de fabrication.`;
-
-            const url = `${getWhatsAppBaseURL()}?text=${encodeURIComponent(text)}`;
-            window.open(url, '_blank');
-        }
-
-        // --- 9. CART / SELECTION DRAWER ---
-        function toggleDrawer(drawerId) {
-            const drawer = document.getElementById(drawerId);
-            drawer.classList.toggle('hidden');
-            if (drawerId === 'cart-drawer') {
-                renderCartItems();
-            }
-        }
-
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
-
-            const existing = cart.find(i => i.id === productId);
-            if (existing) {
-                existing.quantity += 1;
-            } else {
-                cart.push({
-                    id: product.id,
-                    ref: product.ref,
-                    title: product.title,
-                    price: parseFloat(product.price),
-                    image: product.image,
-                    quantity: 1
-                });
-            }
-            saveCartToStorage();
-            updateCartBadge();
-            showToast(`« ${product.title} » ajouté à la sélection`);
-        }
-
-        function renderCartItems() {
-            const container = document.getElementById('cart-items-container');
-            const totalEl = document.getElementById('cart-total-price');
-            container.innerHTML = '';
-
-            if (cart.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-8 text-theme-muted text-xs">
-                        <i data-lucide="shopping-bag" class="w-8 h-8 mx-auto mb-2 opacity-40"></i>
-                        Aucune création dans votre sélection.
-                    </div>
-                `;
-                totalEl.innerText = "0.00 €";
-                lucide.createIcons();
-                return;
-            }
-
-            let total = 0;
-            cart.forEach(item => {
-                total += item.price * item.quantity;
-                const div = document.createElement('div');
-                div.className = "flex items-center justify-between gap-3 p-3 bg-theme-surface border border-theme-border rounded";
-                div.innerHTML = `
-                    <img src="${item.image}" class="w-12 h-12 object-cover rounded">
-                    <div class="flex-grow min-w-0">
-                        <h4 class="font-serif font-bold text-xs text-theme-text truncate">${item.title}</h4>
-                        <p class="text-[11px] text-theme-muted">${item.price.toFixed(2)} € x ${item.quantity}</p>
-                    </div>
-                    <div class="flex items-center gap-1">
-                        <button onclick="updateCartQuantity('${item.id}', -1)" class="p-1 text-theme-muted hover:text-theme-text">
-                            <i data-lucide="minus" class="w-3.5 h-3.5"></i>
-                        </button>
-                        <span class="text-xs font-bold px-1">${item.quantity}</span>
-                        <button onclick="updateCartQuantity('${item.id}', 1)" class="p-1 text-theme-muted hover:text-theme-text">
-                            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
-                        </button>
-                        <button onclick="removeFromCart('${item.id}')" class="p-1 text-red-400 hover:text-red-600 ml-1">
-                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
-                        </button>
-                    </div>
-                `;
-                container.appendChild(div);
-            });
-
-            totalEl.innerText = `${total.toFixed(2)} €`;
-            lucide.createIcons();
-        }
-
-        function updateCartQuantity(id, delta) {
-            const item = cart.find(i => i.id === id);
-            if (!item) return;
-            item.quantity += delta;
-            if (item.quantity <= 0) {
-                cart = cart.filter(i => i.id !== id);
-            }
-            saveCartToStorage();
-            renderCartItems();
-            updateCartBadge();
-        }
-
-        function removeFromCart(id) {
-            cart = cart.filter(i => i.id !== id);
-            saveCartToStorage();
-            renderCartItems();
-            updateCartBadge();
-        }
-
-        function clearCart() {
-            cart = [];
-            saveCartToStorage();
-            renderCartItems();
-            updateCartBadge();
-        }
-
-        function updateCartBadge() {
-            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cart-count-badge').innerText = count;
-        }
-
-        function saveCartToStorage() {
-            localStorage.setItem('art_infiny_cart', JSON.stringify(cart));
-        }
-
-        // --- 10. ADMIN MODAL & TABS ---
-        function openAdminModal(tabName = 'tab-themes') {
-            document.getElementById('admin-modal').classList.remove('hidden');
-            switchAdminTab(tabName.startsWith('tab-') ? tabName : `tab-${tabName}`);
-            renderAdminTables();
-            populateSettingsInputs();
-        }
-
-        function closeAdminModal() {
-            document.getElementById('admin-modal').classList.add('hidden');
-        }
-
-        function switchAdminTab(tabId) {
-            document.querySelectorAll('.admin-tab-pane').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.admin-tab-btn').forEach(btn => {
-                btn.classList.remove('border-theme-primary', 'text-theme-primary');
-                btn.classList.add('border-transparent', 'text-theme-muted');
-            });
-
-            const targetPane = document.getElementById(tabId);
-            const targetBtn = document.getElementById(`btn-${tabId}`);
-            if (targetPane) targetPane.classList.remove('hidden');
-            if (targetBtn) {
-                targetBtn.classList.add('border-theme-primary', 'text-theme-primary');
-                targetBtn.classList.remove('border-transparent', 'text-theme-muted');
-            }
-            lucide.createIcons();
-        }
-
-        function renderAdminTables() {
-            // Render Categories Table
-            const catTable = document.getElementById('admin-categories-table');
-            catTable.innerHTML = '';
-            categories.forEach(cat => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td class="p-3 font-mono text-theme-muted">${cat.id}</td>
-                    <td class="p-3 font-medium text-theme-text">${cat.name}</td>
-                    <td class="p-3 text-right space-x-2">
-                        ${cat.id !== 'all' ? `
-                            <button onclick="editCategory('${cat.id}')" class="p-1 hover:text-theme-primary text-theme-muted"><i data-lucide="edit" class="w-4 h-4"></i></button>
-                            <button onclick="deleteCategory('${cat.id}')" class="p-1 hover:text-red-500 text-theme-muted"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-                        ` : '<span class="text-[10px] text-theme-muted">Système</span>'}
-                    </td>
-                `;
-                catTable.appendChild(tr);
-            });
-
-            // Render Products Table
-            const prodTable = document.getElementById('admin-products-table');
-            prodTable.innerHTML = '';
-            products.forEach(p => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td class="p-3"><img src="${p.image}" class="w-10 h-10 object-cover rounded"></td>
-                    <td class="p-3">
-                        <span class="font-bold block text-theme-text">${p.title}</span>
-                        <span class="text-[10px] text-theme-muted">${p.ref}</span>
-                    </td>
-                    <td class="p-3">${getCategoryName(p.category)}</td>
-                    <td class="p-3 font-bold text-theme-primary">${parseFloat(p.price).toFixed(2)} €</td>
-                    <td class="p-3 text-right space-x-2">
-                        <button onclick="editProduct('${p.id}')" class="p-1 hover:text-theme-primary text-theme-muted" title="Modifier"><i data-lucide="edit" class="w-4 h-4"></i></button>
-                        <button onclick="deleteProduct('${p.id}')" class="p-1 hover:text-red-500 text-theme-muted" title="Supprimer"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-                    </td>
-                `;
-                prodTable.appendChild(tr);
-            });
-
-            lucide.createIcons();
-        }
-
-        // --- 11. CATEGORY CRUD ---
-        function openCategoryFormModal(categoryId = null) {
-            const form = document.getElementById('category-form');
-            form.reset();
-            const modalTitle = document.getElementById('category-form-title');
-            
-            if (categoryId) {
-                const cat = categories.find(c => c.id === categoryId);
-                if (cat) {
-                    modalTitle.innerText = "Modifier la catégorie";
-                    document.getElementById('cf-old-id').value = cat.id;
-                    document.getElementById('cf-id').value = cat.id;
-                    document.getElementById('cf-name').value = cat.name;
-                }
-            } else {
-                modalTitle.innerText = "Ajouter une catégorie";
-                document.getElementById('cf-old-id').value = "";
-            }
-            document.getElementById('category-form-modal').classList.remove('hidden');
-        }
-
-        function closeCategoryFormModal() {
-            document.getElementById('category-form-modal').classList.add('hidden');
-        }
-
-        function handleCategoryFormSubmit(e) {
-            e.preventDefault();
-            const oldId = document.getElementById('cf-old-id').value;
-            const newId = document.getElementById('cf-id').value.trim().toLowerCase();
-            const name = document.getElementById('cf-name').value.trim();
-
-            if (oldId) {
-                // Edit
-                const cat = categories.find(c => c.id === oldId);
-                if (cat) {
-                    cat.id = newId;
-                    cat.name = name;
-                }
-                // Also update products with old cat id
-                products.forEach(p => {
-                    if (p.category === oldId) p.category = newId;
-                });
-            } else {
-                // Add
-                if (categories.some(c => c.id === newId)) {
-                    alert("Cet identifiant de catégorie existe déjà !");
-                    return;
-                }
-                categories.push({ id: newId, name: name });
-            }
-
-            saveCategoriesToStorage();
-            saveProductsToStorage();
-            closeCategoryFormModal();
-            renderCategoryPills();
-            renderProducts();
-            renderAdminTables();
-            showToast("Catégories mises à jour");
-        }
-
-        function editCategory(id) {
-            openCategoryFormModal(id);
-        }
-
-        function deleteCategory(id) {
-            if (id === 'all') return;
-            if (confirm("Êtes-vous sûr de vouloir supprimer cette catégorie ? Les articles associés basculeront dans 'Toutes les Pièces'.")) {
-                categories = categories.filter(c => c.id !== id);
-                products.forEach(p => {
-                    if (p.category === id) p.category = 'all';
-                });
-                if (activeCategory === id) activeCategory = 'all';
-                saveCategoriesToStorage();
-                saveProductsToStorage();
-                renderCategoryPills();
-                renderProducts();
-                renderAdminTables();
-                showToast("Catégorie supprimée");
-            }
-        }
-
-        // --- 12. PRODUCT CRUD ---
-        function openProductFormModal(productId = null) {
-            const form = document.getElementById('product-form');
-            form.reset();
-
-            // Populate category select options
-            const catSelect = document.getElementById('pf-category');
-            catSelect.innerHTML = '';
-            categories.filter(c => c.id !== 'all').forEach(c => {
-                const opt = document.createElement('option');
-                opt.value = c.id;
-                opt.innerText = c.name;
-                catSelect.appendChild(opt);
-            });
-
-            const titleEl = document.getElementById('product-form-title');
-
-            if (productId) {
-                const p = products.find(x => x.id === productId);
-                if (p) {
-                    titleEl.innerText = "Modifier l'Article";
-                    document.getElementById('pf-id').value = p.id;
-                    document.getElementById('pf-title').value = p.title;
-                    document.getElementById('pf-ref').value = p.ref;
-                    document.getElementById('pf-price').value = p.price;
-                    document.getElementById('pf-category').value = p.category;
-                    document.getElementById('pf-image').value = p.image;
-                    document.getElementById('pf-desc').value = p.desc;
-                }
-            } else {
-                titleEl.innerText = "Ajouter un Article";
-                document.getElementById('pf-id').value = "";
-            }
-
-            document.getElementById('product-form-modal').classList.remove('hidden');
-        }
-
-        function closeProductFormModal() {
-            document.getElementById('product-form-modal').classList.add('hidden');
-        }
-
-        function handleProductFormSubmit(e) {
-            e.preventDefault();
-            const id = document.getElementById('pf-id').value;
-            const title = document.getElementById('pf-title').value.trim();
-            const ref = document.getElementById('pf-ref').value.trim();
-            const price = parseFloat(document.getElementById('pf-price').value);
-            const category = document.getElementById('pf-category').value;
-            const image = document.getElementById('pf-image').value.trim();
-            const desc = document.getElementById('pf-desc').value.trim();
-
-            if (id) {
-                // Update
-                const index = products.findIndex(p => p.id === id);
-                if (index !== -1) {
-                    products[index] = { id, title, ref, price, category, image, desc };
-                }
-            } else {
-                // Create
-                const newProduct = {
-                    id: Date.now().toString(),
-                    title,
-                    ref,
-                    price,
-                    category,
-                    image,
-                    desc
-                };
-                products.unshift(newProduct);
-            }
-
-            saveProductsToStorage();
-            closeProductFormModal();
-            renderProducts();
-            renderAdminTables();
-            showToast("Article enregistré avec succès");
-        }
-
-        function editProduct(id) {
-            openProductFormModal(id);
-        }
-
-        function deleteProduct(id) {
-            if (confirm("Confirmer la suppression définitive de cet article ?")) {
-                products = products.filter(p => p.id !== id);
-                saveProductsToStorage();
-                renderProducts();
-                renderAdminTables();
-                showToast("Article supprimé");
-            }
-        }
-
-        // --- 13. SETTINGS & TEXTS MANAGEMENT ---
-        function populateSettingsInputs() {
-            document.getElementById('setting-whatsapp').value = settings.whatsapp || '';
-            document.getElementById('setting-sitename').value = settings.siteName || '';
-            document.getElementById('setting-announcement').value = settings.announcement || '';
-            document.getElementById('setting-herotitle').value = settings.heroTitle || '';
-            document.getElementById('setting-herodesc').value = settings.heroDesc || '';
-            document.getElementById('setting-email').value = settings.email || '';
-            document.getElementById('setting-phone').value = settings.phone || '';
-        }
-
-        function saveSiteSettings(e) {
-            e.preventDefault();
-            settings.whatsapp = document.getElementById('setting-whatsapp').value.trim();
-            settings.siteName = document.getElementById('setting-sitename').value.trim();
-            settings.announcement = document.getElementById('setting-announcement').value.trim();
-            settings.heroTitle = document.getElementById('setting-herotitle').value.trim();
-            settings.heroDesc = document.getElementById('setting-herodesc').value.trim();
-            settings.email = document.getElementById('setting-email').value.trim();
-            settings.phone = document.getElementById('setting-phone').value.trim();
-
-            saveSettingsToStorage();
-            updateSettingsUI();
-            showToast("Paramètres généraux sauvegardés !");
-        }
-
-        function updateSettingsUI() {
-            if (settings.announcement) document.getElementById('announcement-text').innerText = settings.announcement;
-            if (settings.siteName) {
-                document.getElementById('site-logo-text').innerText = settings.siteName;
-                document.getElementById('footer-logo').innerText = settings.siteName;
-            }
-            if (settings.heroTitle) document.getElementById('hero-title').innerHTML = settings.heroTitle;
-            if (settings.heroDesc) document.getElementById('hero-desc').innerText = settings.heroDesc;
-            if (settings.phone) document.getElementById('footer-phone').innerText = settings.phone;
-            if (settings.email) document.getElementById('footer-email').innerText = settings.email;
-        }
-
-        function resetToDefaults() {
-            if (confirm("Voulez-vous rétablir toutes les données par défaut de l'atelier ? (Cette action réinitialise produits, catégories et textes).")) {
-                localStorage.removeItem('art_infiny_categories');
-                localStorage.removeItem('art_infiny_products');
-                localStorage.removeItem('art_infiny_settings');
-                categories = [...DEFAULT_CATEGORIES];
-                products = [...DEFAULT_PRODUCTS];
-                settings = { ...DEFAULT_SETTINGS };
-                applyTheme('cognac');
-                updateSettingsUI();
-                renderCategoryPills();
-                renderProducts();
-                renderAdminTables();
-                showToast("Données réinitialisées avec succès");
-            }
-        }
-
-        // --- 14. LOCAL STORAGE HELPERS ---
-        function saveCategoriesToStorage() {
-            localStorage.setItem('art_infiny_categories', JSON.stringify(categories));
-        }
-
-        function saveProductsToStorage() {
-            localStorage.setItem('art_infiny_products', JSON.stringify(products));
-        }
-
-        function saveSettingsToStorage() {
-            localStorage.setItem('art_infiny_settings', JSON.stringify(settings));
-        }
-
-        // --- 15. UI HELPERS ---
-        function toggleMobileMenu() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        }
-
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toast-message').innerText = message;
-            toast.classList.remove('translate-y-24', 'opacity-0');
-            toast.classList.add('translate-y-0', 'opacity-100');
-
-            setTimeout(() => {
-                toast.classList.add('translate-y-24', 'opacity-0');
-                toast.classList.remove('translate-y-0', 'opacity-100');
-            }, 3200);
-        }
-    </script>
+      </div>`;
+    g.appendChild(el);
+  });
+  observeFade();
+}
+
+/* ============ ADMIN ============ */
+const overlay=document.getElementById('adminOverlay');
+document.getElementById('adminToggle').onclick=()=>overlay.classList.remove('hidden');
+document.getElementById('closeAdmin').onclick=()=>overlay.classList.add('hidden');
+overlay.onclick=e=>{if(e.target===overlay)overlay.classList.add('hidden');};
+
+let isAuth=false;
+document.getElementById('loginBtn').onclick=()=>{
+  const p=document.getElementById('adminPass').value;
+  const stored=localStorage.getItem('lartinfiny_pass')||'admin';
+  if(p===stored){isAuth=true;document.getElementById('loginBox').classList.add('hidden');document.getElementById('adminContent').classList.remove('hidden');fillSettings();renderAdminCats();}
+  else alert('Mot de passe incorrect.');
+};
+
+function fillSettings(){
+  setBrand.value=state.brand;setTag.value=state.tag;setHeroTitle.value=state.heroTitle;
+  setHeroSub.value=state.heroSub;setPhone.value=state.phone;setWaMsg.value=state.waMsg;
+  setEmail.value=state.email;setAddress.value=state.address;
+}
+const ids=['setBrand','setTag','setHeroTitle','setHeroSub','setPhone','setWaMsg','setEmail','setAddress'];
+const el=Object.fromEntries(ids.map(i=>[i,document.getElementById(i)]));
+window.setBrand=el.setBrand;window.setTag=el.setTag;window.setHeroTitle=el.setHeroTitle;window.setHeroSub=el.setHeroSub;window.setPhone=el.setPhone;window.setWaMsg=el.setWaMsg;window.setEmail=el.setEmail;window.setAddress=el.setAddress;
+
+document.getElementById('saveSettings').onclick=()=>{
+  state.brand=setBrand.value;state.tag=setTag.value;state.heroTitle=setHeroTitle.value;
+  state.heroSub=setHeroSub.value;state.phone=setPhone.value.replace(/\D/g,'');state.waMsg=setWaMsg.value;
+  state.email=setEmail.value;state.address=setAddress.value;
+  save();renderSite();
+  toast('Détails enregistrés ✓');
+};
+
+function renderAdminCats(){
+  const list=document.getElementById('adminCatList');list.innerHTML='';
+  state.categories.forEach((c,i)=>{
+    const d=document.createElement('div');
+    d.className='flex items-center gap-3 surface border border-c rounded-xl p-3';
+    d.innerHTML=`
+      <img src="${c.img}" class="w-12 h-12 rounded-lg object-cover">
+      <div class="flex-1 min-w-0"><div class="font-medium truncate">${c.name}</div><div class="text-xs text-muted truncate">${c.price}</div></div>
+      <button class="editC w-8 h-8 rounded-lg border border-c hover:accent transition" data-i="${i}">✎</button>
+      <button class="delC w-8 h-8 rounded-lg border border-red-300 text-red-500 hover:bg-red-50 transition" data-i="${i}">🗑</button>`;
+    list.appendChild(d);
+  });
+  document.querySelectorAll('.editC').forEach(b=>b.onclick=()=>openCatModal(+b.dataset.i));
+  document.querySelectorAll('.delC').forEach(b=>b.onclick=()=>{
+    if(confirm('Supprimer cette catégorie ?')){state.categories.splice(+b.dataset.i,1);save();renderAdminCats();renderCategories();}
+  });
+}
+
+/* ============ CATEGORY MODAL ============ */
+const catModal=document.getElementById('catModal');
+let editIndex=-1;
+function openCatModal(i){
+  editIndex=i;
+  const t=document.getElementById('catModalTitle');
+  if(i>=0){t.textContent='Modifier la catégorie';const c=state.categories[i];catName.value=c.name;catDesc.value=c.desc;catPrice.value=c.price;catImg.value=c.img;}
+  else{t.textContent='Ajouter une catégorie';catName.value='';catDesc.value='';catPrice.value='';catImg.value='https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=800&auto=format&fit=crop';}
+  catModal.classList.remove('hidden');catModal.classList.add('flex');
+}
+window.catName=document.getElementById('catName');window.catDesc=document.getElementById('catDesc');window.catPrice=document.getElementById('catPrice');window.catImg=document.getElementById('catImg');
+document.getElementById('addCat').onclick=()=>openCatModal(-1);
+document.getElementById('cancelCat').onclick=()=>{catModal.classList.add('hidden');catModal.classList.remove('flex');};
+document.getElementById('saveCat').onclick=()=>{
+  if(!catName.value.trim()){alert('Le nom est requis.');return;}
+  const obj={name:catName.value,desc:catDesc.value,price:catPrice.value,img:catImg.value||DEFAULT.categories[0].img};
+  if(editIndex>=0)state.categories[editIndex]=obj;else state.categories.push(obj);
+  save();renderAdminCats();renderCategories();
+  catModal.classList.add('hidden');catModal.classList.remove('flex');
+  toast('Catégorie enregistrée ✓');
+};
+
+document.getElementById('resetAll').onclick=()=>{
+  if(confirm('Réinitialiser tout le site aux valeurs par défaut ?')){
+    localStorage.removeItem('lartinfiny');state={...DEFAULT,categories:JSON.parse(JSON.stringify(DEFAULT.categories))};
+    save();applyTheme(state.theme);renderSite();fillSettings();renderAdminCats();toast('Site réinitialisé ✓');
+  }
+};
+
+/* ============ THEME PANEL ============ */
+const tp=document.getElementById('themePanel');
+document.getElementById('themeBtn').onclick=e=>{e.stopPropagation();tp.classList.toggle('hidden');};
+document.addEventListener('click',e=>{if(!tp.contains(e.target)&&e.target.id!=='themeBtn')tp.classList.add('hidden');});
+
+/* ============ MOBILE NAV ============ */
+const mn=document.getElementById('mobileNav');
+document.getElementById('menuBtn').onclick=()=>mn.classList.toggle('hidden');
+document.querySelectorAll('.mnav').forEach(a=>a.onclick=()=>mn.classList.add('hidden'));
+
+/* ============ TOAST ============ */
+function toast(msg){
+  const t=document.createElement('div');
+  t.textContent=msg;
+  t.className='fixed bottom-24 left-1/2 -translate-x-1/2 z-[70] bg-accent text-white px-6 py-3 rounded-full shadow-xl text-sm font-medium';
+  t.style.animation='mIn .3s ease';
+  document.body.appendChild(t);
+  setTimeout(()=>{t.style.opacity='0';t.style.transition='opacity .4s';setTimeout(()=>t.remove(),400);},2000);
+}
+
+/* ============ FADE OBSERVER ============ */
+function observeFade(){
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}}),{threshold:.12});
+  document.querySelectorAll('.fade-up:not(.in)').forEach(el=>obs.observe(el));
+}
+
+/* ============ INIT ============ */
+document.getElementById('year').textContent=new Date().getFullYear();
+renderThemes();
+applyTheme(state.theme);
+renderSite();
+observeFade();
+</script>
 </body>
 </html>
