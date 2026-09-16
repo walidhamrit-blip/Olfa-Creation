@@ -7,18 +7,31 @@ public_folder: "/images"
 
 collections:
   - name: "catalogue"
-    label: "Catalogue Produits"
+    label: "Catalogue de produits"
     files:
       - file: "content/produits.json"
-        label: "Liste des Produits"
-        name: "produits"
+        label: "Produits et Catégories"
+        name: "produits_data"
         fields:
-          - label: "Liste de vos produits"
-            name: "items"
+          - label: "Catégories / Collections"
+            name: "categories"
             widget: "list"
-            summary: '{{fields.titre}} - {{fields.prix}} LYD'
             fields:
-              - { label: "Titre du produit", name: "titre", widget: "string" }
-              - { label: "Prix (LYD)", name: "prix", widget: "string" }
-              - { label: "Photo du produit", name: "image", widget: "image" }
-              - { label: "Description", name: "description", widget: "text" }
+              - {label: "ID (ex: c1)", name: "id", widget: "string"}
+              - {label: "Nom", name: "name", widget: "string"}
+              - {label: "Description", name: "desc", widget: "string"}
+              - {label: "Illustration", name: "art", widget: "string"}
+
+          - label: "Liste des Produits"
+            name: "products"
+            widget: "list"
+            fields:
+              - {label: "ID (ex: p1)", name: "id", widget: "string"}
+              - {label: "Nom du produit", name: "name", widget: "string"}
+              - {label: "ID Catégorie (ex: c1)", name: "cat", widget: "string"}
+              - {label: "Prix (€)", name: "price", widget: "number", value_type: "float"}
+              - {label: "Illustration", name: "art", widget: "string"}
+              - {label: "Badge", name: "badge", widget: "string", required: false}
+              - {label: "Image URL", name: "imageUrl", widget: "image", required: false}
+              - {label: "Description", name: "desc", widget: "text"}
+              - {label: "En vedette", name: "featured", widget: "boolean", default: false}
