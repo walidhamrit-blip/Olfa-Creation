@@ -1615,14 +1615,33 @@ $('#newsForm').addEventListener('submit', e=>{
 });
 
 /* ================= DÉMARRAGE ================= */
+/* ================= DÉMARRAGE ================= */
 injectThemeCSS();
 applyTheme(state.theme, false);
-renderTexts();
-renderCats();
-renderPills();
-renderProducts();
-observeScope(document);
-fillIcons(document);
+
+async function initData(){
+  try {
+    const res = await fetch('./content/produits.json?v=' + Date.now());
+    if(res.ok){
+      const json = await res.json();
+      if(json.products) state.products = json.products;
+      if(json.categories) state.categories = json.categories;
+      if(json.site) state.site = deepHydrate(state.site, json.site);
+      if(json.contact) state.contact = deepHydrate(state.contact, json.contact);
+      saveState();
+    }
+  } catch(e) {
+    console.warn('Chargement depuis localStorage', e);
+  }
+  renderTexts();
+  renderCats();
+  renderPills();
+  renderProducts();
+  observeScope(document);
+  fillIcons(document);
+}
+
+initData();
 </script>
 </body>
 </html>
