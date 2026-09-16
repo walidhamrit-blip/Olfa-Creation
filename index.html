@@ -1,944 +1,1628 @@
-<!DOCTYPE html>
 <html lang="fr" data-theme="cognac">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>L'Art Infiny — Maroquinerie Artisanale d'Exception | Cuir Pleine Fleur</title>
-<meta name="description" content="L'Art Infiny — Atelier de maroquinerie artisanale. Sacs, portefeuilles, ceintures et accessoires en cuir pleine fleur, cousus main. Commandez via WhatsApp.">
-<meta name="keywords" content="cuir artisanal, maroquinerie, sac cuir, portefeuille cuir, ceinture cuir, fait main, L'Art Infiny">
-<meta property="og:title" content="L'Art Infiny — Maroquinerie Artisanale">
-<meta property="og:description" content="Pièces en cuir pleine fleur, cousues main. Commande simple via WhatsApp.">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#9A6B3F">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%239A6B3F'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='serif' font-style='italic'>∞</text></svg>">
+<title>L'Art Infiny — Maroquinerie artisanale</title>
+<meta name="description" content="L'Art Infiny — atelier de maroquinerie artisanale à Paris. Sacs, portefeuilles, ceintures et petites pièces coupées et cousues main. Commandez sur WhatsApp.">
+<meta property="og:title" content="L'Art Infiny — Maroquinerie artisanale">
+<meta property="og:description" content="Cuir, lin et laiton : des pièces signées, numérotées, garanties à vie.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%239A5B2D'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='36' text-anchor='middle' fill='%23FDF6EA'%3E%E2%88%9E%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: { base:'var(--bg)', surface:'var(--surface)', ink:'var(--text)', muted:'var(--muted)', brand:'var(--primary)', accent:'var(--accent)', line:'var(--border)', darkx:'var(--dark)' },
-      fontFamily: { serif:['"Cormorant Garamond"','"Playfair Display"','serif'], sans:['Inter','sans-serif'] },
-      boxShadow: { soft:'0 20px 60px -20px rgba(0,0,0,.25)', card:'0 10px 40px -12px rgba(0,0,0,.18)', glow:'0 0 0 1px var(--border), 0 20px 50px -20px var(--primary)' }
-    }
-  }
-}
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style id="themeVars"></style>
 <style>
-:root{
-  --bg:#FBF7F1; --surface:#FFFFFF; --surface2:#F4EEE5; --text:#1C1917; --muted:#7A736C;
-  --primary:#9A6B3F; --primary-ink:#FFFFFF; --accent:#D9A679; --border:#E7DDD0; --dark:#1C1917;
-  --hero-grad:linear-gradient(135deg, #1C1917 0%, #3E2E22 55%, #9A6B3F 100%);
-  --radius:18px;
+/* ============ BASE ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{
+  font-family:'Jost',sans-serif;font-weight:400;background:var(--bg);color:var(--ink);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6;
+  transition:background-color .5s ease,color .5s ease;font-size:16px;
 }
-html[data-theme="cognac"]{ --bg:#FBF7F1; --surface:#FFFFFF; --surface2:#F4EEE5; --text:#1C1917; --muted:#7A736C; --primary:#9A6B3F; --primary-ink:#fff; --accent:#D9A679; --border:#E7DDD0; --dark:#1C1917; --hero-grad:linear-gradient(135deg,#1C1917 0%,#3E2E22 55%,#9A6B3F 100%);}
-html[data-theme="noir"]{ --bg:#0E0E0E; --surface:#171717; --surface2:#1F1F1F; --text:#F5F1EB; --muted:#A8A29E; --primary:#C8A97E; --primary-ink:#111; --accent:#E7D0A9; --border:#2A2A2A; --dark:#000; --hero-grad:linear-gradient(135deg,#000 0%,#1a1a1a 60%,#3a2e1f 100%);}
-html[data-theme="ivoire"]{ --bg:#FFFFFF; --surface:#F9F8F6; --surface2:#F1EFEA; --text:#1E1E1E; --muted:#8A8A8A; --primary:#1A1A1A; --primary-ink:#fff; --accent:#C9B99A; --border:#EDECEA; --dark:#111; --hero-grad:linear-gradient(135deg,#111 0%,#3a3a3a 60%,#8a7d66 100%);}
-html[data-theme="foret"]{ --bg:#F4F1EA; --surface:#FFFFFF; --surface2:#EAEFE6; --text:#1A2E1F; --muted:#6B7D6E; --primary:#2D4A32; --primary-ink:#fff; --accent:#8FA98F; --border:#D9DED1; --dark:#132117; --hero-grad:linear-gradient(135deg,#132117 0%,#2D4A32 60%,#5A7A5F 100%);}
-html[data-theme="terracotta"]{ --bg:#FFF8F2; --surface:#FFFFFF; --surface2:#FDEADF; --text:#3D2A24; --muted:#9C7D74; --primary:#C86B4A; --primary-ink:#fff; --accent:#E8A87C; --border:#F0D9CC; --dark:#2A1D18; --hero-grad:linear-gradient(135deg,#2A1D18 0%,#7A3E2A 55%,#C86B4A 100%);}
-html[data-theme="marine"]{ --bg:#F6F7F9; --surface:#FFFFFF; --surface2:#E9EDF4; --text:#0F1E3A; --muted:#6B7A99; --primary:#1B2F5A; --primary-ink:#fff; --accent:#8EA0C8; --border:#DDE2EC; --dark:#0B1530; --hero-grad:linear-gradient(135deg,#0B1530 0%,#1B2F5A 60%,#3E5A9A 100%);}
-html[data-theme="galet"]{ --bg:#EDECE8; --surface:#F7F6F3; --surface2:#E2E0D9; --text:#2E2E2E; --muted:#7A7A7A; --primary:#4A4A4A; --primary-ink:#fff; --accent:#B8B2A7; --border:#D5D2CC; --dark:#222; --hero-grad:linear-gradient(135deg,#222 0%,#4a4a4a 60%,#8a857c 100%);}
-html[data-theme="bordeaux"]{ --bg:#150E11; --surface:#231418; --surface2:#2E1B22; --text:#F9F0E8; --muted:#B89B9B; --primary:#A92D40; --primary-ink:#fff; --accent:#D4A574; --border:#3D2A2E; --dark:#0D080A; --hero-grad:linear-gradient(135deg,#0D080A 0%,#3A1A22 55%,#7A2432 100%);}
-*{ -webkit-tap-highlight-color:transparent; }
-html{ scroll-behavior:smooth; }
-body{ background:var(--bg); color:var(--text); font-family:Inter,sans-serif; transition:background .5s ease,color .5s ease; overflow-x:hidden; }
-.font-serif{ font-family:"Cormorant Garamond","Playfair Display",serif !important; }
-::selection{ background:var(--primary); color:var(--primary-ink); }
-::-webkit-scrollbar{ width:10px; height:10px; } ::-webkit-scrollbar-track{ background:var(--bg);} ::-webkit-scrollbar-thumb{ background:var(--primary); border-radius:99px; border:2px solid var(--bg);}
-.grain::before{ content:""; position:fixed; inset:0; pointer-events:none; z-index:5; opacity:.06; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
-.glass{ background:color-mix(in srgb, var(--surface) 82%, transparent); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
-.card-hover{ transition:transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s; } .card-hover:hover{ transform:translateY(-8px); box-shadow:0 24px 60px -18px rgba(0,0,0,.28); }
-.img-zoom img{ transition:transform 1.2s cubic-bezier(.16,1,.3,1); } .img-zoom:hover img{ transform:scale(1.08); }
-.btn-brand{ background:var(--primary); color:var(--primary-ink); transition:.35s; position:relative; overflow:hidden; } .btn-brand:hover{ filter:brightness(1.08); transform:translateY(-1px); box-shadow:0 14px 30px -10px var(--primary); } .btn-brand::after{ content:""; position:absolute; top:0; left:-80%; width:50%; height:100%; background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent); transform:skewX(-20deg); transition:.6s; } .btn-brand:hover::after{ left:130%; }
-.btn-outline{ border:1.5px solid var(--border); transition:.3s; } .btn-outline:hover{ border-color:var(--primary); color:var(--primary); background:color-mix(in srgb, var(--primary) 8%, transparent); }
-.marquee-track{ display:flex; gap:3rem; animation:marquee 28s linear infinite; width:max-content; } @keyframes marquee{ to{ transform:translateX(-50%);} }
-.stitch{ background-image:linear-gradient(90deg, var(--accent) 55%, transparent 45%); background-size:14px 2px; background-repeat:repeat-x; height:2px; opacity:.6; }
-.reveal{ opacity:0; transform:translateY(36px); }
-.chip-active{ background:var(--text) !important; color:var(--bg) !important; border-color:var(--text) !important; }
-input,textarea,select{ background:var(--surface) !important; border:1.5px solid var(--border) !important; color:var(--text) !important; border-radius:12px !important; } input:focus,textarea:focus,select:focus{ outline:none !important; border-color:var(--primary) !important; box-shadow:0 0 0 3px color-mix(in srgb, var(--primary) 18%, transparent) !important; }
-.theme-card{ cursor:pointer; transition:.35s; border:2px solid var(--border); } .theme-card:hover{ transform:translateY(-4px); } .theme-card.active{ border-color:var(--primary); box-shadow:0 0 0 3px color-mix(in srgb, var(--primary) 20%, transparent); }
-.admin-tab{ transition:.25s; } .admin-tab.active{ background:var(--text); color:var(--bg); }
-.line-clamp-2{ display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-#loader{ transition:opacity .7s, visibility .7s; } #loader.hide{ opacity:0; visibility:hidden; }
-.leather-texture{ background-image:radial-gradient(circle at 30% 20%, rgba(255,255,255,.12), transparent 50%), url('https://www.transparenttextures.com/patterns/leather.png'); }
-.float-wa{ animation:floatWa 3s ease-in-out infinite; } @keyframes floatWa{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-7px);} }
-.dot-sep::before{ content:"•"; margin:0 .6rem; opacity:.4; }
-@media(max-width:768px){ .marquee-track{ gap:1.5rem; } }
-.toast-in{ animation:toastIn .45s cubic-bezier(.16,1,.3,1); } @keyframes toastIn{ from{ opacity:0; transform:translateY(20px) scale(.95);} to{ opacity:1; transform:none;} }
-.modal-open{ overflow:hidden; }
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;background:none;border:none;color:inherit;cursor:pointer}
+::selection{background:var(--accent);color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.grain{
+  position:fixed;inset:0;z-index:30;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+[data-theme="minuit"] .grain{mix-blend-mode:screen;opacity:.06}
+
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:clamp(20px,5vw,48px)}
+.sec{padding-block:clamp(64px,9vw,110px)}
+.sec-head{margin-bottom:clamp(36px,5vw,56px)}
+.sec-head.split{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.display{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.06;letter-spacing:-.01em}
+h2.display{font-size:clamp(2.1rem,4.4vw,3.3rem)}
+.lead{color:var(--muted);max-width:56ch;margin-top:14px;font-size:1.02rem}
+.eyebrow{
+  display:flex;align-items:center;gap:12px;font-size:.66rem;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--muted);font-weight:500;
+}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--accent);flex:none}
+.eyebrow.center{justify-content:center}
+.eyebrow.center::after{content:"";width:34px;height:1px;background:var(--accent);flex:none}
+.count-chip{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:8px 16px;white-space:nowrap;background:var(--surface)}
+.ic{display:block;flex:none}
+
+/* ============ BOUTONS ============ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;font-weight:500;line-height:1;
+  padding:16px 28px;border:1px solid transparent;border-radius:3px;cursor:pointer;
+  transition:transform .3s ease,box-shadow .3s ease,background-color .3s,border-color .3s,color .3s;
+}
+.btn-solid{background:var(--accent);color:var(--accent-ink)}
+.btn-solid:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+.btn-sm{padding:11px 18px;font-size:.64rem}
+.btn-danger{background:#9C3A28;border-color:#9C3A28;color:#FBEEE9}
+.btn-danger:hover{box-shadow:var(--shadow)}
+
+/* ============ RÉVÉLATION & DESSIN ============ */
+.reveal{opacity:0;transform:translateY(26px);
+  transition:opacity .8s cubic-bezier(.2,.6,.25,1),transform .8s cubic-bezier(.2,.6,.25,1);
+  transition-delay:var(--d,0ms)}
+.reveal.in{opacity:1;transform:none}
+.art-svg{color:var(--ink);display:block}
+.art-svg .st{stroke:var(--accent);stroke-dasharray:2 5;stroke-width:1.2;opacity:.9}
+.reveal svg .st{opacity:0;transition:opacity 1s ease .55s}
+.reveal.in svg .st{opacity:.9}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
+
+/* ============ BANDEAU DÉFILANT ============ */
+.topline{background:var(--ink);color:var(--bg);overflow:hidden;padding-block:9px}
+.mq-track{display:flex;width:max-content;animation:slide 28s linear infinite}
+.mq-group{display:flex;align-items:center;flex:none}
+.mq-item{padding:0 22px;font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;white-space:nowrap}
+.mq-sep{width:4px;height:4px;background:currentColor;opacity:.45;transform:rotate(45deg);flex:none}
+.mqbig{overflow:hidden;padding-block:38px;border-block:1px dashed var(--line)}
+.mqbig .mq-track{animation-duration:44s}
+.bigword{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+  font-size:clamp(2.3rem,5.2vw,4.1rem);white-space:nowrap;padding:0 14px;
+  color:transparent;-webkit-text-stroke:1.2px color-mix(in srgb,var(--ink) 40%,transparent)}
+.loz{width:8px;height:8px;border:1px solid var(--accent);transform:rotate(45deg);margin:0 30px;flex:none;opacity:.75}
+
+/* ============ EN-TÊTE ============ */
+.site-head{
+  position:sticky;top:0;z-index:40;
+  background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);transition:background-color .5s ease;
+}
+.head-in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:74px}
+.brand{display:flex;align-items:center;gap:13px}
+.brand-mark svg{width:44px;height:44px;display:block}
+.brand-mark rect{stroke:var(--accent);stroke-width:1.6;fill:color-mix(in srgb,var(--accent) 7%,transparent)}
+.brand-mark path{stroke:var(--accent);stroke-width:2.4;fill:none;stroke-linecap:round}
+.brand-text{display:flex;flex-direction:column;line-height:1.15}
+.brand-text strong{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.3rem;letter-spacing:.02em}
+.brand-text small{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.main-nav{display:flex;gap:clamp(16px,3vw,34px)}
+.nav-link{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
+  position:relative;padding-block:6px;transition:color .25s}
+.nav-link::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;
+  background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.nav-link:hover{color:var(--ink)}
+.nav-link:hover::after{transform:scaleX(1)}
+.head-cta{display:flex;align-items:center;gap:12px}
+.burger{display:none;width:42px;height:42px;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.burger span{width:20px;height:1.6px;background:var(--ink);transition:.3s}
+.burger.open span:nth-child(1){transform:translateY(6.6px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-6.6px) rotate(-45deg)}
+.mobile-nav{
+  display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);
+  border-bottom:1px solid var(--line);box-shadow:var(--shadow);
+  max-height:0;overflow:hidden;transition:max-height .45s ease;
+}
+.mobile-nav.open{max-height:420px}
+.mobile-nav a{display:block;padding:15px clamp(20px,5vw,48px);font-size:.72rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink);border-top:1px dashed var(--line)}
+.mobile-nav a:hover{color:var(--accent)}
+
+/* ============ HÉROS ============ */
+.hero{padding-top:clamp(46px,8vh,88px);padding-bottom:clamp(56px,9vh,110px)}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(40px,6vw,76px);align-items:center}
+#heroTitle{font-size:clamp(2.7rem,6vw,4.5rem);line-height:1.02;letter-spacing:-.015em;margin:20px 0 22px}
+#heroTitle em{font-style:italic;color:var(--accent)}
+.hero-sub{font-size:clamp(1rem,1.4vw,1.12rem);color:var(--muted);max-width:46ch;line-height:1.75}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+.hero-note{margin-top:28px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.hero-art{position:relative}
+.stage-wrap{position:relative}
+.art-stage{
+  position:relative;aspect-ratio:1/1.02;display:grid;place-items:center;background:var(--surface);
+  border:1px solid var(--line);border-radius:12px;padding:clamp(28px,5vw,56px);overflow:visible;
+}
+.stitchbox::before{content:"";position:absolute;inset:11px;border:1px dashed var(--line);border-radius:7px;pointer-events:none}
+.orbit{position:absolute;left:50%;top:50%;width:90%;aspect-ratio:1;transform:translate(-50%,-50%);animation:spin 80s linear infinite}
+.orbit circle{stroke:var(--muted);opacity:.45;fill:none}
+#heroArt{width:66%;position:relative}
+#heroArt .art-svg{width:100%;height:auto}
+.tag{
+  position:absolute;top:-18px;right:-12px;transform:rotate(3deg);z-index:3;
+  background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:12px 18px 12px 26px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:2px;
+  transition:transform .3s ease;text-align:left;
+}
+.tag::before{content:"";position:absolute;left:9px;top:50%;transform:translateY(-50%);
+  width:6px;height:6px;border-radius:50%;background:var(--bg);border:1px solid var(--line)}
+.tag:hover{transform:rotate(1deg) translateY(-3px)}
+.t-ey{font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.t-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;line-height:1.1}
+.t-price{font-size:.74rem;color:var(--muted)}
+.rotor{position:absolute;left:-28px;bottom:-30px;width:118px;z-index:3;filter:drop-shadow(0 10px 22px rgba(40,26,10,.18))}
+.rotor svg{width:100%;height:auto;display:block}
+.rotor-bg{fill:var(--surface);stroke:var(--line);stroke-width:1}
+.rotor-spin{transform-origin:60px 60px;animation:spin 22s linear infinite}
+.rotor-tx{font-family:'Jost';font-size:9.6px;letter-spacing:1.9px;text-transform:uppercase;fill:var(--muted)}
+.rotor-in{stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round}
+.swatches{display:flex;align-items:center;gap:13px;margin-top:26px;flex-wrap:wrap}
+.sw-label{font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.sw{width:30px;height:20px;border-radius:5px;border:1px solid color-mix(in srgb,var(--ink) 20%,transparent);
+  box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--bg) 60%,transparent);cursor:help}
+
+/* ============ PROMESSES ============ */
+.values{border-block:1px dashed var(--line)}
+.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:34px;padding-block:clamp(44px,6vw,64px)}
+.value h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;margin:14px 0 6px}
+.value p{font-size:.86rem;color:var(--muted);line-height:1.65}
+.v-ico .ic{width:30px;height:30px;color:var(--accent)}
+
+/* ============ COLLECTIONS ============ */
+.cats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:20px}
+.cat-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:26px 22px;
+  display:flex;flex-direction:column;cursor:pointer;
+  transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease,background-color .5s;
+}
+.cat-card:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--accent) 45%,var(--line));box-shadow:var(--shadow)}
+.cat-art{margin-bottom:16px;transition:color .35s;color:var(--ink)}
+.cat-art .art-svg{width:62px;height:62px}
+.cat-card:hover .cat-art{color:var(--accent)}
+.cat-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;line-height:1.15}
+.cat-count{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:8px 0 10px}
+.cat-desc{font-size:.84rem;color:var(--muted);line-height:1.6}
+.cat-go{margin-top:auto;padding-top:18px;display:inline-flex;align-items:center;gap:8px;
+  font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);transition:.3s}
+.cat-card:hover .cat-go{color:var(--accent);gap:14px}
+
+/* ============ PIÈCES ============ */
+.pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px}
+.pill{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;padding:11px 19px;
+  border:1px solid var(--line);border-radius:999px;color:var(--muted);background:transparent;
+  transition:border-color .25s,color .25s,background-color .25s;cursor:pointer}
+.pill:hover{border-color:var(--ink);color:var(--ink)}
+.pill.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(252px,1fr));gap:22px}
+.pcard{
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease,background-color .5s;
+}
+.pcard:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--ink) 22%,var(--line))}
+.pcard-media{position:relative;aspect-ratio:4/3;display:grid;place-items:center;
+  background:color-mix(in srgb,var(--surface2) 55%,var(--surface));border-bottom:1px solid var(--line)}
+.pcard-artbox{display:grid;place-items:center;width:100%;height:100%}
+.pcard-artbox .art-svg{width:44%;min-width:88px;height:auto}
+.pcard-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:sepia(.22) saturate(.85) contrast(1.03)}
+.chip{position:absolute;top:12px;left:12px;font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;
+  font-weight:600;color:var(--accent);background:color-mix(in srgb,var(--accent) 13%,transparent);
+  border:1px solid color-mix(in srgb,var(--accent) 34%,transparent);border-radius:4px;padding:5px 10px}
+.pcard-body{padding:20px;display:flex;flex-direction:column;flex:1}
+.pcard-cat{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+.pcard-name{font-family:'Cormorant Garamond',serif;font-size:1.42rem;font-weight:600;line-height:1.1;margin:7px 0 8px}
+.pcard-desc{font-size:.85rem;color:var(--muted);line-height:1.6;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pcard-foot{margin-top:auto;padding-top:18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.pcard-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;white-space:nowrap}
+.order{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--line);
+  border-radius:999px;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;
+  color:var(--ink);transition:.25s;white-space:nowrap}
+.order:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.ptools{position:absolute;top:10px;right:10px;display:none;gap:8px;z-index:4}
+body.admin-on .ptools{display:flex}
+.tool{width:34px;height:34px;border-radius:8px;background:var(--surface);border:1px solid var(--line);
+  display:grid;place-items:center;color:var(--ink);transition:.2s;cursor:pointer}
+.tool:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.tool.danger:hover{background:#9C3A28;border-color:#9C3A28;color:#FBEEE9}
+.add-card{border:1.5px dashed var(--line);border-radius:12px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:12px;min-height:380px;color:var(--muted);
+  font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;transition:.25s;cursor:pointer}
+.add-card:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-4px)}
+.empty{grid-column:1/-1;text-align:center;padding:64px 24px;border:1px dashed var(--line);border-radius:12px}
+.empty-t{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:500;margin-bottom:8px}
+.empty-s{color:var(--muted);margin-bottom:24px;font-size:.92rem}
+
+/* ============ ATELIER ============ */
+.atelier{background:var(--surface2);transition:background-color .5s}
+.atelier-grid{display:grid;grid-template-columns:1fr .92fr;gap:clamp(40px,6vw,84px);align-items:center}
+.atelier-copy p.txt{color:var(--muted);line-height:1.85;margin-top:18px;font-size:.98rem}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 30px;margin-top:40px}
+.stat{border-top:1px solid var(--line);padding-top:16px;position:relative}
+.stat::before{content:"";position:absolute;top:-1px;left:0;width:30px;height:2px;background:var(--accent)}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:2.55rem;font-weight:600;line-height:1}
+.stat-l{font-size:.76rem;color:var(--muted);margin-top:5px}
+.img-frame{position:relative;aspect-ratio:4/5;border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  box-shadow:var(--shadow)}
+.img-frame img{width:100%;height:100%;object-fit:cover;filter:sepia(.35) saturate(.72) contrast(1.05)}
+[data-theme="minuit"] .img-frame img{filter:sepia(.3) saturate(.6) contrast(1.05) brightness(.86)}
+.img-frame::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(185deg,transparent 46%,color-mix(in srgb,var(--ink) 30%,transparent))}
+.img-cap{position:absolute;left:14px;bottom:14px;z-index:2;display:inline-flex;align-items:center;gap:8px;
+  background:color-mix(in srgb,var(--surface) 85%,transparent);backdrop-filter:blur(6px);
+  border:1px solid var(--line);border-radius:6px;padding:8px 14px;
+  font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink)}
+.img-cap .ic{width:13px;height:13px;color:var(--accent)}
+
+/* ============ GESTES / CITATION / APPEL ============ */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:34px}
+.step{border-top:1px solid var(--line);padding-top:20px;position:relative}
+.step::before{content:"";position:absolute;top:-1px;left:0;width:30px;height:2px;background:var(--accent)}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:500;color:var(--accent)}
+.step h3{font-family:'Cormorant Garamond',serif;font-size:1.28rem;font-weight:600;margin:8px 0 8px}
+.step p{font-size:.86rem;color:var(--muted);line-height:1.65}
+.quote-sec{border-block:1px dashed var(--line);padding-block:clamp(64px,9vw,104px);text-align:center}
+.qmark{font-family:'Cormorant Garamond',serif;font-size:4.6rem;line-height:.5;color:var(--accent);margin-bottom:26px}
+.q-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+  font-size:clamp(1.45rem,3vw,2.05rem);line-height:1.4;max-width:780px;margin:0 auto}
+.q-author{margin-top:26px}
+.cta-panel{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:16px;
+  padding:clamp(46px,7vw,88px) clamp(24px,6vw,72px);text-align:center;overflow:hidden;transition:background-color .5s}
+.cta-panel::before{content:"";position:absolute;inset:13px;border:1px dashed var(--line);border-radius:10px;pointer-events:none}
+.cta-panel>*{position:relative}
+.cta-title{font-size:clamp(2.2rem,4.6vw,3.4rem);margin:16px 0 14px}
+.cta-text{color:var(--muted);max-width:60ch;margin:0 auto;line-height:1.75}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+.cta-note{margin-top:22px;display:inline-flex;align-items:center;gap:8px;
+  font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.cta-note .ic{width:14px;height:14px;color:var(--accent)}
+
+/* ============ PIED DE PAGE ============ */
+.footer{border-top:1px solid var(--line);background:var(--surface);padding-top:clamp(48px,7vw,76px);transition:background-color .5s}
+.foot-grid{display:grid;grid-template-columns:1.35fr .8fr 1fr 1.25fr;gap:44px}
+.f-h{font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:18px}
+.f-blurb{font-size:.9rem;color:var(--muted);line-height:1.75;margin-top:16px;max-width:34ch}
+.f-list{display:flex;flex-direction:column;gap:11px}
+.f-link{font-size:.86rem;color:var(--muted);transition:color .25s;width:fit-content}
+.f-link:hover{color:var(--ink)}
+.f-line{display:flex;align-items:flex-start;gap:10px;font-size:.86rem;color:var(--muted);margin-bottom:12px;line-height:1.5}
+.f-line .ic{width:15px;height:15px;color:var(--accent);margin-top:3px}
+.ext .arr{font-size:.75em;margin-left:4px;color:var(--accent)}
+.news{display:flex;gap:10px;margin-top:6px}
+.news input{flex:1;min-width:0;background:var(--bg);border:1px solid var(--line);border-radius:4px;
+  padding:11px 14px;font:inherit;font-size:.86rem;color:var(--ink)}
+.news input:focus{border-color:var(--accent);outline:none}
+.foot-bottom{border-top:1px solid var(--line);margin-top:clamp(40px,6vw,64px);padding-block:20px;
+  display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+  font-size:.72rem;color:var(--muted)}
+.admin-link{font-size:.72rem;color:var(--muted);letter-spacing:.08em;border-bottom:1px dashed var(--muted);
+  padding-bottom:1px;transition:.25s}
+.admin-link:hover{color:var(--accent);border-color:var(--accent)}
+
+/* ============ BOUTONS FLOTTANTS ============ */
+.wa-fab{position:fixed;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;z-index:50;
+  background:#1DA851;color:#fff;display:grid;place-items:center;
+  box-shadow:0 14px 34px -10px rgba(29,168,81,.55);transition:transform .3s ease}
+.wa-fab:hover{transform:scale(1.08)}
+.wa-fab::before{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid #1DA851;
+  animation:pulse 2.6s ease-out infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.75);opacity:0}}
+.admin-fab{position:fixed;left:22px;bottom:22px;width:46px;height:46px;border-radius:50%;z-index:50;
+  background:var(--surface);border:1px solid var(--line);color:var(--muted);display:grid;place-items:center;
+  box-shadow:var(--shadow);transition:.3s}
+.admin-fab:hover{color:var(--accent);border-color:var(--accent)}
+.admin-fab .ic{transition:transform .4s ease}
+.admin-fab:hover .ic{transform:rotate(90deg)}
+body.admin-on .admin-fab{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.admin-bar{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:45;display:none;
+  background:var(--ink);color:var(--bg);padding:9px 20px;border-radius:999px;
+  font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;box-shadow:var(--shadow);white-space:nowrap}
+body.admin-on .admin-bar{display:block}
+
+/* ============ ÉDITION EN LIGNE ============ */
+body.admin-on [data-edit]{outline:1px dashed transparent;border-radius:4px;cursor:text;transition:.2s}
+body.admin-on [data-edit]:hover{outline-color:color-mix(in srgb,var(--accent) 55%,transparent);
+  background:color-mix(in srgb,var(--accent) 6%,transparent)}
+body.admin-on [data-edit]:focus{outline:1px dashed var(--accent);
+  background:color-mix(in srgb,var(--accent) 8%,transparent)}
+
+/* ============ TIROIR ADMIN ============ */
+#drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100vw);background:var(--bg);
+  border-left:1px solid var(--line);z-index:80;display:flex;flex-direction:column;
+  transform:translateX(103%);transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+#drawer.open{transform:none}
+#backdrop{position:fixed;inset:0;background:rgba(22,14,6,.44);backdrop-filter:blur(2px);z-index:70;
+  opacity:0;pointer-events:none;transition:opacity .35s}
+#backdrop.open{opacity:1;pointer-events:auto}
+.dr-head{display:flex;justify-content:space-between;align-items:center;gap:14px;
+  padding:18px 22px;border-bottom:1px solid var(--line)}
+.dr-head h3{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600}
+.dr-head p{font-size:.68rem;color:var(--muted);margin-top:2px}
+.icon-btn{width:38px;height:38px;border-radius:8px;border:1px solid var(--line);display:grid;
+  place-items:center;color:var(--muted);transition:.2s}
+.icon-btn:hover{color:var(--ink);border-color:var(--ink)}
+.dr-tabs{display:flex;overflow-x:auto;border-bottom:1px solid var(--line);padding:0 10px;
+  scrollbar-width:none}
+.dr-tabs::-webkit-scrollbar{display:none}
+.dr-tab{padding:13px 13px;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap;transition:.25s}
+.dr-tab:hover{color:var(--ink)}
+.dr-tab.on{color:var(--ink);border-color:var(--accent)}
+.dr-body{flex:1;overflow-y:auto;padding:20px 22px 34px;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.dr-body::-webkit-scrollbar{width:8px}
+.dr-body::-webkit-scrollbar-thumb{background:var(--line);border-radius:8px}
+.dr-foot{border-top:1px solid var(--line);padding:13px 18px;display:flex;justify-content:space-between;
+  align-items:center;gap:10px}
+.dr-hint{font-size:.64rem;color:var(--muted);letter-spacing:.06em}
+.dcard{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--surface);
+  margin-bottom:14px}
+.dcard h4{font-family:'Cormorant Garamond',serif;font-size:1.18rem;font-weight:600;margin-bottom:12px}
+.field{margin-bottom:11px}
+.field label{display:block;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:6px;font-weight:500}
+.field input,.field textarea,.field select,.din{
+  width:100%;background:var(--bg);border:1px solid var(--line);border-radius:6px;
+  padding:9px 12px;font:inherit;font-size:.88rem;color:var(--ink);transition:border-color .2s,box-shadow .2s}
+.field textarea{min-height:78px;resize:vertical;line-height:1.6}
+.field input:focus,.field textarea:focus,.field select:focus,.din:focus{
+  border-color:var(--accent);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 15%,transparent)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.f-hint{font-size:.68rem;color:var(--muted);margin:-4px 0 10px}
+.dr-note{font-size:.78rem;color:var(--muted);line-height:1.6;margin-bottom:16px;
+  background:color-mix(in srgb,var(--accent) 7%,var(--surface));
+  border:1px dashed color-mix(in srgb,var(--accent) 35%,var(--line));border-radius:8px;
+  padding:11px 13px;display:flex;gap:9px;align-items:flex-start}
+.dr-note .ic{color:var(--accent);margin-top:3px}
+.dr-note.low{background:transparent;border:none;padding:0}
+.dr-actions{margin-bottom:14px}
+.crow{display:grid;grid-template-columns:76px 1fr auto;gap:10px;align-items:center;
+  border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:9px;margin-bottom:10px}
+.cr-main{display:flex;flex-direction:column;gap:6px}
+.cr-name{font-weight:500}
+.cr-side{display:flex;flex-direction:column;align-items:flex-end;gap:7px}
+.cr-n{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.prow{display:grid;grid-template-columns:38px 1fr 36px 36px;gap:10px;align-items:center;
+  border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:9px;margin-bottom:10px}
+.prow-thumb .art-svg{width:34px;height:34px}
+.prow-main{display:flex;flex-direction:column;gap:2px;min-width:0}
+.prow-main strong{font-size:.9rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prow-main span{font-size:.7rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dr-empty{font-size:.86rem;color:var(--muted);font-style:italic;padding:16px 0}
+.theme-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.theme-card{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--surface);
+  text-align:left;transition:transform .25s,box-shadow .25s,border-color .25s}
+.theme-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.theme-card.on{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.tc-sw{display:block;margin-bottom:10px}
+.tc-sw i{display:inline-block;width:16px;height:16px;border-radius:5px;margin-right:5px;
+  border:1px solid color-mix(in srgb,var(--ink) 18%,transparent)}
+.theme-card strong{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;display:block}
+.tc-desc{display:block;font-size:.68rem;color:var(--muted);margin-top:3px;line-height:1.45}
+.tc-on{display:inline-flex;align-items:center;gap:6px;margin-top:9px;
+  font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.chk{display:flex;align-items:center;gap:10px;cursor:pointer;font-size:.86rem;color:var(--ink);
+  margin-top:4px;user-select:none}
+.chk input{position:absolute;opacity:0;pointer-events:none}
+.chk .box{width:18px;height:18px;border:1px solid var(--line);border-radius:4px;flex:none;
+  position:relative;background:var(--bg);transition:.2s}
+.chk input:checked+.box{background:var(--accent);border-color:var(--accent)}
+.chk input:checked+.box::after{content:"";position:absolute;left:4px;top:4.5px;width:9px;height:5px;
+  border-left:2px solid var(--accent-ink);border-bottom:2px solid var(--accent-ink);transform:rotate(-45deg)}
+.ready{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed var(--line);
+  font-size:.86rem;color:var(--ink)}
+.ready .ic{margin-top:3px}
+.r-ok{color:#4E8A5E}.r-warn{color:#C2674A}
+.verdict{margin-top:14px;font-size:.86rem;padding:11px 13px;border-radius:8px;line-height:1.5}
+.verdict.ok{background:color-mix(in srgb,#4E8A5E 13%,transparent);color:#4E8A5E;font-weight:500}
+.verdict.no{background:color-mix(in srgb,#C2674A 12%,transparent);color:#C2674A;font-weight:500}
+.launch-list{font-size:.84rem;color:var(--muted);line-height:1.75;padding-left:18px}
+.launch-list li{margin-bottom:6px}
+.launch-list b{color:var(--ink);font-weight:500}
+
+/* ============ MODALES ============ */
+.overlay{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:20px;
+  background:rgba(21,14,7,.5);backdrop-filter:blur(3px);opacity:0;transition:opacity .25s}
+.overlay.op{opacity:1}
+.modal{width:min(560px,100%);max-height:90vh;overflow-y:auto;background:var(--bg);
+  border:1px solid var(--line);border-radius:14px;padding:26px;position:relative;
+  animation:pop .35s cubic-bezier(.2,.8,.3,1)}
+.modal-sm{width:min(420px,100%)}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}}
+.modal-x{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:8px;
+  display:grid;place-items:center;color:var(--muted);border:1px solid transparent;transition:.2s}
+.modal-x:hover{color:var(--ink);border-color:var(--line)}
+.modal-title{font-size:1.7rem;margin-bottom:18px}
+.modal-foot{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
+.cm-msg{font-size:.9rem;color:var(--muted);line-height:1.7}
+.pin-card{text-align:center;padding:34px 28px}
+.pin-ico .ic{width:28px;height:28px;color:var(--accent);margin:0 auto 14px}
+#pinInput{width:100%;text-align:center;letter-spacing:.5em;font-size:1.25rem;padding:12px;
+  background:var(--surface);border:1px solid var(--line);border-radius:8px;margin-top:18px}
+#pinInput:focus{border-color:var(--accent);outline:none}
+.pin-err{min-height:1.3em;font-size:.78rem;color:#C2674A;margin-top:8px}
+.pin-hint{font-size:.72rem;color:var(--muted);margin-top:16px;line-height:1.6}
+.pin-hint b{color:var(--ink)}
+.shake{animation:shake .4s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+
+/* ============ TOASTS ============ */
+#toasts{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:95;
+  display:flex;flex-direction:column;gap:10px;align-items:center;pointer-events:none;width:max-content;max-width:92vw}
+.toast{display:flex;align-items:center;gap:10px;background:var(--ink);color:var(--bg);
+  padding:12px 20px;border-radius:10px;font-size:.84rem;letter-spacing:.03em;
+  box-shadow:var(--shadow);animation:tin .4s cubic-bezier(.2,.8,.3,1);max-width:92vw}
+.toast .ic{color:var(--accent)}
+.toast.err .ic{color:#E5A08A}
+.toast.out{opacity:0;transform:translateY(8px);transition:.3s}
+@keyframes tin{from{opacity:0;transform:translateY(14px)}}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr;gap:56px}
+  .hero-art{max-width:520px;margin-inline:auto;width:100%}
+  .atelier-grid{grid-template-columns:1fr;gap:48px}
+  .img-frame{max-width:520px}
+  .process-grid{grid-template-columns:1fr 1fr}
+  .values-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:38px}
+}
+@media (max-width:880px){
+  .main-nav{display:none}
+  .burger{display:flex}
+}
+@media (max-width:640px){
+  .head-cta .btn{display:none}
+  .process-grid{grid-template-columns:1fr}
+  .values-grid{grid-template-columns:1fr 1fr;gap:26px}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:22px}
+  .rotor{width:94px;left:-12px;bottom:-20px}
+  .tag{top:-14px;right:4px;padding:10px 14px 10px 22px}
+  .admin-bar{display:none!important}
+  .frow{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr;gap:34px}
+  .crow{grid-template-columns:64px 1fr auto}
+  .crow .din{font-size:.8rem}
+  .theme-grid{grid-template-columns:1fr}
+}
+@media (max-width:460px){
+  .values-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr}
+  .products-grid{grid-template-columns:1fr}
+  .swatches{justify-content:center}
+}
 </style>
 </head>
-<body class="grain antialiased">
+<body>
+<div class="grain" aria-hidden="true"></div>
 
-<!-- LOADER -->
-<div id="loader" class="fixed inset-0 z-[200] flex flex-col items-center justify-center" style="background:var(--dark); color:#F5F1EB;">
-  <div class="w-20 h-20 rounded-2xl flex items-center justify-center text-5xl italic font-serif mb-5" style="background:var(--primary); color:#fff;">∞</div>
-  <div class="font-serif text-4xl tracking-wide">L'Art <span class="italic" style="color:var(--accent)">Infiny</span></div>
-  <div class="mt-2 text-sm tracking-[.35em] uppercase opacity-70">Maroquinerie · Fait main</div>
-  <div class="mt-6 w-52 h-[3px] rounded-full bg-white/15 overflow-hidden"><div id="loaderBar" class="h-full w-0 rounded-full" style="background:var(--accent)"></div></div>
-</div>
+<!-- Bandeau défilant -->
+<div class="topline" aria-hidden="true"><div class="mq-track" id="topTrack"></div></div>
 
-<!-- ANNOUNCEMENT -->
-<div id="announceBar" class="text-center text-[13px] tracking-wide py-2.5 px-4 font-medium" style="background:var(--dark); color:#F5EFE3;">
-  <span id="announceText">Livraison offerte dès 120€ · Gravure initiale offerte · Cousu main en atelier</span>
-</div>
-
-<!-- HEADER -->
-<header id="header" class="sticky top-0 z-[60] glass border-b" style="border-color:var(--border)">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-[72px]">
-    <a href="#accueil" class="flex items-center gap-3 group">
-      <div class="w-11 h-11 rounded-xl flex items-center justify-center font-serif italic text-3xl shadow-soft transition-transform group-hover:rotate-6" style="background:var(--primary); color:var(--primary-ink)">∞</div>
-      <div class="leading-none">
-        <div id="brandName" class="font-serif text-[26px] font-semibold tracking-tight">L'Art Infiny</div>
-        <div id="brandTag" class="text-[11px] tracking-[.28em] uppercase" style="color:var(--muted)">Cuir · Artisanat · Héritage</div>
-      </div>
+<!-- En-tête -->
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="#accueil" aria-label="L'Art Infiny — accueil">
+      <span class="brand-mark">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <rect x="7" y="7" width="34" height="34" rx="9"/>
+          <g transform="translate(24 24) scale(.5) translate(-60 -60)">
+            <path d="M60 60C55 53 45 53 45 60C45 67 55 67 60 60C65 53 75 53 75 60C75 67 65 67 60 60Z"/>
+          </g>
+        </svg>
+      </span>
+      <span class="brand-text"><strong id="logoName"></strong><small id="logoTag"></small></span>
     </a>
-    <nav class="hidden lg:flex items-center gap-7 text-[14px] font-medium">
-      <a href="#accueil" class="hover:opacity-70 transition">Accueil</a>
-      <a href="#categories" class="hover:opacity-70 transition">Collections</a>
-      <a href="#boutique" class="hover:opacity-70 transition">Boutique</a>
-      <a href="#atelier" class="hover:opacity-70 transition">L'Atelier</a>
-      <a href="#avis" class="hover:opacity-70 transition">Avis</a>
-      <a href="#contact" class="hover:opacity-70 transition">Contact</a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a class="nav-link" href="#accueil">Accueil</a>
+      <a class="nav-link" href="#collections">Collections</a>
+      <a class="nav-link" href="#pieces">Pièces</a>
+      <a class="nav-link" href="#atelier">L'atelier</a>
+      <a class="nav-link" href="#contact">Contact</a>
     </nav>
-    <div class="flex items-center gap-2.5">
-      <button onclick="toggleSearch()" class="w-10 h-10 rounded-full btn-outline flex items-center justify-center" title="Recherche">
-        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      </button>
-      <button onclick="openCart()" class="relative w-10 h-10 rounded-full btn-brand flex items-center justify-center" title="Panier">
-        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 7h15l-1.5 9h-12z"/><path d="M6 7L5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
-        <span id="cartCount" class="absolute -top-1 -right-1 min-w-[20px] h-5 px-1 rounded-full text-[11px] font-bold flex items-center justify-center" style="background:var(--text); color:var(--bg)">0</span>
-      </button>
-      <a id="headerWa" href="#" target="_blank" class="hidden sm:inline-flex btn-brand items-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold">
-        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.3.2.5.1.7-.1l.8-1c.2-.3.4-.2.7-.1l1.6.8c.3.1.4.2.5.3 0 .2 0 .7-.4 1.1z"/></svg>
-        Commander
-      </a>
-      <button onclick="openAdmin()" class="w-10 h-10 rounded-full btn-outline flex items-center justify-center" title="Espace Admin">
-        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-      </button>
-      <button onclick="toggleMobile()" class="lg:hidden w-10 h-10 rounded-full btn-outline flex items-center justify-center">
-        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
+    <div class="head-cta">
+      <a class="btn btn-solid btn-sm" data-wa-general target="_blank" rel="noopener"><span data-ico="wa"></span>Commander</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
-  <div id="mobileMenu" class="hidden lg:hidden border-t px-6 py-4 space-y-3 text-[15px] font-medium" style="border-color:var(--border); background:var(--surface)">
-    <a href="#accueil" onclick="toggleMobile()" class="block">Accueil</a>
-    <a href="#categories" onclick="toggleMobile()" class="block">Collections</a>
-    <a href="#boutique" onclick="toggleMobile()" class="block">Boutique</a>
-    <a href="#atelier" onclick="toggleMobile()" class="block">L'Atelier</a>
-    <a href="#avis" onclick="toggleMobile()" class="block">Avis</a>
-    <a href="#contact" onclick="toggleMobile()" class="block">Contact</a>
-  </div>
-  <div id="searchBar" class="hidden border-t px-4 py-3" style="border-color:var(--border); background:var(--surface)">
-    <div class="max-w-3xl mx-auto flex gap-2">
-      <input id="searchInput" oninput="onSearch(this.value)" placeholder="Rechercher : sac, portefeuille, ceinture, camel, noir…" class="flex-1 px-4 py-2.5 text-sm">
-      <select id="sortSelect" onchange="onSort(this.value)" class="px-3 py-2.5 text-sm !w-auto">
-        <option value="featured">En vedette</option>
-        <option value="price-asc">Prix croissant</option>
-        <option value="price-desc">Prix décroissant</option>
-        <option value="name">Nom A-Z</option>
-      </select>
-    </div>
-  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Navigation mobile">
+    <a href="#collections">Collections</a>
+    <a href="#pieces">Pièces</a>
+    <a href="#atelier">L'atelier</a>
+    <a href="#contact">Contact</a>
+    <a data-wa-general target="_blank" rel="noopener">WhatsApp — Commander</a>
+  </nav>
 </header>
 
-<!-- HERO -->
-<section id="accueil" class="relative overflow-hidden">
-  <div class="absolute inset-0" style="background:var(--hero-grad)"></div>
-  <div class="absolute inset-0 leather-texture opacity-40"></div>
-  <div class="absolute -right-32 -top-32 w-[520px] h-[520px] rounded-full blur-[120px] opacity-30" style="background:var(--accent)"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-14 lg:py-24 grid lg:grid-cols-2 gap-12 items-center">
-    <div>
-      <div class="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[12px] tracking-[.2em] uppercase border border-white/20 text-[#F5EFE3] bg-white/10 backdrop-blur">
-        <span class="w-2 h-2 rounded-full animate-pulse" style="background:var(--accent)"></span>
-        <span id="heroBadge">Atelier familial depuis 1998</span>
-      </div>
-      <h1 id="heroTitle" class="reveal font-serif text-[#FBF3E6] text-5xl sm:text-6xl lg:text-[76px] leading-[1.02] mt-6 font-medium">Le cuir, <em class="italic" style="color:var(--accent)">l'âme</em> de l'éternel.</h1>
-      <p id="heroSubtitle" class="reveal mt-6 text-[#E8DDCC]/90 text-[16px] sm:text-lg leading-relaxed max-w-xl font-light">Chaque pièce L'Art Infiny est découpée, parée et cousue main en cuir pleine fleur. Patine unique, garantie à vie, gravure offerte. Commandez en 1 clic via WhatsApp.</p>
-      <div class="reveal flex flex-wrap gap-3 mt-8">
-        <a href="#boutique" class="btn-brand px-7 py-3.5 rounded-full font-semibold text-[15px] inline-flex items-center gap-2" style="background:#F5EFE3; color:#1C1917;">Découvrir la boutique
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a id="heroWa" href="#" target="_blank" class="px-7 py-3.5 rounded-full font-semibold text-[15px] inline-flex items-center gap-2 border border-white/25 text-white hover:bg-white/10 transition">
-          <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>
-          <span id="heroWaLabel">Commander sur WhatsApp</span>
-        </a>
-      </div>
-      <div class="reveal grid grid-cols-3 gap-6 mt-10 max-w-md text-[#F5EFE3]">
-        <div><div class="font-serif text-3xl font-semibold"><span class="counter" data-target="27">0</span> ans</div><div class="text-xs opacity-70 tracking-wide mt-1">DE SAVOIR-FAIRE</div></div>
-        <div><div class="font-serif text-3xl font-semibold"><span class="counter" data-target="8400">0</span>+</div><div class="text-xs opacity-70 tracking-wide mt-1">PIÈCES COUSUES</div></div>
-        <div><div class="font-serif text-3xl font-semibold">4.9<span class="text-lg">★</span></div><div class="text-xs opacity-70 tracking-wide mt-1">1200+ AVIS</div></div>
-      </div>
-    </div>
-    <div class="reveal relative">
-      <div class="rounded-[28px] overflow-hidden shadow-soft img-zoom border border-white/15">
-        <img id="heroImage" src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=1000&auto=format&fit=crop" onerror="this.src='https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=1000&auto=format&fit=crop'" alt="Maroquinerie artisanale" class="w-full h-[420px] lg:h-[560px] object-cover">
-      </div>
-      <div class="absolute -left-4 sm:-left-8 bottom-8 glass rounded-2xl p-4 pr-6 shadow-card border flex items-center gap-4" style="border-color:var(--border)">
-        <img id="heroMiniImg" src="https://images.unsplash.com/photo-1627123424574-724772594e93?q=80&w=200&auto=format&fit=crop" class="w-16 h-16 rounded-xl object-cover" alt="">
-        <div><div class="text-[11px] tracking-[.2em] uppercase" style="color:var(--muted)">Best-seller</div><div id="heroMiniName" class="font-serif text-lg font-semibold leading-tight">Portefeuille Infiny</div><div id="heroMiniPrice" class="text-sm font-bold" style="color:var(--primary)">89€ <span class="line-through font-normal opacity-50">110€</span></div></div>
-      </div>
-      <div class="absolute -right-2 sm:-right-4 top-6 glass rounded-full px-5 py-2.5 text-sm font-semibold border shadow-card flex items-center gap-2" style="border-color:var(--border)">
-        <svg width="15" height="15" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Garantie à vie
-      </div>
-    </div>
-  </div>
-  <div class="relative border-t border-white/10 py-4 overflow-hidden" style="background:rgba(0,0,0,.25)">
-    <div class="marquee-track text-[#E8DDCC] text-[13px] tracking-[.25em] uppercase font-medium">
-      <span>✦ Cuir pleine fleur</span><span>✦ Cousu main point sellier</span><span>✦ Teinture végétale</span><span>✦ Gravure offerte</span><span>✦ Garantie à vie</span><span>✦ Expédition 48h</span>
-      <span>✦ Cuir pleine fleur</span><span>✦ Cousu main point sellier</span><span>✦ Teinture végétale</span><span>✦ Gravure offerte</span><span>✦ Garantie à vie</span><span>✦ Expédition 48h</span>
-    </div>
-  </div>
-</section>
-
-<!-- CATEGORIES -->
-<section id="categories" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 lg:py-24">
-  <div class="reveal flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-    <div>
-      <div class="text-[12px] tracking-[.3em] uppercase font-semibold" style="color:var(--primary)">— Nos collections</div>
-      <h2 class="font-serif text-4xl sm:text-5xl mt-2">Explorez par <em class="italic" style="color:var(--primary)">catégorie</em></h2>
-      <p class="mt-3 max-w-xl" style="color:var(--muted)">Cinq univers, une même exigence. Cliquez pour filtrer la boutique instantanément.</p>
-    </div>
-    <div class="flex items-center gap-2 text-sm" style="color:var(--muted)"><span id="catCountLabel">5 collections</span><span>·</span><span id="prodCountLabel">12 créations</span></div>
-  </div>
-  <div id="categoryGrid" class="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5"></div>
-</section>
-
-<!-- BOUTIQUE -->
-<section id="boutique" class="py-16 lg:py-20" style="background:var(--surface2)">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="reveal text-center mb-8">
-      <div class="text-[12px] tracking-[.3em] uppercase font-semibold" style="color:var(--primary)">— La boutique</div>
-      <h2 class="font-serif text-4xl sm:text-5xl mt-2">Pièces <em class="italic" style="color:var(--primary)">d'exception</em></h2>
-      <div class="stitch w-40 mx-auto mt-5"></div>
-      <p class="mt-4 max-w-2xl mx-auto text-[15px]" style="color:var(--muted)">Stock réel d'atelier. Chaque commande est confirmée sur WhatsApp en moins d'une heure ouvrée.</p>
-    </div>
-    <div id="filterChips" class="reveal flex flex-wrap justify-center gap-2.5 mb-10"></div>
-    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
-    <div id="emptyShop" class="hidden text-center py-16">
-      <div class="font-serif text-3xl">Aucune pièce trouvée</div>
-      <p class="mt-2" style="color:var(--muted)">Essayez un autre mot-clé ou réinitialisez les filtres.</p>
-      <button onclick="resetFilters()" class="btn-brand px-6 py-2.5 rounded-full mt-5 text-sm font-semibold">Tout afficher</button>
-    </div>
-  </div>
-</section>
-
-<!-- ATELIER -->
-<section id="atelier" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 lg:py-24 grid lg:grid-cols-2 gap-12 items-center">
-  <div class="reveal relative order-2 lg:order-1">
-    <div class="grid grid-cols-2 gap-4">
-      <img id="aboutImg1" src="https://images.unsplash.com/photo-1473188588951-666fce8e7c68?q=80&w=600&auto=format&fit=crop" class="rounded-2xl h-64 w-full object-cover shadow-card img-zoom" alt="Atelier" onerror="this.src='https://images.unsplash.com/photo-1531498860502-7c67cf02f657?q=80&w=600&auto=format&fit=crop'">
-      <img id="aboutImg2" src="https://images.unsplash.com/photo-1531498860502-7c67cf02f657?q=80&w=600&auto=format&fit=crop" class="rounded-2xl h-64 w-full object-cover shadow-card mt-8" alt="Travail du cuir" onerror="this.src='https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=600&auto=format&fit=crop'">
-    </div>
-    <div class="absolute left-1/2 -translate-x-1/2 -bottom-5 px-6 py-3 rounded-full font-serif italic text-lg shadow-card border" style="background:var(--surface); border-color:var(--border)">« Le temps est notre plus belle matière »</div>
-  </div>
-  <div class="order-1 lg:order-2">
-    <div class="reveal text-[12px] tracking-[.3em] uppercase font-semibold" style="color:var(--primary)">— L'atelier</div>
-    <h2 id="aboutTitle" class="reveal font-serif text-4xl sm:text-5xl mt-2 leading-tight">Trois générations de <em class="italic" style="color:var(--primary)">passion du cuir</em></h2>
-    <p id="aboutText" class="reveal mt-5 leading-relaxed text-[15.5px]" style="color:var(--muted)">Fondé en 1998, notre atelier sélectionne des cuirs pleine fleur tannés végétalement en Italie et en France. Chaque tranche est teintée, poncée et lustrée à la main. Couture point sellier au fil de lin, tranche polie à la cire d'abeille : nos pièces se patinent et traversent les décennies.</p>
-    <div class="reveal grid grid-cols-2 gap-4 mt-8">
-      <div class="rounded-2xl p-5 border card-hover" style="background:var(--surface); border-color:var(--border)"><div class="text-3xl">🧵</div><div class="font-semibold mt-2">Cousu main</div><div class="text-sm mt-1" style="color:var(--muted)">Point sellier, fil de lin câblé.</div></div>
-      <div class="rounded-2xl p-5 border card-hover" style="background:var(--surface); border-color:var(--border)"><div class="text-3xl">🌿</div><div class="font-semibold mt-2">Tannage végétal</div><div class="text-sm mt-1" style="color:var(--muted)">Écorces, zéro chrome.</div></div>
-      <div class="rounded-2xl p-5 border card-hover" style="background:var(--surface); border-color:var(--border)"><div class="text-3xl">✒️</div><div class="font-semibold mt-2">Gravure offerte</div><div class="text-sm mt-1" style="color:var(--muted)">Initiales frappées à chaud.</div></div>
-      <div class="rounded-2xl p-5 border card-hover" style="background:var(--surface); border-color:var(--border)"><div class="text-3xl">♾️</div><div class="font-semibold mt-2">Garantie à vie</div><div class="text-sm mt-1" style="color:var(--muted)">Réparation offerte.</div></div>
-    </div>
-    <div class="reveal mt-8 flex flex-wrap gap-3">
-      <a id="aboutWa" href="#" target="_blank" class="btn-brand px-6 py-3 rounded-full text-sm font-semibold">Discuter avec l'artisan</a>
-      <a href="#boutique" class="btn-outline px-6 py-3 rounded-full text-sm font-semibold">Voir les créations</a>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="py-14" style="background:var(--dark); color:#F5EFE3;">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="reveal text-center text-[12px] tracking-[.3em] uppercase font-semibold" style="color:var(--accent)">— Comment commander —</div>
-    <h3 class="reveal font-serif text-3xl sm:text-4xl text-center mt-2">Simple comme <em class="italic" style="color:var(--accent)">un message</em></h3>
-    <div class="grid sm:grid-cols-4 gap-5 mt-10">
-      <div class="reveal rounded-2xl p-6 bg-white/5 border border-white/10 text-center card-hover"><div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center font-serif text-2xl" style="background:var(--primary); color:#fff">1</div><div class="font-semibold mt-4">Choisissez</div><div class="text-sm mt-2 opacity-70">Parcourez la boutique et personnalisez : couleur, gravure.</div></div>
-      <div class="reveal rounded-2xl p-6 bg-white/5 border border-white/10 text-center card-hover"><div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center font-serif text-2xl" style="background:var(--primary); color:#fff">2</div><div class="font-semibold mt-4">Cliquez WhatsApp</div><div class="text-sm mt-2 opacity-70">Votre commande est pré-remplie automatiquement.</div></div>
-      <div class="reveal rounded-2xl p-6 bg-white/5 border border-white/10 text-center card-hover"><div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center font-serif text-2xl" style="background:var(--primary); color:#fff">3</div><div class="font-semibold mt-4">On confirme</div><div class="text-sm mt-2 opacity-70">Réponse en <1h, devis sur-mesure si besoin.</div></div>
-      <div class="reveal rounded-2xl p-6 bg-white/5 border border-white/10 text-center card-hover"><div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center font-serif text-2xl" style="background:var(--primary); color:#fff">4</div><div class="font-semibold mt-4">Expédition 48h</div><div class="text-sm mt-2 opacity-70">Écrin kraft, cire d'entretien offerte.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- AVIS -->
-<section id="avis" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 lg:py-24">
-  <div class="reveal text-center mb-10">
-    <div class="text-[12px] tracking-[.3em] uppercase font-semibold" style="color:var(--primary)">— Ils nous confient leur quotidien</div>
-    <h2 class="font-serif text-4xl sm:text-5xl mt-2">1200+ avis <em class="italic" style="color:var(--primary)">5 étoiles</em></h2>
-  </div>
-  <div id="reviewGrid" class="grid md:grid-cols-3 gap-5"></div>
-</section>
-
-<!-- CONTACT / FOOTER -->
-<section id="contact" style="background:var(--surface2)" class="border-t" >
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14 grid lg:grid-cols-3 gap-8" style="border-color:var(--border)">
-    <div class="rounded-3xl p-8 text-white relative overflow-hidden" style="background:var(--hero-grad)">
-      <div class="absolute inset-0 leather-texture opacity-30"></div>
-      <div class="relative">
-        <div class="font-serif text-3xl">Commandez via <em class="italic" style="color:var(--accent)">WhatsApp</em></div>
-        <p class="mt-2 text-sm opacity-80">Réponse en moins d'une heure ouvrée · 7j/7 de 9h à 20h</p>
-        <a id="contactWa" href="#" target="_blank" class="mt-6 inline-flex items-center gap-3 px-6 py-3.5 rounded-full font-semibold" style="background:#25D366; color:#fff;">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.3.2.5.1.7-.1l.8-1c.2-.3.4-.2.7-.1l1.6.8c.3.1.4.2.5.3 0 .2 0 .7-.4 1.1z"/></svg>
-          <span id="contactWaLabel">+33 6 12 34 56 78</span>
-        </a>
-        <div class="mt-4 text-xs opacity-70">Cliquez · votre message est déjà rédigé · envoyez !</div>
-      </div>
-    </div>
-    <div class="rounded-3xl p-8 border" style="background:var(--surface); border-color:var(--border)">
-      <div class="font-serif text-2xl">L'atelier</div>
-      <div id="shopAddress" class="mt-3 text-sm leading-relaxed" style="color:var(--muted)">12 rue des Tanneurs<br>69002 Lyon, France</div>
-      <div id="shopHours" class="mt-3 text-sm" style="color:var(--muted)">Mar – Sam · 10h à 19h<br>Sur-mesure sur rendez-vous</div>
-      <div class="mt-4 flex gap-2">
-        <a id="instaLink" href="#" class="btn-outline w-10 h-10 rounded-full flex items-center justify-center" title="Instagram"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg></a>
-        <a href="#" onclick="openAdmin();return false;" class="btn-outline h-10 px-4 rounded-full flex items-center gap-2 text-sm font-semibold">🔒 Espace Admin</a>
-      </div>
-    </div>
-    <div class="rounded-3xl p-8 border" style="background:var(--surface); border-color:var(--border)">
-      <div class="font-serif text-2xl">Thème du site <span class="text-xs font-sans px-2 py-1 rounded-full ml-2" style="background:var(--surface2); color:var(--muted)">8 minimalistes</span></div>
-      <p class="text-sm mt-2" style="color:var(--muted)">Aperçu visiteur. Le thème officiel est fixé par l'administrateur.</p>
-      <div id="footerThemes" class="flex flex-wrap gap-2.5 mt-4"></div>
-      <div class="mt-4 text-xs" style="color:var(--muted)">Thème actif : <b id="activeThemeLabel">Cognac Héritage</b></div>
-    </div>
-  </div>
-  <footer class="border-t" style="border-color:var(--border)">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm" style="color:var(--muted)">
-      <div>© 2026 <b id="footBrand" style="color:var(--text)">L'Art Infiny</b> — Tous droits réservés · Fait main avec passion 🤎</div>
-      <div class="flex items-center gap-4"><a href="#accueil" class="hover:underline">Mentions légales</a><a href="#contact" class="hover:underline">CGV</a><button onclick="openAdmin()" class="hover:underline">Admin</button><span class="px-2 py-1 rounded-full text-[11px] font-bold" style="background:#25D36622; color:#128C4B; border:1px solid #25D36655">● Prêt à publier</span></div>
-    </div>
-  </footer>
-</section>
-
-<!-- FLOATING WHATSAPP -->
-<a id="floatWa" href="#" target="_blank" class="float-wa fixed bottom-5 right-5 z-[55] w-14 h-14 rounded-full flex items-center justify-center shadow-soft" style="background:#25D366; color:#fff;" title="Commander sur WhatsApp">
-  <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.9 1.8.3.2.5.1.7-.1l.8-1c.2-.3.4-.2.7-.1l1.6.8c.3.1.4.2.5.3 0 .2 0 .7-.4 1.1z"/></svg>
-  <span class="absolute -top-1 -right-1 w-4 h-4 rounded-full border-2 border-white" style="background:#128C4B"></span>
-</a>
-
-<!-- PRODUCT MODAL -->
-<div id="productModal" class="hidden fixed inset-0 z-[90] flex items-center justify-center p-4">
-  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeProduct()"></div>
-  <div class="relative w-full max-w-4xl rounded-3xl overflow-hidden shadow-soft max-h-[92vh] overflow-y-auto" style="background:var(--surface)">
-    <button onclick="closeProduct()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70">✕</button>
-    <div class="grid md:grid-cols-2">
-      <div class="relative"><img id="mImg" src="" class="w-full h-72 md:h-full md:min-h-[520px] object-cover" alt=""><span id="mBadge" class="absolute top-4 left-4 px-3 py-1.5 rounded-full text-xs font-bold" style="background:var(--primary); color:var(--primary-ink)"></span></div>
-      <div class="p-7 sm:p-9">
-        <div id="mCat" class="text-[11px] tracking-[.25em] uppercase font-bold" style="color:var(--primary)"></div>
-        <h3 id="mName" class="font-serif text-3xl sm:text-4xl mt-1 leading-tight"></h3>
-        <div class="flex items-center gap-2 mt-2 text-sm"><span id="mStars" class="tracking-tight" style="color:#E8A33D">★★★★★</span><span id="mRating" style="color:var(--muted)"></span></div>
-        <div class="flex items-baseline gap-3 mt-3"><span id="mPrice" class="font-serif text-4xl font-semibold" style="color:var(--primary)"></span><span id="mOld" class="line-through" style="color:var(--muted)"></span><span id="mStock" class="text-xs px-2.5 py-1 rounded-full font-bold"></span></div>
-        <p id="mDesc" class="mt-4 text-[14.5px] leading-relaxed" style="color:var(--muted)"></p>
-        <div class="mt-5"><div class="text-sm font-semibold mb-2">Coloris du cuir</div><div id="mColors" class="flex flex-wrap gap-2"></div></div>
-        <div class="mt-4 grid sm:grid-cols-2 gap-3">
-          <div><label class="text-sm font-semibold">Gravure initiales <span class="font-normal text-xs" style="color:var(--muted)">(offerte)</span></label><input id="mEngrave" maxlength="3" placeholder="Ex : M.L" class="w-full mt-1.5 px-3 py-2.5 text-sm uppercase"></div>
-          <div><label class="text-sm font-semibold">Quantité</label><div class="flex items-center gap-2 mt-1.5"><button onclick="mQtyChange(-1)" class="w-10 h-10 rounded-xl btn-outline font-bold">−</button><span id="mQty" class="w-10 text-center font-bold text-lg">1</span><button onclick="mQtyChange(1)" class="w-10 h-10 rounded-xl btn-outline font-bold">+</button></div></div>
+<main>
+  <!-- HÉROS -->
+  <section id="accueil" class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy reveal">
+        <p class="eyebrow" data-edit="site.heroEyebrow"></p>
+        <h1 id="heroTitle" class="display" data-edit="site.heroTitle"></h1>
+        <p class="hero-sub" data-edit="site.heroSub"></p>
+        <div class="hero-cta">
+          <a class="btn btn-solid" href="#collections">Explorer les collections</a>
+          <a class="btn btn-ghost" data-wa-general target="_blank" rel="noopener"><span data-ico="wa"></span>Commander sur WhatsApp</a>
         </div>
-        <div class="mt-6 space-y-2.5">
-          <a id="mWa" href="#" target="_blank" class="w-full py-3.5 rounded-2xl font-bold flex items-center justify-center gap-2 text-white" style="background:#25D366;">Commander via WhatsApp</a>
-          <button onclick="mAddCart()" class="btn-brand w-full py-3.5 rounded-2xl font-bold">Ajouter au panier · <span id="mTotal"></span></button>
-        </div>
-        <div class="mt-4 flex items-center gap-4 text-xs" style="color:var(--muted)"><span>✓ Garantie à vie</span><span>✓ Retour 30j</span><span>✓ Expédition 48h</span></div>
+        <p class="hero-note" data-edit="site.heroNote"></p>
       </div>
+      <div class="hero-art reveal" style="--d:120ms">
+        <div class="stage-wrap">
+          <div class="stitchbox art-stage">
+            <svg class="orbit" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48" stroke-dasharray="1.5 6"/></svg>
+            <div id="heroArt"></div>
+          </div>
+          <a href="#pieces" class="tag" id="heroTag" aria-label="Voir la pièce en vedette"></a>
+          <div class="rotor" aria-hidden="true">
+            <svg viewBox="0 0 120 120">
+              <circle class="rotor-bg" cx="60" cy="60" r="59"/>
+              <g class="rotor-spin">
+                <defs><path id="rp" d="M60 60 m-46 0 a46 46 0 1 1 92 0 a46 46 0 1 1 -92 0"/></defs>
+                <text class="rotor-tx"><textPath href="#rp">FAIT MAIN · CUIR NATUREL · SIGNÉ À PARIS ·</textPath></text>
+              </g>
+              <path class="rotor-in" d="M60 60C55 53 45 53 45 60C45 67 55 67 60 60C65 53 75 53 75 60C75 67 65 67 60 60Z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="swatches">
+          <span class="sw-label">Les cuirs de la saison</span>
+          <span class="sw" title="Cognac" style="background:#A2652F"></span>
+          <span class="sw" title="Bordeaux" style="background:#722F37"></span>
+          <span class="sw" title="Espresso" style="background:#4A2F1E"></span>
+          <span class="sw" title="Sable" style="background:#8A7A5C"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMESSES -->
+  <section class="values">
+    <div class="wrap"><div class="values-grid" id="valuesGrid"></div></div>
+  </section>
+
+  <!-- COLLECTIONS -->
+  <section id="collections" class="sec">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow" data-edit="site.collectionsEyebrow"></p>
+        <h2 class="display" data-edit="site.collectionsTitle"></h2>
+        <p class="lead" data-edit="site.collectionsLead"></p>
+      </div>
+      <div class="cats-grid" id="catsGrid"></div>
+    </div>
+  </section>
+
+  <!-- PIÈCES -->
+  <section id="pieces" class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head split reveal">
+        <div>
+          <p class="eyebrow" data-edit="site.piecesEyebrow"></p>
+          <h2 class="display" data-edit="site.piecesTitle"></h2>
+          <p class="lead" data-edit="site.piecesLead"></p>
+        </div>
+        <span class="count-chip" id="piecesCount"></span>
+      </div>
+      <div class="pills" id="pillsBar"></div>
+      <div class="products-grid" id="productsGrid"></div>
+    </div>
+  </section>
+
+  <!-- BANDEAU TYPOGRAPHIQUE -->
+  <div class="mqbig" aria-hidden="true"><div class="mq-track" id="bigTrack"></div></div>
+
+  <!-- ATELIER -->
+  <section id="atelier" class="sec atelier">
+    <div class="wrap atelier-grid">
+      <div class="atelier-copy reveal">
+        <p class="eyebrow" data-edit="site.atelierEyebrow"></p>
+        <h2 class="display" data-edit="site.atelierTitle"></h2>
+        <p class="txt" data-edit="site.atelierText"></p>
+        <div class="stats-grid" id="statsGrid"></div>
+      </div>
+      <div class="img-frame reveal" style="--d:140ms">
+        <img src="https://picsum.photos/seed/atelier-infiny-cuir/760/900.jpg" alt="Vue de l'atelier de maroquinerie" loading="lazy">
+        <span class="img-cap"><span data-ico="pin"></span><span data-edit="site.atelierCaption"></span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- GESTES -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow" data-edit="site.processEyebrow"></p>
+        <h2 class="display" data-edit="site.processTitle"></h2>
+      </div>
+      <div class="process-grid" id="processGrid"></div>
+    </div>
+  </section>
+
+  <!-- CITATION -->
+  <section class="quote-sec">
+    <div class="wrap reveal">
+      <div class="qmark">«</div>
+      <blockquote class="q-text" data-edit="site.quote"></blockquote>
+      <p class="q-author eyebrow center" data-edit="site.quoteAuthor"></p>
+    </div>
+  </section>
+
+  <!-- APPEL À COMMANDER -->
+  <section id="contact" class="sec" style="padding-top:clamp(40px,6vw,70px)">
+    <div class="wrap">
+      <div class="cta-panel reveal">
+        <p class="eyebrow center" data-edit="site.ctaEyebrow"></p>
+        <h2 class="display cta-title" data-edit="site.ctaTitle"></h2>
+        <p class="cta-text" data-edit="site.ctaText"></p>
+        <div class="cta-btns">
+          <a class="btn btn-solid" data-wa-general target="_blank" rel="noopener"><span data-ico="wa"></span>Écrire sur WhatsApp</a>
+          <a class="btn btn-ghost" href="#pieces">Voir les pièces</a>
+        </div>
+        <p class="cta-note"><span data-ico="clock"></span><span data-edit="site.ctaNote"></span></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- PIED DE PAGE -->
+<footer class="footer" id="pied">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#accueil">
+          <span class="brand-mark">
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <rect x="7" y="7" width="34" height="34" rx="9"/>
+              <g transform="translate(24 24) scale(.5) translate(-60 -60)"><path d="M60 60C55 53 45 53 45 60C45 67 55 67 60 60C65 53 75 53 75 60C75 67 65 67 60 60Z"/></g>
+            </svg>
+          </span>
+          <span class="brand-text"><strong id="fName"></strong><small>Maroquinerie artisanale</small></span>
+        </a>
+        <p class="f-blurb" id="fBlurb"></p>
+      </div>
+      <div>
+        <p class="f-h">Explorer</p>
+        <div class="f-list">
+          <a class="f-link" href="#collections">Collections</a>
+          <a class="f-link" href="#pieces">Les pièces</a>
+          <a class="f-link" href="#atelier">L'atelier</a>
+          <a class="f-link" href="#contact">Contact</a>
+        </div>
+      </div>
+      <div>
+        <p class="f-h">Nous joindre</p>
+        <p class="f-line"><span data-ico="pin"></span><span id="fAddr"></span></p>
+        <p class="f-line"><span data-ico="clock"></span><span id="fHours"></span></p>
+        <p class="f-line"><span data-ico="mail"></span><a id="fMail" href="#"></a></p>
+        <div class="f-list" style="margin-top:14px">
+          <a class="f-link ext" id="igLink" target="_blank" rel="noopener">Instagram<span class="arr">↗</span></a>
+          <a class="f-link ext" id="piLink" target="_blank" rel="noopener">Pinterest<span class="arr">↗</span></a>
+        </div>
+      </div>
+      <div>
+        <p class="f-h">Le journal de l'atelier</p>
+        <p class="f-line" style="margin-bottom:16px">Nouveautés, gestes et cuirs de la saison — une lettre discrète, une fois par mois.</p>
+        <form class="news" id="newsForm">
+          <input id="newsMail" type="email" placeholder="Votre adresse e-mail" required aria-label="Adresse e-mail">
+          <button class="btn btn-solid btn-sm" type="submit">S'inscrire</button>
+        </form>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> <span id="fName2"></span> — Maroquinerie artisanale</span>
+      <span>Conçu et cousu à la main — Paris</span>
+      <button class="admin-link" data-act="open-admin">Espace administrateur</button>
+    </div>
+  </div>
+</footer>
+
+<!-- Boutons flottants -->
+<a class="wa-fab" data-wa-general target="_blank" rel="noopener" aria-label="Commander sur WhatsApp"><span data-ico="wa" data-size="26"></span></a>
+<button class="admin-fab" data-act="open-admin" title="Espace administrateur" aria-label="Espace administrateur"><span data-ico="sliders" data-size="18"></span></button>
+<div class="admin-bar">Mode administrateur — cliquez sur un texte pour le modifier</div>
+
+<!-- Modale : code d'accès -->
+<div class="overlay" id="pinOverlay" hidden>
+  <div class="modal modal-sm pin-card">
+    <span class="pin-ico" data-ico="lock" data-size="28"></span>
+    <h3 class="display" style="font-size:1.6rem">Espace administrateur</h3>
+    <p class="cm-msg">Saisissez votre code d'accès pour modifier le site.</p>
+    <input id="pinInput" type="password" inputmode="numeric" autocomplete="off" placeholder="••••" aria-label="Code d'accès">
+    <p class="pin-err" id="pinErr" role="alert"></p>
+    <button class="btn btn-solid" id="pinGo" style="width:100%">Déverrouiller</button>
+    <p class="pin-hint">Code par défaut : <b>1234</b> — à modifier dans « Données → Sécurité ».</p>
+  </div>
+</div>
+
+<!-- Modale : confirmation -->
+<div class="overlay" id="confirmOverlay" hidden>
+  <div class="modal modal-sm">
+    <h3 class="display" id="cmTitle" style="font-size:1.6rem;margin-bottom:10px"></h3>
+    <p class="cm-msg" id="cmMsg"></p>
+    <div class="modal-foot">
+      <button class="btn btn-ghost btn-sm" data-close>Annuler</button>
+      <button class="btn btn-solid btn-sm" id="cmOk"></button>
     </div>
   </div>
 </div>
 
-<!-- CART DRAWER -->
-<div id="cartOverlay" class="hidden fixed inset-0 z-[80] bg-black/50 backdrop-blur-sm" onclick="closeCart()"></div>
-<aside id="cartDrawer" class="fixed top-0 right-0 h-full w-full max-w-md z-[81] shadow-soft translate-x-full transition-transform duration-500 flex flex-col" style="background:var(--surface); transition-timing-function:cubic-bezier(.16,1,.3,1)">
-  <div class="p-6 border-b flex items-center justify-between" style="border-color:var(--border)">
-    <div><div class="font-serif text-2xl">Votre panier</div><div id="cartSub" class="text-xs" style="color:var(--muted)">0 article</div></div>
-    <button onclick="closeCart()" class="w-10 h-10 rounded-full btn-outline">✕</button>
+<!-- Modale : pièce -->
+<div class="overlay" id="productOverlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+    <button class="modal-x" data-close aria-label="Fermer"><span data-ico="x" data-size="16"></span></button>
+    <h3 class="display modal-title" id="pmTitle"></h3>
+    <div class="modal-body">
+      <div class="field"><label>Nom de la pièce</label><input id="pmName" placeholder="ex. Sac Aurore"></div>
+      <div class="frow">
+        <div class="field"><label>Prix (€)</label><input id="pmPrice" type="number" min="0" step="0.01" placeholder="340"></div>
+        <div class="field"><label>Collection</label><select id="pmCat"></select></div>
+      </div>
+      <div class="frow">
+        <div class="field"><label>Badge (facultatif)</label><input id="pmBadge" placeholder="Nouveau, Pièce unique…"></div>
+        <div class="field"><label>Illustration</label><select id="pmArt"></select></div>
+      </div>
+      <div class="field"><label>Photo — URL facultative</label><input id="pmImg" type="url" placeholder="https://… — laisser vide pour l'illustration"></div>
+      <div class="field"><label>Description</label><textarea id="pmDesc" rows="3"></textarea></div>
+      <label class="chk"><input type="checkbox" id="pmFeat"><span class="box"></span><span>En vedette sur la page d'accueil</span></label>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost btn-sm" data-close>Annuler</button>
+      <button class="btn btn-solid btn-sm" id="pmSave">Enregistrer</button>
+    </div>
   </div>
-  <div id="cartItems" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
-  <div class="p-6 border-t space-y-3" style="border-color:var(--border); background:var(--surface2)">
-    <div class="flex justify-between text-sm"><span style="color:var(--muted)">Sous-total</span><b id="cartTotal">0€</b></div>
-    <div class="flex justify-between text-sm"><span style="color:var(--muted)">Livraison</span><b id="cartShip">Offerte dès 120€</b></div>
-    <a id="cartWa" href="#" target="_blank" class="w-full py-3.5 rounded-2xl font-bold flex items-center justify-center gap-2 text-white" style="background:#25D366;">
-      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg> Valider via WhatsApp
-    </a>
-    <button onclick="clearCart()" class="w-full text-xs underline opacity-60">Vider le panier</button>
+</div>
+
+<!-- Tiroir administrateur -->
+<div id="backdrop" data-act="close-drawer"></div>
+<aside id="drawer" aria-hidden="true" aria-label="Espace administrateur">
+  <div class="dr-head">
+    <div>
+      <h3>Espace administrateur</h3>
+      <p id="drSub"></p>
+    </div>
+    <button class="icon-btn" data-act="close-drawer" aria-label="Fermer"><span data-ico="x" data-size="16"></span></button>
+  </div>
+  <div class="dr-tabs" id="drTabs">
+    <button class="dr-tab" data-tab="contenu">Contenu</button>
+    <button class="dr-tab" data-tab="collections">Collections</button>
+    <button class="dr-tab" data-tab="pieces">Pièces</button>
+    <button class="dr-tab" data-tab="themes">Thèmes</button>
+    <button class="dr-tab" data-tab="contact">Contact</button>
+    <button class="dr-tab" data-tab="donnees">Données</button>
+  </div>
+  <div class="dr-body" id="drBody"></div>
+  <div class="dr-foot">
+    <span class="dr-hint">Enregistré automatiquement</span>
+    <button class="btn btn-ghost btn-sm" data-act="logout">Quitter le mode admin</button>
   </div>
 </aside>
 
-<!-- ADMIN -->
-<div id="adminOverlay" class="hidden fixed inset-0 z-[100] overflow-y-auto" style="background:rgba(0,0,0,.65); backdrop-filter:blur(8px)">
-  <div class="min-h-full flex items-start justify-center p-3 sm:p-6">
-    <div class="w-full max-w-6xl rounded-3xl overflow-hidden shadow-soft my-4" style="background:var(--bg)">
-      <!-- LOGIN -->
-      <div id="adminLogin" class="p-8 sm:p-14 text-center max-w-lg mx-auto">
-        <div class="w-16 h-16 mx-auto rounded-2xl flex items-center justify-center text-3xl" style="background:var(--primary); color:var(--primary-ink)">🔒</div>
-        <h2 class="font-serif text-4xl mt-5">Espace Administrateur</h2>
-        <p class="mt-2 text-sm" style="color:var(--muted)">Gérez catégories, produits, interface, thèmes et commandes WhatsApp.</p>
-        <input id="adminPass" type="password" placeholder="Mot de passe administrateur" class="w-full mt-6 px-4 py-3 text-sm text-center" onkeydown="if(event.key==='Enter')adminLogin()">
-        <button onclick="adminLogin()" class="btn-brand w-full mt-3 py-3 rounded-2xl font-bold">Se connecter</button>
-        <div class="mt-4 text-xs px-4 py-2.5 rounded-xl inline-block" style="background:var(--surface2); color:var(--muted)">💡 Démo : mot de passe <b class="font-mono" style="color:var(--primary)">infiny2026</b> — modifiable dans Réglages</div>
-        <div><button onclick="closeAdmin()" class="mt-5 text-sm underline opacity-60">Retour au site</button></div>
-      </div>
-      <!-- DASHBOARD -->
-      <div id="adminDash" class="hidden">
-        <div class="flex items-center justify-between px-5 sm:px-8 py-4 border-b" style="border-color:var(--border); background:var(--surface)">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center font-serif italic text-2xl" style="background:var(--primary); color:var(--primary-ink)">∞</div>
-            <div><div class="font-bold leading-none">Console Admin</div><div class="text-[11px]" style="color:var(--muted)">L'Art Infiny · tout est modifiable</div></div>
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="hidden sm:inline text-[11px] px-2.5 py-1 rounded-full font-bold" style="background:#22c55e22; color:#16a34a">● En ligne · Prêt à publier</span>
-            <button onclick="closeAdmin()" class="btn-outline px-4 py-2 rounded-full text-sm font-semibold">Voir le site</button>
-            <button onclick="adminLogout()" class="px-4 py-2 rounded-full text-sm font-semibold text-white" style="background:#dc2626">Déconnexion</button>
-          </div>
-        </div>
-        <div class="grid lg:grid-cols-[220px_1fr]">
-          <div class="p-4 lg:p-5 border-b lg:border-b-0 lg:border-r flex lg:flex-col gap-2 overflow-x-auto" style="border-color:var(--border); background:var(--surface)">
-            <button data-tab="dash" onclick="switchTab('dash')" class="admin-tab active whitespace-nowrap px-4 py-2.5 rounded-xl text-sm font-semibold text-left">📊 Vue d'ensemble</button>
-            <button data-tab="cats" onclick="switchTab('cats')" class="admin-tab whitespace-nowrap px-4 py-2.5 rounded-xl text-sm font-semibold text-left">📁 Catégories</button>
-            <button data-tab="prods" onclick="switchTab('prods')" class="admin-tab whitespace-nowrap px-4 py-2.5 rounded-xl text-sm font-semibold text-left">👜 Produits</button>
-            <button data-tab="ui" onclick="switchTab('ui')" class="admin-tab whitespace-nowrap px-4 py-2.5 rounded-xl text-sm font-semibold text-left">🎨 Interface & textes</button>
-            <button data-tab="themes" onclick="switchTab('themes')" class="admin-tab whitespace-nowrap px-4 py-2.5 rounded-xl text-sm font-semibold text-left">🌈 8 Thèmes</button>
-            <button data-tab="wa" onclick="switchTab('wa')" class="admin-tab whitespace-nowrap px-4 py-2.5 rounded-xl text-sm font-semibold text-left">💬 WhatsApp</button>
-            <button data-tab="pub" onclick="switchTab('pub')" class="admin-tab whitespace-nowrap px-4 py-2.5 rounded-xl text-sm font-semibold text-left">🚀 Publication</button>
-          </div>
-          <div class="p-5 sm:p-8 max-h-[75vh] overflow-y-auto">
-            <!-- DASH -->
-            <div id="tab-dash" class="admin-pane">
-              <h3 class="font-serif text-3xl">Vue d'ensemble</h3>
-              <p class="text-sm mt-1" style="color:var(--muted)">État de votre boutique en temps réel.</p>
-              <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-                <div class="rounded-2xl p-5 border" style="background:var(--surface); border-color:var(--border)"><div class="text-3xl font-serif font-bold" id="stProds">0</div><div class="text-xs mt-1" style="color:var(--muted)">PRODUITS</div></div>
-                <div class="rounded-2xl p-5 border" style="background:var(--surface); border-color:var(--border)"><div class="text-3xl font-serif font-bold" id="stCats">0</div><div class="text-xs mt-1" style="color:var(--muted)">CATÉGORIES</div></div>
-                <div class="rounded-2xl p-5 border" style="background:var(--surface); border-color:var(--border)"><div class="text-3xl font-serif font-bold" id="stStock">0€</div><div class="text-xs mt-1" style="color:var(--muted)">VALEUR STOCK</div></div>
-                <div class="rounded-2xl p-5 border" style="background:var(--surface); border-color:var(--border)"><div class="text-3xl font-serif font-bold" id="stTheme">—</div><div class="text-xs mt-1" style="color:var(--muted)">THÈME ACTIF</div></div>
-              </div>
-              <div class="mt-6 rounded-2xl p-6 border" style="background:var(--surface); border-color:var(--border)">
-                <div class="font-bold">⚡ Actions rapides</div>
-                <div class="flex flex-wrap gap-2 mt-3">
-                  <button onclick="switchTab('prods');openProductForm()" class="btn-brand px-4 py-2 rounded-full text-sm font-semibold">+ Nouveau produit</button>
-                  <button onclick="switchTab('cats');document.getElementById('catName').focus()" class="btn-outline px-4 py-2 rounded-full text-sm font-semibold">+ Nouvelle catégorie</button>
-                  <button onclick="switchTab('themes')" class="btn-outline px-4 py-2 rounded-full text-sm font-semibold">Changer de thème</button>
-                  <button onclick="testWhatsApp()" class="px-4 py-2 rounded-full text-sm font-semibold text-white" style="background:#25D366">Tester WhatsApp</button>
-                </div>
-              </div>
-              <div class="mt-4 rounded-2xl p-6 border" style="background:var(--dark); color:#F5EFE3; border-color:var(--dark)">
-                <div class="font-bold">💡 Le saviez-vous ?</div>
-                <p class="text-sm mt-2 opacity-80">Toutes vos modifications sont sauvegardées automatiquement dans le navigateur et visibles instantanément sur le site. Utilisez l'onglet <b>Publication</b> pour exporter vos données ou réinitialiser.</p>
-              </div>
-            </div>
-            <!-- CATS -->
-            <div id="tab-cats" class="admin-pane hidden">
-              <h3 class="font-serif text-3xl">Catégories d'articles</h3>
-              <p class="text-sm mt-1" style="color:var(--muted)">Ajoutez, modifiez ou supprimez vos collections. Les produits suivent automatiquement.</p>
-              <div class="grid lg:grid-cols-2 gap-5 mt-6">
-                <div class="rounded-2xl p-5 border" style="background:var(--surface); border-color:var(--border)">
-                  <div class="font-bold mb-4" id="catFormTitle">➕ Nouvelle catégorie</div>
-                  <input type="hidden" id="catId">
-                  <label class="text-xs font-bold">NOM *</label><input id="catName" placeholder="Ex : Sacs" class="w-full mt-1 mb-3 px-3 py-2.5 text-sm">
-                  <label class="text-xs font-bold">DESCRIPTION</label><input id="catDesc" placeholder="Ex : Cabas, besaces, voyage…" class="w-full mt-1 mb-3 px-3 py-2.5 text-sm">
-                  <label class="text-xs font-bold">ICÔNE (emoji)</label><input id="catIcon" placeholder="Ex : 👜" class="w-full mt-1 mb-3 px-3 py-2.5 text-sm">
-                  <label class="text-xs font-bold">IMAGE (URL)</label><input id="catImg" placeholder="https://…" class="w-full mt-1 mb-1 px-3 py-2.5 text-sm">
-                  <div class="flex gap-2 mb-4"><label class="btn-outline px-3 py-1.5 rounded-lg text-xs cursor-pointer">📤 Importer image<input type="file" accept="image/*" class="hidden" onchange="uploadTo(event,'catImg','catPreview')"></label><img id="catPreview" class="w-12 h-12 rounded-lg object-cover border" style="border-color:var(--border)"></div>
-                  <div class="flex gap-2"><button onclick="saveCategory()" class="btn-brand flex-1 py-2.5 rounded-xl text-sm font-bold">Enregistrer</button><button onclick="resetCatForm()" class="btn-outline px-4 py-2.5 rounded-xl text-sm">Annuler</button></div>
-                </div>
-                <div id="adminCatList" class="space-y-3"></div>
-              </div>
-            </div>
-            <!-- PRODS -->
-            <div id="tab-prods" class="admin-pane hidden">
-              <div class="flex flex-wrap items-center justify-between gap-3">
-                <div><h3 class="font-serif text-3xl">Produits</h3><p class="text-sm mt-1" style="color:var(--muted)">Gérez tout le catalogue. Cliquez sur un produit pour l'éditer.</p></div>
-                <button onclick="openProductForm()" class="btn-brand px-5 py-2.5 rounded-full text-sm font-bold">+ Ajouter un produit</button>
-              </div>
-              <div id="adminProdList" class="grid sm:grid-cols-2 gap-4 mt-6"></div>
-              <!-- Product form -->
-              <div id="prodFormWrap" class="hidden mt-6 rounded-2xl p-6 border" style="background:var(--surface); border-color:var(--primary)">
-                <div class="font-bold text-lg" id="prodFormTitle">➕ Nouveau produit</div>
-                <input type="hidden" id="pId">
-                <div class="grid sm:grid-cols-2 gap-3 mt-4">
-                  <div><label class="text-xs font-bold">NOM *</label><input id="pName" class="w-full mt-1 px-3 py-2.5 text-sm" placeholder="Sac Cabas Héritage"></div>
-                  <div><label class="text-xs font-bold">CATÉGORIE *</label><select id="pCat" class="w-full mt-1 px-3 py-2.5 text-sm"></select></div>
-                  <div><label class="text-xs font-bold">PRIX (€) *</label><input id="pPrice" type="number" min="0" class="w-full mt-1 px-3 py-2.5 text-sm" placeholder="249"></div>
-                  <div><label class="text-xs font-bold">ANCIEN PRIX (€)</label><input id="pOld" type="number" min="0" class="w-full mt-1 px-3 py-2.5 text-sm" placeholder="299"></div>
-                  <div><label class="text-xs font-bold">STOCK</label><input id="pStock" type="number" min="0" class="w-full mt-1 px-3 py-2.5 text-sm" placeholder="12"></div>
-                  <div><label class="text-xs font-bold">BADGE</label><select id="pBadge" class="w-full mt-1 px-3 py-2.5 text-sm"><option value="">Aucun</option><option>Best-seller</option><option>Nouveau</option><option>Édition limitée</option><option>Promo</option><option>Sur-mesure</option></select></div>
-                  <div class="sm:col-span-2"><label class="text-xs font-bold">IMAGE PRINCIPALE (URL)</label><div class="flex gap-2 mt-1"><input id="pImg" class="flex-1 px-3 py-2.5 text-sm" placeholder="https://…"><label class="btn-outline px-3 py-2 rounded-xl text-xs cursor-pointer whitespace-nowrap">📤 Importer<input type="file" accept="image/*" class="hidden" onchange="uploadTo(event,'pImg','pPreview')"></label></div><img id="pPreview" class="mt-2 w-full h-40 rounded-xl object-cover border" style="border-color:var(--border)"></div>
-                  <div class="sm:col-span-2"><label class="text-xs font-bold">DESCRIPTION</label><textarea id="pDesc" rows="3" class="w-full mt-1 px-3 py-2.5 text-sm" placeholder="Cuir pleine fleur, cousu main…"></textarea></div>
-                  <div><label class="text-xs font-bold">COLORIS (séparés par virgule)</label><input id="pColors" class="w-full mt-1 px-3 py-2.5 text-sm" placeholder="Camel, Noir, Cognac"></div>
-                  <div><label class="text-xs font-bold">NOTE (0-5)</label><input id="pRating" type="number" min="0" max="5" step="0.1" class="w-full mt-1 px-3 py-2.5 text-sm" placeholder="4.9"></div>
-                  <label class="flex items-center gap-2 text-sm"><input id="pFeatured" type="checkbox" class="!w-auto"> ⭐ Mettre en vedette (accueil)</label>
-                </div>
-                <div class="flex gap-2 mt-5"><button onclick="saveProduct()" class="btn-brand flex-1 py-3 rounded-xl font-bold">💾 Enregistrer le produit</button><button onclick="closeProductForm()" class="btn-outline px-5 py-3 rounded-xl">Fermer</button></div>
-              </div>
-            </div>
-            <!-- UI -->
-            <div id="tab-ui" class="admin-pane hidden">
-              <h3 class="font-serif text-3xl">Interface & tous les détails</h3>
-              <p class="text-sm mt-1" style="color:var(--muted)">Chaque texte et image du site est modifiable ici. Aperçu en direct.</p>
-              <div class="grid lg:grid-cols-2 gap-4 mt-6">
-                <div class="rounded-2xl p-5 border space-y-3" style="background:var(--surface); border-color:var(--border)">
-                  <div class="font-bold">🏷️ Marque & bandeau</div>
-                  <div><label class="text-xs font-bold">NOM DU SITE</label><input id="sBrand" class="w-full mt-1 px-3 py-2 text-sm"></div>
-                  <div><label class="text-xs font-bold">SLOGAN</label><input id="sTag" class="w-full mt-1 px-3 py-2 text-sm"></div>
-                  <div><label class="text-xs font-bold">BANDEAU ANNONCE</label><input id="sAnnounce" class="w-full mt-1 px-3 py-2 text-sm"></div>
-                  <label class="flex items-center gap-2 text-sm"><input id="sAnnounceOn" type="checkbox" class="!w-auto"> Afficher le bandeau</label>
-                </div>
-                <div class="rounded-2xl p-5 border space-y-3" style="background:var(--surface); border-color:var(--border)">
-                  <div class="font-bold">🦸 Section Hero (accueil)</div>
-                  <div><label class="text-xs font-bold">BADGE</label><input id="sHeroBadge" class="w-full mt-1 px-3 py-2 text-sm"></div>
-                  <div><label class="text-xs font-bold">TITRE</label><input id="sHeroTitle" class="w-full mt-1 px-3 py-2 text-sm"></div>
-                  <div><label class="text-xs font-bold">SOUS-TITRE</label><textarea id="sHeroSub" rows="2" class="w-full mt-1 px-3 py-2 text-sm"></textarea></div>
-                  <div><label class="text-xs font-bold">IMAGE HERO (URL)</label><input id="sHeroImg" class="w-full mt-1 px-3 py-2 text-sm"></div>
-                </div>
-                <div class="rounded-2xl p-5 border space-y-3" style="background:var(--surface); border-color:var(--border)">
-                  <div class="font-bold">🏺 Atelier & histoire</div>
-                  <div><label class="text-xs font-bold">TITRE ATELIER</label><input id="sAboutTitle" class="w-full mt-1 px-3 py-2 text-sm"></div>
-                  <div><label class="text-xs font-bold">TEXTE ATELIER</label><textarea id="sAboutText" rows="4" class="w-full mt-1 px-3 py-2 text-sm"></textarea></div>
-                </div>
-                <div class="rounded-2xl p-5 border space-y-3" style="background:var(--surface); border-color:var(--border)">
-                  <div class="font-bold">📍 Coordonnées & divers</div>
-                  <div><label class="text-xs font-bold">ADRESSE</label><textarea id="sAddress" rows="2" class="w-full mt-1 px-3 py-2 text-sm"></textarea></div>
-                  <div><label class="text-xs font-bold">HORAIRES</label><input id="sHours" class="w-full mt-1 px-3 py-2 text-sm"></div>
-                  <div><label class="text-xs font-bold">INSTAGRAM (URL)</label><input id="sInsta" class="w-full mt-1 px-3 py-2 text-sm"></div>
-                  <div><label class="text-xs font-bold">NOUVEAU MOT DE PASSE ADMIN</label><input id="sPass" class="w-full mt-1 px-3 py-2 text-sm" placeholder="Laisser vide pour conserver"></div>
-                </div>
-              </div>
-              <button onclick="saveSettings()" class="btn-brand w-full mt-5 py-3.5 rounded-2xl font-bold">💾 Enregistrer toute l'interface</button>
-            </div>
-            <!-- THEMES -->
-            <div id="tab-themes" class="admin-pane hidden">
-              <h3 class="font-serif text-3xl">Sélecteur de thèmes</h3>
-              <p class="text-sm mt-1" style="color:var(--muted)">8 thèmes minimalistes inspirés des plus belles maisons de maroquinerie (Polène, Celine, Aesop, Bottega…). Cliquez pour appliquer à tout le site.</p>
-              <div id="adminThemeGrid" class="grid sm:grid-cols-2 gap-4 mt-6"></div>
-            </div>
-            <!-- WA -->
-            <div id="tab-wa" class="admin-pane hidden">
-              <h3 class="font-serif text-3xl">Commandes WhatsApp</h3>
-              <p class="text-sm mt-1" style="color:var(--muted)">Toutes les commandes du site arrivent sur ce numéro. Format international sans + ni espaces.</p>
-              <div class="rounded-2xl p-6 border mt-6" style="background:var(--surface); border-color:var(--border)">
-                <label class="text-xs font-bold">NUMÉRO WHATSAPP * (ex : 33612345678)</label>
-                <input id="sWa" class="w-full mt-2 px-4 py-3 text-base font-mono" placeholder="33612345678">
-                <label class="text-xs font-bold mt-4 block">MESSAGE D'ACCUEIL AUTOMATIQUE</label>
-                <textarea id="sWaMsg" rows="2" class="w-full mt-2 px-3 py-2.5 text-sm"></textarea>
-                <div class="flex flex-wrap gap-2 mt-4">
-                  <button onclick="saveSettings();toast('Numéro WhatsApp enregistré ✓')" class="btn-brand px-6 py-2.5 rounded-xl text-sm font-bold">💾 Enregistrer</button>
-                  <button onclick="testWhatsApp()" class="px-6 py-2.5 rounded-xl text-sm font-bold text-white" style="background:#25D366">Tester le lien</button>
-                  <button onclick="copyWaLink()" class="btn-outline px-6 py-2.5 rounded-xl text-sm font-semibold">Copier le lien</button>
-                </div>
-                <div class="mt-5 p-4 rounded-xl text-sm" style="background:var(--surface2)">
-                  <div class="font-bold mb-1">🔗 Lien actuel :</div>
-                  <div id="waLinkPreview" class="font-mono text-xs break-all" style="color:var(--primary)"></div>
-                  <img id="waQR" class="mt-3 w-32 h-32 rounded-xl border bg-white" style="border-color:var(--border)" alt="QR WhatsApp">
-                  <div class="text-xs mt-2 opacity-60">QR code à imprimer pour votre vitrine / cartes de visite.</div>
-                </div>
-              </div>
-            </div>
-            <!-- PUB -->
-            <div id="tab-pub" class="admin-pane hidden">
-              <h3 class="font-serif text-3xl">Prêt à la publication 🚀</h3>
-              <p class="text-sm mt-1" style="color:var(--muted)">Votre site est un fichier unique, ultra-rapide, SEO optimisé. Suivez la checklist.</p>
-              <div id="checkList" class="grid sm:grid-cols-2 gap-3 mt-6"></div>
-              <div class="rounded-2xl p-6 border mt-5" style="background:var(--surface); border-color:var(--border)">
-                <div class="font-bold">💾 Sauvegarde & transfert</div>
-                <div class="flex flex-wrap gap-2 mt-3">
-                  <button onclick="exportData()" class="btn-brand px-5 py-2.5 rounded-xl text-sm font-bold">⬇ Exporter (JSON)</button>
-                  <label class="btn-outline px-5 py-2.5 rounded-xl text-sm font-semibold cursor-pointer">⬆ Importer<input type="file" accept=".json" class="hidden" onchange="importData(event)"></label>
-                  <button onclick="resetAll()" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-white" style="background:#dc2626">Réinitialiser</button>
-                </div>
-                <div class="mt-4 text-sm p-4 rounded-xl leading-relaxed" style="background:var(--surface2); color:var(--muted)">
-                  <b style="color:var(--text)">Pour publier :</b> 1) Exportez ce fichier HTML · 2) Déposez-le sur Netlify, Vercel, o2switch ou Hostinger · 3) Connectez votre nom de domaine (ex : lart-infiny.fr) · 4) Partagez votre lien WhatsApp. Aucune base de données requise.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- TOASTS -->
-<div id="toasts" class="fixed bottom-5 left-5 z-[150] space-y-2 max-w-xs"></div>
+<div id="toasts" aria-live="polite"></div>
+<input type="file" id="importFile" hidden accept="application/json,.json">
 
 <script>
-/* ============ THEMES (8 minimalistes) ============ */
-const THEMES = {
-  cognac:{label:"Cognac Héritage", desc:"Chaud & artisanal · style Polène", c1:"#9A6B3F", c2:"#FBF7F1", c3:"#1C1917"},
-  noir:{label:"Noir Atelier", desc:"Luxueux & profond · style Bottega", c1:"#C8A97E", c2:"#0E0E0E", c3:"#F5F1EB"},
-  ivoire:{label:"Ivoire Épuré", desc:"Galerie blanche · style Céline", c1:"#1A1A1A", c2:"#FFFFFF", c3:"#C9B99A"},
-  foret:{label:"Forêt Tannery", desc:"Naturel & végétal · style Filson", c1:"#2D4A32", c2:"#F4F1EA", c3:"#8FA98F"},
-  terracotta:{label:"Terracotta Artisan", desc:"Méditerranéen · style Septième", c1:"#C86B4A", c2:"#FFF8F2", c3:"#3D2A24"},
-  marine:{label:"Bleu Marine", desc:"Nautique chic · style Bleu de Chauffe", c1:"#1B2F5A", c2:"#F6F7F9", c3:"#8EA0C8"},
-  galet:{label:"Gris Galet", desc:"Apothicaire doux · style Aesop", c1:"#4A4A4A", c2:"#EDECE8", c3:"#B8B2A7"},
-  bordeaux:{label:"Bordeaux Prestige", desc:"Nuit & cuir rouge · style Berluti", c1:"#A92D40", c2:"#150E11", c3:"#D4A574"}
-};
+/* ================= OUTILS ================= */
+const $  = (s,c=document)=>c.querySelector(s);
+const $$ = (s,c=document)=>[...c.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid = () => Math.random().toString(36).slice(2,9) + Date.now().toString(36).slice(-4);
+const digits = s => String(s||'').replace(/\D/g,'');
+const fmtPrice = n => Number(n).toLocaleString('fr-FR',{maximumFractionDigits:2}) + ' €';
+const getByPath = (o,p)=>p.split('.').reduce((a,k)=>a?.[k],o);
+const setByPath = (o,p,v)=>{const ks=p.split('.');let t=o;for(let i=0;i<ks.length-1;i++){t=t[ks[i]];if(t==null)return;}t[ks[ks.length-1]]=v;};
 
-/* ============ DEFAULT DATA ============ */
-const U = (id,w=800)=>`https://images.unsplash.com/${id}?q=80&w=${w}&auto=format&fit=crop`;
-const FALLBACK = U("photo-1553062407-98eeb64c6a62");
-const DEFAULT_DATA = {
-  settings:{
-    brand:"L'Art Infiny", tag:"Cuir · Artisanat · Héritage",
-    announce:"Livraison offerte dès 120€ · Gravure initiale offerte · Cousu main en atelier", announceOn:true,
-    heroBadge:"Atelier familial depuis 1998",
-    heroTitle:"Le cuir, l'âme de l'éternel.",
-    heroSub:"Chaque pièce L'Art Infiny est découpée, parée et cousue main en cuir pleine fleur. Patine unique, garantie à vie, gravure offerte. Commandez en 1 clic via WhatsApp.",
-    heroImg:U("photo-1548036328-c9fa89d128fa",1000),
-    aboutTitle:"Trois générations de passion du cuir",
-    aboutText:"Fondé en 1998, notre atelier sélectionne des cuirs pleine fleur tannés végétalement en Italie et en France. Chaque tranche est teintée, poncée et lustrée à la main. Couture point sellier au fil de lin, tranche polie à la cire d'abeille : nos pièces se patinent et traversent les décennies.",
-    address:"12 rue des Tanneurs\n69002 Lyon, France", hours:"Mar – Sam · 10h à 19h · Sur-mesure sur rendez-vous",
-    insta:"https://instagram.com", whatsapp:"33612345678",
-    waMsg:"Bonjour L'Art Infiny ! Je souhaite passer une commande 🤎",
-    theme:"cognac", adminPass:"infiny2026"
+/* ================= THÈMES ================= */
+const THEMES = {
+  cognac:  {label:'Cognac',  desc:'Chaleur du cuir patiné',                v:{bg:'#F6EFE4',surface:'#FBF6EC',surface2:'#EEE2CE',ink:'#2A2018',muted:'#7C6247',accent:'#9A5B2D',accentInk:'#FDF6EA',line:'#E1D3BB'}},
+  espresso:{label:'Espresso',desc:'Brun profond, esprit maison de cuir',   v:{bg:'#F3ECDF',surface:'#FAF4E9',surface2:'#E9DEC9',ink:'#201812',muted:'#6E5B44',accent:'#4B3225',accentInk:'#F5EADA',line:'#DFD2BC'}},
+  ivoire:  {label:'Ivoire',  desc:'Noir sur ivoire, galerie parisienne',    v:{bg:'#FAF8F3',surface:'#FFFFFF',surface2:'#F0ECE3',ink:'#141414',muted:'#6B6B66',accent:'#141414',accentInk:'#FAF8F3',line:'#E4E0D6'}},
+  sauge:   {label:'Sauge',   desc:'Végétal calme, esprit nordique',         v:{bg:'#F1F3EB',surface:'#F8FAF3',surface2:'#E4EADC',ink:'#222B21',muted:'#646F58',accent:'#5F7355',accentInk:'#F4F7EE',line:'#DCE0D2'}},
+  bordeaux:{label:'Bordeaux',desc:'Oxblood, bibliothèque ancienne',         v:{bg:'#F7F1EA',surface:'#FCF7F1',surface2:'#EEE1D8',ink:'#2A1815',muted:'#75594E',accent:'#722F37',accentInk:'#F9F0E9',line:'#E3D6CB'}},
+  ardoise: {label:'Ardoise', desc:'Gris-bleu, modernité sobre',             v:{bg:'#F2F3F4',surface:'#FAFAFA',surface2:'#E6E8EB',ink:'#1D232A',muted:'#626A75',accent:'#3A4757',accentInk:'#F0F3F7',line:'#DDE0E4'}},
+  sable:   {label:'Sable',   desc:'Taupe et lin, dune du Nord',             v:{bg:'#F5F1E8',surface:'#FBF8F0',surface2:'#EAE4D4',ink:'#2B2620',muted:'#6E654F',accent:'#8A7A5C',accentInk:'#FBF7EC',line:'#E0D9C7'}},
+  minuit:  {label:'Minuit',  desc:'Charbon et laiton, atelier de nuit', dark:true, v:{bg:'#151210',surface:'#1E1915',surface2:'#282119',ink:'#EEE5D6',muted:'#A2937D',accent:'#C08A4E',accentInk:'#171210',line:'#332B22'}}
+};
+function injectThemeCSS(){
+  let css='';
+  for(const [k,t] of Object.entries(THEMES)){
+    css += `html[data-theme="${k}"]{--bg:${t.v.bg};--surface:${t.v.surface};--surface2:${t.v.surface2};--ink:${t.v.ink};--muted:${t.v.muted};--accent:${t.v.accent};--accent-ink:${t.v.accentInk};--line:${t.v.line};--shadow:${t.dark?'0 26px 50px -20px rgba(0,0,0,.55)':'0 26px 50px -22px rgba(48,32,16,.22)'}}`;
+  }
+  $('#themeVars').textContent = css;
+}
+
+/* ================= ICÔNES ================= */
+const ICONS = {
+  pencil:'<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>',
+  trash:'<path d="M4 7h16"/><path d="M9 7V4h6v3"/><path d="M6.5 7l1 13h9l1-13"/><path d="M10 11v5M14 11v5"/>',
+  x:'<path d="M6 6l12 12M18 6 6 18"/>',
+  check:'<path d="m4 12.5 5 5L20 6.5"/>',
+  plus:'<path d="M12 5v14M5 12h14"/>',
+  download:'<path d="M12 3v11"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M4 20h16"/>',
+  upload:'<path d="M12 15V4"/><path d="m7.5 8 4.5-4.5L16.5 8"/><path d="M4 20h16"/>',
+  reset:'<path d="M3 12a9 9 0 1 0 2.6-6.4L3 8"/><path d="M3 3v5h5"/>',
+  sliders:'<path d="M4 8h9M17.5 8H20M4 16h3M11.5 16H20"/><circle cx="15" cy="8" r="2.2"/><circle cx="9" cy="16" r="2.2"/>',
+  lock:'<rect x="4.5" y="10.5" width="15" height="9.5" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/>',
+  mail:'<rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m3.5 7.5 8.5 6 8.5-6"/>',
+  pin:'<path d="M12 21s-7-5.1-7-11a7 7 0 0 1 14 0c0 5.9-7 11-7 11Z"/><circle cx="12" cy="9.8" r="2.4"/>',
+  clock:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+  arrow:'<path d="M4 12h15"/><path d="m13 6 6 6-6 6"/>',
+  cut:'<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9.5 12h5" stroke-dasharray="2 3"/>',
+  needle:'<path d="M4 20 19 5"/><circle cx="17.2" cy="6.8" r="2.1"/><path d="M4 20c4.5-1.2 7.8-4 9.6-8.4" stroke-dasharray="2 3"/>',
+  leaf:'<path d="M12 21C6.8 17.2 5.2 8.8 12 3c6.8 5.8 5.2 14.2 0 18Z"/><path d="M12 21V8"/>',
+  shield:'<path d="M12 3l7 3v5c0 5-3.4 8.7-7 10-3.6-1.3-7-5-7-10V6z"/><path d="m9 12 2.2 2.2L15.5 9.5"/>',
+  warn:'<path d="M12 4 21 19H3Z"/><path d="M12 10v4"/><path d="M12 16.8v.2"/>'
+};
+const WA_PATH = 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.502-.669-.51l-.571-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.227 1.365.195 1.882.118.575-.085 1.757-.719 2.006-1.413.248-.694.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-4.885 6.63h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.584 0C5.635.002.002 5.635 0 12.585a11.802 11.802 0 001.65 6.08L0 24l6.469-1.695a11.786 11.786 0 006.114 1.698h.005c6.948 0 12.582-5.633 12.584-12.584a11.82 11.82 0 00-3.478-8.413';
+function ico(name,size=16){
+  if(name==='wa') return `<svg class="ic" width="${size}" height="${size}" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="${WA_PATH}"/></svg>`;
+  return `<svg class="ic" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name]||''}</svg>`;
+}
+function fillIcons(scope=document){
+  $$('[data-ico]',scope).forEach(el=>{
+    if(!el.firstChild) el.innerHTML = ico(el.dataset.ico, +(el.dataset.size||15));
+  });
+}
+
+/* ================= ILLUSTRATIONS ================= */
+const ARTS = {
+  bag:`<path class="dr" d="M39 35 C39 21 61 21 61 35"/><path class="dr" d="M33 36 H67 L64 77 Q63.4 81 58.5 81 H41.5 Q36.6 81 36 77 Z"/><path class="st" d="M37.5 49 H62.5"/><circle class="dr" cx="50" cy="54" r="2.6"/><path class="dr" d="M50 56.6 V62"/><path class="st" d="M37 56 V74 M63 56 V74"/>`,
+  satchel:`<path class="dr" d="M29 38 C24 14 76 14 71 38"/><path class="dr" d="M26 40 H74 L70.5 80 Q70 84 65.5 84 H34.5 Q30 84 29.5 80 Z"/><path class="dr" d="M29.8 40 H70.2 L68.4 62 H31.6 Z"/><path class="dr" d="M42.5 62 V72 M57.5 62 V72"/><circle class="dr" cx="42.5" cy="74" r="1.6"/><circle class="dr" cx="57.5" cy="74" r="1.6"/><circle class="dr" cx="50" cy="52" r="2.2"/>`,
+  briefcase:`<path class="dr" d="M43 34 V29 A7 7 0 0 1 57 29 V34"/><path class="dr" d="M26 34 H74 V76 Q74 80 70 80 H30 Q26 80 26 76 Z"/><path class="st" d="M26 46 H74"/><path class="dr" d="M35 46 V54 M65 46 V54"/><path class="dr" d="M46.5 50 H53.5 V57 H46.5 Z"/><path class="st" d="M31 52 V75 M69 52 V75"/>`,
+  wallet:`<rect class="dr" x="38" y="27" width="24" height="12" rx="2.5"/><rect class="dr" x="24" y="34" width="52" height="36" rx="5"/><path class="st" d="M25 52 H75"/><path class="dr" d="M58 40 V62 M67 40 V62"/><rect class="st" x="29.5" y="39.5" width="41" height="25" rx="3"/>`,
+  cardholder:`<rect class="dr" x="30" y="36" width="40" height="28" rx="4"/><path class="dr" d="M36 45 H64 M36 53 H64"/><path class="dr" d="M46.5 59 H53.5 V63 H46.5 Z"/><path class="st" d="M34 41 H66"/>`,
+  belt:`<rect class="dr" x="12" y="43" width="50" height="14" rx="7"/><circle class="dr" cx="21" cy="50" r="1.4"/><circle class="dr" cx="29" cy="50" r="1.4"/><circle class="dr" cx="37" cy="50" r="1.4"/><rect class="dr" x="64" y="39" width="18" height="22" rx="3"/><path class="dr" d="M64 50 H73"/><circle class="dr" cx="75" cy="50" r="1.5"/><path class="st" d="M16 46.5 H58 M16 53.5 H58"/>`,
+  journal:`<rect class="dr" x="33" y="26" width="34" height="48" rx="3"/><path class="st" d="M39 26 V74"/><path class="st" d="M45 38 H55 M45 45 H55 M45 52 H52"/><path class="dr" d="M59 24 V76"/><rect class="dr" x="55.5" y="46" width="7" height="7" rx="2"/>`,
+  keyring:`<circle class="dr" cx="38" cy="36" r="11"/><circle class="st" cx="38" cy="36" r="6.5"/><path class="dr" d="M41 45 C46 52 50 54 54 57"/><circle class="dr" cx="58" cy="62" r="5.5"/><path class="dr" d="M62 58 L80 42"/><path class="dr" d="M75 47 L79 51 M70 52 L74 56"/>`,
+  needle:`<path class="dr" d="M18 82 L66 34"/><circle class="dr" cx="63.5" cy="36.5" r="2.6"/><path class="st" d="M65 35 C84 50 62 62 46 54 C30 46 40 22 62 22"/>`
+};
+const ART_LABELS = {bag:'Sac',satchel:'Sacoche / pochette',briefcase:'Cartable',wallet:'Portefeuille',cardholder:'Porte-cartes',belt:'Ceinture',journal:'Carnet',keyring:'Porte-clés',needle:'Aiguille & fil (autre)'};
+const art = k => `<svg class="art-svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ARTS[k]||ARTS.needle}</svg>`;
+
+/* ================= DONNÉES PAR DÉFAUT ================= */
+const DEFAULTS = {
+  site:{
+    name:"L'Art Infiny",
+    tagline:'Maroquinerie artisanale · Paris',
+    marquee:['Couture sellier','Tannage végétal','Pièces numérotées','Fait main à Paris','Garantie à vie','Sur mesure'],
+    bigWords:['Cuir pleine fleur','Fil de lin ciré','Laiton massif','Cire d\u2019abeille','Bois de campèche'],
+    heroEyebrow:'Atelier de maroquinerie — depuis 1998',
+    heroTitle:'Le cuir, élevé au rang d\u2019art.',
+    heroSub:'Nous coupons, cousons et polissons chaque pièce à la main, selon les gestes anciens de la sellerie. Des créations numérotées, pensées pour traverser les décennies.',
+    heroNote:'Pièces uniques · Livraison soignée · Garantie à vie',
+    values:[
+      {t:'Coupé main',d:'Chaque pièce naît d\u2019une peau entière, choisie à la loupe.'},
+      {t:'Cousu sellier',d:'Le point à deux aiguilles, le plus solide qui soit.'},
+      {t:'Tannage végétal',d:'Des cuirs qui patinent avec grâce, jamais ne craquent.'},
+      {t:'Garantie à vie',d:'Nous réparons gratuitement, à perpétuité.'}
+    ],
+    collectionsEyebrow:'01 — Les collections',
+    collectionsTitle:'Des familles, pas des rayons.',
+    collectionsLead:'Chaque collection naît d\u2019un geste d\u2019atelier. Choisissez la vôtre : nous l\u2019ajusterons à votre usage, jusqu\u2019à la boucle près.',
+    piecesEyebrow:'02 — Les pièces',
+    piecesTitle:'Les pièces de l\u2019atelier.',
+    piecesLead:'Une sélection qui change avec les cuirs en stock. Chaque création est signée, numérotée et livrée dans son écrin.',
+    atelierEyebrow:'03 — L\u2019atelier',
+    atelierTitle:'Trente gestes pour une seule pièce.',
+    atelierText:'Chez L\u2019Art Infiny, rien n\u2019est pressé. Le cuir repose quelques jours avant d\u2019être tranché à la main ; les fils de lin sont cirés une à une ; les bords sont brûlés, teintés puis polis au bois de campèche. C\u2019est ce temps, invisible, que vous portez.',
+    atelierCaption:'L\u2019atelier, rue de l\u2019Échelle — Paris',
+    stats:[
+      {n:'27',l:'années de gestes'},
+      {n:'4 800',l:'pièces numérotées'},
+      {n:'48 h',l:'de travail par pièce'},
+      {n:'3',l:'artisans compagnons'}
+    ],
+    processEyebrow:'04 — La fabrication',
+    processTitle:'Quatre temps, un seul standard.',
+    process:[
+      {t:'La peau',d:'Sélectionnée à la loupe, chez les tanneries végétales du Tarn.'},
+      {t:'La coupe',d:'Tranchée à la main, au couteau de cordonnier biseauté.'},
+      {t:'Le point',d:'Cousu sellier, à deux aiguilles, fil de lin ciré à la cire d\u2019abeille.'},
+      {t:'La patine',d:'Bords brûlés, teintés et polis au bois de campèche.'}
+    ],
+    quote:'On sent que la pièce a été pensée, portée, aimée par les mains qui l\u2019ont faite. Rien ne bouge, rien ne craque — dix ans après.',
+    quoteAuthor:'Élise M. — cliente depuis 2015',
+    ctaEyebrow:'Un projet, une envie — parlons-en',
+    ctaTitle:'Une pièce en votre nom ?',
+    ctaText:'Sur-mesure, gravure à chaud, choix du cuir et de la doublure : décrivez-nous votre idée, nous vous répondons en moins de 24 heures.',
+    ctaNote:'Réponse sous 24 h — devis gratuit',
+    footerBlurb:'Maroquinerie artisanale fondée à Paris. Chaque pièce est coupée, cousue et signée à la main, garantie à vie.'
   },
+  contact:{
+    whatsapp:'33612345678',
+    email:'atelier@lartinfiny.fr',
+    address:'12 rue de l\u2019Échelle, 75001 Paris',
+    hours:'Atelier ouvert du mardi au samedi, 10 h — 19 h',
+    instagram:'https://instagram.com/lartinfiny',
+    pinterest:'https://pinterest.com/lartinfiny',
+    waOrderTpl:'Bonjour L\u2019Art Infiny, je souhaite commander la pièce « {piece} » ({prix} €). Est-elle disponible ?',
+    waGeneral:'Bonjour L\u2019Art Infiny, je souhaite échanger au sujet d\u2019une pièce sur mesure.'
+  },
+  theme:'cognac',
+  pin:'1234',
   categories:[
-    {id:"sacs", name:"Sacs", desc:"Cabas, besaces & voyage", icon:"👜", img:U("photo-1548036328-c9fa89d128fa",600)},
-    {id:"portefeuilles", name:"Portefeuilles", desc:"Compacts & longs", icon:"👛", img:U("photo-1627123424574-724772594e93",600)},
-    {id:"ceintures", name:"Ceintures", desc:"Pleine fleur & tressées", icon:"🪢", img:U("photo-1624222247344-550fb60583dc",600)},
-    {id:"accessoires", name:"Accessoires", desc:"Petite maroquinerie", icon:"✨", img:U("photo-1566150905458-1bf1fc113f0d",600)},
-    {id:"sur-mesure", name:"Sur-mesure", desc:"Créations uniques", icon:"✒️", img:U("photo-1473188588951-666fce8e7c68",600)}
+    {id:'c1',name:'Sacs & pochettes',desc:'Silhouettes structurées, cousues à la main.',art:'bag'},
+    {id:'c2',name:'Portefeuilles',desc:'Le compagnon du quotidien, fin et robuste.',art:'wallet'},
+    {id:'c3',name:'Ceintures',desc:'Pleine fleur, boucles en laiton massif.',art:'belt'},
+    {id:'c4',name:'Cartables & sacoches',desc:'Pour porter l\u2019essentiel avec allure.',art:'briefcase'},
+    {id:'c5',name:'Petites pièces',desc:'Porte-clés, carnets et porte-cartes gravés.',art:'keyring'}
   ],
   products:[
-    {id:"p1", name:"Sac Cabas Héritage", cat:"sacs", price:249, old:299, stock:8, badge:"Best-seller", rating:4.9, featured:true, colors:["Camel","Noir","Cognac"], img:U("photo-1548036328-c9fa89d128fa"), desc:"Notre icône. Cuir de vachette pleine fleur 2mm, cousu point sellier, doublure coton bio, anses renforcées. Patine magnifique avec le temps."},
-    {id:"p2", name:"Sacoche Bandoulière Voyage", cat:"sacs", price:189, old:0, stock:5, badge:"Nouveau", rating:4.8, featured:false, colors:["Cognac","Chocolat"], img:U("photo-1491637639811-60e2756cc1c7"), desc:"Compagnon de voyage : bandoulière réglable, 3 compartiments, laiton massif. Tient tablette, passeport et essentiel."},
-    {id:"p3", name:"Portefeuille Compact Infiny", cat:"portefeuilles", price:89, old:110, stock:20, badge:"Promo", rating:5.0, featured:true, colors:["Noir","Camel","Marine"], img:U("photo-1627123424574-724772594e93"), desc:"6 cartes, 2 billets, tranche polie miroir. Le best-seller de l'atelier, gravure offerte."},
-    {id:"p4", name:"Portefeuille Long Prestige", cat:"portefeuilles", price:119, old:0, stock:12, badge:"", rating:4.9, featured:false, colors:["Cognac","Noir"], img:U("photo-1590874103328-eac38a683ce7"), desc:"Format long 19cm, 12 cartes, poche zippée laiton. Élégance discrète, cuir lisse italien."},
-    {id:"p5", name:"Ceinture Classique Pleine Fleur", cat:"ceintures", price:65, old:0, stock:30, badge:"", rating:4.8, featured:false, colors:["Noir","Marron","Camel"], img:U("photo-1624222247344-550fb60583dc"), desc:"Largeur 35mm, boucle laiton interchangeable, tranche teintée main. Tailles 75 à 120."},
-    {id:"p6", name:"Ceinture Tressée Artisanale", cat:"ceintures", price:79, old:95, stock:14, badge:"Promo", rating:4.7, featured:false, colors:["Cognac","Chocolat"], img:U("photo-1553704571-c32d20e6c74f",600), desc:"Tressée main en lanières de 8mm, sans trous : ajustement parfait. Boucle mate."},
-    {id:"p7", name:"Porte-cartes Minimaliste", cat:"accessoires", price:39, old:0, stock:40, badge:"", rating:4.9, featured:false, colors:["Noir","Camel","Vert"], img:U("photo-1627389955808-15ae4a5468a9",600), desc:"4 cartes, format carte bancaire, 15g seulement. Le préféré des minimalistes."},
-    {id:"p8", name:"Trousse Baroudeur", cat:"accessoires", price:75, old:0, stock:9, badge:"Édition limitée", rating:4.8, featured:false, colors:["Crazy Horse","Noir"], img:U("photo-1566150905458-1bf1fc113f0d"), desc:"Toile cirée & cuir crazy horse, zip YKK laiton, doublure imperméable. Baroudeuse née."},
-    {id:"p9", name:"Bracelet Manchette Cuir", cat:"accessoires", price:35, old:0, stock:25, badge:"Nouveau", rating:4.7, featured:false, colors:["Noir","Camel"], img:U("photo-1611085583191-a3b181a88401",600), desc:"Manchette 25mm, bouton pression laiton, gravure prénom offerte. Unisexe."},
-    {id:"p10", name:"Porte-documents Executive", cat:"sacs", price:329, old:399, stock:4, badge:"Édition limitée", rating:5.0, featured:true, colors:["Chocolat","Noir"], img:U("photo-1548863227-3af567fc3b27",600), desc:"Business d'exception : ordinateur 15\", soufflets, serrure code laiton. Impression garantie."},
-    {id:"p11", name:"Étui Lunettes Surpiqué", cat:"accessoires", price:29, old:0, stock:35, badge:"", rating:4.6, featured:false, colors:["Camel","Noir","Rouge"], img:U("photo-1574258495973-f010dfbb5371",600), desc:"Doublure microfibre, surpiqûre ton sur ton, rabat aimanté. Protège avec classe."},
-    {id:"p12", name:"Création Sur-Mesure", cat:"sur-mesure", price:150, old:0, stock:99, badge:"Sur-mesure", rating:5.0, featured:false, colors:["Au choix"], img:U("photo-1473188588951-666fce8e7c68"), desc:"Sac, étui, ceinture à vos mesures : croquis, choix du cuir, gravure. Devis gratuit sous 24h via WhatsApp."}
-  ],
-  reviews:[
-    {name:"Camille R.", city:"Lyon", text:"Mon cabas Héritage a 3 ans et il est plus beau qu'au premier jour. La patine est incroyable, commande via WhatsApp ultra simple.", stars:5},
-    {name:"Mehdi B.", city:"Paris", text:"Portefeuille gravé aux initiales de mon père. Finitions parfaites, écrin magnifique. L'artisan m'a envoyé des photos pendant la fabrication !", stars:5},
-    {name:"Sophie L.", city:"Bordeaux", text:"Ceinture tressée sur-mesure reçue en 4 jours. Qualité digne des grandes maisons, pour un tiers du prix. Je recommande les yeux fermés.", stars:5}
+    {id:'p1',name:'Sac Aurore',cat:'c1',price:340,art:'bag',badge:'Pièce unique',desc:'Veau cognac, fermoir laiton poli. Le format qui tient la journée sans dire un mot.',featured:true},
+    {id:'p2',name:'Pochette Minuit',cat:'c1',price:180,art:'satchel',badge:'',desc:'Assez rigide pour dîner, assez souple pour voyager. Doublure coton ciré.'},
+    {id:'p3',name:'Portefeuille Éclat',cat:'c2',price:95,art:'wallet',badge:'Nouveau',desc:'Trois soufflets, douze cartes, zéro épaisseur inutile.'},
+    {id:'p4',name:'Portefeuille Héritage',cat:'c2',price:120,art:'wallet',badge:'Gravure offerte',desc:'Cousu sellier, monogramme à chaud offert sur demande.'},
+    {id:'p5',name:'Ceinture Cordage',cat:'c3',price:85,art:'belt',badge:'',desc:'Pleine fleur 3,5 mm, teinte à la main. Se patine, ne se fatigue pas.'},
+    {id:'p6',name:'Ceinture Cavalier',cat:'c3',price:110,art:'belt',badge:'Laiton massif',desc:'Largeur 35 mm, boucle coulante usinée dans la masse.'},
+    {id:'p7',name:'Cartable Ministre',cat:'c4',price:390,art:'briefcase',badge:'Cousu sellier',desc:'Ordinateur 15 pouces, documents, et l\u2019allure d\u2019un autre siècle.'},
+    {id:'p8',name:'Sacoche Messagère',cat:'c4',price:210,art:'satchel',badge:'',desc:'Porté croisé, cuir de vachette souple. La ville se traverse mieux.'},
+    {id:'p9',name:'Porte-clés Emblème',cat:'c5',price:35,art:'keyring',badge:'Gravure offerte',desc:'Deux morceaux de cuir, un rivet laiton, vos initiales.'},
+    {id:'p10',name:'Carnet Feuillet',cat:'c5',price:45,art:'journal',badge:'',desc:'Format de poche, élastique cuir, papier ivoire 120 g.'},
+    {id:'p11',name:'Porte-cartes Étroit',cat:'c5',price:55,art:'cardholder',badge:'',desc:'Quatre cartes, un pli, deux gestes. Le minimal au poing.'}
   ]
 };
 
-/* ============ STATE ============ */
-let DB, cart=[], filter="all", search="", sort="featured", mProduct=null, mColor="", mQtyV=1, adminAuthed=false;
-function load(){ try{ const s=localStorage.getItem("infiny_db_v1"); if(s){ DB=JSON.parse(s); return; } }catch(e){} DB=JSON.parse(JSON.stringify(DEFAULT_DATA)); }
-function save(){ localStorage.setItem("infiny_db_v1", JSON.stringify(DB)); }
-function loadCart(){ try{ cart=JSON.parse(localStorage.getItem("infiny_cart_v1")||"[]"); }catch(e){cart=[];} }
-function saveCart(){ localStorage.setItem("infiny_cart_v1", JSON.stringify(cart)); renderCart(); }
-load(); loadCart();
+/* ================= ÉTAT ================= */
+const LS_KEY = 'lartInfinyState_v1';
+function deepHydrate(def, src){
+  if(Array.isArray(def)) return Array.isArray(src) ? src : JSON.parse(JSON.stringify(def));
+  if(def && typeof def === 'object'){
+    const out = {}; const s = (src && typeof src === 'object') ? src : {};
+    for(const k of Object.keys(def)) out[k] = deepHydrate(def[k], s[k]);
+    for(const k of Object.keys(s)) if(!(k in out)) out[k] = s[k];
+    return out;
+  }
+  return (src === undefined || src === null) ? def : src;
+}
+function loadState(){
+  try{ const raw = localStorage.getItem(LS_KEY); return deepHydrate(DEFAULTS, raw ? JSON.parse(raw) : null); }
+  catch(e){ return JSON.parse(JSON.stringify(DEFAULTS)); }
+}
+function saveState(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(state)); }catch(e){} }
+let state = loadState();
 
-/* ============ HELPERS ============ */
-const $=id=>document.getElementById(id);
-const fmt=n=>n.toLocaleString("fr-FR")+"€";
-const esc=s=>String(s??"").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-function toast(msg, ok=true){ const t=document.createElement("div"); t.className="toast-in px-4 py-3 rounded-2xl text-sm font-semibold shadow-soft flex items-center gap-2"; t.style.background=ok?"var(--text)":"#dc2626"; t.style.color=ok?"var(--bg)":"#fff"; t.innerHTML=(ok?"✓ ":"⚠ ")+esc(msg); $("toasts").appendChild(t); setTimeout(()=>{t.style.opacity="0"; t.style.transition=".4s"; setTimeout(()=>t.remove(),400);},2800); }
-function waLink(msg){ const num=(DB.settings.whatsapp||"").replace(/\D/g,"")||"33612345678"; return `https://wa.me/${num}?text=${encodeURIComponent(msg)}`; }
-function catName(id){ const c=DB.categories.find(c=>c.id===id); return c?c.name:"—"; }
+let adminOn = false, activeTab = 'contenu', filter = 'all', lastFeat = null, waHintShown = false;
 
-/* ============ THEME ============ */
-function applyTheme(name, persist=true){
-  if(!THEMES[name]) name="cognac";
-  document.documentElement.dataset.theme=name;
-  if(persist){ DB.settings.theme=name; save(); }
-  $("activeThemeLabel").textContent=THEMES[name].label;
-  document.querySelector('meta[name="theme-color"]').content=THEMES[name].c1;
-  document.querySelectorAll(".theme-card").forEach(el=>el.classList.toggle("active", el.dataset.theme===name));
-  document.querySelectorAll(".footer-dot").forEach(el=>{ el.style.outline = el.dataset.theme===name ? "3px solid var(--primary)" : "2px solid var(--border)"; });
-  renderAdminStats();
+/* ================= RENDU PUBLIC ================= */
+const cached = (el,key,fn)=>{ if(el.dataset.k !== key){ el.dataset.k = key; el.innerHTML = fn(); } };
+function smartTitle(t){
+  const parts = String(t||'').trim().split(/\s+/).filter(Boolean);
+  if(parts.length < 2) return esc(parts[0]||'');
+  const last = parts.pop();
+  return esc(parts.join(' ')) + ' <em>' + esc(last) + '</em>';
 }
-function renderFooterThemes(){
-  $("footerThemes").innerHTML = Object.entries(THEMES).map(([k,t])=>`
-    <button onclick="previewTheme('${k}')" title="${t.label}" class="footer-dot w-9 h-9 rounded-full transition hover:scale-110" data-theme="${k}" style="background:linear-gradient(135deg, ${t.c1} 50%, ${t.c2} 50%); outline:2px solid var(--border); outline-offset:2px"></button>`).join("");
+function waGeneralHref(){
+  return 'https://wa.me/' + digits(state.contact.whatsapp) + '?text=' + encodeURIComponent(state.contact.waGeneral||'');
 }
-function previewTheme(k){ applyTheme(k,false); toast("Aperçu : "+THEMES[k].label+" — l'admin fixe le thème officiel"); }
-
-/* ============ RENDER FRONT ============ */
-function applySettings(){
-  const s=DB.settings;
-  $("brandName").textContent=s.brand; $("footBrand").textContent=s.brand;
-  document.title=`${s.brand} — Maroquinerie Artisanale d'Exception | Cuir Pleine Fleur`;
-  $("brandTag").textContent=s.tag;
-  $("announceText").textContent=s.announce; $("announceBar").style.display=s.announceOn?"block":"none";
-  $("heroBadge").textContent=s.heroBadge;
-  $("heroTitle").innerHTML=esc(s.heroTitle).replace(/l'âme|âme/,"<em class='italic' style='color:var(--accent)'>l'âme</em>");
-  $("heroSubtitle").textContent=s.heroSub; $("heroImage").src=s.heroImg;
-  $("aboutTitle").textContent=s.aboutTitle; $("aboutText").textContent=s.aboutText;
-  $("shopAddress").innerHTML=esc(s.address).replace(/\n/g,"<br>"); $("shopHours").innerHTML=esc(s.hours).replace(/\n/g,"<br>");
-  $("instaLink").href=s.insta||"#";
-  const wa=s.waMsg||"Bonjour !";
-  $("headerWa").href=waLink(wa); $("heroWa").href=waLink(wa); $("aboutWa").href=waLink(wa+" (question atelier)");
-  $("contactWa").href=waLink(wa);
-  $("contactWaLabel").textContent="+"+s.whatsapp.replace(/(\d{2})(?=\d)/g,"$1 ");
-  $("floatWa").href=waLink(wa);
-  const feat=DB.products.find(p=>p.featured)||DB.products[0];
-  if(feat){ $("heroMiniImg").src=feat.img; $("heroMiniName").textContent=feat.name; $("heroMiniPrice").innerHTML=fmt(feat.price)+(feat.old?` <span class="line-through font-normal opacity-50">${fmt(feat.old)}</span>`:""); }
-  $("waLinkPreview")&&($("waLinkPreview").textContent=waLink(wa));
-  $("waQR")&&($("waQR").src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+encodeURIComponent(waLink(wa)));
+function waProductHref(p){
+  const msg = (state.contact.waOrderTpl||'').replace('{piece}', p.name).replace('{prix}', fmtPrice(p.price));
+  return 'https://wa.me/' + digits(state.contact.whatsapp) + '?text=' + encodeURIComponent(msg);
 }
-function renderCategories(){
-  const grid=$("categoryGrid");
-  grid.innerHTML=DB.categories.map(c=>{
-    const n=DB.products.filter(p=>p.cat===c.id).length;
-    return `<button onclick="setFilter('${c.id}')" class="reveal group text-left rounded-3xl overflow-hidden border card-hover relative h-56 sm:h-64" style="background:var(--surface); border-color:var(--border)">
-      <img src="${esc(c.img)}" onerror="this.src='${FALLBACK}'" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="${esc(c.name)}">
-      <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,.78), rgba(0,0,0,.1) 60%)"></div>
-      <div class="absolute bottom-0 p-4 sm:p-5 text-white w-full">
-        <div class="text-2xl">${esc(c.icon||"🤎")}</div>
-        <div class="font-serif text-xl sm:text-2xl font-semibold leading-tight mt-1">${esc(c.name)}</div>
-        <div class="text-xs opacity-80">${esc(c.desc||"")} · ${n} pièce${n>1?"s":""}</div>
-        <div class="mt-2 inline-flex items-center gap-1 text-xs font-bold tracking-wide opacity-0 group-hover:opacity-100 transition">VOIR →</div>
-      </div></button>`;
-  }).join("");
-  $("catCountLabel").textContent=`${DB.categories.length} collections`;
-  $("prodCountLabel").textContent=`${DB.products.length} créations`;
-  // chips
-  $("filterChips").innerHTML = `<button onclick="setFilter('all')" class="chip ${filter==='all'?'chip-active':''} px-5 py-2 rounded-full text-sm font-semibold border transition" style="border-color:var(--border); background:var(--surface)">Tout (${DB.products.length})</button>` +
-    DB.categories.map(c=>{ const n=DB.products.filter(p=>p.cat===c.id).length; return `<button onclick="setFilter('${c.id}')" class="chip ${filter===c.id?'chip-active':''} px-5 py-2 rounded-full text-sm font-semibold border transition" style="border-color:var(--border); background:var(--surface)">${esc(c.icon||"")} ${esc(c.name)} (${n})</button>`; }).join("");
-  observeReveals();
+function setGroup(track, items, cls, sep){
+  const key = cls + '§' + items.join('§');
+  cached(track, key, ()=>{
+    const seq = items.map(t=>`<span class="${cls}">${esc(t)}</span><span class="${sep}"></span>`).join('');
+    return `<div class="mq-group">${seq}</div><div class="mq-group" aria-hidden="true">${seq}</div>`;
+  });
 }
-function filteredProducts(){
-  let list=[...DB.products];
-  if(filter!=="all") list=list.filter(p=>p.cat===filter);
-  if(search){ const q=search.toLowerCase(); list=list.filter(p=>(p.name+" "+p.desc+" "+catName(p.cat)+" "+(p.colors||[]).join(" ")).toLowerCase().includes(q)); }
-  if(sort==="price-asc") list.sort((a,b)=>a.price-b.price);
-  else if(sort==="price-desc") list.sort((a,b)=>b.price-a.price);
-  else if(sort==="name") list.sort((a,b)=>a.name.localeCompare(b.name));
-  else list.sort((a,b)=>(b.featured?1:0)-(a.featured?1:0));
-  return list;
+function renderTexts(){
+  $$('[data-edit]').forEach(el=>{
+    const v = getByPath(state, el.dataset.edit);
+    if(el.id === 'heroTitle') el.innerHTML = smartTitle(v);
+    else el.textContent = (v == null ? '' : String(v));
+  });
+  $('#logoName').textContent = state.site.name;
+  $('#logoTag').textContent = state.site.tagline;
+  $('#fName').textContent = state.site.name;
+  $('#fName2').textContent = state.site.name;
+  $('#fBlurb').textContent = state.site.footerBlurb;
+  document.title = state.site.name + ' — Maroquinerie artisanale';
+  $('#drSub').textContent = state.site.name + ' — modifications enregistrées dans ce navigateur';
+  $('#year').textContent = new Date().getFullYear();
+  setGroup($('#topTrack'), state.site.marquee, 'mq-item', 'mq-sep');
+  setGroup($('#bigTrack'), state.site.bigWords, 'bigword', 'loz');
+  const icons = ['cut','needle','leaf','shield'];
+  cached($('#valuesGrid'), 'v§'+JSON.stringify(state.site.values), ()=>
+    state.site.values.map((v,i)=>`<div class="value"><span class="v-ico" data-ico="${icons[i%4]}" data-size="30"></span><h3>${esc(v.t)}</h3><p>${esc(v.d)}</p></div>`).join('')
+  );
+  cached($('#statsGrid'), 's§'+JSON.stringify(state.site.stats), ()=>
+    state.site.stats.filter(s=>s.n||s.l).map(s=>`<div class="stat"><div class="stat-n">${esc(s.n)}</div><div class="stat-l">${esc(s.l)}</div></div>`).join('')
+  );
+  cached($('#processGrid'), 'p§'+JSON.stringify(state.site.process), ()=>
+    state.site.process.map((s,i)=>`<div class="step"><div class="step-num">0${i+1}.</div><h3>${esc(s.t)}</h3><p>${esc(s.d)}</p></div>`).join('')
+  );
+  const feat = state.products.find(p=>p.featured) || state.products[0];
+  if(feat && (feat.id + feat.art) !== lastFeat){
+    lastFeat = feat.id + feat.art;
+    $('#heroArt').innerHTML = art(feat.art || 'needle');
+    primeScope($('#heroArt')); animateDraw($('#heroArt'), 250);
+  }
+  if(feat){
+    cached($('#heroTag'), 't§'+feat.id+'§'+feat.name+'§'+feat.price, ()=>`<span class="t-ey">En vedette</span><span class="t-name">${esc(feat.name)}</span><span class="t-price">${fmtPrice(feat.price)}</span>`);
+  } else { $('#heroTag').hidden = true; }
+  const g = waGeneralHref();
+  $$('[data-wa-general]').forEach(a=>{ a.href = g; });
+  $('#fAddr').textContent = state.contact.address;
+  $('#fHours').textContent = state.contact.hours;
+  $('#fMail').textContent = state.contact.email;
+  $('#fMail').href = 'mailto:' + state.contact.email;
+  $('#igLink').href = state.contact.instagram || '#';
+  $('#piLink').href = state.contact.pinterest || '#';
+  fillIcons(document);
+  updateReadiness();
+}
+function renderCats(){
+  const grid = $('#catsGrid');
+  if(!state.categories.length){
+    grid.innerHTML = '<div class="empty"><p class="empty-t display">Les collections arrivent bientôt.</p></div>';
+    return;
+  }
+  grid.innerHTML = state.categories.map((c,i)=>{
+    const n = state.products.filter(p=>p.cat===c.id).length;
+    return `<article class="cat-card reveal" data-cat="${c.id}" data-art="${c.art}" style="--d:${(i%4)*60}ms" role="button" tabindex="0" aria-label="Voir la collection ${esc(c.name)}">
+      <div class="cat-art">${art(c.art)}</div>
+      <h3 class="cat-name">${esc(c.name)}</h3>
+      <p class="cat-count">${n} pièce${n>1?'s':''}</p>
+      <p class="cat-desc">${esc(c.desc)}</p>
+      <span class="cat-go">${ico('arrow',14)}Voir les pièces</span>
+    </article>`;
+  }).join('');
+  primeScope(grid); observeScope(grid);
+}
+function renderPills(){
+  $('#pillsBar').innerHTML = `<button class="pill ${filter==='all'?'on':''}" data-f="all">Tout voir</button>` +
+    state.categories.map(c=>`<button class="pill ${filter===c.id?'on':''}" data-f="${c.id}">${esc(c.name)}</button>`).join('');
+}
+function productCard(p,i){
+  const cat = state.categories.find(c=>c.id===p.cat);
+  return `<article class="pcard reveal" data-pid="${p.id}" style="--d:${(i%3)*70}ms">
+    <div class="pcard-media">
+      ${p.imageUrl ? `<img class="pcard-img" src="${esc(p.imageUrl)}" alt="${esc(p.name)}" loading="lazy">` : `<div class="pcard-artbox">${art(p.art||'needle')}</div>`}
+      ${p.badge ? `<span class="chip">${esc(p.badge)}</span>` : ''}
+      <div class="ptools">
+        <button class="tool" data-act="edit-p" data-pid="${p.id}" title="Modifier la pièce" aria-label="Modifier">${ico('pencil',15)}</button>
+        <button class="tool danger" data-act="del-p" data-pid="${p.id}" title="Supprimer la pièce" aria-label="Supprimer">${ico('trash',15)}</button>
+      </div>
+    </div>
+    <div class="pcard-body">
+      <p class="pcard-cat">${esc(cat?cat.name:'Sur commande')}</p>
+      <h3 class="pcard-name">${esc(p.name)}</h3>
+      <p class="pcard-desc">${esc(p.desc)}</p>
+      <div class="pcard-foot">
+        <span class="pcard-price">${fmtPrice(p.price)}</span>
+        <a class="order" href="${waProductHref(p)}" target="_blank" rel="noopener">${ico('wa',14)}<span>Commander</span></a>
+      </div>
+    </div>
+  </article>`;
 }
 function renderProducts(){
-  const list=filteredProducts(); const grid=$("productGrid");
-  $("emptyShop").classList.toggle("hidden", list.length>0);
-  grid.innerHTML=list.map(p=>{
-    const disc=p.old&&p.old>p.price?Math.round((1-p.price/p.old)*100):0;
-    return `<article class="reveal rounded-3xl overflow-hidden border card-hover flex flex-col" style="background:var(--surface); border-color:var(--border)">
-      <div class="relative img-zoom overflow-hidden cursor-pointer" onclick="openProduct('${p.id}')">
-        <img src="${esc(p.img)}" onerror="this.src='${FALLBACK}'" class="w-full h-60 object-cover" alt="${esc(p.name)}" loading="lazy">
-        <div class="absolute top-3 left-3 flex gap-2">${p.badge?`<span class="px-3 py-1 rounded-full text-[11px] font-bold" style="background:var(--primary); color:var(--primary-ink)">${esc(p.badge)}</span>`:""}${disc?`<span class="px-3 py-1 rounded-full text-[11px] font-bold bg-red-600 text-white">−${disc}%</span>`:""}</div>
-        <div class="absolute bottom-3 right-3 flex gap-2">
-          <button onclick="event.stopPropagation();quickAdd('${p.id}')" title="Ajouter" class="w-10 h-10 rounded-full font-bold shadow-card" style="background:var(--text); color:var(--bg)">+</button>
-          <a onclick="event.stopPropagation()" href="${waLink(`Bonjour ${DB.settings.brand} ! Je souhaite commander : ${p.name} (${fmt(p.price)}) 🤎`)}" target="_blank" title="WhatsApp" class="w-10 h-10 rounded-full flex items-center justify-center shadow-card" style="background:#25D366; color:#fff"><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg></a>
-        </div>
+  const grid = $('#productsGrid');
+  const list = state.products.filter(p => filter==='all' || p.cat===filter);
+  $('#piecesCount').textContent = list.length + ' pièce' + (list.length>1?'s':'');
+  let html = list.map((p,i)=>productCard(p,i)).join('');
+  if(adminOn) html += `<div class="add-card reveal" data-act="add-p" style="--d:${(list.length%3)*70}ms">${ico('plus',22)}Ajouter une pièce</div>`;
+  if(!list.length && !adminOn){
+    html = `<div class="empty reveal"><p class="empty-t display">Cette collection repose pour l\u2019instant.</p>
+      <p class="empty-s">Écrivez-nous sur WhatsApp : nous créerons la pièce qu\u2019il vous faut.</p>
+      <a class="btn btn-solid" href="${waGeneralHref()}" target="_blank" rel="noopener">${ico('wa',15)}Parler à l\u2019atelier</a></div>`;
+  }
+  grid.innerHTML = html;
+  primeScope(grid); observeScope(grid);
+}
+
+/* ================= ANIMATIONS ================= */
+function primeScope(scope){
+  $$('svg .dr', scope).forEach(p=>{
+    let L = 220; try{ L = p.getTotalLength(); }catch(e){}
+    p.style.transition = 'none';
+    p.style.strokeDasharray = L + ' ' + L;
+    p.style.strokeDashoffset = L;
+  });
+}
+function animateDraw(scope, base=120){
+  $$('svg .dr', scope).forEach((p,i)=>{
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      p.style.transition = `stroke-dashoffset .95s cubic-bezier(.3,.6,.25,1) ${base + i*85}ms`;
+      p.style.strokeDashoffset = '0';
+    }));
+  });
+}
+const revealIO = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const el = e.target;
+    el.classList.add('in');
+    animateDraw(el, 100);
+    setTimeout(()=>el.style.setProperty('--d','0ms'), 1000);
+    revealIO.unobserve(el);
+  });
+},{threshold:.12, rootMargin:'0px 0px -36px 0px'});
+function observeScope(scope){ $$('.reveal:not(.in)', scope).forEach(el=>revealIO.observe(el)); }
+
+/* ================= TOASTS & MODALES ================= */
+function toast(msg, icon='check', err=false){
+  const el = document.createElement('div');
+  el.className = 'toast' + (err ? ' err' : '');
+  el.innerHTML = `<span class="t-ic">${ico(icon,15)}</span><span>${esc(msg)}</span>`;
+  $('#toasts').appendChild(el);
+  setTimeout(()=>{ el.classList.add('out'); setTimeout(()=>el.remove(), 320); }, 2700);
+}
+function show(ov){ ov.hidden = false; requestAnimationFrame(()=>ov.classList.add('op')); }
+function hide(ov){ ov.classList.remove('op'); setTimeout(()=>{ ov.hidden = true; }, 240); }
+let confirmCb = null;
+function confirmBox(title,msg,okLabel,cb){
+  $('#cmTitle').textContent = title; $('#cmMsg').textContent = msg;
+  $('#cmOk').textContent = okLabel; $('#cmOk').classList.add('btn-danger');
+  confirmCb = cb; show($('#confirmOverlay'));
+}
+$('#cmOk').addEventListener('click', ()=>{ if(confirmCb) confirmCb(); confirmCb = null; hide($('#confirmOverlay')); });
+
+/* ================= ADMIN ================= */
+function requestAdmin(){
+  if(adminOn){ openDrawer(); return; }
+  $('#pinInput').value = ''; $('#pinErr').textContent = '';
+  show($('#pinOverlay'));
+  setTimeout(()=>$('#pinInput').focus(), 80);
+}
+function tryPin(){
+  const v = $('#pinInput').value;
+  if(v === String(state.pin)){
+    hide($('#pinOverlay'));
+    adminOn = true;
+    document.body.classList.add('admin-on');
+    enableEditable(true);
+    openDrawer();
+    toast('Mode administrateur activé');
+    if(!waHintShown && state.contact.whatsapp === DEFAULTS.contact.whatsapp){
+      waHintShown = true;
+      setTimeout(()=>toast('Pensez à renseigner votre numéro WhatsApp (onglet Contact).','warn',true), 900);
+    }
+  } else {
+    $('#pinErr').textContent = 'Code incorrect — réessayez.';
+    $('#pinInput').value = '';
+    const card = $('#pinOverlay .modal');
+    card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake');
+  }
+}
+function doLogout(){
+  adminOn = false;
+  document.body.classList.remove('admin-on');
+  enableEditable(false);
+  closeDrawer();
+  toast('Mode administrateur désactivé');
+}
+function enableEditable(on){
+  $$('[data-edit]').forEach(el=>{
+    if(on){ el.setAttribute('contenteditable','true'); el.spellcheck = false; }
+    else el.removeAttribute('contenteditable');
+  });
+}
+function openDrawer(){
+  $('#drawer').classList.add('open'); $('#drawer').setAttribute('aria-hidden','false');
+  $('#backdrop').classList.add('open');
+  activeTab = activeTab || 'contenu';
+  renderTabs(); renderTab();
+}
+function closeDrawer(){
+  $('#drawer').classList.remove('open'); $('#drawer').setAttribute('aria-hidden','true');
+  $('#backdrop').classList.remove('open');
+}
+function renderTabs(){
+  $$('#drTabs .dr-tab').forEach(b=>b.classList.toggle('on', b.dataset.tab===activeTab));
+}
+function renderTab(){
+  const R = {contenu:renderContenuTab, collections:renderCollectionsTab, pieces:renderPiecesTab, themes:renderThemesTab, contact:renderContactTab, donnees:renderDonneesTab};
+  (R[activeTab]||renderContenuTab)();
+  fillIcons($('#drBody'));
+  if(activeTab==='donnees') updateReadiness();
+}
+
+/* ---- Onglet Contenu ---- */
+const dcard = (title, inner)=>`<section class="dcard"><h4>${title}</h4>${inner}</section>`;
+const F = (label,path,val,ph='')=>`<div class="field"><label>${label}</label><input data-path="${path}" value="${esc(val)}" placeholder="${ph}"></div>`;
+const TA = (label,path,val,kind='')=>`<div class="field"><label>${label}</label><textarea data-path="${path}" ${kind?`data-kind="${kind}"`:''} rows="3">${esc(val)}</textarea></div>`;
+const pairRow = (i,base,a,b,la,lb)=>{
+  const k1 = base==='stats'?'n':'t', k2 = base==='stats'?'l':'d';
+  return `<div class="frow">
+    <div class="field"><label>${la}</label><input data-path="site.${base}.${i}.${k1}" value="${esc(a)}"></div>
+    <div class="field"><label>${lb}</label><input data-path="site.${base}.${i}.${k2}" value="${esc(b)}"></div>
+  </div>`;
+};
+function renderContenuTab(){
+  const s = state.site;
+  $('#drBody').innerHTML = `
+  <p class="dr-note">${ico('check',14)}<span>Astuce : en mode administrateur, cliquez directement sur les titres du site pour les modifier en place.</span></p>
+  ${dcard('Identité', F('Nom du site','site.name',s.name) + F('Slogan','site.tagline',s.tagline))}
+  ${dcard('Bandeau supérieur', TA('Texte défilant — une entrée par ligne','site.marquee',s.marquee.join('\n'),'lines'))}
+  ${dcard('Page d\u2019accueil', F('Sur-titre','site.heroEyebrow',s.heroEyebrow) + F('Titre','site.heroTitle',s.heroTitle) + TA('Sous-titre','site.heroSub',s.heroSub) + F('Note sous les boutons','site.heroNote',s.heroNote))}
+  ${dcard('Bandeau typographique', TA('Mots défilants — une entrée par ligne','site.bigWords',s.bigWords.join('\n'),'lines'))}
+  ${dcard('Promesses', s.values.map((v,i)=>pairRow(i,'values',v.t,v.d,'Titre','Description')).join(''))}
+  ${dcard('Collections', F('Sur-titre','site.collectionsEyebrow',s.collectionsEyebrow) + F('Titre','site.collectionsTitle',s.collectionsTitle) + TA('Accroche','site.collectionsLead',s.collectionsLead))}
+  ${dcard('Pièces', F('Sur-titre','site.piecesEyebrow',s.piecesEyebrow) + F('Titre','site.piecesTitle',s.piecesTitle) + TA('Accroche','site.piecesLead',s.piecesLead))}
+  ${dcard('L\u2019atelier', F('Sur-titre','site.atelierEyebrow',s.atelierEyebrow) + F('Titre','site.atelierTitle',s.atelierTitle) + TA('Texte','site.atelierText',s.atelierText) + F('Légende photo','site.atelierCaption',s.atelierCaption))}
+  ${dcard('Chiffres-clés', s.stats.map((v,i)=>pairRow(i,'stats',v.n,v.l,'Valeur','Libellé')).join(''))}
+  ${dcard('Gestes de l\u2019atelier', F('Sur-titre','site.processEyebrow',s.processEyebrow) + F('Titre','site.processTitle',s.processTitle) + s.process.map((v,i)=>pairRow(i,'process',v.t,v.d,'Geste','Description')).join(''))}
+  ${dcard('Citation', TA('Citation','site.quote',s.quote) + F('Auteur','site.quoteAuthor',s.quoteAuthor))}
+  ${dcard('Appel à commander', F('Sur-titre','site.ctaEyebrow',s.ctaEyebrow) + F('Titre','site.ctaTitle',s.ctaTitle) + TA('Texte','site.ctaText',s.ctaText) + F('Note','site.ctaNote',s.ctaNote))}
+  ${dcard('Pied de page', TA('Présentation','site.footerBlurb',s.footerBlurb))}`;
+}
+
+/* ---- Onglet Collections ---- */
+function renderCollectionsTab(){
+  $('#drBody').innerHTML = `
+  <div class="dr-actions"><button class="btn btn-solid btn-sm" data-act="new-cat">${ico('plus',14)}Nouvelle collection</button></div>
+  ${state.categories.map(c=>{
+    const n = state.products.filter(p=>p.cat===c.id).length;
+    return `<div class="crow" data-cid="${c.id}">
+      <select class="din" data-f="art" aria-label="Illustration">${Object.entries(ART_LABELS).map(([k,l])=>`<option value="${k}" ${c.art===k?'selected':''}>${l}</option>`).join('')}</select>
+      <div class="cr-main">
+        <input class="din cr-name" data-f="name" value="${esc(c.name)}" placeholder="Nom de la collection" aria-label="Nom">
+        <input class="din cr-desc" data-f="desc" value="${esc(c.desc)}" placeholder="Description courte" aria-label="Description">
       </div>
-      <div class="p-5 flex-1 flex flex-col">
-        <div class="text-[11px] tracking-[.2em] uppercase font-bold" style="color:var(--primary)">${esc(catName(p.cat))}</div>
-        <h3 class="font-serif text-[22px] font-semibold leading-tight mt-1 cursor-pointer hover:opacity-75" onclick="openProduct('${p.id}')">${esc(p.name)}</h3>
-        <div class="text-xs mt-1" style="color:var(--muted)"><span style="color:#E8A33D">★</span> ${p.rating||"4.9"} · ${(p.colors||[]).slice(0,3).join(" · ")}</div>
-        <p class="text-[13px] mt-2 line-clamp-2 flex-1" style="color:var(--muted)">${esc(p.desc||"")}</p>
-        <div class="flex items-center justify-between mt-4">
-          <div><span class="font-serif text-2xl font-bold">${fmt(p.price)}</span>${p.old?` <span class="text-sm line-through" style="color:var(--muted)">${fmt(p.old)}</span>`:""}</div>
-          <span class="text-[11px] font-bold px-2.5 py-1 rounded-full" style="${p.stock>0?'background:#22c55e1c; color:#16a34a':'background:#dc26261c; color:#dc2626'}">${p.stock>0?`Stock : ${p.stock}`:"Sur commande"}</span>
-        </div>
-        <div class="grid grid-cols-2 gap-2 mt-4">
-          <button onclick="openProduct('${p.id}')" class="btn-outline py-2.5 rounded-xl text-[13px] font-bold">Détails</button>
-          <button onclick="quickAdd('${p.id}')" class="btn-brand py-2.5 rounded-xl text-[13px] font-bold">+ Panier</button>
-        </div>
-      </div></article>`;
-  }).join("");
-  observeReveals();
+      <div class="cr-side">
+        <span class="cr-n">${n} pièce${n>1?'s':''}</span>
+        <button class="tool danger" data-act="del-cat" title="Supprimer la collection" aria-label="Supprimer">${ico('trash',15)}</button>
+      </div>
+    </div>`;
+  }).join('') || '<p class="dr-empty">Aucune collection pour l\u2019instant — créez la première.</p>'}`;
 }
-function renderReviews(){
-  $("reviewGrid").innerHTML=DB.reviews.map(r=>`<div class="reveal rounded-3xl p-7 border card-hover" style="background:var(--surface); border-color:var(--border)">
-    <div class="tracking-tight" style="color:#E8A33D">${"★".repeat(r.stars)}</div>
-    <p class="mt-3 text-[15px] leading-relaxed italic font-serif text-lg">« ${esc(r.text)} »</p>
-    <div class="mt-4 flex items-center gap-3"><div class="w-11 h-11 rounded-full flex items-center justify-center font-bold" style="background:var(--primary); color:var(--primary-ink)">${esc(r.name[0])}</div><div><div class="font-bold text-sm">${esc(r.name)}</div><div class="text-xs" style="color:var(--muted)">Vérifié · ${esc(r.city)}</div></div></div></div>`).join("");
+function syncCatsLite(){
+  state.categories.forEach(c=>{
+    const card = document.querySelector(`.cat-card[data-cat="${c.id}"]`);
+    if(!card) return;
+    card.querySelector('.cat-name').textContent = c.name;
+    card.querySelector('.cat-desc').textContent = c.desc;
+    if(card.dataset.art !== c.art){
+      card.dataset.art = c.art;
+      const box = card.querySelector('.cat-art');
+      box.innerHTML = art(c.art);
+      primeScope(card); animateDraw(card, 100);
+    }
+  });
+  renderPills();
+  $$('.pcard').forEach(card=>{
+    const p = state.products.find(x=>x.id===card.dataset.pid);
+    if(!p) return;
+    const cat = state.categories.find(x=>x.id===p.cat);
+    const lab = card.querySelector('.pcard-cat');
+    if(lab) lab.textContent = cat ? cat.name : 'Sur commande';
+  });
 }
-function setFilter(id){ filter=id; renderCategories(); renderProducts(); document.getElementById("boutique").scrollIntoView({behavior:"smooth"}); }
-function resetFilters(){ filter="all"; search=""; sort="featured"; $("searchInput").value=""; $("sortSelect").value="featured"; renderCategories(); renderProducts(); }
-function onSearch(v){ search=v.trim(); renderProducts(); }
-function onSort(v){ sort=v; renderProducts(); }
-function toggleSearch(){ $("searchBar").classList.toggle("hidden"); if(!$("searchBar").classList.contains("hidden")) $("searchInput").focus(); }
-function toggleMobile(){ $("mobileMenu").classList.toggle("hidden"); }
-
-/* ============ PRODUCT MODAL ============ */
-function openProduct(id){
-  mProduct=DB.products.find(p=>p.id===id); if(!mProduct) return;
-  mColor=(mProduct.colors||["Standard"])[0]; mQtyV=1; $("mQty").textContent="1"; $("mEngrave").value="";
-  $("mImg").src=mProduct.img; $("mImg").onerror=function(){this.src=FALLBACK;};
-  $("mBadge").textContent=mProduct.badge||""; $("mBadge").style.display=mProduct.badge?"block":"none";
-  $("mCat").textContent=catName(mProduct.cat); $("mName").textContent=mProduct.name;
-  $("mStars").textContent="★★★★★"; $("mRating").textContent=`${mProduct.rating||4.9} · ${20+Math.floor(Math.random()*120)} avis`;
-  $("mPrice").textContent=fmt(mProduct.price); $("mOld").textContent=mProduct.old?fmt(mProduct.old):"";
-  $("mStock").textContent=mProduct.stock>0?`✓ En stock (${mProduct.stock})`:"⏳ Fabriqué à la commande";
-  $("mStock").style.background=mProduct.stock>0?"#22c55e1c":"#f59e0b1c"; $("mStock").style.color=mProduct.stock>0?"#16a34a":"#b45309";
-  $("mDesc").textContent=mProduct.desc||"";
-  renderMColors(); updateMTotal();
-  $("productModal").classList.remove("hidden"); document.body.classList.add("modal-open");
+function newCategory(){
+  state.categories.push({id:uid(), name:'Nouvelle collection', desc:'Décrivez en une ligne l\u2019esprit de cette collection.', art:'bag'});
+  saveState(); renderCats(); renderPills(); renderTab(); updateReadiness();
+  toast('Collection ajoutée — renommez-la ci-contre');
 }
-function renderMColors(){
-  $("mColors").innerHTML=(mProduct.colors||["Standard"]).map(c=>`<button onclick="mColor='${esc(c)}';renderMColors();updateMTotal()" class="px-4 py-2 rounded-full text-sm font-semibold border transition" style="${c===mColor?`background:var(--text); color:var(--bg); border-color:var(--text)`:`border-color:var(--border)`}">${esc(c)}</button>`).join("");
-}
-function mQtyChange(d){ mQtyV=Math.max(1,Math.min(20,mQtyV+d)); $("mQty").textContent=mQtyV; updateMTotal(); }
-function updateMTotal(){
-  const tot=mProduct.price*mQtyV; $("mTotal").textContent=fmt(tot);
-  const eng=$("mEngrave").value.trim();
-  const msg=`Bonjour ${DB.settings.brand} ! 🤎%0AJe souhaite commander :%0A• ${mProduct.name}%0A• Coloris : ${mColor}%0A• Qté : ${mQtyV}%0A${eng?`• Gravure : ${eng}%0A`:""}• Total : ${fmt(tot)}%0AMerci !`;
-  $("mWa").href=waLink(decodeURIComponent(msg).replace(/%0A/g,"\n"));
-}
-$("mEngrave")?.addEventListener?.("input",()=>{});
-document.addEventListener("input",e=>{ if(e.target&&e.target.id==="mEngrave") updateMTotal(); });
-function closeProduct(){ $("productModal").classList.add("hidden"); document.body.classList.remove("modal-open"); }
-function mAddCart(){
-  cart.push({id:mProduct.id+"|"+mColor+"|"+$("mEngrave").value.trim(), pid:mProduct.id, name:mProduct.name, price:mProduct.price, img:mProduct.img, color:mColor, eng:$("mEngrave").value.trim().toUpperCase(), qty:mQtyV});
-  saveCart(); closeProduct(); openCart(); toast("Ajouté au panier ✓");
-}
-function quickAdd(id){ const p=DB.products.find(x=>x.id===id); cart.push({id:p.id+"|"+(p.colors||["Standard"])[0]+"|", pid:p.id, name:p.name, price:p.price, img:p.img, color:(p.colors||["Standard"])[0], eng:"", qty:1}); saveCart(); toast(p.name+" ajouté ✓"); }
-
-/* ============ CART ============ */
-function openCart(){ renderCart(); $("cartOverlay").classList.remove("hidden"); $("cartDrawer").classList.remove("translate-x-full"); }
-function closeCart(){ $("cartOverlay").classList.add("hidden"); $("cartDrawer").classList.add("translate-x-full"); }
-function clearCart(){ cart=[]; saveCart(); toast("Panier vidé"); }
-function changeQty(key,d){ const it=cart.find(c=>c.id===key); if(!it) return; it.qty+=d; if(it.qty<=0) cart=cart.filter(c=>c.id!==key); saveCart(); }
-function removeItem(key){ cart=cart.filter(c=>c.id!==key); saveCart(); }
-function renderCart(){
-  const n=cart.reduce((s,i)=>s+i.qty,0), tot=cart.reduce((s,i)=>s+i.price*i.qty,0);
-  $("cartCount").textContent=n; $("cartSub").textContent=`${n} article${n>1?"s":""}`;
-  $("cartTotal").textContent=fmt(tot);
-  $("cartShip").textContent=tot>=120?"Offerte 🎉":(tot>0?fmt(Math.max(0,6.9)):"—");
-  $("cartItems").innerHTML = cart.length===0
-    ? `<div class="text-center py-14"><div class="text-5xl">👜</div><div class="font-serif text-2xl mt-3">Panier vide</div><p class="text-sm mt-1" style="color:var(--muted)">Laissez-vous tenter par nos cuirs…</p><button onclick="closeCart()" class="btn-brand px-6 py-2.5 rounded-full mt-4 text-sm font-bold">Découvrir</button></div>`
-    : cart.map(i=>`<div class="rounded-2xl p-3 border flex gap-3" style="border-color:var(--border); background:var(--surface2)">
-        <img src="${esc(i.img)}" onerror="this.src='${FALLBACK}'" class="w-16 h-16 rounded-xl object-cover">
-        <div class="flex-1 min-w-0"><div class="font-bold text-sm truncate">${esc(i.name)}</div><div class="text-xs" style="color:var(--muted)">${esc(i.color)}${i.eng?" · ✨ "+esc(i.eng):""}</div>
-        <div class="flex items-center justify-between mt-2"><div class="flex items-center gap-2"><button onclick="changeQty('${esc(i.id)}',-1)" class="w-7 h-7 rounded-lg btn-outline text-sm font-bold">−</button><b class="text-sm">${i.qty}</b><button onclick="changeQty('${esc(i.id)}',1)" class="w-7 h-7 rounded-lg btn-outline text-sm font-bold">+</button></div><b class="text-sm">${fmt(i.price*i.qty)}</b></div></div>
-        <button onclick="removeItem('${esc(i.id)}')" class="text-red-500 text-lg h-fit">×</button></div>`).join("");
-  const lines=cart.map(i=>`• ${i.name} (${i.color}${i.eng?", gravure "+i.eng:""}) x${i.qty} = ${fmt(i.price*i.qty)}`).join("\n");
-  $("cartWa").href=waLink(cart.length?`Bonjour ${DB.settings.brand} ! 🤎\nMa commande :\n${lines}\nTotal : ${fmt(tot)}\nMerci de me confirmer !`:DB.settings.waMsg);
+function delCategory(cid){
+  const c = state.categories.find(x=>x.id===cid); if(!c) return;
+  const n = state.products.filter(p=>p.cat===cid).length;
+  confirmBox('Supprimer la collection',
+    `« ${c.name} » sera supprimée.` + (n ? ` Ses ${n} pièces resteront en ligne, classées « sur commande ».` : ''),
+    'Supprimer', ()=>{
+      state.categories = state.categories.filter(x=>x.id!==cid);
+      state.products.forEach(p=>{ if(p.cat===cid) p.cat = null; });
+      if(filter===cid) filter = 'all';
+      saveState(); renderCats(); renderPills(); renderProducts(); renderTab(); updateReadiness();
+      toast('Collection supprimée');
+    });
 }
 
-/* ============ ADMIN ============ */
-function openAdmin(){ $("adminOverlay").classList.remove("hidden"); document.body.classList.add("modal-open"); $("adminLogin").classList.toggle("hidden",adminAuthed); $("adminDash").classList.toggle("hidden",!adminAuthed); if(adminAuthed){ refreshAdmin(); } else setTimeout(()=>$("adminPass").focus(),100); }
-function closeAdmin(){ $("adminOverlay").classList.add("hidden"); document.body.classList.remove("modal-open"); }
-function adminLogin(){ if($("adminPass").value===DB.settings.adminPass){ adminAuthed=true; $("adminPass").value=""; openAdmin(); toast("Bienvenue, Admin ✓"); } else toast("Mot de passe incorrect",false); }
-function adminLogout(){ adminAuthed=false; openAdmin(); }
-function switchTab(t){ document.querySelectorAll(".admin-tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===t)); document.querySelectorAll(".admin-pane").forEach(p=>p.classList.add("hidden")); $("tab-"+t).classList.remove("hidden"); }
-function refreshAdmin(){ renderAdminStats(); renderAdminCats(); renderAdminProds(); fillSettings(); renderAdminThemes(); renderChecklist(); $("waLinkPreview").textContent=waLink(DB.settings.waMsg); $("waQR").src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+encodeURIComponent(waLink(DB.settings.waMsg)); }
-function renderAdminStats(){ if(!$("stProds"))return; $("stProds").textContent=DB.products.length; $("stCats").textContent=DB.categories.length; $("stStock").textContent=fmt(DB.products.reduce((s,p)=>s+p.price*(p.stock||0),0)); $("stTheme").textContent=THEMES[DB.settings.theme]?.label||"—"; }
-
-/* Categories admin */
-function renderAdminCats(){
-  $("adminCatList").innerHTML=DB.categories.map(c=>{ const n=DB.products.filter(p=>p.cat===c.id).length; return `
-    <div class="rounded-2xl p-3 border flex items-center gap-3" style="background:var(--surface); border-color:var(--border)">
-      <img src="${esc(c.img)}" onerror="this.src='${FALLBACK}'" class="w-14 h-14 rounded-xl object-cover">
-      <div class="flex-1 min-w-0"><div class="font-bold text-sm">${esc(c.icon||"")} ${esc(c.name)} <span class="text-xs font-normal" style="color:var(--muted)">(${n})</span></div><div class="text-xs truncate" style="color:var(--muted)">${esc(c.desc||"")}</div></div>
-      <button onclick="editCategory('${c.id}')" class="btn-outline px-3 py-1.5 rounded-lg text-xs font-bold">✏️</button>
-      <button onclick="deleteCategory('${c.id}')" class="px-3 py-1.5 rounded-lg text-xs font-bold text-white" style="background:#dc2626">🗑</button>
-    </div>`; }).join("") || `<div class="text-sm opacity-60">Aucune catégorie.</div>`;
+/* ---- Onglet Pièces ---- */
+function renderPiecesTab(){
+  $('#drBody').innerHTML = `
+  <div class="dr-actions"><button class="btn btn-solid btn-sm" data-act="new-product">${ico('plus',14)}Nouvelle pièce</button></div>
+  ${state.products.map(p=>{
+    const c = state.categories.find(x=>x.id===p.cat);
+    return `<div class="prow" data-pid="${p.id}">
+      <span class="prow-thumb">${art(p.art||'needle')}</span>
+      <div class="prow-main">
+        <strong>${esc(p.name)}</strong>
+        <span>${esc(c?c.name:'Sans collection')} · ${fmtPrice(p.price)}${p.featured?' · en vedette':''}</span>
+      </div>
+      <button class="tool" data-act="edit-p" data-pid="${p.id}" title="Modifier" aria-label="Modifier">${ico('pencil',15)}</button>
+      <button class="tool danger" data-act="del-p" data-pid="${p.id}" title="Supprimer" aria-label="Supprimer">${ico('trash',15)}</button>
+    </div>`;
+  }).join('') || '<p class="dr-empty">Aucune pièce pour l\u2019instant — créez la première.</p>'}`;
 }
-function saveCategory(){
-  const name=$("catName").value.trim(); if(!name) return toast("Nom requis",false);
-  const id=$("catId").value||name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-");
-  const obj={id, name, desc:$("catDesc").value.trim(), icon:$("catIcon").value.trim()||"🤎", img:$("catImg").value.trim()||FALLBACK};
-  const i=DB.categories.findIndex(c=>c.id===id);
-  if($("catId").value && i>=0) DB.categories[i]={...DB.categories[i],...obj};
-  else if(i>=0 && !$("catId").value) obj.id=id+"-"+Date.now()%1000, DB.categories.push(obj);
-  else DB.categories.push(obj);
-  save(); resetCatForm(); renderAdminCats(); renderCategories(); renderProducts(); renderAdminStats(); toast("Catégorie enregistrée ✓");
+let editingPid = null;
+function openProductModal(id){
+  editingPid = id || null;
+  const p = id ? state.products.find(x=>x.id===id) : null;
+  $('#pmTitle').textContent = p ? 'Modifier la pièce' : 'Nouvelle pièce';
+  $('#pmCat').innerHTML = `<option value="">Sans collection</option>` +
+    state.categories.map(c=>`<option value="${c.id}" ${p && p.cat===c.id ? 'selected':''}>${esc(c.name)}</option>`).join('');
+  $('#pmArt').innerHTML = Object.entries(ART_LABELS).map(([k,l])=>`<option value="${k}" ${p && p.art===k ? 'selected':''}>${l}</option>`).join('');
+  $('#pmName').value = p?.name || '';
+  $('#pmPrice').value = p ? p.price : '';
+  $('#pmBadge').value = p?.badge || '';
+  $('#pmImg').value = p?.imageUrl || '';
+  $('#pmDesc').value = p?.desc || '';
+  $('#pmFeat').checked = !!p?.featured;
+  show($('#productOverlay'));
+  setTimeout(()=>$('#pmName').focus(), 80);
 }
-function editCategory(id){ const c=DB.categories.find(x=>x.id===id); if(!c)return; $("catId").value=c.id; $("catName").value=c.name; $("catDesc").value=c.desc||""; $("catIcon").value=c.icon||""; $("catImg").value=c.img||""; $("catPreview").src=c.img||""; $("catFormTitle").textContent="✏️ Modifier : "+c.name; }
-function resetCatForm(){ $("catId").value=""; $("catName").value=""; $("catDesc").value=""; $("catIcon").value=""; $("catImg").value=""; $("catPreview").src=""; $("catFormTitle").textContent="➕ Nouvelle catégorie"; }
-function deleteCategory(id){
-  const n=DB.products.filter(p=>p.cat===id).length;
-  if(!confirm(`Supprimer cette catégorie ?${n?`\n⚠ ${n} produit(s) lié(s) seront aussi supprimés.`:""}`)) return;
-  DB.categories=DB.categories.filter(c=>c.id!==id); DB.products=DB.products.filter(p=>p.cat!==id);
-  if(filter===id) filter="all";
-  save(); renderAdminCats(); renderAdminProds(); renderCategories(); renderProducts(); renderAdminStats(); toast("Catégorie supprimée");
-}
-
-/* Products admin */
-function renderAdminProds(){
-  $("pCat").innerHTML=DB.categories.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join("");
-  $("adminProdList").innerHTML=DB.products.map(p=>`
-    <div class="rounded-2xl overflow-hidden border" style="background:var(--surface); border-color:var(--border)">
-      <div class="flex gap-3 p-3"><img src="${esc(p.img)}" onerror="this.src='${FALLBACK}'" class="w-20 h-20 rounded-xl object-cover">
-      <div class="flex-1 min-w-0"><div class="font-bold text-sm truncate">${esc(p.name)} ${p.featured?"⭐":""}</div><div class="text-xs" style="color:var(--muted)">${esc(catName(p.cat))} · Stock ${p.stock}</div><div class="font-bold mt-1" style="color:var(--primary)">${fmt(p.price)}</div></div></div>
-      <div class="grid grid-cols-3 border-t text-xs font-bold" style="border-color:var(--border)">
-        <button onclick="openProduct('${p.id}')" class="py-2.5 hover:opacity-70">👁 Voir</button>
-        <button onclick="editProduct('${p.id}')" class="py-2.5 border-x hover:opacity-70" style="border-color:var(--border)">✏️ Éditer</button>
-        <button onclick="deleteProduct('${p.id}')" class="py-2.5 text-red-500 hover:opacity-70">🗑 Suppr.</button>
-      </div></div>`).join("");
-}
-function openProductForm(){ $("prodFormWrap").classList.remove("hidden"); $("prodFormWrap").scrollIntoView({behavior:"smooth",block:"center"}); }
-function closeProductForm(){ $("prodFormWrap").classList.add("hidden"); ["pId","pName","pPrice","pOld","pStock","pImg","pDesc","pColors","pRating"].forEach(i=>$(i).value=""); $("pBadge").value=""; $("pFeatured").checked=false; $("pPreview").src=""; $("prodFormTitle").textContent="➕ Nouveau produit"; }
-function editProduct(id){ const p=DB.products.find(x=>x.id===id); if(!p)return; openProductForm(); $("pId").value=p.id; $("pName").value=p.name; $("pCat").value=p.cat; $("pPrice").value=p.price; $("pOld").value=p.old||""; $("pStock").value=p.stock; $("pBadge").value=p.badge||""; $("pImg").value=p.img; $("pPreview").src=p.img; $("pDesc").value=p.desc||""; $("pColors").value=(p.colors||[]).join(", "); $("pRating").value=p.rating||4.9; $("pFeatured").checked=!!p.featured; $("prodFormTitle").textContent="✏️ Modifier : "+p.name; }
-function saveProduct(){
-  const name=$("pName").value.trim(), price=parseFloat($("pPrice").value);
-  if(!name||isNaN(price)) return toast("Nom + prix requis",false);
-  const id=$("pId").value||"p"+Date.now();
-  const obj={id, name, cat:$("pCat").value, price, old:parseFloat($("pOld").value)||0, stock:parseInt($("pStock").value)||0, badge:$("pBadge").value, img:$("pImg").value.trim()||FALLBACK, desc:$("pDesc").value.trim(), colors:$("pColors").value.split(",").map(s=>s.trim()).filter(Boolean), rating:parseFloat($("pRating").value)||4.9, featured:$("pFeatured").checked};
-  const i=DB.products.findIndex(p=>p.id===id); i>=0?DB.products[i]=obj:DB.products.unshift(obj);
-  save(); closeProductForm(); renderAdminProds(); renderCategories(); renderProducts(); renderAdminStats(); applySettings(); toast("Produit enregistré ✓");
-}
-function deleteProduct(id){ if(!confirm("Supprimer ce produit ?"))return; DB.products=DB.products.filter(p=>p.id!==id); save(); renderAdminProds(); renderCategories(); renderProducts(); renderAdminStats(); toast("Produit supprimé"); }
-
-/* Settings admin */
-function fillSettings(){ const s=DB.settings; $("sBrand").value=s.brand; $("sTag").value=s.tag; $("sAnnounce").value=s.announce; $("sAnnounceOn").checked=s.announceOn; $("sHeroBadge").value=s.heroBadge; $("sHeroTitle").value=s.heroTitle; $("sHeroSub").value=s.heroSub; $("sHeroImg").value=s.heroImg; $("sAboutTitle").value=s.aboutTitle; $("sAboutText").value=s.aboutText; $("sAddress").value=s.address; $("sHours").value=s.hours; $("sInsta").value=s.insta; $("sWa").value=s.whatsapp; $("sWaMsg").value=s.waMsg; $("sPass").value=""; }
-function saveSettings(){
-  const s=DB.settings;
-  s.brand=$("sBrand").value||s.brand; s.tag=$("sTag").value; s.announce=$("sAnnounce").value; s.announceOn=$("sAnnounceOn").checked;
-  s.heroBadge=$("sHeroBadge").value; s.heroTitle=$("sHeroTitle").value; s.heroSub=$("sHeroSub").value; s.heroImg=$("sHeroImg").value||s.heroImg;
-  s.aboutTitle=$("sAboutTitle").value; s.aboutText=$("sAboutText").value; s.address=$("sAddress").value; s.hours=$("sHours").value; s.insta=$("sInsta").value;
-  s.whatsapp=$("sWa").value.replace(/\D/g,"")||s.whatsapp; s.waMsg=$("sWaMsg").value;
-  if($("sPass").value.trim()){ s.adminPass=$("sPass").value.trim(); $("sPass").value=""; toast("Mot de passe mis à jour ✓"); }
-  save(); applySettings(); renderChecklist(); $("waLinkPreview").textContent=waLink(s.waMsg); $("waQR").src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+encodeURIComponent(waLink(s.waMsg)); toast("Interface enregistrée ✓");
-}
-
-/* Themes admin */
-function renderAdminThemes(){
-  $("adminThemeGrid").innerHTML=Object.entries(THEMES).map(([k,t])=>`
-    <div onclick="applyTheme('${k}');renderAdminThemes();toast('Thème ${t.label} appliqué ✓')" data-theme="${k}" class="theme-card ${DB.settings.theme===k?'active':''} rounded-2xl overflow-hidden" style="background:var(--surface)">
-      <div class="h-24 flex"><div class="flex-1" style="background:${t.c2}"></div><div class="w-1/3 flex flex-col"><div class="flex-1" style="background:${t.c1}"></div><div class="flex-1" style="background:${t.c3}"></div></div></div>
-      <div class="p-4"><div class="font-bold flex items-center justify-between">${t.label} ${DB.settings.theme===k?'<span class="text-[11px] px-2 py-0.5 rounded-full" style="background:var(--primary); color:var(--primary-ink)">ACTIF</span>':""}</div><div class="text-xs mt-1" style="color:var(--muted)">${t.desc}</div>
-      <div class="flex gap-1.5 mt-3"><span class="w-6 h-6 rounded-full border" style="background:${t.c1}"></span><span class="w-6 h-6 rounded-full border" style="background:${t.c2}"></span><span class="w-6 h-6 rounded-full border" style="background:${t.c3}"></span></div></div>
-    </div>`).join("");
-}
-
-/* WhatsApp admin */
-function testWhatsApp(){ window.open(waLink(DB.settings.waMsg||"Bonjour !"),"_blank"); }
-function copyWaLink(){ navigator.clipboard?.writeText(waLink(DB.settings.waMsg)).then(()=>toast("Lien copié ✓")); }
-
-/* Publication */
-function renderChecklist(){
-  const s=DB.settings;
-  const checks=[
-    {ok:DB.products.length>=3, t:"Catalogue", d:`${DB.products.length} produits publiés`},
-    {ok:DB.categories.length>=2, t:"Catégories", d:`${DB.categories.length} collections`},
-    {ok:(s.whatsapp||"").length>=10, t:"WhatsApp", d:s.whatsapp?"Connecté : +"+s.whatsapp:"Non configuré"},
-    {ok:DB.products.every(p=>p.img), t:"Visuels", d:"Toutes les images renseignées"},
-    {ok:true, t:"SEO & mobile", d:"Meta, responsive, vitesse OK"},
-    {ok:true, t:"Thème", d:THEMES[s.theme]?.label||"—"},
-  ];
-  $("checkList").innerHTML=checks.map(c=>`<div class="rounded-2xl p-4 border flex items-start gap-3" style="background:var(--surface); border-color:var(--border)"><div class="w-8 h-8 rounded-full flex items-center justify-center font-bold" style="background:${c.ok?"#22c55e22":"#f59e0b22"}; color:${c.ok?"#16a34a":"#b45309"}">${c.ok?"✓":"!"}</div><div><div class="font-bold text-sm">${c.t}</div><div class="text-xs" style="color:var(--muted)">${c.d}</div></div></div>`).join("");
-}
-function exportData(){ const blob=new Blob([JSON.stringify(DB,null,2)],{type:"application/json"}); const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="lart-infiny-donnees.json"; a.click(); toast("Export téléchargé ✓"); }
-function importData(e){ const f=e.target.files[0]; if(!f)return; const r=new FileReader(); r.onload=()=>{ try{ DB=JSON.parse(r.result); save(); applyTheme(DB.settings.theme,false); applySettings(); renderCategories(); renderProducts(); renderReviews(); refreshAdmin(); toast("Données importées ✓"); }catch{ toast("Fichier invalide",false);} }; r.readAsText(f); }
-function resetAll(){ if(!confirm("Tout réinitialiser ? Vos modifications seront perdues."))return; localStorage.removeItem("infiny_db_v1"); DB=JSON.parse(JSON.stringify(DEFAULT_DATA)); save(); applyTheme("cognac",false); applySettings(); renderCategories(); renderProducts(); refreshAdmin(); toast("Site réinitialisé"); }
-function uploadTo(e,inputId,prevId){ const f=e.target.files[0]; if(!f)return; const r=new FileReader(); r.onload=()=>{ $(inputId).value=r.result; if($(prevId)) $(prevId).src=r.result; toast("Image importée ✓"); }; r.readAsDataURL(f); }
-
-/* ============ ANIMATIONS ============ */
-function observeReveals(){
-  const els=document.querySelectorAll(".reveal:not(.obs)");
-  els.forEach(el=>el.classList.add("obs"));
-  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ gsap.to(e.target,{opacity:1,y:0,duration:.9,ease:"power3.out"}); io.unobserve(e.target);} }),{threshold:.08});
-  els.forEach(el=>io.observe(el));
-}
-function counters(){
-  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting)return; const el=e.target, t=+el.dataset.target; let c=0; const step=Math.max(1,Math.ceil(t/60)); const iv=setInterval(()=>{ c+=step; if(c>=t){c=t;clearInterval(iv);} el.textContent=c.toLocaleString("fr-FR"); },25); io.unobserve(el); }),{threshold:.5});
-  document.querySelectorAll(".counter").forEach(el=>io.observe(el));
-}
-
-/* ============ INIT ============ */
-window.addEventListener("load",()=>{
-  applySettings(); renderCategories(); renderProducts(); renderReviews(); renderCart(); renderFooterThemes();
-  applyTheme(DB.settings.theme||"cognac",false);
-  observeReveals(); counters();
-  let p=0; const iv=setInterval(()=>{ p+=22; $("loaderBar").style.width=Math.min(100,p)+"%"; if(p>=100){ clearInterval(iv); setTimeout(()=>$("loader").classList.add("hide"),250);} },160);
-  document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ closeProduct(); closeCart(); } });
-  window.addEventListener("scroll",()=>{ $("header").style.boxShadow=scrollY>10?"0 10px 30px -15px rgba(0,0,0,.25)":"none"; },{passive:true});
+$('#pmSave').addEventListener('click', ()=>{
+  const name = $('#pmName').value.trim();
+  const price = parseFloat(String($('#pmPrice').value).replace(',','.'));
+  if(!name){ toast('Donnez un nom à la pièce','x',true); return; }
+  if(!(price > 0)){ toast('Indiquez un prix valide','x',true); return; }
+  const data = {
+    name, price,
+    cat: $('#pmCat').value || null,
+    art: $('#pmArt').value,
+    badge: $('#pmBadge').value.trim(),
+    imageUrl: $('#pmImg').value.trim(),
+    desc: $('#pmDesc').value.trim(),
+    featured: $('#pmFeat').checked
+  };
+  if(editingPid){
+    const p = state.products.find(x=>x.id===editingPid);
+    if(p) Object.assign(p, data);
+  } else {
+    state.products.push(Object.assign({id:uid()}, data));
+  }
+  saveState(); renderProducts(); renderCats(); renderTexts();
+  if(activeTab==='pieces') renderTab();
+  hide($('#productOverlay'));
+  toast('Pièce enregistrée');
 });
+function delProduct(pid){
+  const p = state.products.find(x=>x.id===pid); if(!p) return;
+  confirmBox('Supprimer la pièce', `« ${p.name} » sera retirée du site.`, 'Supprimer', ()=>{
+    state.products = state.products.filter(x=>x.id!==pid);
+    saveState(); renderProducts(); renderCats(); renderTexts();
+    if(activeTab==='pieces') renderTab();
+    updateReadiness();
+    toast('Pièce supprimée');
+  });
+}
+
+/* ---- Onglet Thèmes ---- */
+function renderThemesTab(){
+  $('#drBody').innerHTML = `
+  <p class="dr-note">${ico('check',14)}<span>Le thème s\u2019applique immédiatement à tout le site — il est mémorisé pour vos visiteurs.</span></p>
+  <div class="theme-grid">
+    ${Object.entries(THEMES).map(([k,t])=>`
+    <button class="theme-card ${state.theme===k?'on':''}" data-act="apply-theme" data-key="${k}" aria-pressed="${state.theme===k}">
+      <span class="tc-sw"><i style="background:${t.v.bg}"></i><i style="background:${t.v.accent}"></i><i style="background:${t.v.ink}"></i><i style="background:${t.v.line}"></i></span>
+      <strong>${t.label}</strong>
+      <span class="tc-desc">${t.desc}</span>
+      ${state.theme===k ? `<span class="tc-on">${ico('check',11)}Appliqué</span>` : ''}
+    </button>`).join('')}
+  </div>
+  <p class="dr-note low" style="margin-top:16px">Huit ambiances minimalistes inspirées des sites de maroquinerie les plus appréciés — du noir sur ivoire des galeries parisiennes à la nuit d\u2019atelier en laiton.</p>`;
+}
+function applyTheme(key, persist){
+  if(!THEMES[key]) return;
+  document.documentElement.dataset.theme = key;
+  if(persist){ state.theme = key; saveState(); }
+}
+
+/* ---- Onglet Contact ---- */
+function renderContactTab(){
+  const c = state.contact;
+  $('#drBody').innerHTML = `
+  ${dcard('WhatsApp', F('Numéro WhatsApp','contact.whatsapp',c.whatsapp,'ex. 33612345678') +
+    `<p class="f-hint">Chiffres uniquement, avec l\u2019indicatif pays — ex. 33612345678 pour la France métropolitaine.</p>` +
+    TA('Message par pièce','contact.waOrderTpl',c.waOrderTpl) +
+    TA('Message général','contact.waGeneral',c.waGeneral) +
+    `<p class="f-hint">Balises disponibles dans le message par pièce : <b>{piece}</b> et <b>{prix}</b>.</p>`)}
+  ${dcard('Coordonnées', F('E-mail','contact.email',c.email) + F('Adresse','contact.address',c.address) + F('Horaires','contact.hours',c.hours))}
+  ${dcard('Réseaux', F('Instagram — URL','contact.instagram',c.instagram) + F('Pinterest — URL','contact.pinterest',c.pinterest))}`;
+}
+
+/* ---- Onglet Données ---- */
+function renderDonneesTab(){
+  $('#drBody').innerHTML = `
+  ${dcard('Publication', `
+    <div class="ready" id="rWa"><span class="r-ico"></span><span class="r-tx"></span></div>
+    <div class="ready" id="rCats"><span class="r-ico"></span><span class="r-tx"></span></div>
+    <div class="ready" id="rPieces"><span class="r-ico"></span><span class="r-tx"></span></div>
+    <p class="verdict" id="rVerdict"></p>`)}
+  ${dcard('Sauvegarde', `
+    <p class="f-hint" style="margin:0 0 12px">Vos modifications sont enregistrées dans ce navigateur. Exportez-les pour les conserver ou les transférer sur un autre appareil.</p>
+    <div class="frow">
+      <button class="btn btn-ghost btn-sm" data-act="export">${ico('download',14)}Exporter</button>
+      <button class="btn btn-ghost btn-sm" data-act="import">${ico('upload',14)}Importer</button>
+    </div>`)}
+  ${dcard('Sécurité', `
+    <div class="frow">
+      <div class="field"><label>Nouveau code</label><input id="pin1" type="password" placeholder="••••"></div>
+      <div class="field"><label>Confirmer</label><input id="pin2" type="password" placeholder="••••"></div>
+    </div>
+    <button class="btn btn-ghost btn-sm" data-act="save-pin">${ico('lock',14)}Mettre à jour le code</button>`)}
+  ${dcard('Réinitialiser', `
+    <p class="f-hint" style="margin:0 0 12px">Le contenu reprendra les valeurs d\u2019origine. Le thème choisi et votre code d\u2019accès seront conservés.</p>
+    <button class="btn btn-ghost btn-sm btn-danger" data-act="reset">${ico('reset',14)}Réinitialiser le site</button>`)}
+  ${dcard('Mise en ligne', `
+    <ol class="launch-list">
+      <li>Hébergez ce fichier sur n\u2019importe quel hébergement statique (Netlify, Vercel, GitHub Pages, OVH…).</li>
+      <li>Renseignez votre <b>numéro WhatsApp</b> dans l\u2019onglet Contact.</li>
+      <li>Changez le <b>code administrateur</b> dans « Sécurité » ci-dessus.</li>
+      <li><b>Exportez</b> vos données avant de changer de navigateur ou de vider l\u2019historique.</li>
+    </ol>`)}`;
+}
+function updateReadiness(){
+  const rWa = $('#rWa'); if(!rWa) return;
+  const waOk = digits(state.contact.whatsapp).length >= 10 && state.contact.whatsapp !== DEFAULTS.contact.whatsapp;
+  const rows = [
+    [rWa, waOk, waOk ? 'Numéro WhatsApp renseigné' : 'Numéro WhatsApp à personnaliser (onglet Contact)'],
+    [$('#rCats'), state.categories.length > 0, state.categories.length > 0 ? 'Collections configurées' : 'Créez au moins une collection'],
+    [$('#rPieces'), state.products.length > 0, state.products.length > 0 ? 'Catalogue en ligne' : 'Ajoutez au moins une pièce']
+  ];
+  rows.forEach(([el, ok, tx])=>{
+    if(!el) return;
+    el.querySelector('.r-ico').innerHTML = ico(ok?'check':'warn', 15);
+    el.querySelector('.r-ico').className = 'r-ico ' + (ok?'r-ok':'r-warn');
+    el.querySelector('.r-tx').textContent = tx;
+  });
+  const allOk = rows.every(r=>r[1]);
+  const v = $('#rVerdict');
+  if(v){ v.textContent = allOk ? 'Tout est prêt — le site peut être mis en ligne.' : 'Quelques réglages restent à faire (voir ci-dessus).'; v.className = 'verdict ' + (allOk?'ok':'no'); }
+}
+function exportData(){
+  const blob = new Blob([JSON.stringify(state,null,2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'l-art-infiny-donnees.json';
+  a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
+  toast('Sauvegarde exportée');
+}
+function askReset(){
+  confirmBox('Réinitialiser le site','Le contenu reprendra les valeurs d\u2019origine. Thème et code d\u2019accès seront conservés.','Réinitialiser',()=>{
+    const pin = state.pin, theme = state.theme;
+    state = JSON.parse(JSON.stringify(DEFAULTS));
+    state.pin = pin; state.theme = theme;
+    saveState(); applyTheme(theme,false);
+    renderTexts(); renderCats(); renderPills(); filter='all'; renderProducts();
+    observeScope(document); renderTab();
+    toast('Site réinitialisé');
+  });
+}
+function savePin(){
+  const v1 = $('#pin1').value, v2 = $('#pin2').value;
+  if(v1.length < 4){ toast('Le code doit contenir au moins 4 caractères','x',true); return; }
+  if(v1 !== v2){ toast('Les deux codes ne correspondent pas','x',true); return; }
+  state.pin = v1; saveState();
+  $('#pin1').value = ''; $('#pin2').value = '';
+  toast('Code d\u2019accès mis à jour');
+}
+$('#importFile').addEventListener('change', ()=>{
+  const f = $('#importFile').files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = ()=>{
+    try{
+      const parsed = JSON.parse(r.result);
+      if(!parsed || !parsed.site || !Array.isArray(parsed.categories) || !Array.isArray(parsed.products)) throw 0;
+      state = deepHydrate(DEFAULTS, parsed);
+      saveState(); applyTheme(state.theme,false);
+      renderTexts(); renderCats(); filter='all'; renderPills(); renderProducts();
+      observeScope(document); if($('#drawer').classList.contains('open')) renderTab();
+      toast('Données importées');
+    }catch(e){ toast('Fichier invalide — export JSON attendu','x',true); }
+  };
+  r.readAsText(f);
+  $('#importFile').value = '';
+});
+
+/* ================= ÉVÉNEMENTS ================= */
+document.addEventListener('click', e=>{
+  const ov = e.target.closest('.overlay');
+  if(ov && (e.target === ov || e.target.closest('[data-close]'))){ hide(ov); return; }
+  const actEl = e.target.closest('[data-act]');
+  if(actEl){
+    const act = actEl.dataset.act;
+    if(act==='open-admin'){ requestAdmin(); return; }
+    if(act==='close-drawer'){ closeDrawer(); return; }
+    if(act==='logout'){ doLogout(); return; }
+    if(act==='new-cat'){ newCategory(); return; }
+    if(act==='del-cat'){ delCategory(actEl.closest('.crow')?.dataset.cid); return; }
+    if(act==='new-product' || act==='add-p'){ openProductModal(null); return; }
+    if(act==='edit-p'){ openProductModal(actEl.dataset.pid); return; }
+    if(act==='del-p'){ delProduct(actEl.dataset.pid); return; }
+    if(act==='apply-theme'){
+      applyTheme(actEl.dataset.key, true);
+      if(activeTab==='themes') renderTab();
+      toast('Thème « ' + THEMES[actEl.dataset.key].label + ' » appliqué');
+      return;
+    }
+    if(act==='export'){ exportData(); return; }
+    if(act==='import'){ $('#importFile').click(); return; }
+    if(act==='reset'){ askReset(); return; }
+    if(act==='save-pin'){ savePin(); return; }
+  }
+  const tb = e.target.closest('[data-tab]');
+  if(tb){ activeTab = tb.dataset.tab; renderTabs(); renderTab(); return; }
+  const pill = e.target.closest('.pill');
+  if(pill){ filter = pill.dataset.f; renderPills(); renderProducts(); return; }
+  const cc = e.target.closest('.cat-card');
+  if(cc){
+    filter = cc.dataset.cat; renderPills(); renderProducts();
+    $('#pieces').scrollIntoView({behavior:'smooth'});
+    return;
+  }
+  if(e.target.closest('#burger')){
+    const b = $('#burger'), m = $('#mobileNav');
+    b.classList.toggle('open'); m.classList.toggle('open');
+    return;
+  }
+  if(e.target.closest('#mobileNav a')){
+    $('#burger').classList.remove('open');
+    $('#mobileNav').classList.remove('open');
+  }
+});
+
+/* Saisie dans le tiroir */
+$('#drBody').addEventListener('input', e=>{
+  const el = e.target;
+  if(el.dataset.path){
+    let v = el.value;
+    if(el.dataset.kind==='lines'){ v = v.split('\n').map(s=>s.trim()).filter(Boolean); }
+    setByPath(state, el.dataset.path, v);
+    saveState(); renderTexts();
+    return;
+  }
+  const row = el.closest('.crow');
+  if(row){
+    const cat = state.categories.find(c=>c.id===row.dataset.cid);
+    if(cat && el.dataset.f){ cat[el.dataset.f] = el.value; saveState(); syncCatsLite(); }
+  }
+});
+
+/* Édition en ligne des textes */
+document.addEventListener('focusout', e=>{
+  const el = e.target.closest?.('[data-edit]');
+  if(!el || !adminOn) return;
+  const path = el.dataset.edit;
+  const val = el.textContent.trim();
+  if(val !== String(getByPath(state, path) ?? '')){
+    setByPath(state, path, val);
+    saveState(); renderTexts();
+    toast('Texte mis à jour');
+  } else { renderTexts(); }
+});
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape'){
+    if(!$('#productOverlay').hidden){ hide($('#productOverlay')); return; }
+    if(!$('#confirmOverlay').hidden){ hide($('#confirmOverlay')); return; }
+    if($('#drawer').classList.contains('open')){ closeDrawer(); return; }
+    if(!$('#pinOverlay').hidden) hide($('#pinOverlay'));
+  }
+  if(e.key==='Enter' && e.target.id==='pinInput'){ e.preventDefault(); tryPin(); }
+  if(e.key==='Enter' && e.target.closest?.('[data-edit]')){ e.preventDefault(); e.target.blur(); }
+});
+$('#pinGo').addEventListener('click', tryPin);
+$('#newsForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  const v = $('#newsMail').value.trim();
+  if(!/^\S+@\S+\.\S+$/.test(v)){ toast('Adresse e-mail invalide','x',true); return; }
+  $('#newsMail').value = '';
+  toast('Merci — vous recevrez bientôt des nouvelles de l\u2019atelier.');
+});
+
+/* ================= DÉMARRAGE ================= */
+injectThemeCSS();
+applyTheme(state.theme, false);
+renderTexts();
+renderCats();
+renderPills();
+renderProducts();
+observeScope(document);
+fillIcons(document);
 </script>
 </body>
 </html>
