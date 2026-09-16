@@ -12,5 +12,26 @@
       "image": "/images/484939398_698499072515623_5554846295329653698_n.jpg",
       "description": "HJFHFHDFH"
     }
+  ],
+  "categories": [
+    {
+      "id": "C1",
+      "name": "CATEGORIE TEST",
+      "desc": "GHDFSGHFGD",
+      "art": "SDHGHFG"
+    }
+  ],
+  "products": [
+    {
+      "art": "GHRHG",
+      "badge": "FDDFDFDFD",
+      "price": 20,
+      "name": "ESCALOPE",
+      "featured": false,
+      "desc": "HFDGHFGDHFGHFGDHFGDHFGD",
+      "imageUrl": "/images/نموذج-طلبية-المثالية-راس.jpg",
+      "cat": "C1",
+      "id": "1001"
+    }
   ]
 }
